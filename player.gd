@@ -41,6 +41,9 @@ var current_health : float = max_health
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if not $FootstepTimer:
+		print("Error: FootstepTimer missing!")
+		return
 	$FootstepTimer.wait_time = footstep_delay
 	$FootstepPlayer.volume_db = footstep_volume
 	health_bar.max_value = max_health
@@ -138,8 +141,10 @@ func shoot():
 	update_ammo_display()
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
-	bullet.global_transform = $Head/Camera3D/Gun.global_transform
-	bullet.velocity = -bullet.transform.basis.z * bullet_speed
+	# Spawn at GunTip's global position
+	bullet.global_transform.origin = $Head/Camera3D/Gun/GunTip.global_transform.origin
+	# Set velocity along camera's forward direction
+	bullet.velocity = -$Head/Camera3D.global_transform.basis.z * bullet_speed
 	
 	$Head/Camera3D/Gun/MuzzleFlash.visible = true
 	$Head/Camera3D/Gun/GunshotPlayer.play()

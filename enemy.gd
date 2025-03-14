@@ -5,8 +5,8 @@ extends CharacterBody3D
 var current_health : float = max_health
 var gravity : float = 9.8
 var player = null
-@export var damage : float = 10.0 # Damage dealt to player
-@export var damage_cooldown : float = 1.0 # Time between damage ticks
+@export var damage : float = 10.0
+@export var damage_cooldown : float = 1.0
 var can_damage = true
 
 func _ready():
@@ -39,5 +39,6 @@ func _on_hitbox_body_entered(body):
 	if body == player and can_damage:
 		player.take_damage(damage)
 		can_damage = false
-		await get_tree().create_timer(damage_cooldown).timeout
+		if is_inside_tree(): # Check if still in scene tree
+			await get_tree().create_timer(damage_cooldown).timeout
 		can_damage = true
