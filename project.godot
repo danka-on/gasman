@@ -18,5 +18,4 @@ config/icon="res://icon.svg"
 [debug]
 
 settings/stdout/verbose_stdout=true
-file_logging/enable_file_logging=true
 file_logging/log_path="C:\\Users\\boxatron\\Documents\\simpleshooter\\crash logs"
