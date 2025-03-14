@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4iqr17q1x8bm"]
+
+[ext_resource type="Script" uid="uid://dgdnwt2030jc3" path="res://game_over.gd" id="1_40baj"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_40baj")
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 35.0
+offset_right = 1114.0
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 200
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 454.0
+offset_top = 310.0
+offset_right = 724.0
+offset_bottom = 421.0
+theme_override_colors/icon_pressed_color = Color(0.662745, 0.960784, 0.266667, 1)
+theme_override_colors/font_color = Color(0, 0.933333, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Restart"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
