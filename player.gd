@@ -34,6 +34,10 @@ var can_reload = true
 @export var max_health : float = 100.0
 var current_health : float = max_health
 
+# Score and kills
+var score : int = 0
+var kills : int = 0
+
 # UI references
 @onready var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
 @onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
@@ -177,4 +181,13 @@ func update_ammo_display():
 	ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
 	
 func die():
-	get_tree().change_scene_to_file("res://GameOver.tscn") # Switch to Game Over scene
+	# Pass score and kills to Game Over scene
+	var game_over = preload("res://GameOver.tscn").instantiate()
+	game_over.set_score_and_kills(score, kills)
+	get_tree().root.add_child(game_over)
+	get_tree().current_scene.queue_free() # Remove Main scene
+	get_tree().current_scene = game_over
+	
+func add_score(points: int):
+	score += points
+	kills += 1 # Increment kills with each score addition

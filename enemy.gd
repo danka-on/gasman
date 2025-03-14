@@ -33,12 +33,14 @@ func take_damage(amount: float):
 		die()
 
 func die():
+	if player: # Ensure player exists
+		player.add_score(5) # 5 points per kill
 	queue_free()
 
 func _on_hitbox_body_entered(body):
 	if body == player and can_damage:
 		player.take_damage(damage)
 		can_damage = false
-		if is_inside_tree(): # Check if still in scene tree
+		if is_inside_tree():
 			await get_tree().create_timer(damage_cooldown).timeout
 		can_damage = true
