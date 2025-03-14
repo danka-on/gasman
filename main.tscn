@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3iyygqly2ifv"]
+[gd_scene load_steps=22 format=3 uid="uid://c3iyygqly2ifv"]
 
 [ext_resource type="Texture2D" uid="uid://50r516c1u5lb" path="res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://player.gd" id="1_ig7tw"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://daejnh2e4awqj" path="res://sounds/thud.wav" id="5_272bh"]
 [ext_resource type="AudioStream" uid="uid://cgfxvy7p8uk2e" path="res://sounds/jumpsound.wav" id="6_5vw27"]
 [ext_resource type="AudioStream" uid="uid://digbnayiysvgy" path="res://sounds/fart.wav" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://c01ofxgvfomno" path="res://textures/aim.png" id="11_dg77c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 size = Vector3(0.998535, 0.522106, 1)
@@ -145,6 +146,20 @@ offset_right = 65.0
 offset_bottom = 607.0
 theme_override_font_sizes/font_size = 40
 text = "30/30"
+
+[node name="Crosshair" type="TextureRect" parent="HUD/HealthBarContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.802
+anchor_bottom = 16.197
+offset_left = 568.0
+offset_top = 328.0
+offset_right = -544.08
+offset_bottom = -279.88
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_dg77c")
+expand_mode = 1
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 
