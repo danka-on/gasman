@@ -33,6 +33,8 @@ func _physics_process(delta):
 func take_damage(amount: float):
 	current_health -= amount
 	current_health = clamp(current_health, 0, max_health)
+	if player and player.has_method("play_hit_sound"):
+		player.play_hit_sound() # Trigger sound on player
 	if current_health <= 0:
 		die()
 

@@ -1,15 +1,19 @@
 extends Area3D
 
-@export var speed : float = 20.0 # Set by player
+@export var speed : float = 20.0
 var velocity : Vector3
+@export var hit_effect_scene : PackedScene = preload("res://hit_effect.tscn")
 
 func _physics_process(delta):
 	global_transform.origin += velocity * delta
 
 func _on_area_entered(area):
-	if area.get_parent().has_method("take_damage"): # Check if it’s an enemy
-		area.get_parent().take_damage(10.0) # Deal 10 damage
-	queue_free() # Bullet disappears on hit
+	if area.get_parent().has_method("take_damage"):
+		area.get_parent().take_damage(10.0)
+		var hit_effect = hit_effect_scene.instantiate()
+		hit_effect.global_transform.origin = global_transform.origin # Hit position
+		get_parent().add_child(hit_effect)
+	queue_free()
 
 func _on_lifetime_timeout():
-	queue_free() # Bullet disappears after time
+	queue_free()

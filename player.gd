@@ -43,6 +43,7 @@ var kills : int = 0
 @onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
 @onready var enemy = get_node("/root/Main/Enemy") # May not be needed with spawner
 @onready var pickup_area = $PickupArea
+@onready var hit_sound = $HitSound
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -211,3 +212,6 @@ func _on_pickup_area_body_entered(body):
 		print("Picked up ammo: ", body.ammo_amount)
 		add_ammo(body.ammo_amount)
 		body.queue_free()
+func play_hit_sound():
+	if hit_sound:
+		hit_sound.play()
