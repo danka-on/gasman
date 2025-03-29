@@ -11,6 +11,7 @@ var can_damage = true
 
 @export var health_pack_scene : PackedScene = preload("res://health_pack.tscn")
 @export var ammo_pack_scene : PackedScene = preload("res://ammo_pack.tscn")
+@export var explosion_scene : PackedScene = preload("res://Explosion.tscn")
 @export var drop_chance : float = 0.5 # 50% chance to drop
 
 func _ready():
@@ -46,6 +47,15 @@ func die():
 			var instance = drop.instantiate()
 			instance.global_transform.origin = global_transform.origin
 			get_parent().add_child(instance)
+	var explosion = explosion_scene.instantiate()
+	explosion.global_transform.origin = global_transform.origin
+	get_parent().add_child(explosion)
+	
+	# Hide enemy immediately, let explosion take over
+	hide() # Hide mesh
+	set_physics_process(false) # Stop movement
+	await get_tree().create_timer(0.7).timeout # Match explosion duration
+	queue_free()
 	queue_free()
 
 func _on_hitbox_body_entered(body):
