@@ -13,6 +13,8 @@ scale_max = 0.1
 albedo_color = Color(1, 1, 0, 1)
 emission_enabled = true
 emission = Color(1, 1, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_k0crp"]
 material = SubResource("StandardMaterial3D_gh0va")
