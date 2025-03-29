@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3iyygqly2ifv"]
+[gd_scene load_steps=23 format=3 uid="uid://c3iyygqly2ifv"]
 
 [ext_resource type="Texture2D" uid="uid://50r516c1u5lb" path="res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://player.gd" id="1_ig7tw"]
@@ -35,6 +35,8 @@ shading_mode = 0
 albedo_color = Color(1, 0.839216, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_1bvp3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4c57u"]
 
 [sub_resource type="Theme" id="Theme_272bh"]
 
@@ -120,6 +122,14 @@ max_distance = 10.0
 
 [node name="FootstepTimer" type="Timer" parent="Player"]
 
+[node name="PickupArea" type="Area3D" parent="Player"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PickupArea"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.903961, 0)
+shape = SubResource("SphereShape3D_4c57u")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.384875, 0.922969, 0, -0.922969, -0.384875, -3.60428, 19.8844, 21.4381)
 
@@ -168,3 +178,4 @@ expand_mode = 1
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Player/FootstepTimer" to="Player" method="_on_footstep_timer_timeout"]
+[connection signal="body_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_body_entered"]

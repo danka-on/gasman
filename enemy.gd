@@ -9,6 +9,10 @@ var player = null
 @export var damage_cooldown : float = 1.0
 var can_damage = true
 
+@export var health_pack_scene : PackedScene = preload("res://health_pack.tscn")
+@export var ammo_pack_scene : PackedScene = preload("res://ammo_pack.tscn")
+@export var drop_chance : float = 0.5 # 50% chance to drop
+
 func _ready():
 	current_health = max_health
 
@@ -35,6 +39,11 @@ func take_damage(amount: float):
 func die():
 	if player: # Ensure player exists
 		player.add_score(5) # 5 points per kill
+		if randf() < drop_chance: # 50% chance
+			var drop = health_pack_scene if randf() < 0.5 else ammo_pack_scene
+			var instance = drop.instantiate()
+			instance.global_transform.origin = global_transform.origin
+			get_parent().add_child(instance)
 	queue_free()
 
 func _on_hitbox_body_entered(body):

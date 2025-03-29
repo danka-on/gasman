@@ -42,6 +42,7 @@ var kills : int = 0
 @onready var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
 @onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
 @onready var enemy = get_node("/root/Main/Enemy") # May not be needed with spawner
+@onready var pickup_area = $PickupArea
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -53,8 +54,14 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	update_ammo_display()
+	if pickup_area:
+		pickup_area.connect("body_entered", _on_pickup_area_body_entered)
+		print("PickupArea connected")
+	else:
+		print("Error: PickupArea missing!")
 	if enemy:
 		enemy.player = self
+	
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -176,7 +183,10 @@ func reload():
 		current_reserve -= ammo_to_load
 		update_ammo_display()
 		can_reload = true
-
+func add_ammo(amount: int):
+	current_reserve += amount
+	current_reserve = clamp(current_reserve, 0, total_reserve_ammo) # Cap reserve
+	update_ammo_display()
 func update_ammo_display():
 	ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
 	
@@ -191,3 +201,13 @@ func die():
 func add_score(points: int):
 	score += points
 	kills += 1 # Increment kills with each score addition
+func _on_pickup_area_body_entered(body):
+	print("Body entered: ", body.name, " Groups: ", body.get_groups())
+	if body.is_in_group("health_pack"):
+		print("Picked up health: ", body.health_amount)
+		take_damage(-body.health_amount)
+		body.queue_free()
+	elif body.is_in_group("ammo_pack"):
+		print("Picked up ammo: ", body.ammo_amount)
+		add_ammo(body.ammo_amount)
+		body.queue_free()
