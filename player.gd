@@ -47,6 +47,7 @@ var kills : int = 0
 @onready var enemy = get_node("/root/Main/Enemy") # May not be needed with spawner
 @onready var pickup_area = $PickupArea
 @onready var hit_sound = $HitSound
+@onready var damage_sound = $DamageSound
 
 func _ready():
 	collision_layer = 1 # Player
@@ -182,6 +183,7 @@ func shoot():
 func take_damage(amount: float):
 	current_health -= amount
 	current_health = clamp(current_health, 0, max_health)
+	damage_sound.play()
 	if current_health <= 0:
 		hide() # Optional—hide player
 		set_physics_process(false) # Stop movement
