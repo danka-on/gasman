@@ -84,8 +84,8 @@ func die():
 	blast_area.add_child(collision_shape)
 	# Center the sphere slightly above ground
 	blast_area.global_transform.origin = global_transform.origin + Vector3(0, 1, 0)
-	blast_area.collision_layer = 2
-	blast_area.collision_mask = 1
+	blast_area.collision_layer = 4 # Explosions
+	blast_area.collision_mask = 1 # Hits player
 	get_parent().add_child(blast_area)
 	
 	await get_tree().create_timer(0.05).timeout

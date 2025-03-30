@@ -4,6 +4,10 @@ extends Area3D
 var velocity : Vector3
 @export var hit_effect_scene : PackedScene = preload("res://hit_effect.tscn")
 
+func _ready():
+	collision_layer = 3 # Bullets
+	collision_mask = 2 # Hits enemies
+
 func _physics_process(delta):
 	global_transform.origin += velocity * delta
 

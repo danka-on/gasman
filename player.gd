@@ -49,6 +49,8 @@ var kills : int = 0
 @onready var hit_sound = $HitSound
 
 func _ready():
+	collision_layer = 1 # Player
+	collision_mask = 1 | 8
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if not $FootstepTimer:
 		print("Error: FootstepTimer missing!")
