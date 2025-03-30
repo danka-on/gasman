@@ -13,8 +13,7 @@ albedo_color = Color(0, 0.832885, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xab54"]
 
 [node name="HealthPack" type="RigidBody3D" groups=["health_pack"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
 linear_damp = 0.5
 angular_damp = 0.5
 script = ExtResource("1_xab54")

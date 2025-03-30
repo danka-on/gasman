@@ -50,7 +50,7 @@ var kills : int = 0
 
 func _ready():
 	collision_layer = 1 # Player
-	collision_mask = 1 | 8
+	collision_mask = 1 | 8 | 16
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if not $FootstepTimer:
 		print("Error: FootstepTimer missing!")

@@ -8,6 +8,7 @@ var player = null
 @export var damage : float = 10.0
 @export var damage_cooldown : float = 1.0
 var can_damage = true
+var last_damage_time : float = 0.0
 
 @export var health_pack_scene : PackedScene = preload("res://health_pack.tscn")
 @export var ammo_pack_scene : PackedScene = preload("res://ammo_pack.tscn")
@@ -20,8 +21,10 @@ var can_damage = true
 @export var drop_chance : float = 0.5 # 50% chance to drop
 
 @onready var enemy_mesh = $EnemyMesh # Reference to mesh
+@onready var hitbox = $Hitbox # Add reference
 
 func _ready():
+	
 	current_health = max_health
 	if enemy_mesh:
 		# Ensure material override exists
@@ -48,9 +51,26 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		velocity.z = 0
-	
-	move_and_slide()
-
+	if is_instance_valid(player) and current_health > 0:
+		var dist = global_transform.origin.distance_to(player.global_transform.origin)
+		if dist < 20.0:
+			var direction = (player.global_transform.origin - global_transform.origin).normalized()
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+			for i in get_slide_collision_count():
+				var collision = get_slide_collision(i)
+				var collider = collision.get_collider()
+				if collider and collider == player and can_damage:
+					if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
+						player.take_damage(damage)
+						last_damage_time = Time.get_ticks_msec() / 1000.0
+						can_damage = false
+						await get_tree().create_timer(damage_cooldown).timeout
+						can_damage = true
+			move_and_slide()
+		else:
+			velocity.x = 0
+			velocity.z = 0
 func take_damage(amount: float):
 	current_health -= amount
 	current_health = clamp(current_health, 0, max_health)
@@ -76,39 +96,20 @@ func die():
 	explosion.global_transform.origin = global_transform.origin
 	get_parent().add_child(explosion)
 	
-	var blast_area = Area3D.new()
-	var collision_shape = CollisionShape3D.new()
-	var sphere_shape = SphereShape3D.new()
-	sphere_shape.radius = explosion_radius # 5.0
-	collision_shape.shape = sphere_shape
-	blast_area.add_child(collision_shape)
-	# Center the sphere slightly above ground
-	blast_area.global_transform.origin = global_transform.origin + Vector3(0, 1, 0)
-	blast_area.collision_layer = 4 # Explosions
-	blast_area.collision_mask = 1 # Hits player
-	get_parent().add_child(blast_area)
+	# Only check player collision
+	if is_instance_valid(player) and global_transform.origin.distance_to(player.global_transform.origin) <= explosion_radius:
+		var direction = (player.global_transform.origin - global_transform.origin).normalized()
+		player.take_damage(explosion_damage)
+		player.apply_knockback(direction, explosion_force)
+		print("Player hit by blast! Distance: ", global_transform.origin.distance_to(player.global_transform.origin))
 	
-	await get_tree().create_timer(0.05).timeout
-	var bodies = blast_area.get_overlapping_bodies()
-	
-	for body in bodies:
-		if body == player:
-			var player_pos = player.global_transform.origin
-			var blast_pos = blast_area.global_transform.origin
-			
-			player.take_damage(explosion_damage)
-			var direction = (player_pos - blast_pos).normalized()
-			player.apply_knockback(direction, explosion_force) # Use exported force
-			
-	await get_tree().create_timer(0.1).timeout
-	blast_area.queue_free()
-	
+	# Disable immediately
+	hitbox.collision_layer = 0
+	hitbox.collision_mask = 0
 	hide()
 	set_physics_process(false)
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.5).timeout # Shorten delay
 	queue_free()
-
-	
 
 func _on_hitbox_body_entered(body):
 	if body == player and can_damage:

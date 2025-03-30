@@ -48,6 +48,7 @@ bg_color = Color(0.207843, 0.709804, 0.027451, 1)
 script = ExtResource("1_kek77")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
@@ -61,7 +62,7 @@ mesh = SubResource("PlaneMesh_h2yge")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0852192, 0)
-collision_mask = 8
+collision_mask = 25
 script = ExtResource("1_ig7tw")
 bullet_speed = 100.0
 
