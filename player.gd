@@ -182,6 +182,9 @@ func shoot():
 func take_damage(amount: float):
 	current_health -= amount
 	current_health = clamp(current_health, 0, max_health)
+	if current_health <= 0:
+		hide() # Optional—hide player
+		set_physics_process(false) # Stop movement
 	health_bar.value = current_health
 	if current_health <= 0:
 		die()

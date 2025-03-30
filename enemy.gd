@@ -59,14 +59,15 @@ func _physics_process(delta):
 			velocity.z = direction.z * speed
 			for i in get_slide_collision_count():
 				var collision = get_slide_collision(i)
-				var collider = collision.get_collider()
-				if collider and collider == player and can_damage:
-					if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
-						player.take_damage(damage)
-						last_damage_time = Time.get_ticks_msec() / 1000.0
-						can_damage = false
-						await get_tree().create_timer(damage_cooldown).timeout
-						can_damage = true
+				if is_instance_valid(collision):
+					var collider = collision.get_collider()
+					if is_instance_valid(collider) and collider == player and can_damage:
+						if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
+							player.take_damage(damage)
+							last_damage_time = Time.get_ticks_msec() / 1000.0
+							can_damage = false
+							await get_tree().create_timer(damage_cooldown).timeout
+							can_damage = true
 			move_and_slide()
 		else:
 			velocity.x = 0
