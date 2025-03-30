@@ -28,6 +28,7 @@ height = 0.4
 script = ExtResource("1_li25b")
 
 [node name="Blast" type="GPUParticles3D" parent="."]
+transform = Transform3D(1.00084, 0, 0, 0, 1.00084, 0, 0, 0, 1.00084, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_li25b")
 emitting = false
 amount = 1000

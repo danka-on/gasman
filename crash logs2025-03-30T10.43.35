@@ -1,0 +1,824 @@
+Godot Engine v4.4.stable.official.4c311cbee - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
+	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
+	Objects - 1
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2620814200256
+   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
+ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
+	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
+	Objects - 1
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2620814200256
+   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
+Devices:
+  #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
+Optional extension VK_EXT_astc_decode_mode not found
+Optional extension VK_EXT_debug_marker not found
+- Vulkan Variable Rate Shading supported:
+  Pipeline fragment shading rate
+  Primitive fragment shading rate
+  Attachment fragment shading rate, min texel size: (16, 16), max texel size: (16, 16), max fragment size: (4, 4)
+- Vulkan multiview supported:
+  max view count: 32
+  max instances: 134217727
+- Vulkan subgroup:
+  size: 32
+  min size: 32
+  max size: 32
+  stages: STAGE_VERTEX, STAGE_TESSELLATION_CONTROL, STAGE_TESSELLATION_EVALUATION, STAGE_GEOMETRY, STAGE_FRAGMENT, STAGE_COMPUTE, STAGE_RAYGEN_KHR, STAGE_ANY_HIT_KHR, STAGE_CLOSEST_HIT_KHR, STAGE_MISS_KHR, STAGE_INTERSECTION_KHR, STAGE_CALLABLE_KHR, STAGE_TASK_NV, STAGE_MESH_NV
+  supported ops: FEATURE_BASIC, FEATURE_VOTE, FEATURE_ARITHMETIC, FEATURE_BALLOT, FEATURE_SHUFFLE, FEATURE_SHUFFLE_RELATIVE, FEATURE_CLUSTERED, FEATURE_QUAD, FEATURE_PARTITIONED_NV
+  quad operations in all stages
+Vulkan 1.3.289 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce RTX 3070
+Startup PSO cache (5.5 MiB)
+Using "winink" pen tablet driver...
+Creating VMA small objects pool for memory type index 1
+Shader 'CanvasSdfShaderRD' (group 0) SHA256: 7ef25f535f17ce3cb6e9cdbb671b389f9905af968c04a97b2e84039c0f1cf6ef
+Shader 'SkeletonShaderRD' (group 0) SHA256: 7f041ff1f519aabb8f51a27745a99f8693e371dd8e97b145a05f1ff4441aaaf1
+Shader 'SortShaderRD' (group 0) SHA256: c91a27cd5ce46bca9459307df1c285cfa22f059cd62bb7ffea9a702a62591a26
+Shader 'ParticlesShaderRD' (group 0) SHA256: 59c6535c3507130df7b501dac97ecf3730b9978b4d50fa5fa4cd331fac07410e
+Shader 'ParticlesCopyShaderRD' (group 0) SHA256: b53676a26a38511b0004ec0f955ed24c43622c0db6c588eeaa4f7babee913ff2
+Shader 'CanvasShaderRD' (group 0) SHA256: 5856edf45d5dfb02534573ce0b8c829bf91f8057581ce7c8816f3319fc8aebd8
+Shader 'CanvasOcclusionShaderRD' (group 0) SHA256: 248c1c5f022b89f8bfc0fca12cc5ea235615b89cba4d4c113cc161e05359cea2
+Shader 'ClusterRenderShaderRD' (group 0) SHA256: c9c681ebb89963979e3618867f22e9fa99c8a0cf3aedb1d5c6bb50440130da08
+Shader 'ClusterStoreShaderRD' (group 0) SHA256: a89e0eef0e47d7babb4016769d27ed56b02f0a40b350816e1065926892602ca1
+Shader 'ClusterDebugShaderRD' (group 0) SHA256: e6def0f8f3ff4e8e19dcf241fadff628e7010ae0ac5078c8a97ea30760ea68ff
+Shader 'SceneForwardClusteredShaderRD' (group 0) SHA256: 72177b5a7410285b53bb275b29a9122386c8c666ecf8ed645c54bc3c0f26973b
+Shader 'SceneForwardClusteredShaderRD' (group 1) SHA256: 3b17f372e3399803855c2787f9f8bd3237e07454eb64dc65c3ccfdd7eee37a38
+Shader 'SceneForwardClusteredShaderRD' (group 2) SHA256: 00015879f79b26079e93867379e610c25d919ef029d0c9b2c9dc26401e3f8ded
+Shader 'SceneForwardClusteredShaderRD' (group 3) SHA256: 12552d69e047cf8e1b12ed19b6ca99855d0f1ac96d62dff62ee215c11a23c41c
+Shader 'BestFitNormalShaderRD' (group 0) SHA256: 08f67ae74881933f8a51a2fa4d78599b3d1dbf022b16e0c042edefd80b71860d
+Shader 'ResolveShaderRD' (group 0) SHA256: b3153e65276b7f2112d23916103c8771dd089aa0792bb7bf04e537fa76e6c1df
+Shader 'TaaResolveShaderRD' (group 0) SHA256: 90a754a3bb0e116359a190d3a5abd7d5ce3887597e55ae1ddbbc099374ccadc6
+Shader 'Fsr2DepthClipPassShaderRD' (group 0) SHA256: 685832d8689abcf0ba659277c592f171fa9fd6d3f2b0b8ea251b84c5d6da480c
+Shader 'Fsr2ReconstructPreviousDepthPassShaderRD' (group 0) SHA256: 1b3cf3b85b05b8231d83e5c582a10c994b9fbb9ac744fe3f332b8dda1550c38c
+Shader 'Fsr2LockPassShaderRD' (group 0) SHA256: 71a4353b3eed590507399282661b11706f2c2a54e19b298aed7d4a22c6b131c3
+Shader 'Fsr2AccumulatePassShaderRD' (group 0) SHA256: aa946a27d6418ebbdaa6b2a681a719b2fa5de17fc9c566f47dd6ac3484db5b76
+Shader 'Fsr2RcasPassShaderRD' (group 0) SHA256: 4cdf81cefa5cb2b9e09721fb3f519fda8c77ac5532f72d7f3bd1a050c577827f
+Shader 'Fsr2ComputeLuminancePyramidPassShaderRD' (group 0) SHA256: 58ec04012bc37b56415856608ed54f53bb425705753d4fbd8ec475cc8993caae
+Shader 'Fsr2AutogenReactivePassShaderRD' (group 0) SHA256: 2506409ad93dfb8d2cad6944c9458a06666727f698ee5eaeba46ef4add459113
+Shader 'Fsr2TcrAutogenPassShaderRD' (group 0) SHA256: 882cd5c7e2be1d3a4d880cef6efcd93f4b55c90683b11a7fd0ae4d10d3bfd80d
+Shader 'SsEffectsDownsampleShaderRD' (group 0) SHA256: 71bb3df6fccf1273a2663f7278df88d28dee9bb18d3a6ae8431a4ea0b22c924b
+Shader 'SsilShaderRD' (group 0) SHA256: 44923ac855af6c9d7751e94c4b3e04bb35729139eb63e707799c54d97d2c4ad1
+Shader 'SsilImportanceMapShaderRD' (group 0) SHA256: 99ec77f1218fd0455f1ad2e3f5351a83999719468da5fc097b585744e59e3ead
+Shader 'SsilBlurShaderRD' (group 0) SHA256: a27eaa403eb4ef4ca825e07f3b00689583db231b908eabb2d50ecaad54bd397c
+Shader 'SsilInterleaveShaderRD' (group 0) SHA256: f76d813b747ffcb4b644bcd1aded62cbc97562836d43fe73f985fc6267e452d8
+Shader 'SsaoShaderRD' (group 0) SHA256: c30b503b3e2f88442b77b872d7028ee5d0fa0a265cb2a00397e7b9ac1353cfbf
+Shader 'SsaoImportanceMapShaderRD' (group 0) SHA256: 827b62f5fbb8d2b19bb5361a53916059b4badf89c663f4568be65d70b3f80f05
+Shader 'SsaoBlurShaderRD' (group 0) SHA256: ca745e5646bac761a37d45def0f1cfc9b43851a0c5d3ad08aa4819bdc155d7a5
+Shader 'SsaoInterleaveShaderRD' (group 0) SHA256: 9f16b4f8170af1d250eaa8895c6637e1c5749c758b6e2bf83312b49c2456b1ca
+Shader 'ScreenSpaceReflectionScaleShaderRD' (group 0) SHA256: 661db9194745559039cd279c6fc50294811ab0d34ad77d529e06402955bbfcf4
+Shader 'ScreenSpaceReflectionShaderRD' (group 0) SHA256: 36047c2c87b4e93649dc7413d5208a3ea25e932c64bf225f2fbcf9f9917e4c7f
+Shader 'ScreenSpaceReflectionFilterShaderRD' (group 0) SHA256: eb0d0c9ef280fb62bacb59a8fb030bed91ade9b860f9a5152fab73299fe842ef
+Shader 'SubsurfaceScatteringShaderRD' (group 0) SHA256: aeb90f8bb511ad2e17aeda2dbb6664563e3c5bcaf694d589059e62819f5dc82d
+Shader 'SkyShaderRD' (group 0) SHA256: 3f02486a5e1b10006907ddda8d8b05d6ef2783212639b9c2f3e0dbcc34fd9657
+Shader 'VoxelGiShaderRD' (group 0) SHA256: 78fa1e25622bec34ad8cecb4bcf0196b61cef703a0a669672b5b37272626f7b1
+Shader 'VoxelGiDebugShaderRD' (group 0) SHA256: 09d0d797e335cdbd802c44fa8da8cf56b3e406ecad61c78ffca2e703eb49783e
+Shader 'SdfgiPreprocessShaderRD' (group 0) SHA256: 9ed6c35c481f96860a3e45f1a25be83566e56f8c7bac629c591979dc55f8f0c1
+Shader 'SdfgiDirectLightShaderRD' (group 0) SHA256: 8f6fe13a55a461d3651d46906d862fef7c9763ce88ba7fd441c171fea9d7e156
+Shader 'SdfgiIntegrateShaderRD' (group 0) SHA256: 5ee1869af894a3a0356dec695caed02a1e9e9da5b7a6b84416cc228cc4370758
+Shader 'GiShaderRD' (group 0) SHA256: 11f2cce02da14332fc95fbfd4bcf20e8c454dc848c543d0f959757714a021603
+Shader 'SdfgiDebugShaderRD' (group 0) SHA256: 7253437e5eccc79f4cbe4000e8f71a23be0298b9fdf323bac134dc5a9fb7b033
+Shader 'SdfgiDebugProbesShaderRD' (group 0) SHA256: 26075605a0f3d96c884bd30ce772693fc3ac7bd06a622a15963aeb3f17eb12b4
+Shader 'VolumetricFogShaderRD' (group 0) SHA256: b3109b2b0e8167a4a29f393d29d0b7045b72c4cf365f384439e1974c8732c354
+Shader 'VolumetricFogProcessShaderRD' (group 0) SHA256: 025f1fd489c9751d08ba6daaf4da1c35f7f2aede0d78c73bad8b4eb0802fd5e5
+Shader 'BokehDofShaderRD' (group 0) SHA256: 7ed0623b942da44af76fd1982c1d48037cc5ca55ae7ee71d56bf0333c042c07c
+Shader 'CopyShaderRD' (group 0) SHA256: e57c398150bd594c258b3d6189a0495b04121194b99d6931e0b42dfeaf5266a8
+Shader 'CopyToFbShaderRD' (group 0) SHA256: b5ca41951030c99316df9c316b366add08fc7ed544db0e1b03c82558d92575ea
+Shader 'CubeToDpShaderRD' (group 0) SHA256: b8c52b4a02591a1a08fc4202b0a50e990d4eadbeb08d52f6fb5792e9762f6607
+Shader 'CubemapDownsamplerShaderRD' (group 0) SHA256: e7e05a4424e8835e0e986bb492297d996aff176293c5724219b70659fd13d5b2
+Shader 'CubemapFilterShaderRD' (group 0) SHA256: 88f44f9a5be925becac3751283cb446652c5c81c50907b38fa15d047d33f200d
+Shader 'CubemapRoughnessShaderRD' (group 0) SHA256: 498a8c875fe31824d241d4466dd82cbef05ce7a48dcbabf8502aebf723844f35
+Shader 'SpecularMergeShaderRD' (group 0) SHA256: 57926a238dd42bb7bf1e8be636125c20d599677aaab304862fc9ab3e472b4213
+Shader 'ShadowFrustumShaderRD' (group 0) SHA256: bad002a30f0cc24aba235c58d53828374538269981a2f2a8c0e92dc1d87a502e
+Shader 'MotionVectorsShaderRD' (group 0) SHA256: abf8dc8086a2c796396251dc113f3f4195d74f8f6da4d478dc06d7327cc3944b
+Shader 'LuminanceReduceShaderRD' (group 0) SHA256: 9f3a91257ad0b34b8a10fe82b1bf274a93d9db933364ee9b00f41b05dc0d59ba
+Shader 'TonemapShaderRD' (group 0) SHA256: e77bf9034735c365ac4971cf9c2ad73ebc8c9dae73070c652716f2c541655424
+Shader 'VrsShaderRD' (group 0) SHA256: 377e6ba240a316837d904e1a8eda314ccc731f371e74cd78f47fd5cca7db01a5
+Shader 'FsrUpscaleShaderRD' (group 0) SHA256: ee5bc1cd4d4621d6dbbe371640985ed2ea9ad421e633fdd1c064552f43384138
+Shader 'BlitShaderRD' (group 0) SHA256: c1a508b343e89110130b9aeb6612f366588f35c09d225b1ebd16a7ade2a7e4f4
+WASAPI: Activated output_device using IAudioClient3 interface
+WASAPI: wFormatTag = 65534
+WASAPI: nChannels = 2
+WASAPI: nSamplesPerSec = 44100
+WASAPI: nAvgBytesPerSec = 352800
+WASAPI: nBlockAlign = 8
+WASAPI: wBitsPerSample = 32
+WASAPI: cbSize = 22
+WASAPI: mix_rate = 44100
+WASAPI: fundamental_period_frames = 441
+WASAPI: min_period_frames = 441
+WASAPI: max_period_frames = 441
+WASAPI: selected a period frame size of 441
+WASAPI: detected 2 channels
+WASAPI: audio buffer frames: 441 calculated latency: 10ms
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 3954330213
+EDITOR API HASH: 1116905369
+MbedTLS: Some X509 certificates could not be parsed (1 certificates skipped).
+Loaded system CA certificates
+Loading resource: res://main.tscn
+Loading resource: res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png
+Loading resource: res://.godot/imported/TCom_Sand_Muddy2_2x2_512_albedo.png-2b5f657709288094e946e6d09642b9aa.s3tc.ctex
+Loading resource: res://player.gd
+Loading resource: res://bullet.tscn
+Loading resource: res://bullet.gd
+Loading resource: res://hit_effect.tscn
+Loading resource: res://hit_effect.gd
+Loading resource: res://GameOver.tscn
+Loading resource: res://game_over.gd
+Loading resource: res://main.gd
+Loading resource: res://Enemy.tscn
+Loading resource: res://enemy.gd
+Loading resource: res://health_pack.tscn
+Loading resource: res://healthpack.gd
+Loading resource: res://ammo_pack.tscn
+Loading resource: res://ammopack.gd
+Loading resource: res://Explosion.tscn
+Loading resource: res://explosion.gd
+Loading resource: res://sounds/explosion2.wav
+Loading resource: res://.godot/imported/explosion2.wav-27a5b8ff2a958050a1b6e4834b53eb4b.sample
+Loading resource: res://sounds/gunshot.wav
+Loading resource: res://.godot/imported/gunshot.wav-0695b62083eed8c2c8c2e79d47d751d9.sample
+Loading resource: res://sounds/reload sound.wav
+Loading resource: res://.godot/imported/reload sound.wav-9629ec323c8d58e49bad73a133804650.sample
+Loading resource: res://sounds/footstep.wav
+Loading resource: res://.godot/imported/footstep.wav-f25391cd69eebc9aed90a6be7be20bc0.sample
+Loading resource: res://sounds/thud.wav
+Loading resource: res://.godot/imported/thud.wav-5c1440042cf12b8239d55f5de88a1915.sample
+Loading resource: res://sounds/jumpsound.wav
+Loading resource: res://.godot/imported/jumpsound.wav-cd89217de53b0c9d70a5de86a2ff1ea2.sample
+Loading resource: res://sounds/fart.wav
+Loading resource: res://.godot/imported/fart.wav-821f7ceca4dfd2afac027ad4c590aabf.sample
+Loading resource: res://sounds/hitsound.wav
+Loading resource: res://.godot/imported/hitsound.wav-bb4c90e5fac0abe837860e3914ab25b5.sample
+Loading resource: res://textures/aim.png
+Loading resource: res://.godot/imported/aim.png-2f0023fcc7130f4224555649a9904e49.ctex
+ERROR: Node not found: "/root/Main/Enemy" (absolute path attempted from "/root/Main/Player").
+   at: get_node (scene/main/node.cpp:1874)
+ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
+   at: connect (core/object/object.cpp:1451)
+PickupArea connected
+Velocity after move: (0.0, -0.163333, 0.0)
+Velocity after move: (0.0, -0.326667, 0.0)
+Velocity after move: (0.0, -0.49, 0.0)
+Velocity after move: (0.0, -0.653333, 0.0)
+Velocity after move: (0.0, -0.816667, 0.0)
+Velocity after move: (0.0, -0.98, 0.0)
+Velocity after move: (0.0, -1.143333, 0.0)
+Velocity after move: (0.0, -1.306667, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (-1.095034, 0.0, -4.878617)
+Velocity after move: (-0.103975, 0.0, -4.998919)
+Velocity after move: (0.881388, 0.0, -4.921702)
+Velocity after move: (1.878739, 0.0, -4.63361)
+Velocity after move: (2.761846, 0.0, -4.167998)
+Velocity after move: (3.520673, 0.0, -3.550333)
+Velocity after move: (4.0236, 0.0, -2.968273)
+Velocity after move: (4.388889, 0.0, -2.39534)
+Velocity after move: (4.625319, 0.0, -1.899058)
+Velocity after move: (4.759233, 0.0, -1.532875)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (4.794647, 0.0, -1.418223)
+Velocity after move: (2.387493, 0.0, -4.393162)
+Velocity after move: (2.387493, 0.0, -4.393162)
+Velocity after move: (2.387493, 0.0, -4.393162)
+Velocity after move: (2.387493, 0.0, -4.393162)
+Velocity after move: (2.387493, 0.0, -4.393162)
+Velocity after move: (2.387493, 0.0, -4.393162)
+Velocity after move: (2.440037, 0.0, -4.364197)
+Velocity after move: (2.714159, 0.0, -4.199207)
+Velocity after move: (3.174216, 0.0, -3.863206)
+Velocity after move: (3.735888, 0.0, -3.323122)
+Velocity after move: (4.195986, 0.0, -2.719136)
+Velocity after move: (4.555212, 0.0, -2.061562)
+Velocity after move: (4.825475, 0.0, -1.309502)
+Velocity after move: (4.990084, 0.0, -0.314746)
+Velocity after move: (4.932085, 0.0, 0.821306)
+Velocity after move: (4.637722, 0.0, 1.868566)
+Velocity after move: (4.146314, 0.0, 2.794295)
+Velocity after move: (3.572073, 0.0, 3.498614)
+Velocity after move: (3.064744, 0.0, 3.950613)
+Velocity after move: (2.586903, 0.0, 4.278777)
+Velocity after move: (2.173869, 0.0, 4.502698)
+Velocity after move: (1.97371, 0.0, 4.59396)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (1.955318, 0.0, 4.601818)
+Velocity after move: (2.065188, 0.0, 4.55357)
+Velocity after move: (2.37862, 0.0, 4.397974)
+Velocity after move: (2.805801, 0.0, 4.138536)
+Velocity after move: (3.355854, 0.0, 3.706514)
+Velocity after move: (0.461287, 0.0, 4.978676)
+Velocity after move: (1.190401, 0.0, 4.856228)
+Velocity after move: (1.884229, 0.0, 4.63138)
+Velocity after move: (2.433852, 0.0, 4.36765)
+Velocity after move: (2.890462, 0.0, 4.079857)
+Velocity after move: (3.237841, 0.0, 3.810037)
+Velocity after move: (3.482072, 0.0, 3.5882)
+Velocity after move: (3.677447, 0.0, 3.387681)
+Velocity after move: (3.809977, 0.0, 3.237913)
+Velocity after move: (3.899133, 0.0, 3.129978)
+Velocity after move: (3.967042, 0.0, 3.043448)
+Velocity after move: (3.991263, 0.0, 3.011614)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Overlapping bodies: 5 Bodies: [AmmoPack:<RigidBody3D#302275102200>, Ground:<StaticBody3D#35014051145>, Enemy:<CharacterBody3D#113766303180>, @CharacterBody3D@6:<CharacterBody3D#269911852524>, Player:<CharacterBody3D#35081160086>]
+Player hit by blast! Distance: 2.76504635810852
+Knockback applied: (1.801551, 0.0, -3.545313) Direction: (0.180155, 0.0, -0.354531) Duration: 0.2
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (1.801551, 0.0, -3.545313)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 7.0, 0.0)
+Velocity after move: (0.0, 6.836667, 0.0)
+Velocity after move: (0.0, 6.673333, 0.0)
+Velocity after move: (0.0, 6.51, 0.0)
+Velocity after move: (0.0, 6.346666, 0.0)
+Velocity after move: (0.0, 6.183333, 0.0)
+Velocity after move: (0.0, 6.02, 0.0)
+Velocity after move: (0.0, 5.856666, 0.0)
+Velocity after move: (0.0, 5.693333, 0.0)
+Velocity after move: (0.0, 5.529999, 0.0)
+Velocity after move: (0.0, 5.366666, 0.0)
+Velocity after move: (0.0, 5.203332, 0.0)
+Velocity after move: (0.0, 5.039999, 0.0)
+Velocity after move: (0.0, 4.876666, 0.0)
+Velocity after move: (0.0, 4.713332, 0.0)
+Velocity after move: (0.0, 4.549999, 0.0)
+Velocity after move: (0.0, 4.386665, 0.0)
+Velocity after move: (0.0, 4.223332, 0.0)
+Velocity after move: (0.0, 4.059999, 0.0)
+Velocity after move: (0.0, 3.896665, 0.0)
+Velocity after move: (0.0, 3.733332, 0.0)
+Velocity after move: (0.0, 3.569998, 0.0)
+Velocity after move: (0.0, 3.406665, 0.0)
+Velocity after move: (0.0, 3.243331, 0.0)
+Velocity after move: (0.0, 7.0, 0.0)
+Velocity after move: (0.0, 6.836667, 0.0)
+Velocity after move: (0.0, 6.673333, 0.0)
+Velocity after move: (0.0, 6.51, 0.0)
+Velocity after move: (0.0, 6.346666, 0.0)
+Velocity after move: (0.0, 6.183333, 0.0)
+Velocity after move: (0.0, 6.02, 0.0)
+Velocity after move: (0.0, 5.856666, 0.0)
+Velocity after move: (0.0, 5.693333, 0.0)
+Velocity after move: (0.0, 5.529999, 0.0)
+Velocity after move: (0.0, 5.366666, 0.0)
+Velocity after move: (0.0, 5.203332, 0.0)
+Velocity after move: (0.0, 5.039999, 0.0)
+Velocity after move: (0.0, 4.876666, 0.0)
+Velocity after move: (0.0, 4.713332, 0.0)
+Velocity after move: (0.0, 4.549999, 0.0)
+Velocity after move: (0.0, 4.386665, 0.0)
+Velocity after move: (0.0, 4.223332, 0.0)
+Velocity after move: (0.0, 4.059999, 0.0)
+Velocity after move: (0.0, 3.896665, 0.0)
+Velocity after move: (0.0, 3.733332, 0.0)
+Velocity after move: (0.0, 3.569998, 0.0)
+Velocity after move: (0.0, 3.406665, 0.0)
+Velocity after move: (0.0, 3.243331, 0.0)
+Velocity after move: (0.0, 3.079998, 0.0)
+Velocity after move: (0.0, 2.916665, 0.0)
+Velocity after move: (0.0, 2.753331, 0.0)
+Velocity after move: (0.0, 2.589998, 0.0)
+Velocity after move: (0.0, 2.426664, 0.0)
+Velocity after move: (0.0, 2.263331, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 2.099998, 0.0)
+Velocity after move: (0.0, 1.936664, 0.0)
+Velocity after move: (0.0, 1.773331, 0.0)
+Velocity after move: (0.0, 1.609998, 0.0)
+Velocity after move: (0.0, 1.446664, 0.0)
+Velocity after move: (0.0, 1.283331, 0.0)
+Velocity after move: (0.0, 1.119998, 0.0)
+Velocity after move: (0.0, 0.956664, 0.0)
+Velocity after move: (0.0, 0.793331, 0.0)
+Velocity after move: (0.0, 0.629998, 0.0)
+Velocity after move: (0.0, 0.466664, 0.0)
+Velocity after move: (0.0, 0.303331, 0.0)
+Velocity after move: (0.0, 0.139998, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, -0.023336, 0.0)
+Velocity after move: (0.0, -0.186669, 0.0)
+Velocity after move: (0.0, -0.350002, 0.0)
+Velocity after move: (0.0, -0.513336, 0.0)
+Velocity after move: (0.0, -0.676669, 0.0)
+Velocity after move: (0.0, -0.840002, 0.0)
+Velocity after move: (0.0, -1.003336, 0.0)
+Velocity after move: (0.0, -1.166669, 0.0)
+Velocity after move: (0.0, -1.330002, 0.0)
+Velocity after move: (0.0, -1.493336, 0.0)
+Velocity after move: (0.0, -1.656669, 0.0)
+Velocity after move: (0.0, -1.820002, 0.0)
+Velocity after move: (0.0, -1.983335, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, -2.146669, 0.0)
+Velocity after move: (0.0, -2.310002, 0.0)
+Velocity after move: (0.0, -2.473336, 0.0)
+Velocity after move: (0.0, -2.636669, 0.0)
+Velocity after move: (0.0, -2.800003, 0.0)
+Velocity after move: (0.0, -2.963336, 0.0)
+Velocity after move: (0.0, -3.126669, 0.0)
+Velocity after move: (0.0, -3.290003, 0.0)
+Velocity after move: (0.0, -3.453336, 0.0)
+Velocity after move: (0.0, -3.61667, 0.0)
+Velocity after move: (0.0, -3.780003, 0.0)
+Velocity after move: (0.0, -3.943336, 0.0)
+Velocity after move: (0.0, -4.10667, 0.0)
+Velocity after move: (0.0, -4.270003, 0.0)
+Velocity after move: (0.0, -4.433337, 0.0)
+Velocity after move: (0.0, -4.59667, 0.0)
+Velocity after move: (0.0, -4.760004, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, -4.923337, 0.0)
+Velocity after move: (0.0, -5.08667, 0.0)
+Velocity after move: (0.0, -5.250004, 0.0)
+Velocity after move: (0.0, -5.413337, 0.0)
+Velocity after move: (0.0, -5.576671, 0.0)
+Velocity after move: (0.0, -5.740004, 0.0)
+Velocity after move: (0.0, -5.903337, 0.0)
+Velocity after move: (0.0, -6.066671, 0.0)
+Velocity after move: (0.0, -6.230004, 0.0)
+Velocity after move: (0.0, -6.393338, 0.0)
+Velocity after move: (0.0, -6.556671, 0.0)
+Velocity after move: (0.0, -6.720005, 0.0)
+Velocity after move: (0.0, -6.883338, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, -7.046671, 0.0)
+Velocity after move: (0.0, -7.210005, 0.0)
+Velocity after move: (0.0, -7.373338, 0.0)
+Velocity after move: (0.0, -7.536672, 0.0)
+Overlapping bodies: 7 Bodies: [Ground:<StaticBody3D#35014051145>, Enemy:<CharacterBody3D#407669573084>, @CharacterBody3D@2:<CharacterBody3D#200420623822>, AmmoPack:<RigidBody3D#302275102200>, @CharacterBody3D@13:<CharacterBody3D#324689462771>, @CharacterBody3D@6:<CharacterBody3D#269911852524>, Player:<CharacterBody3D#35081160086>]
+Player hit by blast! Distance: 2.1587769985199
+Knockback applied: (2.351453, 0.0, -8.801688) Direction: (0.235145, 0.0, -0.880169) Duration: 0.2
+Velocity after move: (2.351453, -7.700005, -8.801688)
+Velocity after move: (2.351453, -7.863338, -12.60338)
+Velocity after move: (2.351453, -8.026671, -16.40506)
+Velocity after move: (2.351453, -8.190004, -20.20675)
+Velocity after move: (2.351453, -8.353337, -24.00844)
+Velocity after move: (2.351453, -8.51667, -27.81013)
+Velocity after move: (2.351453, -8.680003, -31.61182)
+Velocity after move: (2.351453, -8.843336, -35.41351)
+Velocity after move: (2.351453, -9.006669, -39.2152)
+Velocity after move: (2.351453, -9.170002, -43.01689)
+Velocity after move: (2.351453, -9.333335, -46.81858)
+Velocity after move: (2.351453, 0.0, -50.62027)
+Velocity after move: (2.351453, 0.0, -54.42196)
+Velocity after move: (0.0, 0.0, -49.42196)
+Velocity after move: (0.0, 0.0, -44.42196)
+Velocity after move: (0.0, 0.0, -39.42196)
+Velocity after move: (0.0, 0.0, -34.42196)
+Velocity after move: (0.0, 0.0, -29.42196)
+Velocity after move: (0.0, 0.0, -24.42196)
+Velocity after move: (0.0, 0.0, -19.42196)
+Velocity after move: (0.0, 0.0, -14.42196)
+Velocity after move: (0.0, 0.0, -9.421955)
+Velocity after move: (0.0, 0.0, -4.421955)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 7.0, 0.0)
+Velocity after move: (0.0, 6.836667, 0.0)
+Velocity after move: (0.0, 6.673333, 0.0)
+Velocity after move: (0.0, 6.51, 0.0)
+Velocity after move: (0.0, 6.346666, 0.0)
+Velocity after move: (0.0, 6.183333, 0.0)
+Velocity after move: (0.0, 6.02, 0.0)
+Velocity after move: (0.0, 5.856666, 0.0)
+Velocity after move: (0.0, 5.693333, 0.0)
+Velocity after move: (0.0, 5.529999, 0.0)
+Velocity after move: (0.0, 5.366666, 0.0)
+Velocity after move: (0.0, 5.203332, 0.0)
+Velocity after move: (0.0, 5.039999, 0.0)
+Velocity after move: (0.0, 4.876666, 0.0)
+Velocity after move: (0.0, 4.713332, 0.0)
+Velocity after move: (0.0, 4.549999, 0.0)
+Velocity after move: (0.0, 4.386665, 0.0)
+Velocity after move: (0.0, 4.223332, 0.0)
+Velocity after move: (0.0, 4.059999, 0.0)
+Velocity after move: (0.0, 3.896665, 0.0)
+Velocity after move: (0.0, 3.733332, 0.0)
+Velocity after move: (0.0, 3.569998, 0.0)
+Velocity after move: (0.0, 3.406665, 0.0)
+Velocity after move: (0.0, 3.243331, 0.0)
+Velocity after move: (0.0, 3.079998, 0.0)
+Velocity after move: (0.0, 7.0, 0.0)
+Velocity after move: (0.0, 6.836667, 0.0)
+Velocity after move: (0.0, 6.673333, 0.0)
+Velocity after move: (0.0, 6.51, 0.0)
+Velocity after move: (0.0, 6.346666, 0.0)
+Velocity after move: (0.0, 6.183333, 0.0)
+Velocity after move: (0.0, 6.02, 0.0)
+Velocity after move: (0.0, 5.856666, 0.0)
+Velocity after move: (0.0, 5.693333, 0.0)
+Velocity after move: (0.0, 5.529999, 0.0)
+Velocity after move: (0.0, 5.366666, 0.0)
+Velocity after move: (0.0, 5.203332, 0.0)
+Velocity after move: (0.0, 5.039999, 0.0)
+Velocity after move: (0.0, 4.876666, 0.0)
+Velocity after move: (0.0, 4.713332, 0.0)
+Velocity after move: (0.0, 4.549999, 0.0)
+Velocity after move: (0.0, 4.386665, 0.0)
+Velocity after move: (0.0, 4.223332, 0.0)
+Velocity after move: (0.0, 4.059999, 0.0)
+Velocity after move: (0.0, 3.896665, 0.0)
+Velocity after move: (0.0, 3.733332, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 3.569998, 0.0)
+Velocity after move: (0.0, 3.406665, 0.0)
+Velocity after move: (0.0, 3.243331, 0.0)
+Velocity after move: (0.0, 3.079998, 0.0)
+Velocity after move: (0.0, 2.916665, 0.0)
+Velocity after move: (0.0, 2.753331, 0.0)
+Velocity after move: (0.0, 2.589998, 0.0)
+Velocity after move: (0.0, 2.426664, 0.0)
+Velocity after move: (0.0, 2.263331, 0.0)
+Velocity after move: (0.0, 2.099998, 0.0)
+Velocity after move: (0.0, 1.936664, 0.0)
+Velocity after move: (-1.402944, 1.773331, 4.79914)
+Velocity after move: (-1.393343, 1.609998, 4.801937)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (-1.383736, 1.446664, 4.804714)
+Velocity after move: (-1.383736, 1.283331, 4.804714)
+Velocity after move: (-1.393343, 1.119998, 4.801937)
+Velocity after move: (-1.402944, 0.956664, 4.79914)
+Velocity after move: (0.0, 0.793331, 0.0)
+Velocity after move: (0.0, 0.629998, 0.0)
+Velocity after move: (0.0, 0.466664, 0.0)
+Velocity after move: (0.0, 0.303331, 0.0)
+Velocity after move: (0.0, 0.139998, 0.0)
+Velocity after move: (0.0, -0.023336, 0.0)
+Velocity after move: (0.0, -0.186669, 0.0)
+Velocity after move: (0.0, -0.350002, 0.0)
+Velocity after move: (0.0, -0.513336, 0.0)
+Velocity after move: (0.0, -0.676669, 0.0)
+Velocity after move: (0.0, -0.840002, 0.0)
+Velocity after move: (0.0, -1.003336, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, -1.166669, 0.0)
+Velocity after move: (0.0, -1.330002, 0.0)
+Velocity after move: (0.0, -1.493336, 0.0)
+Velocity after move: (0.0, -1.656669, 0.0)
+Velocity after move: (0.0, -1.820002, 0.0)
+Velocity after move: (0.0, -1.983335, 0.0)
+Velocity after move: (0.0, -2.146669, 0.0)
+Velocity after move: (0.0, -2.310002, 0.0)
+Velocity after move: (0.0, -2.473336, 0.0)
+Velocity after move: (0.0, -2.636669, 0.0)
+Velocity after move: (0.0, -2.800003, 0.0)
+Velocity after move: (0.0, -2.963336, 0.0)
+Velocity after move: (0.0, -3.126669, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, -3.290003, 0.0)
+Velocity after move: (0.0, -3.453336, 0.0)
+Velocity after move: (0.0, -3.61667, 0.0)
+Velocity after move: (0.0, -3.780003, 0.0)
+Velocity after move: (0.0, -3.943336, 0.0)
+Velocity after move: (0.0, -4.10667, 0.0)
+Velocity after move: (0.0, -4.270003, 0.0)
+Velocity after move: (0.0, -4.433337, 0.0)
+Velocity after move: (0.0, -4.59667, 0.0)
+Velocity after move: (0.0, -4.760004, 0.0)
+Velocity after move: (0.0, -4.923337, 0.0)
+Velocity after move: (0.0, -5.08667, 0.0)
+Velocity after move: (0.0, -5.250004, 0.0)
+Velocity after move: (0.0, -5.413337, 0.0)
+Velocity after move: (0.0, -5.576671, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Velocity after move: (0.0, 0.0, 0.0)
+Overlapping bodies: 5 Bodies: [@RigidBody3D@31:<RigidBody3D#687731639766>, Ground:<StaticBody3D#35014051145>, @CharacterBody3D@16:<CharacterBody3D#483318040012>, Player:<CharacterBody3D#35081160086>, @CharacterBody3D@2:<CharacterBody3D#200420623822>]
+Player hit by blast! Distance: 0.72926431894302
+Knockback applied: (2.055724, 3.0, 7.259774) Direction: (0.205572, 0.3, 0.725977) Duration: 0.2
+Velocity after move: (2.328981, 3.0, 6.904836)
+Velocity after move: (2.055724, 5.836667, 9.16461)
+Velocity after move: (2.055724, 8.673333, 11.42438)
+Velocity after move: (2.055724, 11.51, 13.68416)
+Velocity after move: (2.055724, 14.34667, 15.94393)
+Velocity after move: (2.055724, 17.18333, 18.20371)
+Velocity after move: (2.055724, 20.02, 20.46348)
+Velocity after move: (2.055724, 22.85667, 22.72326)
+Velocity after move: (2.055724, 25.69333, 24.98303)
+Velocity after move: (2.055724, 28.53, 27.2428)
+Velocity after move: (2.055724, 31.36666, 29.50257)
+Velocity after move: (2.055724, 34.20333, 31.76235)
+Velocity after move: (2.055724, 37.04, 34.02212)
+Velocity after move: (0.0, 36.87666, 29.02212)
+Velocity after move: (0.0, 36.71333, 24.02212)
+Velocity after move: (0.0, 36.55, 19.02212)
+Velocity after move: (0.0, 36.38666, 14.02212)
+Velocity after move: (0.0, 36.22333, 9.022121)
+Velocity after move: (0.0, 36.05999, 4.022121)
+Velocity after move: (0.0, 35.89666, 0.0)
+Velocity after move: (0.0, 35.73333, 0.0)
+Velocity after move: (0.0, 35.56999, 0.0)
+Velocity after move: (0.0, 35.40666, 0.0)
+Velocity after move: (0.0, 35.24332, 0.0)
+Velocity after move: (0.0, 35.07999, 0.0)
+Velocity after move: (0.0, 34.91666, 0.0)
+Velocity after move: (0.0, 34.75332, 0.0)
+Velocity after move: (0.0, 34.58999, 0.0)
+Velocity after move: (0.0, 34.42665, 0.0)
+Velocity after move: (0.0, 34.26332, 0.0)
+Velocity after move: (0.0, 34.09999, 0.0)
+Velocity after move: (0.0, 33.93665, 0.0)
+Velocity after move: (0.0, 33.77332, 0.0)
+Velocity after move: (0.0, 33.60999, 0.0)
+Velocity after move: (0.0, 33.44665, 0.0)
+Velocity after move: (0.0, 33.28332, 0.0)
+Velocity after move: (0.0, 33.11998, 0.0)
+Velocity after move: (0.0, 32.95665, 0.0)
+Velocity after move: (0.0, 32.79332, 0.0)
+Velocity after move: (0.0, 32.62998, 0.0)
+Velocity after move: (0.0, 32.46665, 0.0)
+Velocity after move: (0.0, 32.30331, 0.0)
+Velocity after move: (0.0, 32.13998, 0.0)
+Velocity after move: (0.0, 31.97665, 0.0)
+Velocity after move: (0.0, 31.81331, 0.0)
+Velocity after move: (0.0, 31.64998, 0.0)
+Velocity after move: (0.0, 31.48664, 0.0)
+Velocity after move: (0.0, 31.32331, 0.0)
+Velocity after move: (0.0, 31.15998, 0.0)
+Velocity after move: (0.0, 30.99664, 0.0)
+Velocity after move: (0.0, 30.83331, 0.0)
+Velocity after move: (0.0, 30.66998, 0.0)
+Velocity after move: (0.0, 30.50664, 0.0)
+Velocity after move: (0.0, 30.34331, 0.0)
+Velocity after move: (0.0, 30.17997, 0.0)
+Velocity after move: (0.0, 30.01664, 0.0)
+Velocity after move: (0.0, 29.85331, 0.0)
+Velocity after move: (0.0, 29.68997, 0.0)
+Velocity after move: (0.0, 29.52664, 0.0)
+Velocity after move: (0.0, 29.3633, 0.0)
+Velocity after move: (0.0, 29.19997, 0.0)
+Velocity after move: (0.0, 29.03664, 0.0)
+Velocity after move: (0.0, 28.8733, 0.0)
+Velocity after move: (0.0, 28.70997, 0.0)
+Velocity after move: (0.0, 28.54663, 0.0)
+Velocity after move: (0.0, 28.3833, 0.0)
+Velocity after move: (0.0, 28.21997, 0.0)
+Velocity after move: (0.0, 28.05663, 0.0)
+Velocity after move: (0.0, 27.8933, 0.0)
+Velocity after move: (0.0, 27.72997, 0.0)
+Velocity after move: (0.0, 27.56663, 0.0)
+Velocity after move: (0.0, 27.4033, 0.0)
+Velocity after move: (0.0, 27.23996, 0.0)
+Velocity after move: (0.0, 27.07663, 0.0)
+Velocity after move: (0.0, 26.9133, 0.0)
+Velocity after move: (0.0, 26.74996, 0.0)
+Velocity after move: (0.0, 26.58663, 0.0)
+Velocity after move: (0.0, 26.42329, 0.0)
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"

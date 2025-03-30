@@ -10,6 +10,9 @@ var jump_velocity = 7.0
 var max_jumps = 2
 var jumps_left = max_jumps
 var was_in_air = false
+var knockback_velocity : Vector3 = Vector3.ZERO
+var knockback_duration : float = 0.0 # Time left for knockback
+var knockback_timer : float = 0.0
 
 # Shooting variables
 var bullet_scene = preload("res://bullet.tscn")
@@ -133,7 +136,15 @@ func _physics_process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot and current_magazine > 0:
 		shoot()
 	
+# Apply knockback only when grounded
+	if knockback_timer > 0 and is_on_floor():
+		velocity += knockback_velocity
+		knockback_timer -= delta
+		if knockback_timer <= 0:
+			knockback_velocity = Vector3.ZERO
+	
 	move_and_slide()
+	
 
 func _on_footstep_timer_timeout():
 	var input_dir = Vector3.ZERO
@@ -215,3 +226,8 @@ func _on_pickup_area_body_entered(body):
 func play_hit_sound():
 	if hit_sound:
 		hit_sound.play()
+func apply_knockback(direction: Vector3, force: float):
+	if is_on_floor(): # Only apply if grounded
+		knockback_velocity = direction * force
+		knockback_timer = 0.15 # 0.15s duration
+		

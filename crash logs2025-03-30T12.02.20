@@ -1,0 +1,1775 @@
+Godot Engine v4.4.stable.official.4c311cbee - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
+	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
+	Objects - 1
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1258646971840
+   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
+ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
+	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
+	Objects - 1
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1258646971840
+   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
+Devices:
+  #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
+Optional extension VK_EXT_astc_decode_mode not found
+Optional extension VK_EXT_debug_marker not found
+- Vulkan Variable Rate Shading supported:
+  Pipeline fragment shading rate
+  Primitive fragment shading rate
+  Attachment fragment shading rate, min texel size: (16, 16), max texel size: (16, 16), max fragment size: (4, 4)
+- Vulkan multiview supported:
+  max view count: 32
+  max instances: 134217727
+- Vulkan subgroup:
+  size: 32
+  min size: 32
+  max size: 32
+  stages: STAGE_VERTEX, STAGE_TESSELLATION_CONTROL, STAGE_TESSELLATION_EVALUATION, STAGE_GEOMETRY, STAGE_FRAGMENT, STAGE_COMPUTE, STAGE_RAYGEN_KHR, STAGE_ANY_HIT_KHR, STAGE_CLOSEST_HIT_KHR, STAGE_MISS_KHR, STAGE_INTERSECTION_KHR, STAGE_CALLABLE_KHR, STAGE_TASK_NV, STAGE_MESH_NV
+  supported ops: FEATURE_BASIC, FEATURE_VOTE, FEATURE_ARITHMETIC, FEATURE_BALLOT, FEATURE_SHUFFLE, FEATURE_SHUFFLE_RELATIVE, FEATURE_CLUSTERED, FEATURE_QUAD, FEATURE_PARTITIONED_NV
+  quad operations in all stages
+Vulkan 1.3.289 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce RTX 3070
+Startup PSO cache (5.5 MiB)
+Using "winink" pen tablet driver...
+Creating VMA small objects pool for memory type index 1
+Shader 'CanvasSdfShaderRD' (group 0) SHA256: 7ef25f535f17ce3cb6e9cdbb671b389f9905af968c04a97b2e84039c0f1cf6ef
+Shader 'SkeletonShaderRD' (group 0) SHA256: 7f041ff1f519aabb8f51a27745a99f8693e371dd8e97b145a05f1ff4441aaaf1
+Shader 'SortShaderRD' (group 0) SHA256: c91a27cd5ce46bca9459307df1c285cfa22f059cd62bb7ffea9a702a62591a26
+Shader 'ParticlesShaderRD' (group 0) SHA256: 59c6535c3507130df7b501dac97ecf3730b9978b4d50fa5fa4cd331fac07410e
+Shader 'ParticlesCopyShaderRD' (group 0) SHA256: b53676a26a38511b0004ec0f955ed24c43622c0db6c588eeaa4f7babee913ff2
+Shader 'CanvasShaderRD' (group 0) SHA256: 5856edf45d5dfb02534573ce0b8c829bf91f8057581ce7c8816f3319fc8aebd8
+Shader 'CanvasOcclusionShaderRD' (group 0) SHA256: 248c1c5f022b89f8bfc0fca12cc5ea235615b89cba4d4c113cc161e05359cea2
+Shader 'ClusterRenderShaderRD' (group 0) SHA256: c9c681ebb89963979e3618867f22e9fa99c8a0cf3aedb1d5c6bb50440130da08
+Shader 'ClusterStoreShaderRD' (group 0) SHA256: a89e0eef0e47d7babb4016769d27ed56b02f0a40b350816e1065926892602ca1
+Shader 'ClusterDebugShaderRD' (group 0) SHA256: e6def0f8f3ff4e8e19dcf241fadff628e7010ae0ac5078c8a97ea30760ea68ff
+Shader 'SceneForwardClusteredShaderRD' (group 0) SHA256: 72177b5a7410285b53bb275b29a9122386c8c666ecf8ed645c54bc3c0f26973b
+Shader 'SceneForwardClusteredShaderRD' (group 1) SHA256: 3b17f372e3399803855c2787f9f8bd3237e07454eb64dc65c3ccfdd7eee37a38
+Shader 'SceneForwardClusteredShaderRD' (group 2) SHA256: 00015879f79b26079e93867379e610c25d919ef029d0c9b2c9dc26401e3f8ded
+Shader 'SceneForwardClusteredShaderRD' (group 3) SHA256: 12552d69e047cf8e1b12ed19b6ca99855d0f1ac96d62dff62ee215c11a23c41c
+Shader 'BestFitNormalShaderRD' (group 0) SHA256: 08f67ae74881933f8a51a2fa4d78599b3d1dbf022b16e0c042edefd80b71860d
+Shader 'ResolveShaderRD' (group 0) SHA256: b3153e65276b7f2112d23916103c8771dd089aa0792bb7bf04e537fa76e6c1df
+Shader 'TaaResolveShaderRD' (group 0) SHA256: 90a754a3bb0e116359a190d3a5abd7d5ce3887597e55ae1ddbbc099374ccadc6
+Shader 'Fsr2DepthClipPassShaderRD' (group 0) SHA256: 685832d8689abcf0ba659277c592f171fa9fd6d3f2b0b8ea251b84c5d6da480c
+Shader 'Fsr2ReconstructPreviousDepthPassShaderRD' (group 0) SHA256: 1b3cf3b85b05b8231d83e5c582a10c994b9fbb9ac744fe3f332b8dda1550c38c
+Shader 'Fsr2LockPassShaderRD' (group 0) SHA256: 71a4353b3eed590507399282661b11706f2c2a54e19b298aed7d4a22c6b131c3
+Shader 'Fsr2AccumulatePassShaderRD' (group 0) SHA256: aa946a27d6418ebbdaa6b2a681a719b2fa5de17fc9c566f47dd6ac3484db5b76
+Shader 'Fsr2RcasPassShaderRD' (group 0) SHA256: 4cdf81cefa5cb2b9e09721fb3f519fda8c77ac5532f72d7f3bd1a050c577827f
+Shader 'Fsr2ComputeLuminancePyramidPassShaderRD' (group 0) SHA256: 58ec04012bc37b56415856608ed54f53bb425705753d4fbd8ec475cc8993caae
+Shader 'Fsr2AutogenReactivePassShaderRD' (group 0) SHA256: 2506409ad93dfb8d2cad6944c9458a06666727f698ee5eaeba46ef4add459113
+Shader 'Fsr2TcrAutogenPassShaderRD' (group 0) SHA256: 882cd5c7e2be1d3a4d880cef6efcd93f4b55c90683b11a7fd0ae4d10d3bfd80d
+Shader 'SsEffectsDownsampleShaderRD' (group 0) SHA256: 71bb3df6fccf1273a2663f7278df88d28dee9bb18d3a6ae8431a4ea0b22c924b
+Shader 'SsilShaderRD' (group 0) SHA256: 44923ac855af6c9d7751e94c4b3e04bb35729139eb63e707799c54d97d2c4ad1
+Shader 'SsilImportanceMapShaderRD' (group 0) SHA256: 99ec77f1218fd0455f1ad2e3f5351a83999719468da5fc097b585744e59e3ead
+Shader 'SsilBlurShaderRD' (group 0) SHA256: a27eaa403eb4ef4ca825e07f3b00689583db231b908eabb2d50ecaad54bd397c
+Shader 'SsilInterleaveShaderRD' (group 0) SHA256: f76d813b747ffcb4b644bcd1aded62cbc97562836d43fe73f985fc6267e452d8
+Shader 'SsaoShaderRD' (group 0) SHA256: c30b503b3e2f88442b77b872d7028ee5d0fa0a265cb2a00397e7b9ac1353cfbf
+Shader 'SsaoImportanceMapShaderRD' (group 0) SHA256: 827b62f5fbb8d2b19bb5361a53916059b4badf89c663f4568be65d70b3f80f05
+Shader 'SsaoBlurShaderRD' (group 0) SHA256: ca745e5646bac761a37d45def0f1cfc9b43851a0c5d3ad08aa4819bdc155d7a5
+Shader 'SsaoInterleaveShaderRD' (group 0) SHA256: 9f16b4f8170af1d250eaa8895c6637e1c5749c758b6e2bf83312b49c2456b1ca
+Shader 'ScreenSpaceReflectionScaleShaderRD' (group 0) SHA256: 661db9194745559039cd279c6fc50294811ab0d34ad77d529e06402955bbfcf4
+Shader 'ScreenSpaceReflectionShaderRD' (group 0) SHA256: 36047c2c87b4e93649dc7413d5208a3ea25e932c64bf225f2fbcf9f9917e4c7f
+Shader 'ScreenSpaceReflectionFilterShaderRD' (group 0) SHA256: eb0d0c9ef280fb62bacb59a8fb030bed91ade9b860f9a5152fab73299fe842ef
+Shader 'SubsurfaceScatteringShaderRD' (group 0) SHA256: aeb90f8bb511ad2e17aeda2dbb6664563e3c5bcaf694d589059e62819f5dc82d
+Shader 'SkyShaderRD' (group 0) SHA256: 3f02486a5e1b10006907ddda8d8b05d6ef2783212639b9c2f3e0dbcc34fd9657
+Shader 'VoxelGiShaderRD' (group 0) SHA256: 78fa1e25622bec34ad8cecb4bcf0196b61cef703a0a669672b5b37272626f7b1
+Shader 'VoxelGiDebugShaderRD' (group 0) SHA256: 09d0d797e335cdbd802c44fa8da8cf56b3e406ecad61c78ffca2e703eb49783e
+Shader 'SdfgiPreprocessShaderRD' (group 0) SHA256: 9ed6c35c481f96860a3e45f1a25be83566e56f8c7bac629c591979dc55f8f0c1
+Shader 'SdfgiDirectLightShaderRD' (group 0) SHA256: 8f6fe13a55a461d3651d46906d862fef7c9763ce88ba7fd441c171fea9d7e156
+Shader 'SdfgiIntegrateShaderRD' (group 0) SHA256: 5ee1869af894a3a0356dec695caed02a1e9e9da5b7a6b84416cc228cc4370758
+Shader 'GiShaderRD' (group 0) SHA256: 11f2cce02da14332fc95fbfd4bcf20e8c454dc848c543d0f959757714a021603
+Shader 'SdfgiDebugShaderRD' (group 0) SHA256: 7253437e5eccc79f4cbe4000e8f71a23be0298b9fdf323bac134dc5a9fb7b033
+Shader 'SdfgiDebugProbesShaderRD' (group 0) SHA256: 26075605a0f3d96c884bd30ce772693fc3ac7bd06a622a15963aeb3f17eb12b4
+Shader 'VolumetricFogShaderRD' (group 0) SHA256: b3109b2b0e8167a4a29f393d29d0b7045b72c4cf365f384439e1974c8732c354
+Shader 'VolumetricFogProcessShaderRD' (group 0) SHA256: 025f1fd489c9751d08ba6daaf4da1c35f7f2aede0d78c73bad8b4eb0802fd5e5
+Shader 'BokehDofShaderRD' (group 0) SHA256: 7ed0623b942da44af76fd1982c1d48037cc5ca55ae7ee71d56bf0333c042c07c
+Shader 'CopyShaderRD' (group 0) SHA256: e57c398150bd594c258b3d6189a0495b04121194b99d6931e0b42dfeaf5266a8
+Shader 'CopyToFbShaderRD' (group 0) SHA256: b5ca41951030c99316df9c316b366add08fc7ed544db0e1b03c82558d92575ea
+Shader 'CubeToDpShaderRD' (group 0) SHA256: b8c52b4a02591a1a08fc4202b0a50e990d4eadbeb08d52f6fb5792e9762f6607
+Shader 'CubemapDownsamplerShaderRD' (group 0) SHA256: e7e05a4424e8835e0e986bb492297d996aff176293c5724219b70659fd13d5b2
+Shader 'CubemapFilterShaderRD' (group 0) SHA256: 88f44f9a5be925becac3751283cb446652c5c81c50907b38fa15d047d33f200d
+Shader 'CubemapRoughnessShaderRD' (group 0) SHA256: 498a8c875fe31824d241d4466dd82cbef05ce7a48dcbabf8502aebf723844f35
+Shader 'SpecularMergeShaderRD' (group 0) SHA256: 57926a238dd42bb7bf1e8be636125c20d599677aaab304862fc9ab3e472b4213
+Shader 'ShadowFrustumShaderRD' (group 0) SHA256: bad002a30f0cc24aba235c58d53828374538269981a2f2a8c0e92dc1d87a502e
+Shader 'MotionVectorsShaderRD' (group 0) SHA256: abf8dc8086a2c796396251dc113f3f4195d74f8f6da4d478dc06d7327cc3944b
+Shader 'LuminanceReduceShaderRD' (group 0) SHA256: 9f3a91257ad0b34b8a10fe82b1bf274a93d9db933364ee9b00f41b05dc0d59ba
+Shader 'TonemapShaderRD' (group 0) SHA256: e77bf9034735c365ac4971cf9c2ad73ebc8c9dae73070c652716f2c541655424
+Shader 'VrsShaderRD' (group 0) SHA256: 377e6ba240a316837d904e1a8eda314ccc731f371e74cd78f47fd5cca7db01a5
+Shader 'FsrUpscaleShaderRD' (group 0) SHA256: ee5bc1cd4d4621d6dbbe371640985ed2ea9ad421e633fdd1c064552f43384138
+Shader 'BlitShaderRD' (group 0) SHA256: c1a508b343e89110130b9aeb6612f366588f35c09d225b1ebd16a7ade2a7e4f4
+WASAPI: Activated output_device using IAudioClient3 interface
+WASAPI: wFormatTag = 65534
+WASAPI: nChannels = 2
+WASAPI: nSamplesPerSec = 44100
+WASAPI: nAvgBytesPerSec = 352800
+WASAPI: nBlockAlign = 8
+WASAPI: wBitsPerSample = 32
+WASAPI: cbSize = 22
+WASAPI: mix_rate = 44100
+WASAPI: fundamental_period_frames = 441
+WASAPI: min_period_frames = 441
+WASAPI: max_period_frames = 441
+WASAPI: selected a period frame size of 441
+WASAPI: detected 2 channels
+WASAPI: audio buffer frames: 441 calculated latency: 10ms
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 3954330213
+EDITOR API HASH: 1116905369
+MbedTLS: Some X509 certificates could not be parsed (1 certificates skipped).
+Loaded system CA certificates
+Loading resource: res://main.tscn
+Loading resource: res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png
+Loading resource: res://.godot/imported/TCom_Sand_Muddy2_2x2_512_albedo.png-2b5f657709288094e946e6d09642b9aa.s3tc.ctex
+Loading resource: res://player.gd
+Loading resource: res://bullet.tscn
+Loading resource: res://bullet.gd
+Loading resource: res://hit_effect.tscn
+Loading resource: res://hit_effect.gd
+Loading resource: res://GameOver.tscn
+Loading resource: res://game_over.gd
+Loading resource: res://main.gd
+Loading resource: res://Enemy.tscn
+Loading resource: res://enemy.gd
+Loading resource: res://health_pack.tscn
+Loading resource: res://healthpack.gd
+Loading resource: res://ammo_pack.tscn
+Loading resource: res://ammopack.gd
+Loading resource: res://Explosion.tscn
+Loading resource: res://explosion.gd
+Loading resource: res://sounds/explosion2.wav
+Loading resource: res://.godot/imported/explosion2.wav-27a5b8ff2a958050a1b6e4834b53eb4b.sample
+Loading resource: res://sounds/gunshot.wav
+Loading resource: res://.godot/imported/gunshot.wav-0695b62083eed8c2c8c2e79d47d751d9.sample
+Loading resource: res://sounds/reload sound.wav
+Loading resource: res://.godot/imported/reload sound.wav-9629ec323c8d58e49bad73a133804650.sample
+Loading resource: res://sounds/footstep.wav
+Loading resource: res://.godot/imported/footstep.wav-f25391cd69eebc9aed90a6be7be20bc0.sample
+Loading resource: res://sounds/thud.wav
+Loading resource: res://.godot/imported/thud.wav-5c1440042cf12b8239d55f5de88a1915.sample
+Loading resource: res://sounds/jumpsound.wav
+Loading resource: res://.godot/imported/jumpsound.wav-cd89217de53b0c9d70a5de86a2ff1ea2.sample
+Loading resource: res://sounds/fart.wav
+Loading resource: res://.godot/imported/fart.wav-821f7ceca4dfd2afac027ad4c590aabf.sample
+Loading resource: res://sounds/hitsound.wav
+Loading resource: res://.godot/imported/hitsound.wav-bb4c90e5fac0abe837860e3914ab25b5.sample
+Loading resource: res://textures/aim.png
+Loading resource: res://.godot/imported/aim.png-2f0023fcc7130f4224555649a9904e49.ctex
+ERROR: Node not found: "/root/Main/Enemy" (absolute path attempted from "/root/Main/Player").
+   at: get_node (scene/main/node.cpp:1874)
+ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
+   at: connect (core/object/object.cpp:1451)
+PickupArea connected
+Velocity after move: (0.0, -0.163333, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, -0.326667, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, -0.49, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, -0.653333, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, -0.816667, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, -0.98, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, -1.143333, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, -1.306667, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (-4.917418, 0.0, -0.904984) Knockback timer: 0.0
+Velocity after move: (-4.767731, 0.0, -1.506235) Knockback timer: 0.0
+Velocity after move: (-4.397467, 0.0, -2.379557) Knockback timer: 0.0
+Velocity after move: (-3.824211, 0.0, -3.221088) Knockback timer: 0.0
+Velocity after move: (0.541942, 0.0, -4.970543) Knockback timer: 0.0
+Velocity after move: (1.604132, 0.0, -4.73569) Knockback timer: 0.0
+Velocity after move: (2.725892, 0.0, -4.1916) Knockback timer: 0.0
+Velocity after move: (3.588876, 0.0, -3.481374) Knockback timer: 0.0
+Velocity after move: (4.368123, 0.0, -2.433003) Knockback timer: 0.0
+Velocity after move: (4.861177, 0.0, -1.170022) Knockback timer: 0.0
+Velocity after move: (4.998537, 0.0, -0.120961) Knockback timer: 0.0
+Velocity after move: (4.902501, 0.0, 0.982589) Knockback timer: 0.0
+Velocity after move: (4.621106, 0.0, 1.909288) Knockback timer: 0.0
+Velocity after move: (4.304386, 0.0, 2.544065) Knockback timer: 0.0
+Velocity after move: (4.046593, 0.0, 2.93685) Knockback timer: 0.0
+Velocity after move: (3.901017, 0.0, 3.12763) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (3.907265, 0.0, 3.119821) Knockback timer: 0.0
+Velocity after move: (4.9689, 0.0, -0.556807) Knockback timer: 0.0
+Velocity after move: (4.9689, 0.0, -0.556807) Knockback timer: 0.0
+Velocity after move: (4.9689, 0.0, -0.556807) Knockback timer: 0.0
+Velocity after move: (4.9689, 0.0, -0.556807) Knockback timer: 0.0
+Velocity after move: (4.9689, 0.0, -0.556807) Knockback timer: 0.0
+Velocity after move: (4.972152, 0.0, -0.526983) Knockback timer: 0.0
+Velocity after move: (4.99718, 0.0, -0.167933) Knockback timer: 0.0
+Velocity after move: (4.977735, 0.0, 0.471335) Knockback timer: 0.0
+Velocity after move: (4.807472, 0.0, 1.374122) Knockback timer: 0.0
+Velocity after move: (4.401251, 0.0, 2.372549) Knockback timer: 0.0
+Velocity after move: (3.615878, 0.0, 3.453321) Knockback timer: 0.0
+Velocity after move: (4.871719, 0.0, 1.125322) Knockback timer: 0.0
+Velocity after move: (4.296213, 0.0, 2.557842) Knockback timer: 0.0
+Velocity after move: (3.258362, 0.0, 3.792503) Knockback timer: 0.0
+Velocity after move: (2.227744, 0.0, 4.476288) Knockback timer: 0.0
+Velocity after move: (1.080348, 0.0, 4.88189) Knockback timer: 0.0
+Velocity after move: (0.028937, 0.0, 4.999916) Knockback timer: 0.0
+Velocity after move: (-0.619468, 0.0, 4.961478) Knockback timer: 0.0
+Velocity after move: (-1.082426, 0.0, 4.881429) Knockback timer: 0.0
+Velocity after move: (-1.286431, 0.0, 4.831676) Knockback timer: 0.0
+Velocity after move: (-1.305748, 0.0, 4.826492) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.489542, 0.0, 4.336148) Knockback timer: 0.0
+Velocity after move: (2.419848, 0.0, 4.375424) Knockback timer: 0.0
+Velocity after move: (2.180163, 0.0, 4.499655) Knockback timer: 0.0
+Velocity after move: (1.748193, 0.0, 4.684423) Knockback timer: 0.0
+Velocity after move: (1.184556, 0.0, 4.857656) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.145906, 0.0, 4.997871) Knockback timer: 0.0
+Velocity after move: (0.145906, 0.0, 4.997871) Knockback timer: 0.0
+Velocity after move: (0.145906, 0.0, 4.997871) Knockback timer: 0.0
+Velocity after move: (0.145906, 0.0, 4.997871) Knockback timer: 0.0
+Velocity after move: (0.145906, 0.0, 4.997871) Knockback timer: 0.0
+Velocity after move: (0.155902, 0.0, 4.997569) Knockback timer: 0.0
+Velocity after move: (0.155902, 0.0, 4.997569) Knockback timer: 0.0
+Velocity after move: (0.165896, 0.0, 4.997247) Knockback timer: 0.0
+Velocity after move: (0.165896, 0.0, 4.997247) Knockback timer: 0.0
+Velocity after move: (0.165896, 0.0, 4.997247) Knockback timer: 0.0
+Velocity after move: (0.165896, 0.0, 4.997247) Knockback timer: 0.0
+Velocity after move: (0.165896, 0.0, 4.997247) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.165896, 0.0, 4.997247) Knockback timer: 0.0
+Velocity after move: (0.175891, 0.0, 4.996905) Knockback timer: 0.0
+Velocity after move: (0.195877, 0.0, 4.996162) Knockback timer: 0.0
+Velocity after move: (0.195877, 0.0, 4.996162) Knockback timer: 0.0
+Velocity after move: (0.195877, 0.0, 4.996162) Knockback timer: 0.0
+Velocity after move: (0.205869, 0.0, 4.99576) Knockback timer: 0.0
+Velocity after move: (0.21586, 0.0, 4.995338) Knockback timer: 0.0
+Velocity after move: (0.22585, 0.0, 4.994897) Knockback timer: 0.0
+Velocity after move: (0.22585, 0.0, 4.994897) Knockback timer: 0.0
+Velocity after move: (0.22585, 0.0, 4.994897) Knockback timer: 0.0
+Velocity after move: (0.21586, 0.0, 4.995338) Knockback timer: 0.0
+Velocity after move: (0.21586, 0.0, 4.995338) Knockback timer: 0.0
+Velocity after move: (0.21586, 0.0, 4.995338) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.245828, 0.0, 4.993953) Knockback timer: 0.0
+Velocity after move: (0.265802, 0.0, 4.99293) Knockback timer: 0.0
+Velocity after move: (0.285771, 0.0, 4.991827) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.275787, 0.0, 4.992389) Knockback timer: 0.0
+Velocity after move: (0.265802, 0.0, 4.99293) Knockback timer: 0.0
+Velocity after move: (0.265802, 0.0, 4.99293) Knockback timer: 0.0
+Velocity after move: (0.255815, 0.0, 4.993452) Knockback timer: 0.0
+Velocity after move: (0.255815, 0.0, 4.993452) Knockback timer: 0.0
+Velocity after move: (0.265802, 0.0, 4.99293) Knockback timer: 0.0
+Velocity after move: (0.265802, 0.0, 4.99293) Knockback timer: 0.0
+Velocity after move: (0.285771, 0.0, 4.991827) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.295754, 0.0, 4.991245) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (-4.116457, 0.0, -2.838095) Knockback timer: 0.0
+Velocity after move: (-4.087871, 0.0, -2.879117) Knockback timer: 0.0
+Velocity after move: (-4.029475, 0.0, -2.960293) Knockback timer: 0.0
+Velocity after move: (-3.957274, 0.0, -3.056138) Knockback timer: 0.0
+Velocity after move: (-3.882794, 0.0, -3.150223) Knockback timer: 0.0
+Velocity after move: (-3.812556, 0.0, -3.234875) Knockback timer: 0.0
+Velocity after move: (-3.773464, 0.0, -3.280392) Knockback timer: 0.0
+Velocity after move: (-3.760312, 0.0, -3.29546) Knockback timer: 0.0
+Velocity after move: (-3.760312, 0.0, -3.29546) Knockback timer: 0.0
+Velocity after move: (-3.760312, 0.0, -3.29546) Knockback timer: 0.0
+Velocity after move: (-3.760312, 0.0, -3.29546) Knockback timer: 0.0
+Velocity after move: (-3.760312, 0.0, -3.29546) Knockback timer: 0.0
+Velocity after move: (-3.760312, 0.0, -3.29546) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (3.693655, 0.0, 3.370002) Knockback timer: 0.0
+Velocity after move: (3.693655, 0.0, 3.370002) Knockback timer: 0.0
+Velocity after move: (3.693655, 0.0, 3.370002) Knockback timer: 0.0
+Velocity after move: (3.686908, 0.0, 3.377382) Knockback timer: 0.0
+Velocity after move: (3.686908, 0.0, 3.377382) Knockback timer: 0.0
+Velocity after move: (3.686908, 0.0, 3.377382) Knockback timer: 0.0
+Velocity after move: (3.686908, 0.0, 3.377382) Knockback timer: 0.0
+Velocity after move: (3.686908, 0.0, 3.377382) Knockback timer: 0.0
+Velocity after move: (3.686908, 0.0, 3.377382) Knockback timer: 0.0
+Velocity after move: (3.693655, 0.0, 3.370002) Knockback timer: 0.0
+Velocity after move: (3.693655, 0.0, 3.370002) Knockback timer: 0.0
+Velocity after move: (3.693655, 0.0, 3.370002) Knockback timer: 0.0
+Velocity after move: (3.693655, 0.0, 3.370002) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: 0.0
+Player hit by blast! Distance: 3.0427827835083
+Knockback applied: (4.033574, -8.337752, 3.769904) Direction: (0.403357, -0.833775, 0.37699) Force: 10.0
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.13333333333333
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.11666666666667
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.1
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.08333333333333
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.06666666666667
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.05
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.03333333333333
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.01666666666667
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: 0.0
+Velocity after move: (4.033574, 0.0, 3.769904) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (-3.421381, 0.0, 3.646115) Knockback timer: -0.01666666666667
+Velocity after move: (-3.45044, 0.0, 3.618628) Knockback timer: -0.01666666666667
+Velocity after move: (-3.493614, 0.0, 3.576963) Knockback timer: -0.01666666666667
+Velocity after move: (-3.564449, 0.0, 3.50638) Knockback timer: -0.01666666666667
+Velocity after move: (-3.626984, 0.0, 3.441655) Knockback timer: -0.01666666666667
+Velocity after move: (-3.721916, 0.0, 3.338764) Knockback timer: -0.01666666666667
+Velocity after move: (-3.807456, 0.0, 3.240876) Knockback timer: -0.01666666666667
+Velocity after move: (-3.81393, 0.0, 3.233255) Knockback timer: -0.01666666666667
+Velocity after move: (-3.81393, 0.0, 3.233255) Knockback timer: -0.01666666666667
+Velocity after move: (-3.81393, 0.0, 3.233255) Knockback timer: -0.01666666666667
+Velocity after move: (-3.81393, 0.0, 3.233255) Knockback timer: -0.01666666666667
+Velocity after move: (-3.81393, 0.0, 3.233255) Knockback timer: -0.01666666666667
+Velocity after move: (-3.81393, 0.0, 3.233255) Knockback timer: -0.01666666666667
+Velocity after move: (-3.81393, 0.0, 3.233255) Knockback timer: -0.01666666666667
+Velocity after move: (-4.983112, 0.0, -0.410599) Knockback timer: -0.01666666666667
+Velocity after move: (-4.983112, 0.0, -0.410599) Knockback timer: -0.01666666666667
+Velocity after move: (-4.983112, 0.0, -0.410599) Knockback timer: -0.01666666666667
+Velocity after move: (-4.984715, 0.0, -0.390663) Knockback timer: -0.01666666666667
+Velocity after move: (-4.986238, 0.0, -0.370721) Knockback timer: -0.01666666666667
+Velocity after move: (-4.988372, 0.0, -0.340797) Knockback timer: -0.01666666666667
+Velocity after move: (-4.993698, 0.0, -0.250956) Knockback timer: -0.01666666666667
+Velocity after move: (-4.998979, 0.0, -0.101054) Knockback timer: -0.01666666666667
+Velocity after move: (-4.999653, 0.0, 0.058937) Knockback timer: -0.01666666666667
+Velocity after move: (-4.995635, 0.0, 0.208877) Knockback timer: -0.01666666666667
+Velocity after move: (-4.991654, 0.0, 0.288778) Knockback timer: -0.01666666666667
+Velocity after move: (-4.991066, 0.0, 0.29876) Knockback timer: -0.01666666666667
+Velocity after move: (-4.991066, 0.0, 0.29876) Knockback timer: -0.01666666666667
+Velocity after move: (-4.991066, 0.0, 0.29876) Knockback timer: -0.01666666666667
+Velocity after move: (-4.991066, 0.0, 0.29876) Knockback timer: -0.01666666666667
+Velocity after move: (-4.991066, 0.0, 0.29876) Knockback timer: -0.01666666666667
+Velocity after move: (-4.992222, 0.0, 0.278794) Knockback timer: -0.01666666666667
+Velocity after move: (-4.996043, 0.0, 0.198887) Knockback timer: -0.01666666666667
+Velocity after move: (-4.999653, 0.0, 0.058938) Knockback timer: -0.01666666666667
+Velocity after move: (-4.999171, 0.0, -0.091056) Knockback timer: -0.01666666666667
+Velocity after move: (-4.995546, 0.0, -0.210997) Knockback timer: -0.01666666666667
+Velocity after move: (-3.338765, 0.0, -3.721915) Knockback timer: -0.01666666666667
+Velocity after move: (-3.293862, 0.0, -3.761711) Knockback timer: -0.01666666666667
+Velocity after move: (-3.202642, 0.0, -3.839672) Knockback timer: -0.01666666666667
+Velocity after move: (-4.94219, 0.0, -0.758125) Knockback timer: -0.01666666666667
+Velocity after move: (-4.836784, 0.0, -1.267091) Knockback timer: -0.01666666666667
+Velocity after move: (-4.639209, 0.0, -1.86487) Knockback timer: -0.01666666666667
+Velocity after move: (-4.415864, 0.0, -2.345239) Knockback timer: -0.01666666666667
+Velocity after move: (-4.15967, 0.0, -2.774373) Knockback timer: -0.01666666666667
+Velocity after move: (-3.893478, 0.0, -3.137009) Knockback timer: -0.01666666666667
+Velocity after move: (-3.52557, 0.0, -3.545469) Knockback timer: -0.01666666666667
+Velocity after move: (-3.075781, 0.0, -3.942026) Knockback timer: -0.01666666666667
+Velocity after move: (-2.573184, 0.0, -4.287041) Knockback timer: -0.01666666666667
+Velocity after move: (-2.186454, 0.0, -4.496601) Knockback timer: -0.01666666666667
+Velocity after move: (-1.820117, 0.0, -4.656949) Knockback timer: -0.01666666666667
+Velocity after move: (-1.537592, 0.0, -4.75771) Knockback timer: -0.01666666666667
+Velocity after move: (-1.413386, 0.0, -4.796075) Knockback timer: -0.01666666666667
+Velocity after move: (-1.374973, 0.0, -4.807229) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (2.35672, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, -4.409747) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, -4.371477) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, -4.276118) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, -4.152437) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, -4.031832) Knockback timer: -0.01666666666667
+Velocity after move: (0.274594, 0.0, -4.028557) Knockback timer: -0.01666666666667
+Body entered: HealthPack Groups: [&"health_pack"]
+Picked up health: 25.0
+Velocity after move: (0.76294, 0.0, -4.103756) Knockback timer: -0.01666666666667
+Velocity after move: (1.29904, 0.0, -4.151585) Knockback timer: -0.01666666666667
+Velocity after move: (0.356778, 0.0, -4.987255) Knockback timer: -0.01666666666667
+Velocity after move: (0.605591, 0.0, -4.963191) Knockback timer: -0.01666666666667
+Velocity after move: (0.882435, 0.0, -4.921515) Knockback timer: -0.01666666666667
+Velocity after move: (1.156512, 0.0, -4.864409) Knockback timer: -0.01666666666667
+Velocity after move: (1.474813, 0.0, -4.777544) Knockback timer: -0.01666666666667
+Velocity after move: (1.879726, 0.0, -4.63321) Knockback timer: -0.01666666666667
+Velocity after move: (-1.544241, 0.0, -4.755557) Knockback timer: -0.01666666666667
+Velocity after move: (-1.120316, 0.0, -4.872873) Knockback timer: -0.01666666666667
+Velocity after move: (-0.608397, 0.0, -4.962847) Knockback timer: -0.01666666666667
+Velocity after move: (-0.129894, 0.0, -4.998312) Knockback timer: -0.01666666666667
+Velocity after move: (0.449484, 0.0, -4.979755) Knockback timer: -0.01666666666667
+Velocity after move: (0.983634, 0.0, -4.902292) Knockback timer: -0.01666666666667
+Velocity after move: (1.401076, 0.0, -4.799686) Knockback timer: -0.01666666666667
+Velocity after move: (1.723965, 0.0, -4.693394) Knockback timer: -0.01666666666667
+Velocity after move: (1.947176, 0.0, -4.605269) Knockback timer: -0.01666666666667
+Velocity after move: (2.020608, 0.0, -4.573526) Knockback timer: -0.01666666666667
+Velocity after move: (-1.795857, 0.0, -4.666358) Knockback timer: -0.01666666666667
+Velocity after move: (-1.84243, 0.0, -4.648167) Knockback timer: -0.01666666666667
+Velocity after move: (-1.944236, 0.0, -4.606511) Knockback timer: -0.01666666666667
+Velocity after move: (-2.099703, 0.0, -4.537758) Knockback timer: -0.01666666666667
+Velocity after move: (-4.742993, 0.0, -1.582409) Knockback timer: -0.01666666666667
+Velocity after move: (-4.75858, 0.0, -1.534901) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.755501, 0.0, -1.544415) Knockback timer: -0.01666666666667
+Velocity after move: (-4.749285, 0.0, -1.563424) Knockback timer: -0.01666666666667
+Velocity after move: (-4.739819, 0.0, -1.591892) Knockback timer: -0.01666666666667
+Velocity after move: (-4.726932, 0.0, -1.629759) Knockback timer: -0.01666666666667
+Velocity after move: (-4.717069, 0.0, -1.658091) Knockback timer: -0.01666666666667
+Velocity after move: (-4.717069, 0.0, -1.658091) Knockback timer: -0.01666666666667
+Velocity after move: (-4.717069, 0.0, -1.658091) Knockback timer: -0.01666666666667
+Velocity after move: (-4.717069, 0.0, -1.658091) Knockback timer: -0.01666666666667
+Velocity after move: (-4.717069, 0.0, -1.658091) Knockback timer: -0.01666666666667
+Velocity after move: (-4.707035, 0.0, -1.686363) Knockback timer: -0.01666666666667
+Velocity after move: (-4.67592, 0.0, -1.770812) Knockback timer: -0.01666666666667
+Velocity after move: (-4.632077, 0.0, -1.882514) Knockback timer: -0.01666666666667
+Velocity after move: (-4.565407, 0.0, -2.038886) Knockback timer: -0.01666666666667
+Velocity after move: (-4.502195, 0.0, -2.174911) Knockback timer: -0.01666666666667
+Velocity after move: (-4.430305, 0.0, -2.317842) Knockback timer: -0.01666666666667
+Velocity after move: (-4.34401, 0.0, -2.475798) Knockback timer: -0.01666666666667
+Velocity after move: (-4.283346, 0.0, -2.579331) Knockback timer: -0.01666666666667
+Velocity after move: (-4.20405, 0.0, -2.706652) Knockback timer: -0.01666666666667
+Velocity after move: (-4.120972, 0.0, -2.831536) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.103908, 0.0, -2.85621) Knockback timer: -0.01666666666667
+Velocity after move: (-4.092451, 0.0, -2.872603) Knockback timer: -0.01666666666667
+Velocity after move: (-4.086698, 0.0, -2.880782) Knockback timer: -0.01666666666667
+Velocity after move: (-4.080927, 0.0, -2.88895) Knockback timer: -0.01666666666667
+Velocity after move: (-4.080927, 0.0, -2.88895) Knockback timer: -0.01666666666667
+Velocity after move: (-4.080927, 0.0, -2.88895) Knockback timer: -0.01666666666667
+Velocity after move: (-4.086698, 0.0, -2.880782) Knockback timer: -0.01666666666667
+Velocity after move: (-4.086698, 0.0, -2.880782) Knockback timer: -0.01666666666667
+Velocity after move: (-4.086698, 0.0, -2.880782) Knockback timer: -0.01666666666667
+Velocity after move: (-4.080927, 0.0, -2.888949) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 7.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.836667, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.673333, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.51, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.346666, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.183333, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.02, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 5.856666, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (-4.906187, 5.693333, -0.964017) Knockback timer: -0.01666666666667
+Velocity after move: (-4.927908, 5.529999, -0.846002) Knockback timer: -0.01666666666667
+Velocity after move: (-4.943842, 5.366666, -0.747281) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 5.203332, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.948236, 5.039999, -0.717605) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 4.876666, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 4.713332, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 4.549999, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 4.386665, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 4.223332, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 4.059999, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 3.896665, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 3.733332, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 3.569998, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 3.406665, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 3.243331, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.949661, 3.079998, -0.707707) Knockback timer: -0.01666666666667
+Velocity after move: (-4.948236, 2.916665, -0.717605) Knockback timer: -0.01666666666667
+Velocity after move: (-4.948236, 2.753331, -0.717605) Knockback timer: -0.01666666666667
+Velocity after move: (-4.948236, 2.589998, -0.717605) Knockback timer: -0.01666666666667
+Velocity after move: (-4.945326, 2.426664, -0.737392) Knockback timer: -0.01666666666667
+Velocity after move: (-4.943842, 2.263331, -0.747281) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 2.099998, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 1.936664, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 1.773331, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 1.609998, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 1.446664, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 1.283331, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 1.119998, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.956664, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.793331, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, 0.629998, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, 0.466664, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, 0.303331, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, 0.139998, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, -0.023336, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, -0.186669, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, -0.350002, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.806552, -0.513336, -4.934519) Knockback timer: -0.01666666666667
+Velocity after move: (0.81642, -0.676669, -4.932896) Knockback timer: -0.01666666666667
+Velocity after move: (0.81642, -0.840002, -4.932896) Knockback timer: -0.01666666666667
+Velocity after move: (0.826284, -1.003336, -4.931253) Knockback timer: -0.01666666666667
+Velocity after move: (0.826284, -1.166669, -4.931253) Knockback timer: -0.01666666666667
+Velocity after move: (0.826284, -1.330002, -4.931253) Knockback timer: -0.01666666666667
+Velocity after move: (0.836145, -1.493336, -4.929591) Knockback timer: -0.01666666666667
+Velocity after move: (0.836145, -1.656669, -4.929591) Knockback timer: -0.01666666666667
+Velocity after move: (0.846002, 7.0, -4.927908) Knockback timer: -0.01666666666667
+Velocity after move: (0.855856, 6.836667, -4.926207) Knockback timer: -0.01666666666667
+Velocity after move: (0.855856, 6.673333, -4.926207) Knockback timer: -0.01666666666667
+Velocity after move: (0.855856, 6.51, -4.926207) Knockback timer: -0.01666666666667
+Velocity after move: (0.846002, 6.346666, -4.927908) Knockback timer: -0.01666666666667
+Velocity after move: (0.846002, 6.183333, -4.927908) Knockback timer: -0.01666666666667
+Velocity after move: (0.855856, 6.02, -4.926207) Knockback timer: -0.01666666666667
+Velocity after move: (0.895238, 5.856666, -4.919202) Knockback timer: -0.01666666666667
+Velocity after move: (0.944385, 5.693333, -4.910004) Knockback timer: -0.01666666666667
+Velocity after move: (0.983634, 5.529999, -4.902292) Knockback timer: -0.01666666666667
+Velocity after move: (1.01303, 5.366666, -4.896302) Knockback timer: -0.01666666666667
+Velocity after move: (1.032607, 5.203332, -4.89221) Knockback timer: -0.01666666666667
+Velocity after move: (1.061941, 5.039999, -4.885927) Knockback timer: -0.01666666666667
+Velocity after move: (1.139977, 4.876666, -4.868311) Knockback timer: -0.01666666666667
+Velocity after move: (1.246795, 4.713332, -4.842056) Knockback timer: -0.01666666666667
+Velocity after move: (1.372253, 4.549999, -4.808006) Knockback timer: -0.01666666666667
+Velocity after move: (1.429849, 4.386665, -4.791193) Knockback timer: -0.01666666666667
+Velocity after move: (1.496783, 4.223332, -4.770707) Knockback timer: -0.01666666666667
+Velocity after move: (1.563424, 4.059999, -4.749285) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 3.896665, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 3.733332, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 3.569998, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 3.406665, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 3.243331, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 3.079998, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 2.916665, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 2.753331, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 2.589998, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 2.426664, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 2.263331, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 2.099998, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.620302, 1.936664, -4.730182) Knockback timer: -0.01666666666667
+Velocity after move: (1.629759, 1.773331, -4.726932) Knockback timer: -0.01666666666667
+Velocity after move: (1.705178, 1.609998, -4.700252) Knockback timer: -0.01666666666667
+Velocity after move: (1.808162, 1.446664, -4.661603) Knockback timer: -0.01666666666667
+Velocity after move: (4.633279, 1.283331, -1.879556) Knockback timer: -0.01666666666667
+Velocity after move: (4.673504, 1.119998, -1.777178) Knockback timer: -0.01666666666667
+Velocity after move: (4.711468, 0.956664, -1.673939) Knockback timer: -0.01666666666667
+Velocity after move: (4.756485, 0.793331, -1.541378) Knockback timer: -0.01666666666667
+Velocity after move: (4.402174, 0.629998, 2.370837) Knockback timer: -0.01666666666667
+Velocity after move: (4.353879, 0.466664, 2.458401) Knockback timer: -0.01666666666667
+Velocity after move: (4.303843, 0.303331, 2.544981) Knockback timer: -0.01666666666667
+Velocity after move: (4.252087, 0.139998, 2.630543) Knockback timer: -0.01666666666667
+Velocity after move: (4.225569, -0.023336, 2.672932) Knockback timer: -0.01666666666667
+Velocity after move: (4.209455, -0.186669, 2.698238) Knockback timer: -0.01666666666667
+Velocity after move: (4.198628, -0.350002, 2.715055) Knockback timer: -0.01666666666667
+Velocity after move: (4.187735, -0.513336, 2.731827) Knockback timer: -0.01666666666667
+Velocity after move: (4.165746, -0.676669, 2.765241) Knockback timer: -0.01666666666667
+Velocity after move: (4.137886, -0.840002, 2.806759) Knockback timer: -0.01666666666667
+Velocity after move: (0.882255, -1.003336, 4.921547) Knockback timer: -0.01666666666667
+Velocity after move: (0.813268, -1.166669, 4.933416) Knockback timer: -0.01666666666667
+Velocity after move: (0.75401, -1.330002, 4.94282) Knockback timer: -0.01666666666667
+Velocity after move: (0.72434, -1.493336, 4.947255) Knockback timer: -0.01666666666667
+Velocity after move: (0.674832, -1.656669, 4.954251) Knockback timer: -0.01666666666667
+Velocity after move: (0.595481, -1.820002, 4.964414) Knockback timer: -0.01666666666667
+Velocity after move: (0.506029, -1.983335, 4.974328) Knockback timer: -0.01666666666667
+Velocity after move: (0.436342, -2.146669, 4.980924) Knockback timer: -0.01666666666667
+Velocity after move: (0.406448, -2.310002, 4.983453) Knockback timer: -0.01666666666667
+Velocity after move: (0.406448, -2.473336, 4.983453) Knockback timer: -0.01666666666667
+Velocity after move: (-3.236431, -2.636669, 3.811235) Knockback timer: -0.01666666666667
+Velocity after move: (-3.304506, -2.800003, 3.752365) Knockback timer: -0.01666666666667
+Velocity after move: (-3.364118, -2.963336, 3.699015) Knockback timer: -0.01666666666667
+Velocity after move: (-3.371509, -3.126669, 3.692279) Knockback timer: -0.01666666666667
+Velocity after move: (-3.371509, -3.290003, 3.692279) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -3.453336, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -3.61667, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -3.780003, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -3.943336, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -4.10667, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -4.270003, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -4.433337, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -4.59667, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -4.760004, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -4.923337, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.08667, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.250004, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.413337, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.576671, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.740004, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.903337, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -6.066671, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 0.0, 0.0) Knockback timer: -0.01666666666667
+Player hit by blast! Distance: 0.53394758701324
+Knockback applied: (-4.413932, 8.972152, 0.132989) Direction: (-0.441393, 0.897215, 0.013299) Force: 10.0
+Velocity after move: (-4.843886, 8.972152, 0.147244) Knockback timer: 0.13333333333333
+Velocity after move: (-4.413932, 17.78097, 0.132989) Knockback timer: 0.11666666666667
+Velocity after move: (-4.413932, 26.58979, 0.132989) Knockback timer: 0.1
+Velocity after move: (-4.413932, 35.39861, 0.132989) Knockback timer: 0.08333333333333
+Velocity after move: (-4.413932, 44.20743, 0.132989) Knockback timer: 0.06666666666667
+Velocity after move: (-4.413932, 53.01625, 0.132989) Knockback timer: 0.05
+Velocity after move: (-4.413932, 61.82507, 0.132989) Knockback timer: 0.03333333333333
+Velocity after move: (-4.413932, 70.63388, 0.132989) Knockback timer: 0.01666666666667
+Velocity after move: (-4.413932, 79.4427, 0.132989) Knockback timer: 0.0
+Velocity after move: (-4.413932, 88.25153, 0.132989) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 88.0882, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 87.92487, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 87.76154, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 87.59821, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 87.43488, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 87.27155, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 87.10822, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 86.94489, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 86.78156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 86.61823, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 86.4549, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 86.29156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 86.12823, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 85.9649, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 85.80157, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 85.63824, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 85.47491, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 85.31158, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 85.14825, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 84.98492, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 84.82159, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 84.65826, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 84.49493, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 84.3316, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 84.16827, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 84.00494, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 83.84161, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 83.67828, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 83.51495, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 83.35162, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 83.18829, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 83.02496, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 82.86163, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 82.6983, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 82.53497, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 82.37164, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 82.20831, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 82.04498, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 81.88165, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 81.71832, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 81.55499, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 81.39166, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 81.22833, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 81.065, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 80.90167, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 80.73834, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 80.57501, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 80.41168, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 80.24835, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 80.08502, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 79.92169, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 79.75836, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 79.59503, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 79.4317, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 79.26837, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 79.10504, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 78.94171, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 78.77838, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 78.61505, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 78.45172, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 78.28839, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 78.12506, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 77.96173, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 77.7984, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 77.63507, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 77.47174, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 77.30841, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 77.14508, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 76.98175, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 76.81842, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 76.65509, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 76.49176, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 76.32843, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 76.1651, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 76.00177, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 75.83844, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 75.67511, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 75.51178, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 75.34845, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 75.18512, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 75.02179, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 74.85846, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 74.69513, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 74.5318, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 74.36847, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 74.20514, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 74.04181, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 73.87848, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 73.71515, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 73.55182, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 73.38849, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 73.22516, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 73.06183, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 72.8985, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 72.73517, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 72.57184, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 72.40851, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 72.24518, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 72.08185, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 71.91852, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 71.75519, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 71.59186, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 71.42853, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 71.2652, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 71.10187, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 70.93854, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 70.77521, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 70.61188, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 70.44855, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 70.28522, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 70.12189, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 69.95856, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 69.79523, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.782527, 69.6319, 1.458572) Knockback timer: -0.01666666666667
+Velocity after move: (4.785435, 69.46857, 1.449004) Knockback timer: -0.01666666666667
+Velocity after move: (4.785435, 69.30524, 1.449004) Knockback timer: -0.01666666666667
+Velocity after move: (4.785435, 69.14191, 1.449004) Knockback timer: -0.01666666666667
+Velocity after move: (4.788323, 68.97858, 1.43943) Knockback timer: -0.01666666666667
+Velocity after move: (4.788323, 68.81525, 1.43943) Knockback timer: -0.01666666666667
+Velocity after move: (4.788323, 68.65192, 1.43943) Knockback timer: -0.01666666666667
+Velocity after move: (4.788323, 68.48859, 1.43943) Knockback timer: -0.01666666666667
+Velocity after move: (4.788323, 68.32526, 1.43943) Knockback timer: -0.01666666666667
+Velocity after move: (4.788323, 68.16193, 1.43943) Knockback timer: -0.01666666666667
+Velocity after move: (4.788323, 67.9986, 1.43943) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 67.83527, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 67.67194, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 67.50861, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 67.34528, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 67.18195, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 67.01862, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 66.85529, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 66.69196, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 66.52863, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 66.3653, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 66.20197, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 66.03864, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 65.87531, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 65.71198, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 65.54865, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 65.38531, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 65.22198, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.791193, 65.05865, 1.429851) Knockback timer: -0.01666666666667
+Velocity after move: (4.794043, 64.89532, 1.420266) Knockback timer: -0.01666666666667
+Velocity after move: (4.794043, 64.73199, 1.420266) Knockback timer: -0.01666666666667
+Velocity after move: (4.794043, 64.56866, 1.420266) Knockback timer: -0.01666666666667
+Velocity after move: (4.794043, 64.40533, 1.420266) Knockback timer: -0.01666666666667
+Velocity after move: (4.794043, 64.242, 1.420266) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 64.07867, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 63.91534, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 63.75201, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 63.58867, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 63.42534, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 63.262, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 63.09867, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 62.93534, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 62.772, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 62.60867, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 62.44534, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 62.282, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 62.11867, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 61.95533, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 61.792, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 61.62867, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 61.46533, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 61.302, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.796874, 61.13866, 1.410675) Knockback timer: -0.01666666666667
+Velocity after move: (4.799685, 60.97533, 1.401078) Knockback timer: -0.01666666666667
+Velocity after move: (4.799685, 60.812, 1.401078) Knockback timer: -0.01666666666667
+Velocity after move: (4.799685, 60.64866, 1.401078) Knockback timer: -0.01666666666667
+Velocity after move: (4.799685, 60.48533, 1.401078) Knockback timer: -0.01666666666667
+Velocity after move: (4.802478, 60.32199, 1.391476) Knockback timer: -0.01666666666667
+Velocity after move: (4.802478, 60.15866, 1.391476) Knockback timer: -0.01666666666667
+Velocity after move: (4.805251, 59.99533, 1.381868) Knockback timer: -0.01666666666667
+Velocity after move: (4.808005, 59.83199, 1.372255) Knockback timer: -0.01666666666667
+Velocity after move: (4.81074, 59.66866, 1.362636) Knockback timer: -0.01666666666667
+Velocity after move: (4.81074, 59.50533, 1.362636) Knockback timer: -0.01666666666667
+Velocity after move: (4.813456, 59.34199, 1.353012) Knockback timer: -0.01666666666667
+Velocity after move: (4.813456, 59.17866, 1.353012) Knockback timer: -0.01666666666667
+Velocity after move: (4.813456, 59.01532, 1.353012) Knockback timer: -0.01666666666667
+Velocity after move: (4.813456, 58.85199, 1.353012) Knockback timer: -0.01666666666667
+Velocity after move: (4.816153, 58.68866, 1.343383) Knockback timer: -0.01666666666667
+Velocity after move: (4.816153, 58.52532, 1.343383) Knockback timer: -0.01666666666667
+Velocity after move: (4.821487, 58.36199, 1.324107) Knockback timer: -0.01666666666667
+Velocity after move: (4.821487, 58.19865, 1.324107) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 58.03532, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 57.87199, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 57.70865, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 57.54532, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 57.38198, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 57.21865, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 57.05532, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 56.89198, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 56.72865, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 56.56532, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 56.40198, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 56.23865, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 56.07531, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 55.91198, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 55.74865, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 55.58531, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 55.42198, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 55.25864, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 55.09531, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 54.93198, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 54.76864, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 54.60531, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 54.44197, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 54.27864, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 54.11531, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 53.95197, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 53.78864, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 53.62531, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 53.46197, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 53.29864, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 53.1353, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 52.97197, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 52.80864, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 52.6453, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 52.48197, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 52.31863, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 52.1553, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 51.99197, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 51.82863, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 51.6653, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 51.50196, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 51.33863, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 51.1753, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 51.01196, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 50.84863, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 50.6853, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 50.52196, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 50.35863, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 50.19529, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (4.927908, 50.03196, 0.846004) Knockback timer: -0.01666666666667
+Velocity after move: (4.92959, 49.86863, 0.836147) Knockback timer: -0.01666666666667
+Velocity after move: (4.932895, 49.70529, 0.816422) Knockback timer: -0.01666666666667
+Velocity after move: (4.937705, 49.54196, 0.78681) Knockback timer: -0.01666666666667
+Velocity after move: (4.939269, 49.37862, 0.776933) Knockback timer: -0.01666666666667
+Velocity after move: (4.942337, 49.21529, 0.75717) Knockback timer: -0.01666666666667
+Velocity after move: (4.942337, 49.05196, 0.75717) Knockback timer: -0.01666666666667
+Velocity after move: (4.943841, 48.88862, 0.747284) Knockback timer: -0.01666666666667
+Velocity after move: (4.943841, 48.72529, 0.747284) Knockback timer: -0.01666666666667
+Velocity after move: (4.945326, 48.56195, 0.737395) Knockback timer: -0.01666666666667
+Velocity after move: (4.946791, 48.39862, 0.727502) Knockback timer: -0.01666666666667
+Velocity after move: (4.946791, 48.23529, 0.727502) Knockback timer: -0.01666666666667
+Velocity after move: (4.948236, 48.07195, 0.717607) Knockback timer: -0.01666666666667
+Velocity after move: (4.948236, 47.90862, 0.717607) Knockback timer: -0.01666666666667
+Velocity after move: (4.948236, 47.74529, 0.717607) Knockback timer: -0.01666666666667
+Velocity after move: (4.948236, 47.58195, 0.717607) Knockback timer: -0.01666666666667
+Velocity after move: (4.948236, 47.41862, 0.717607) Knockback timer: -0.01666666666667
+Velocity after move: (4.951067, 47.25528, 0.697809) Knockback timer: -0.01666666666667
+Velocity after move: (4.951067, 47.09195, 0.697809) Knockback timer: -0.01666666666667
+Velocity after move: (4.952453, 46.92862, 0.687905) Knockback timer: -0.01666666666667
+Velocity after move: (4.952453, 46.76528, 0.687905) Knockback timer: -0.01666666666667
+Velocity after move: (4.952453, 46.60195, 0.687905) Knockback timer: -0.01666666666667
+Velocity after move: (4.952453, 46.43861, 0.687905) Knockback timer: -0.01666666666667
+Velocity after move: (4.952453, 46.27528, 0.687905) Knockback timer: -0.01666666666667
+Velocity after move: (4.952453, 46.11195, 0.687905) Knockback timer: -0.01666666666667
+Velocity after move: (4.953819, 45.94861, 0.677999) Knockback timer: -0.01666666666667
+Velocity after move: (4.953819, 45.78528, 0.677999) Knockback timer: -0.01666666666667
+Velocity after move: (4.953819, 45.62194, 0.677999) Knockback timer: -0.01666666666667
+Velocity after move: (4.953819, 45.45861, 0.677999) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 45.29528, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 45.13194, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 44.96861, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 44.80527, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 44.64194, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 44.47861, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 44.31527, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 44.15194, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.955165, 43.98861, 0.66809) Knockback timer: -0.01666666666667
+Velocity after move: (4.956491, 43.82527, 0.658178) Knockback timer: -0.01666666666667
+Velocity after move: (4.956491, 43.66194, 0.658178) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 43.4986, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 43.33527, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 43.17194, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 43.0086, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 42.84527, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 42.68193, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 42.5186, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 42.35527, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 42.19193, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (4.957797, 42.0286, 0.648264) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 41.86526, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 41.70193, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 41.5386, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 41.37526, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 41.21193, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 41.0486, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 40.88526, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 40.72193, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 40.55859, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 40.39526, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 40.23193, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 40.06859, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 39.90526, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 39.74192, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 39.57859, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 39.41526, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 39.25192, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 39.08859, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 38.92525, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 38.76192, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 38.59859, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 38.43525, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 38.27192, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 38.10859, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 37.94525, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 37.78192, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 37.61858, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 37.45525, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 37.29192, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 37.12858, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 36.96525, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 36.80191, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 36.63858, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 36.47525, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 36.31191, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 36.14858, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 35.98524, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 35.82191, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 35.65858, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 35.49524, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 35.33191, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 35.16858, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 35.00524, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 34.84191, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 34.67857, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 34.51524, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 34.35191, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 34.18857, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 34.02524, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 33.8619, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 33.69857, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 33.53524, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 33.3719, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 33.20857, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 33.04523, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 32.8819, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 32.71857, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 32.55523, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 32.3919, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 32.22857, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 32.06523, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 31.9019, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 31.73856, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 31.57523, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 31.4119, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 31.24856, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 31.08523, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 30.92189, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 30.75856, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 30.59523, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 30.43189, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 30.26856, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 30.10522, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 29.94189, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 29.77856, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 29.61522, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 29.45189, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 29.28856, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 29.12522, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 28.96189, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 28.79855, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 28.63522, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 28.47189, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 28.30855, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 28.14522, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 27.98188, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 27.81855, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 27.65522, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 27.49188, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 27.32855, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 27.16521, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 27.00188, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 26.83855, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 26.67521, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 26.51188, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 26.34855, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 26.18521, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 26.02188, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 25.85854, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 25.69521, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 25.53188, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 25.36854, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 25.20521, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 25.04187, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 24.87854, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 24.71521, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 24.55187, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 24.38854, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 24.2252, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 24.06187, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 23.89854, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 23.7352, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 23.57187, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 23.40854, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 23.2452, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 23.08187, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 22.91853, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 22.7552, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 22.59187, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 22.42853, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 22.2652, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 22.10186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 21.93853, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 21.7752, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 21.61186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 21.44853, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 21.28519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 21.12186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 20.95853, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 20.79519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 20.63186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 20.46852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 20.30519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 20.14186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 19.97852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 19.81519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 19.65186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 19.48852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 19.32519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 19.16185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 18.99852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 18.83519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 18.67185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 18.50852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 18.34518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 18.18185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 18.01852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 17.85518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 17.69185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 17.52851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 17.36518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 17.20185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 17.03851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 16.87518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 16.71185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 16.54851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 16.38518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 16.22184, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 16.05851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 15.89518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 15.73184, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 15.56851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 15.40518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 15.24185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 15.07851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 14.91518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 14.75185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 14.58851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 14.42518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 14.26185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 14.09851, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 13.93518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 13.77185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 13.60852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 13.44518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 13.28185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 13.11852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 12.95518, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 12.79185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 12.62852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 12.46519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 12.30185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 12.13852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 11.97519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 11.81185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 11.64852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 11.48519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 11.32185, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 11.15852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 10.99519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 10.83186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 10.66852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 10.50519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 10.34186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 10.17852, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 10.01519, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 9.851858, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 9.688525, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 9.525192, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 9.361859, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 9.198526, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 9.035193, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 8.871861, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 8.708528, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 8.545195, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 8.381862, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 8.218529, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 8.055196, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 7.891862, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 7.728529, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 7.565196, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 7.401862, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 7.238529, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 7.075195, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.911862, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.748528, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.585195, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.421862, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.258528, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 6.095195, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 5.931861, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 5.768528, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 5.605195, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 5.441861, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 5.278528, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 5.115194, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 4.951861, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 4.788527, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 4.625194, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 4.461861, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 4.298527, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 4.135194, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, 3.97186, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (4.920982, 3.808527, 0.885401) Knockback timer: -0.01666666666667
+Velocity after move: (4.919201, 3.645194, 0.895241) Knockback timer: -0.01666666666667
+Velocity after move: (4.917401, 3.48186, 0.905077) Knockback timer: -0.01666666666667
+Velocity after move: (4.917401, 3.318527, 0.905077) Knockback timer: -0.01666666666667
+Velocity after move: (4.917401, 3.155193, 0.905077) Knockback timer: -0.01666666666667
+Velocity after move: (4.926206, 2.99186, 0.855859) Knockback timer: -0.01666666666667
+Velocity after move: (4.939269, 2.828526, 0.776933) Knockback timer: -0.01666666666667
+Velocity after move: (4.951067, 2.665193, 0.697809) Knockback timer: -0.01666666666667
+Velocity after move: (4.960351, 2.50186, 0.628428) Knockback timer: -0.01666666666667
+Velocity after move: (4.962825, 2.338526, 0.608582) Knockback timer: -0.01666666666667
+Velocity after move: (4.964032, 2.175193, 0.598655) Knockback timer: -0.01666666666667
+Velocity after move: (4.965219, 2.011859, 0.588726) Knockback timer: -0.01666666666667
+Velocity after move: (4.965219, 1.848526, 0.588726) Knockback timer: -0.01666666666667
+Velocity after move: (4.965219, 1.685193, 0.588726) Knockback timer: -0.01666666666667
+Velocity after move: (4.965219, 1.52186, 0.588726) Knockback timer: -0.01666666666667
+Velocity after move: (4.966387, 1.358526, 0.578794) Knockback timer: -0.01666666666667
+Velocity after move: (4.966387, 1.195193, 0.578794) Knockback timer: -0.01666666666667
+Velocity after move: (4.966387, 1.03186, 0.578794) Knockback timer: -0.01666666666667
+Velocity after move: (4.967534, 0.868526, 0.56886) Knockback timer: -0.01666666666667
+Velocity after move: (4.968662, 0.705193, 0.558924) Knockback timer: -0.01666666666667
+Velocity after move: (4.96977, 0.54186, 0.548985) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, 0.378526, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, 0.215193, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, 0.05186, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -0.111474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -0.274807, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -0.43814, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -0.601474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -0.764807, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -0.92814, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -1.091474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -1.254807, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -1.41814, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -1.581474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -1.744807, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -1.90814, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -2.071474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -2.234807, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -2.39814, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -2.561474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -2.724807, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -2.888141, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -3.051474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -3.214808, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -3.378141, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -3.541474, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -3.704808, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -3.868141, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -4.031475, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -4.194808, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -4.358141, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -4.521475, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -4.684808, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -4.848142, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -5.011475, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -5.174809, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.338142, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.501475, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.664809, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.828142, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -5.991476, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -6.154809, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -6.318142, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -6.481476, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -6.644809, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -6.808143, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -6.971476, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -7.134809, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -7.298143, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -7.461476, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -7.62481, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -7.788143, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -7.951477, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -8.11481, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -8.278143, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -8.441476, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -8.604809, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -8.768142, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -8.931475, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -9.094808, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -9.258141, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -9.421474, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -9.584806, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -9.748139, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -9.911472, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -10.07481, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -10.23814, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -10.40147, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -10.5648, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -10.72814, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -10.89147, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -11.0548, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -11.21814, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -11.38147, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -11.5448, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -11.70813, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -11.87147, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -12.0348, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -12.19813, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -12.36147, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -12.5248, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -12.68813, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -12.85147, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -13.0148, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -13.17813, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -13.34146, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -13.5048, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -13.66813, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -13.83146, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -13.9948, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -14.15813, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -14.32146, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -14.48479, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -14.64813, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -14.81146, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -14.97479, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -15.13813, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -15.30146, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -15.46479, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -15.62813, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -15.79146, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -15.95479, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -16.11812, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -16.28146, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -16.44479, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -16.60813, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -16.77146, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -16.93479, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -17.09813, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -17.26146, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -17.4248, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -17.58813, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -17.75146, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -17.9148, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -18.07813, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -18.24146, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -18.4048, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -18.56813, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -18.73147, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -18.8948, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -19.05813, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -19.22147, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -19.3848, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -19.54814, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -19.71147, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -19.8748, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -20.03814, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -20.20147, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (3.133765, -20.36481, 3.89609) Knockback timer: -0.01666666666667
+Velocity after move: (3.133765, -20.52814, 3.89609) Knockback timer: -0.01666666666667
+Velocity after move: (3.133765, -20.69147, 3.89609) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -20.85481, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -21.01814, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -21.18147, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -21.34481, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -21.50814, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -21.67148, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -21.83481, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -21.99814, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -22.16148, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -22.32481, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -22.48815, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -22.65148, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -22.81481, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -22.97815, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -23.14148, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -23.30482, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -23.46815, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -23.63148, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -23.79482, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (-0.539045, -23.95815, 4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -24.12148, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -24.28482, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -24.44815, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -24.61149, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -24.77482, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -24.93815, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -25.10149, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -25.26482, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (0.539045, -25.42816, -4.970859) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -25.59149, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -25.75482, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -25.91816, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -26.08149, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -26.24483, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -26.40816, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -26.57149, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -26.73483, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -26.89816, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -27.06149, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -27.22483, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -27.38816, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -27.5515, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -27.71483, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -27.87816, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -28.0415, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -28.20483, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -28.36817, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -28.5315, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -28.69483, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -28.85817, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -29.0215, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -29.18484, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -29.34817, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -29.5115, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -29.67484, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -29.83817, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -30.0015, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (3.89609, -30.16484, -3.133765) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -30.32817, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -30.49151, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -30.65484, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -30.81817, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -30.98151, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -31.14484, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -31.30818, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -31.47151, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -31.63484, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -31.79818, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -31.96151, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -32.12484, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -32.28818, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -32.45151, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -32.61485, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -32.77818, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -32.94151, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -33.10485, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -33.26818, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -33.43151, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -33.59485, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -33.75818, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -33.92152, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -34.08485, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -34.24818, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -34.41152, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -34.57485, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -34.73819, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -34.90152, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -35.06485, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -35.22819, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -35.39152, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -35.55486, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -35.71819, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -35.88152, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -36.04486, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -36.20819, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -36.37152, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -36.53486, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -36.69819, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -36.86153, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -37.02486, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -37.18819, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (4.970859, -37.35153, 0.539045) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -37.51486, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -37.6782, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -37.84153, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -38.00486, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -38.1682, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -38.33153, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -38.49487, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -38.6582, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -38.82153, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -38.98487, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -39.1482, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -39.31153, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -39.47487, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -39.6382, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -39.80154, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -39.96487, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -40.1282, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -40.29154, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -40.45487, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -40.61821, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -40.78154, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -40.94487, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -41.10821, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -41.27154, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -41.43488, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -41.59821, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -41.76154, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -41.92488, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -42.08821, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -42.25154, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -42.41488, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -42.57821, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -42.74155, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -42.90488, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -43.06821, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -43.23155, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -43.39488, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -43.55822, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -43.72155, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -43.88488, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -44.04822, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -44.21155, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -44.37489, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -44.53822, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -44.70155, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -44.86489, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -45.02822, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -45.19156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -45.35489, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -45.51822, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -45.68156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -45.84489, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -46.00822, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -46.17156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -46.33489, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -46.49823, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -46.66156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -46.82489, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -46.98823, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -47.15156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -47.3149, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -47.47823, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -47.64156, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -47.8049, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -47.96823, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -48.13157, 0.0) Knockback timer: -0.01666666666667
+Velocity after move: (0.0, -48.2949, 0.0) Knockback timer: -0.01666666666667
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
