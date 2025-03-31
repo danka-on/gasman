@@ -195,14 +195,13 @@ expand_mode = 1
 
 [node name="ReloadBar" type="ProgressBar" parent="HUD/HealthBarContainer"]
 visible = false
-offset_left = 512.0
-offset_top = 280.0
-offset_right = 672.0
-offset_bottom = 307.0
+offset_left = 496.0
+offset_top = 584.0
+offset_right = 656.0
+offset_bottom = 611.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ycdy4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dg77c")
-max_value = 120.0
-step = 1.0
+max_value = 2.0
 indeterminate = true
 editor_preview_indeterminate = false
 
