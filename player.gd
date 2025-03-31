@@ -142,8 +142,9 @@ func _physics_process(delta):
 		if $FootstepPlayer.playing:
 			$FootstepPlayer.stop()
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot and current_magazine > 0:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot and current_magazine > 0 and not is_reloading:
 		shoot()
+
 	
 # Apply knockback only when grounded
 	if knockback_timer > 0 and is_on_floor():
@@ -223,7 +224,7 @@ func add_ammo(amount: int):
 	current_reserve += amount
 	current_reserve = clamp(current_reserve, 0, total_reserve_ammo)
 	update_ammo_display()
-	ammo_label.add_theme_color_override("font_color", Color(0, 1, 0)) # Green
+	ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Green
 	await get_tree().create_timer(1.0).timeout
 	ammo_label.remove_theme_color_override("font_color") # Back to default
 	
