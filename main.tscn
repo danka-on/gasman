@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c3iyygqly2ifv"]
+[gd_scene load_steps=27 format=3 uid="uid://c3iyygqly2ifv"]
 
 [ext_resource type="Texture2D" uid="uid://50r516c1u5lb" path="res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://player.gd" id="1_ig7tw"]
@@ -44,6 +44,11 @@ albedo_color = Color(1, 0.839216, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
 bg_color = Color(0.207843, 0.709804, 0.027451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
+bg_color = Color(0.372549, 0.8, 0.164706, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_kek77")
@@ -187,6 +192,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_dg77c")
 expand_mode = 1
+
+[node name="ReloadBar" type="ProgressBar" parent="HUD/HealthBarContainer"]
+visible = false
+offset_left = 512.0
+offset_top = 280.0
+offset_right = 672.0
+offset_bottom = 307.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ycdy4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dg77c")
+max_value = 120.0
+step = 1.0
+indeterminate = true
+editor_preview_indeterminate = false
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 

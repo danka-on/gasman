@@ -26,6 +26,11 @@ var current_magazine : int = max_magazine
 var current_reserve : int = total_reserve_ammo
 var can_reload = true
 @export var reload_time : float = 2.0
+@onready var reload_bar = $"../HUD/HealthBarContainer/ReloadBar"
+var is_reloading : bool = false
+var reload_progress : float = 0.0
+
+
 
 # Audio variables
 @export var base_walk_pitch : float = 1.2
@@ -147,7 +152,22 @@ func _physics_process(delta):
 			knockback_velocity = Vector3.ZERO
 	
 	move_and_slide()
+	if Input.is_action_just_pressed("reload") and current_magazine < max_magazine and not is_reloading:
+		is_reloading = true
+		reload_progress = 0.0
+		reload_bar.show()
+		print("Reload bar shown, value: ", reload_bar.value)
 	
+	if is_reloading:
+		reload_progress += delta
+		reload_bar.value = reload_progress
+		print("Filling bar, value: ", reload_bar.value)
+		if reload_progress >= reload_time:
+			current_magazine = max_magazine
+			is_reloading = false
+			reload_bar.value = 0.0
+			reload_bar.hide()
+			print("Reload done, magazine: ", current_magazine)
 
 func _on_footstep_timer_timeout():
 	var input_dir = Vector3.ZERO
