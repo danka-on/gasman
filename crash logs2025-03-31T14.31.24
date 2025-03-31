@@ -4,12 +4,12 @@ TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1748841720960
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1790057094944
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1748841720960
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1790057094944
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 Devices:
   #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
@@ -100,18 +100,18 @@ Shader 'BlitShaderRD' (group 0) SHA256: c1a508b343e89110130b9aeb6612f366588f35c0
 WASAPI: Activated output_device using IAudioClient3 interface
 WASAPI: wFormatTag = 65534
 WASAPI: nChannels = 2
-WASAPI: nSamplesPerSec = 44100
-WASAPI: nAvgBytesPerSec = 352800
+WASAPI: nSamplesPerSec = 48000
+WASAPI: nAvgBytesPerSec = 384000
 WASAPI: nBlockAlign = 8
 WASAPI: wBitsPerSample = 32
 WASAPI: cbSize = 22
-WASAPI: mix_rate = 44100
-WASAPI: fundamental_period_frames = 441
-WASAPI: min_period_frames = 441
-WASAPI: max_period_frames = 441
-WASAPI: selected a period frame size of 441
+WASAPI: mix_rate = 48000
+WASAPI: fundamental_period_frames = 480
+WASAPI: min_period_frames = 480
+WASAPI: max_period_frames = 480
+WASAPI: selected a period frame size of 480
 WASAPI: detected 2 channels
-WASAPI: audio buffer frames: 441 calculated latency: 10ms
+WASAPI: audio buffer frames: 480 calculated latency: 10ms
 
 TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
 CORE API HASH: 3954330213
@@ -162,84 +162,472 @@ ERROR: Node not found: "/root/Main/Enemy" (absolute path attempted from "/root/M
 ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
    at: connect (core/object/object.cpp:1451)
 PickupArea connected
+ERROR: Index p_bounce = 1 is out of bounds (motion_results.size() = 1).
+   at: _get_slide_collision (scene/3d/physics/character_body_3d.cpp:704)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (1.596562, 1.668491, 6.228584)
+Hit registered at: (7.54129, 1.43608, -3.751261)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (1.526289, 1.873863, 5.148351)
+Hit registered at: (6.867036, 1.26551, -4.204627)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (1.958011, 1.9195, 3.812485)
+Hit registered at: (6.02065, 1.279404, -4.352889)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (1.998032, 1.999469, 4.392457)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (1.84299, 2.051762, 2.983408)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (2.936272, 1.828223, -1.284767)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (2.995863, 1.782585, -1.295313)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (2.705248, 1.70311, -2.936243)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (2.627873, 1.683622, -2.926461)
+Hit registered at: (5.729892, 0.68087, -4.885488)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (5.408913, 1.104617, -6.239999)
+Reload bar shown, value: 0.0
+Filling bar, value: 0.02
+Filling bar, value: 0.03
+Filling bar, value: 0.05
+Filling bar, value: 0.07
+Filling bar, value: 0.08
+Filling bar, value: 0.1
+Filling bar, value: 0.12
+Filling bar, value: 0.13
+Filling bar, value: 0.15
+Filling bar, value: 0.17
+Filling bar, value: 0.18
+Filling bar, value: 0.2
+Filling bar, value: 0.22
+Filling bar, value: 0.23
+Filling bar, value: 0.25
+Filling bar, value: 0.27
+Filling bar, value: 0.28
+Filling bar, value: 0.3
+Filling bar, value: 0.32
+Filling bar, value: 0.33
+Filling bar, value: 0.35
+Filling bar, value: 0.37
+Filling bar, value: 0.38
+Filling bar, value: 0.4
+Filling bar, value: 0.42
+Filling bar, value: 0.43
+Filling bar, value: 0.45
+Filling bar, value: 0.47
+Filling bar, value: 0.48
+Filling bar, value: 0.5
+Filling bar, value: 0.52
+Filling bar, value: 0.53
+Filling bar, value: 0.55
+Filling bar, value: 0.57
+Filling bar, value: 0.58
+Filling bar, value: 0.6
+Filling bar, value: 0.62
+Filling bar, value: 0.63
+Filling bar, value: 0.65
+Filling bar, value: 0.67
+Filling bar, value: 0.68
+Filling bar, value: 0.7
+Filling bar, value: 0.72
+Filling bar, value: 0.73
+Filling bar, value: 0.75
+Filling bar, value: 0.77
+Filling bar, value: 0.78
+Filling bar, value: 0.8
+Filling bar, value: 0.82
+Filling bar, value: 0.83
+Filling bar, value: 0.85
+Filling bar, value: 0.87
+Filling bar, value: 0.88
+Filling bar, value: 0.9
+Filling bar, value: 0.92
+Filling bar, value: 0.93
+Filling bar, value: 0.95
+Filling bar, value: 0.97
+Filling bar, value: 0.98
+Filling bar, value: 1.0
+Filling bar, value: 1.02
+Filling bar, value: 1.03
+Filling bar, value: 1.05
+Filling bar, value: 1.07
+Filling bar, value: 1.08
+Filling bar, value: 1.1
+Filling bar, value: 1.12
+Filling bar, value: 1.13
+Filling bar, value: 1.15
+Filling bar, value: 1.17
+Filling bar, value: 1.18
+Filling bar, value: 1.2
+Filling bar, value: 1.22
+Filling bar, value: 1.23
+Filling bar, value: 1.25
+Filling bar, value: 1.27
+Filling bar, value: 1.28
+Filling bar, value: 1.3
+Filling bar, value: 1.32
+Filling bar, value: 1.33
+Filling bar, value: 1.35
+Filling bar, value: 1.37
+Filling bar, value: 1.38
+Filling bar, value: 1.4
+Filling bar, value: 1.42
+Filling bar, value: 1.43
+Filling bar, value: 1.45
+Filling bar, value: 1.47
+Filling bar, value: 1.48
+Filling bar, value: 1.5
+Filling bar, value: 1.52
+Filling bar, value: 1.53
+Filling bar, value: 1.55
+Filling bar, value: 1.57
+Filling bar, value: 1.58
+Filling bar, value: 1.6
+Filling bar, value: 1.62
+Filling bar, value: 1.63
+Filling bar, value: 1.65
+Filling bar, value: 1.67
+Filling bar, value: 1.68
+Filling bar, value: 1.7
+Filling bar, value: 1.72
+Filling bar, value: 1.73
+Filling bar, value: 1.75
+Filling bar, value: 1.77
+Filling bar, value: 1.78
+Filling bar, value: 1.8
+Filling bar, value: 1.82
+Filling bar, value: 1.83
+Filling bar, value: 1.85
+Filling bar, value: 1.87
+Filling bar, value: 1.88
+Filling bar, value: 1.9
+Filling bar, value: 1.92
+Filling bar, value: 1.93
+Filling bar, value: 1.95
+Filling bar, value: 1.97
+Filling bar, value: 1.98
+Filling bar, value: 2.0
+Filling bar, value: 2.0
+Reload done, magazine: 30
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (2.356913, 1.614143, -4.571126)
-Body entered: AmmoPack Groups: [&"ammo_pack"]
-Picked up ammo: 30
+Hit registered at: (8.136305, 1.502162, -14.81218)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (6.621194, 2.930878, 0.13172)
+Hit registered at: (9.055893, 1.840608, -15.4906)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (3.397525, 2.757687, -2.339246)
+Hit registered at: (10.00758, 1.860096, -15.79796)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (5.910736, 2.919972, 7.365299)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (6.055494, 2.609295, 7.332811)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (3.384154, 3.456118, -2.285407)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (6.008431, 2.757629, 7.348686)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (6.008431, 2.757629, 7.348686)
+Hit registered at: (11.5196, 1.938047, -16.2688)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (6.008007, 2.708187, 7.346886)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (3.785923, 3.03964, -2.396012)
+Hit registered at: (10.97364, 2.034656, -16.06869)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (3.785923, 3.03964, -2.396012)
+Hit registered at: (8.16144, 1.963611, -11.77734)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (3.853683, 3.03964, -2.411164)
+Hit registered at: (7.839346, 2.193275, -12.54309)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (3.853683, 3.03964, -2.411164)
+Hit registered at: (9.461775, 2.109979, -12.97369)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (9.452317, 2.1984, -13.00174)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (10.99564, 2.105119, -13.62346)
+Reload bar shown, value: 0.0
+Filling bar, value: 0.02
+Filling bar, value: 0.03
+Filling bar, value: 0.05
+Filling bar, value: 0.07
+Filling bar, value: 0.08
+Filling bar, value: 0.1
+Filling bar, value: 0.12
+Filling bar, value: 0.13
+Filling bar, value: 0.15
+Filling bar, value: 0.17
+Filling bar, value: 0.18
+Filling bar, value: 0.2
+Filling bar, value: 0.22
+Filling bar, value: 0.23
+Filling bar, value: 0.25
+Filling bar, value: 0.27
+Filling bar, value: 0.28
+Filling bar, value: 0.3
+Filling bar, value: 0.32
+Filling bar, value: 0.33
+Filling bar, value: 0.35
+Filling bar, value: 0.37
+Filling bar, value: 0.38
+Filling bar, value: 0.4
+Filling bar, value: 0.42
+Filling bar, value: 0.43
+Filling bar, value: 0.45
+Filling bar, value: 0.47
+Filling bar, value: 0.48
+Filling bar, value: 0.5
+Filling bar, value: 0.52
+Filling bar, value: 0.53
+Filling bar, value: 0.55
+Filling bar, value: 0.57
+Filling bar, value: 0.58
+Filling bar, value: 0.6
+Filling bar, value: 0.62
+Filling bar, value: 0.63
+Filling bar, value: 0.65
+Filling bar, value: 0.67
+Filling bar, value: 0.68
+Filling bar, value: 0.7
+Filling bar, value: 0.72
+Filling bar, value: 0.73
+Filling bar, value: 0.75
+Filling bar, value: 0.77
+Filling bar, value: 0.78
+Filling bar, value: 0.8
+Filling bar, value: 0.82
+Filling bar, value: 0.83
+Filling bar, value: 0.85
+Filling bar, value: 0.87
+Filling bar, value: 0.88
+Filling bar, value: 0.9
+Filling bar, value: 0.92
+Filling bar, value: 0.93
+Filling bar, value: 0.95
+Filling bar, value: 0.97
+Filling bar, value: 0.98
+Filling bar, value: 1.0
+Filling bar, value: 1.02
+Filling bar, value: 1.03
+Filling bar, value: 1.05
+Filling bar, value: 1.07
+Filling bar, value: 1.08
+Filling bar, value: 1.1
+Filling bar, value: 1.12
+Filling bar, value: 1.13
+Filling bar, value: 1.15
+Filling bar, value: 1.17
+Filling bar, value: 1.18
+Filling bar, value: 1.2
+Filling bar, value: 1.22
+Filling bar, value: 1.23
+Filling bar, value: 1.25
+Filling bar, value: 1.27
+Filling bar, value: 1.28
+Filling bar, value: 1.3
+Filling bar, value: 1.32
+Filling bar, value: 1.33
+Filling bar, value: 1.35
+Filling bar, value: 1.37
+Filling bar, value: 1.38
+Filling bar, value: 1.4
+Filling bar, value: 1.42
+Filling bar, value: 1.43
+Filling bar, value: 1.45
+Filling bar, value: 1.47
+Filling bar, value: 1.48
+Filling bar, value: 1.5
+Filling bar, value: 1.52
+Filling bar, value: 1.53
+Filling bar, value: 1.55
+Filling bar, value: 1.57
+Filling bar, value: 1.58
+Filling bar, value: 1.6
+Filling bar, value: 1.62
+Filling bar, value: 1.63
+Filling bar, value: 1.65
+Filling bar, value: 1.67
+Filling bar, value: 1.68
+Filling bar, value: 1.7
+Filling bar, value: 1.72
+Filling bar, value: 1.73
+Filling bar, value: 1.75
+Filling bar, value: 1.77
+Filling bar, value: 1.78
+Filling bar, value: 1.8
+Filling bar, value: 1.82
+Filling bar, value: 1.83
+Filling bar, value: 1.85
+Filling bar, value: 1.87
+Filling bar, value: 1.88
+Filling bar, value: 1.9
+Filling bar, value: 1.92
+Filling bar, value: 1.93
+Filling bar, value: 1.95
+Filling bar, value: 1.97
+Filling bar, value: 1.98
+Filling bar, value: 2.0
+Filling bar, value: 2.0
+Reload done, magazine: 30
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (5.853345, 2.204282, -13.54528)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (4.788749, 1.86516, -14.84895)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (3.416407, 1.874133, -15.92448)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (3.738326, 1.996409, -15.54224)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (2.6854, 1.996409, -16.94004)
+Reload bar shown, value: 0.0
+Filling bar, value: 0.02
+Filling bar, value: 0.03
+Filling bar, value: 0.05
+Filling bar, value: 0.07
+Filling bar, value: 0.08
+Filling bar, value: 0.1
+Filling bar, value: 0.12
+Filling bar, value: 0.13
+Filling bar, value: 0.15
+Filling bar, value: 0.17
+Filling bar, value: 0.18
+Filling bar, value: 0.2
+Filling bar, value: 0.22
+Filling bar, value: 0.23
+Filling bar, value: 0.25
+Filling bar, value: 0.27
+Filling bar, value: 0.28
+Filling bar, value: 0.3
+Filling bar, value: 0.32
+Filling bar, value: 0.33
+Filling bar, value: 0.35
+Filling bar, value: 0.37
+Filling bar, value: 0.38
+Filling bar, value: 0.4
+Filling bar, value: 0.42
+Filling bar, value: 0.43
+Filling bar, value: 0.45
+Filling bar, value: 0.47
+Filling bar, value: 0.48
+Filling bar, value: 0.5
+Filling bar, value: 0.52
+Filling bar, value: 0.53
+Filling bar, value: 0.55
+Filling bar, value: 0.57
+Filling bar, value: 0.58
+Filling bar, value: 0.6
+Filling bar, value: 0.62
+Filling bar, value: 0.63
+Filling bar, value: 0.65
+Filling bar, value: 0.67
+Filling bar, value: 0.68
+Filling bar, value: 0.7
+Filling bar, value: 0.72
+Filling bar, value: 0.73
+Filling bar, value: 0.75
+Filling bar, value: 0.77
+Filling bar, value: 0.78
+Filling bar, value: 0.8
+Filling bar, value: 0.82
+Filling bar, value: 0.83
+Filling bar, value: 0.85
+Filling bar, value: 0.87
+Filling bar, value: 0.88
+Filling bar, value: 0.9
+Filling bar, value: 0.92
+Filling bar, value: 0.93
+Filling bar, value: 0.95
+Filling bar, value: 0.97
+Filling bar, value: 0.98
+Filling bar, value: 1.0
+Filling bar, value: 1.02
+Filling bar, value: 1.03
+Filling bar, value: 1.05
+Filling bar, value: 1.07
+Filling bar, value: 1.08
+Filling bar, value: 1.1
+Filling bar, value: 1.12
+Filling bar, value: 1.13
+Filling bar, value: 1.15
+Filling bar, value: 1.17
+Filling bar, value: 1.18
+Filling bar, value: 1.2
+Filling bar, value: 1.22
+Filling bar, value: 1.23
+Filling bar, value: 1.25
+Filling bar, value: 1.27
+Filling bar, value: 1.28
+Filling bar, value: 1.3
+Filling bar, value: 1.32
+Filling bar, value: 1.33
+Filling bar, value: 1.35
+Filling bar, value: 1.37
+Filling bar, value: 1.38
+Filling bar, value: 1.4
+Filling bar, value: 1.42
+Filling bar, value: 1.43
+Filling bar, value: 1.45
+Filling bar, value: 1.47
+Filling bar, value: 1.48
+Filling bar, value: 1.5
+Filling bar, value: 1.52
+Filling bar, value: 1.53
+Filling bar, value: 1.55
+Filling bar, value: 1.57
+Filling bar, value: 1.58
+Filling bar, value: 1.6
+Filling bar, value: 1.62
+Filling bar, value: 1.63
+Filling bar, value: 1.65
+Filling bar, value: 1.67
+Filling bar, value: 1.68
+Filling bar, value: 1.7
+Filling bar, value: 1.72
+Filling bar, value: 1.73
+Filling bar, value: 1.75
+Filling bar, value: 1.77
+Filling bar, value: 1.78
+Filling bar, value: 1.8
+Filling bar, value: 1.82
+Filling bar, value: 1.83
+Filling bar, value: 1.85
+Filling bar, value: 1.87
+Filling bar, value: 1.88
+Filling bar, value: 1.9
+Filling bar, value: 1.92
+Filling bar, value: 1.93
+Filling bar, value: 1.95
+Filling bar, value: 1.97
+Filling bar, value: 1.98
+Filling bar, value: 2.0
+Filling bar, value: 2.0
+Reload done, magazine: 30
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (10.09338, 2.226547, -29.96866)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (10.13784, 1.896647, -29.43561)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (10.03025, 1.233203, -29.80174)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (11.41311, 1.844663, -29.73721)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (12.49717, 2.227861, -29.63157)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (13.83225, 2.375183, -29.53882)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (11.61595, 1.69829, -30.08647)
 XR: Clearing primary interface
 XR: Removed interface "Native mobile"
 XR: Removed interface "OpenXR"

@@ -75,6 +75,7 @@ func _ready():
 		enemy.player = self
 	
 
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		$Head.rotate_y(-event.relative.x * mouse_sensitivity)
@@ -84,9 +85,9 @@ func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_H:
 		take_damage(10.0)
 	
-	if event is InputEventKey and event.pressed and event.keycode == KEY_R and can_reload and current_magazine < max_magazine:
+	if event.is_action_pressed("reload") and can_reload:
 		reload()
-
+	
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -152,23 +153,29 @@ func _physics_process(delta):
 			knockback_velocity = Vector3.ZERO
 	
 	move_and_slide()
-	if Input.is_action_just_pressed("reload") and current_magazine < max_magazine and not is_reloading:
-		is_reloading = true
-		reload_progress = 0.0
-		reload_bar.show()
-		print("Reload bar shown, value: ", reload_bar.value)
-	
 	if is_reloading:
 		reload_progress += delta
 		reload_bar.value = reload_progress
-		print("Filling bar, value: ", reload_bar.value)
 		if reload_progress >= reload_time:
-			current_magazine = max_magazine
+			var ammo_needed = max_magazine - current_magazine
+			var ammo_to_load = min(ammo_needed, current_reserve)
+			current_magazine += ammo_to_load
+			current_reserve -= ammo_to_load
+			update_ammo_display()
 			is_reloading = false
+			can_reload = true  # Reset can_reload here
 			reload_bar.value = 0.0
 			reload_bar.hide()
-			print("Reload done, magazine: ", current_magazine)
-
+func reload():
+	if current_reserve > 0 and current_magazine < max_magazine and not is_reloading:
+		is_reloading = true
+		can_reload = false
+		reload_progress = 0.0
+		reload_bar.value = 0.0
+		reload_bar.show()
+		$Head/Camera3D/Gun/ReloadPlayer.play()
+		
+		
 func _on_footstep_timer_timeout():
 	var input_dir = Vector3.ZERO
 	if Input.is_key_pressed(KEY_A): input_dir.x = -1
@@ -211,21 +218,16 @@ func take_damage(amount: float):
 	if current_health <= 0:
 		die()
 
-func reload():
-	if current_reserve > 0:
-		can_reload = false
-		$Head/Camera3D/Gun/ReloadPlayer.play()
-		await get_tree().create_timer(reload_time).timeout
-		var ammo_needed = max_magazine - current_magazine
-		var ammo_to_load = min(ammo_needed, current_reserve)
-		current_magazine += ammo_to_load
-		current_reserve -= ammo_to_load
-		update_ammo_display()
-		can_reload = true
+
 func add_ammo(amount: int):
 	current_reserve += amount
-	current_reserve = clamp(current_reserve, 0, total_reserve_ammo) # Cap reserve
+	current_reserve = clamp(current_reserve, 0, total_reserve_ammo)
 	update_ammo_display()
+	ammo_label.add_theme_color_override("font_color", Color(0, 1, 0)) # Green
+	await get_tree().create_timer(1.0).timeout
+	ammo_label.remove_theme_color_override("font_color") # Back to default
+	
+	
 func update_ammo_display():
 	ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
 	

@@ -195,6 +195,7 @@ expand_mode = 1
 
 [node name="ReloadBar" type="ProgressBar" parent="HUD/HealthBarContainer"]
 visible = false
+layout_mode = 0
 offset_left = 496.0
 offset_top = 584.0
 offset_right = 656.0
@@ -202,8 +203,7 @@ offset_bottom = 611.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ycdy4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dg77c")
 max_value = 2.0
-indeterminate = true
-editor_preview_indeterminate = false
+show_percentage = false
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 
