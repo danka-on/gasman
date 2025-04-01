@@ -4,12 +4,12 @@ TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2159207550208
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2362216132896
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2159207550208
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2362216132896
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 Devices:
   #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
@@ -132,44 +132,3 @@ Loading resource: res://Explosion.tscn
 Loading resource: res://explosion.gd
 Loading resource: res://sounds/explosion2.wav
 Loading resource: res://.godot/imported/explosion2.wav-27a5b8ff2a958050a1b6e4834b53eb4b.sample
-Loading resource: res://player.tscn
-Loading resource: res://player.gd
-Loading resource: res://bullet.tscn
-Loading resource: res://bullet.gd
-Loading resource: res://hit_effect.tscn
-Loading resource: res://hit_effect.gd
-Loading resource: res://GameOver.tscn
-Loading resource: res://game_over.gd
-Loading resource: res://sounds/gunshot.wav
-Loading resource: res://.godot/imported/gunshot.wav-0695b62083eed8c2c8c2e79d47d751d9.sample
-Loading resource: res://sounds/reload sound.wav
-Loading resource: res://.godot/imported/reload sound.wav-9629ec323c8d58e49bad73a133804650.sample
-Loading resource: res://sounds/footstep.wav
-Loading resource: res://.godot/imported/footstep.wav-f25391cd69eebc9aed90a6be7be20bc0.sample
-Loading resource: res://sounds/thud.wav
-Loading resource: res://.godot/imported/thud.wav-5c1440042cf12b8239d55f5de88a1915.sample
-Loading resource: res://sounds/jumpsound.wav
-Loading resource: res://.godot/imported/jumpsound.wav-cd89217de53b0c9d70a5de86a2ff1ea2.sample
-Loading resource: res://sounds/fart.wav
-Loading resource: res://.godot/imported/fart.wav-821f7ceca4dfd2afac027ad4c590aabf.sample
-Loading resource: res://sounds/hitsound.wav
-Loading resource: res://.godot/imported/hitsound.wav-bb4c90e5fac0abe837860e3914ab25b5.sample
-Loading resource: res://sounds/hurt.mp3
-Loading resource: res://.godot/imported/hurt.mp3-d6b3159ec58559cd2cccbb1b52720f4a.mp3str
-Loading resource: res://sounds/healthsound.wav
-Loading resource: res://.godot/imported/healthsound.wav-8942fb0b6f251e6a14694165a9d94d57.sample
-Loading resource: res://sounds/ammunitions.wav
-Loading resource: res://.godot/imported/ammunitions.wav-d23cdd2828d3a3e6dd4c75af0b39551f.sample
-Loading resource: res://textures/aim.png
-Loading resource: res://.godot/imported/aim.png-2f0023fcc7130f4224555649a9904e49.ctex
-ERROR: Node not found: "/root/Main/Enemy" (absolute path attempted from "/root/Main/Player").
-   at: get_node (scene/main/node.cpp:1874)
-ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
-   at: connect (core/object/object.cpp:1451)
-ERROR: Index p_bounce = 1 is out of bounds (motion_results.size() = 1).
-   at: _get_slide_collision (scene/3d/physics/character_body_3d.cpp:704)
-ERROR: Index p_bounce = 1 is out of bounds (motion_results.size() = 1).
-   at: _get_slide_collision (scene/3d/physics/character_body_3d.cpp:704)
-XR: Clearing primary interface
-XR: Removed interface "Native mobile"
-XR: Removed interface "OpenXR"

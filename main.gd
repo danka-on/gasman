@@ -21,5 +21,5 @@ func spawn_enemy():
 	var random_distance = randf_range(spawn_radius * 0.5, spawn_radius)
 	var spawn_x = cos(random_angle) * random_distance
 	var spawn_z = sin(random_angle) * random_distance
-	enemy.global_transform.origin = Vector3(spawn_x, 0, spawn_z)
+	enemy.global_transform.origin = Vector3(spawn_x, 1.5 , spawn_z)
 	enemy.player = player
