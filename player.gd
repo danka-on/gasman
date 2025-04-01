@@ -59,6 +59,9 @@ var reload_progress : float = 0.0
 @export var sprint_pitch : float = 1.5
 @export var footstep_delay : float = 0.3
 @export var footstep_volume : float = 0.0
+@export var regular_sprint_pitch : float = 1.4  # Adjustable in Inspector for regular sprint
+
+
 @onready var ammo_sound = $AmmoSound
 @onready var heal_sound = $HealSound
 
@@ -173,11 +176,20 @@ func _physics_process(delta):
             else:
                 print("GasBar missing during boost!")
     
-    # Sprint/boost sound logic
-    if (sprinting or is_boosting) and not sprint_sound.playing:
-        sprint_sound.play()
-    elif not (sprinting or is_boosting) and sprint_sound.playing:
-        sprint_sound.stop()
+    # Sound logic
+    if (gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode)) or is_boosting:
+        if not sprint_sound.playing:
+            sprint_sound.play()
+            print("Playing SprintSound for gas sprint/boost")
+    elif sprinting and not $FootstepPlayer.playing:
+        $FootstepPlayer.pitch_scale = regular_sprint_pitch  # Regular sprint sound
+        $FootstepPlayer.play()
+        print("Playing FootstepPlayer for regular sprint")
+    else:
+        if sprint_sound.playing and not (gas_sprint_enabled or is_boosting):
+            sprint_sound.stop()
+        if $FootstepPlayer.playing and not (sprinting or is_on_floor()):
+            $FootstepPlayer.stop()
     
     if not is_on_floor():
         velocity.y -= gravity * delta
@@ -215,7 +227,7 @@ func _physics_process(delta):
         
         if is_on_floor() and $FootstepTimer.is_stopped() and not $FootstepPlayer.playing:
             $FootstepPlayer.volume_db = footstep_volume
-            $FootstepPlayer.pitch_scale = sprint_pitch if sprinting else base_walk_pitch
+            $FootstepPlayer.pitch_scale = regular_sprint_pitch if sprinting and not gas_sprint_enabled else base_walk_pitch
             $FootstepPlayer.play()
             $FootstepTimer.start()
     else:
