@@ -10,7 +10,7 @@ size = Vector3(0.998535, 0.522106, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_texture = ExtResource("1_0xm2m")
-uv1_scale = Vector3(5, 5, 5)
+uv1_scale = Vector3(25, 25, 25)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
 
@@ -28,7 +28,7 @@ bg_color = Color(0.372549, 0.8, 0.164706, 1)
 script = ExtResource("1_kek77")
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
@@ -170,3 +170,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1.00101, 0, 0, 0, 11.815, 0, 0, 0, 33.2423, -285.912, 5.99796, -4.03726)
+size = Vector3(1, 2.02391, 2.12262)
