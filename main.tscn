@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3iyygqly2ifv"]
+[gd_scene load_steps=16 format=3 uid="uid://c3iyygqly2ifv"]
 
 [ext_resource type="Texture2D" uid="uid://50r516c1u5lb" path="res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dqqprr0ave5pu" path="res://main.gd" id="1_kek77"]
 [ext_resource type="PackedScene" uid="uid://bvalrrwlp6wm" path="res://player.tscn" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bgrkkj0jcpclr" path="res://qwantani_mid_morning_1k.hdr" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c01ofxgvfomno" path="res://textures/aim.png" id="11_dg77c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
@@ -23,6 +24,17 @@ bg_color = Color(0.207843, 0.709804, 0.027451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
 bg_color = Color(0.372549, 0.8, 0.164706, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7mycd"]
+panorama = ExtResource("5_lquwl")
+
+[sub_resource type="Sky" id="Sky_272bh"]
+sky_material = SubResource("PanoramaSkyMaterial_7mycd")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+background_energy_multiplier = 0.45
+sky = SubResource("Sky_272bh")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_kek77")
@@ -173,6 +185,5 @@ grow_vertical = 2
 
 [node name="Level" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1.00101, 0, 0, 0, 11.815, 0, 0, 0, 33.2423, -285.912, 5.99796, -4.03726)
-size = Vector3(1, 2.02391, 2.12262)
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
