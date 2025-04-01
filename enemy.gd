@@ -52,26 +52,26 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.z = 0
 	if is_instance_valid(player) and current_health > 0:
-		var dist = global_transform.origin.distance_to(player.global_transform.origin)
-		if dist < 20.0:
-			var direction = (player.global_transform.origin - global_transform.origin).normalized()
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
-			for i in get_slide_collision_count():
-				var collision = get_slide_collision(i)
-				if is_instance_valid(collision):
-					var collider = collision.get_collider()
-					if is_instance_valid(collider) and collider == player and can_damage:
-						if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
-							player.take_damage(damage)
-							last_damage_time = Time.get_ticks_msec() / 1000.0
-							can_damage = false
-							await get_tree().create_timer(damage_cooldown).timeout
-							can_damage = true
-			move_and_slide()
-		else:
-			velocity.x = 0
-			velocity.z = 0
+		var direction = (player.global_transform.origin - global_transform.origin).normalized()
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if is_instance_valid(collision):
+				var collider = collision.get_collider()
+				if is_instance_valid(collider) and collider == player and can_damage:
+					if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
+						player.take_damage(damage)
+						last_damage_time = Time.get_ticks_msec() / 1000.0
+						can_damage = false
+						await get_tree().create_timer(damage_cooldown).timeout
+						can_damage = true
+	else:
+		velocity.x = 0
+		velocity.z = 0
+	move_and_slide()
+
+ 
 func take_damage(amount: float):
 	current_health -= amount
 	current_health = clamp(current_health, 0, max_health)
