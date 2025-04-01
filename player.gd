@@ -24,6 +24,9 @@ var double_tap_window : float = 0.3          # Time window for double-tap (in se
 var gas_sprint_enabled : bool = false        # Flag for gas-powered sprint
 var was_shift_released : bool = true
 
+var last_jump_time : float = 0.0      # Time of the last jump
+var gas_jump_delay : float = 0.2
+
 @export var walk_speed : float = 5.0
 @export var sprint_speed : float = 10.0
 @onready var gas_bar = $"../HUD/GasBar"
@@ -148,8 +151,9 @@ func _physics_process(delta):
     var move_speed = walk_speed  # Default to walking speed
     input_dir = Vector3.ZERO
     
-    # Boosting: double jump + holding Spacebar
-    is_boosting = jumps_left == 0 and Input.is_action_pressed("ui_accept") and (current_gas > 0 || god_mode)
+    # Boosting: double jump + holding Spacebar with delay
+    var current_time = Time.get_ticks_msec() / 1000.0
+    is_boosting = jumps_left == 0 and Input.is_action_pressed("ui_accept") and (current_gas > 0 || god_mode) and (current_time - last_jump_time > gas_jump_delay)
     
     # Gas-powered sprint: double-tap Shift + hold
     if gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode):
@@ -167,7 +171,7 @@ func _physics_process(delta):
     
     # Handle boosting
     if is_boosting:
-        velocity.y += boost_thrust * delta  # Boost when holding Spacebar after double jump
+        velocity.y += boost_thrust * delta  # Boost when holding Spacebar after delay
         if not god_mode:
             current_gas -= boost_gas_rate * delta
             current_gas = clamp(current_gas, 0, max_gas)
@@ -209,6 +213,7 @@ func _physics_process(delta):
         else:
             $AirJumpPlayer.play()
         jumps_left -= 1
+        last_jump_time = Time.get_ticks_msec() / 1000.0  # Record jump time
     
     if Input.is_key_pressed(KEY_A):
         input_dir.x = -1
