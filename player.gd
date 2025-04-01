@@ -18,6 +18,10 @@ var is_boosting : bool = false # Track boost state
 var boost_thrust : float = 10.0 # Upward force per second
 var boost_gas_rate : float = 30.0 # Gas drain per second for boost
 
+# New export variables for gas consumption
+@export var gas_sprint_consumption_rate : float = 20.0  # Gas per second for gas sprint
+@export var gas_jump_consumption_rate : float = 30.0   # Gas per second for gas jump
+
 @export var gas_sprint_speed : float = 15.0  # Faster speed for gas-powered sprint
 var last_shift_press_time : float = 0.0      # Time of the last Shift press
 var double_tap_window : float = 0.3          # Time window for double-tap (in seconds)
@@ -30,7 +34,7 @@ var gas_jump_delay : float = 0.2
 @export var walk_speed : float = 5.0
 @export var sprint_speed : float = 10.0
 @onready var gas_bar = $"../HUD/GasBar"
-var max_gas : float = 100.0
+var max_gas : float = 300.0
 var current_gas : float = max_gas
 var gas_consumption_rate : float = 20.0 # Gas per second while sprinting
 var input_dir : Vector3 = Vector3.ZERO # Added declaration
@@ -159,7 +163,7 @@ func _physics_process(delta):
     if gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode):
         move_speed = gas_sprint_speed
         if not god_mode:
-            current_gas -= gas_consumption_rate * delta
+            current_gas -= gas_sprint_consumption_rate * delta  # Use new variable
             current_gas = clamp(current_gas, 0, max_gas)
             if gas_bar:
                 gas_bar.value = current_gas
@@ -173,7 +177,7 @@ func _physics_process(delta):
     if is_boosting:
         velocity.y += boost_thrust * delta  # Boost when holding Spacebar after delay
         if not god_mode:
-            current_gas -= boost_gas_rate * delta
+            current_gas -= gas_jump_consumption_rate * delta  # Use new variable
             current_gas = clamp(current_gas, 0, max_gas)
             if gas_bar:
                 gas_bar.value = current_gas

@@ -18,7 +18,7 @@ uv1_scale = Vector3(25, 25, 25)
 [sub_resource type="Theme" id="Theme_272bh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
-bg_color = Color(0.207843, 0.709804, 0.027451, 1)
+bg_color = Color(0.501961, 0, 0.0705882, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
 
@@ -77,6 +77,7 @@ offset_right = 200.0
 grow_vertical = 0
 theme = SubResource("Theme_272bh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5vw27")
+show_percentage = false
 
 [node name="AmmoLabel" type="Label" parent="HUD/HealthBarContainer"]
 layout_mode = 0
@@ -183,6 +184,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GasBar" type="ProgressBar" parent="HUD"]
+modulate = Color(0, 0.897477, 0.301866, 1)
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.988
