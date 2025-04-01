@@ -37,11 +37,12 @@ var reload_progress : float = 0.0
 @export var sprint_pitch : float = 1.5
 @export var footstep_delay : float = 0.3
 @export var footstep_volume : float = 0.0
+@onready var ammo_sound = $AmmoSound
+@onready var heal_sound = $HealSound
 
 # Health variables
 @export var max_health : float = 100.0
 var current_health : float = max_health
-@onready var heal_sound = $HealSound
 
 # Score and kills
 var score : int = 0
@@ -228,7 +229,8 @@ func add_ammo(amount: int):
 	current_reserve += amount
 	current_reserve = clamp(current_reserve, 0, total_reserve_ammo)
 	update_ammo_display()
-	ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Green
+	ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Blue
+	ammo_sound.play()
 	await get_tree().create_timer(1.0).timeout
 	ammo_label.remove_theme_color_override("font_color") # Back to default
 	

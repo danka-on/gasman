@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvalrrwlp6wm"]
+[gd_scene load_steps=19 format=3 uid="uid://bvalrrwlp6wm"]
 
 [ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://player.gd" id="1_b26j0"]
 [ext_resource type="AudioStream" uid="uid://cy4a0k4o6hesa" path="res://sounds/gunshot.wav" id="2_n7ghd"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bj5167lim3acj" path="res://sounds/hitsound.wav" id="8_u1c27"]
 [ext_resource type="AudioStream" uid="uid://dv8oetxe80e2" path="res://sounds/hurt.mp3" id="9_op7ga"]
 [ext_resource type="AudioStream" uid="uid://cjfp3lfqbtxh6" path="res://sounds/healthsound.wav" id="10_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://b6cif01bcl82" path="res://sounds/ammunitions.wav" id="11_nvl01"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
 
@@ -112,6 +113,10 @@ stream = ExtResource("9_op7ga")
 
 [node name="HealSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_n7ghd")
+max_distance = 10.0
+
+[node name="AmmoSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_nvl01")
 max_distance = 10.0
 
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
