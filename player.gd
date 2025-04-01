@@ -23,7 +23,7 @@ var gas_consumption_rate : float = 20.0 # Gas per second while sprinting
 var input_dir : Vector3 = Vector3.ZERO # Added declaration
 
 var target_velocity : Vector3 = Vector3.ZERO
-
+@onready var sprint_sound = $SprintSound
 
 
 # Shooting variables
@@ -112,7 +112,15 @@ func _physics_process(delta):
     if sprinting:
         current_gas -= gas_consumption_rate * delta
         current_gas = clamp(current_gas, 0, max_gas)
-        gas_bar.value = current_gas
+        if gas_bar:
+            gas_bar.value = current_gas
+        else:
+            print("GasBar missing during sprint!")
+        if not sprint_sound.playing:
+            sprint_sound.play()
+    else:
+        if sprint_sound.playing:
+            sprint_sound.stop()
     
     if not is_on_floor():
         velocity.y -= gravity * delta
