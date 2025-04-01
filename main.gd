@@ -13,8 +13,9 @@ func _ready():
     spawn_timer.start()
 
 func _on_spawn_timer_timeout():
-    spawn_enemy()
-
+    if enemy_count < 50:
+        spawn_enemy()
+        
 func update_enemy_count():
     enemy_count_label.text = "Enemies: " + str(enemy_count)
 
