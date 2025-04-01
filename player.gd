@@ -41,6 +41,7 @@ var reload_progress : float = 0.0
 # Health variables
 @export var max_health : float = 100.0
 var current_health : float = max_health
+@onready var heal_sound = $HealSound
 
 # Score and kills
 var score : int = 0
@@ -211,10 +212,13 @@ func shoot():
 func take_damage(amount: float):
 	current_health -= amount
 	current_health = clamp(current_health, 0, max_health)
-	damage_sound.play()
+	if amount > 0: # Only play damage sound for harm
+		damage_sound.play()
+	elif amount < 0: # Play heal sound for healing
+		heal_sound.play()
 	if current_health <= 0:
-		hide() # Optional—hide player
-		set_physics_process(false) # Stop movement
+		hide()
+		set_physics_process(false)
 	health_bar.value = current_health
 	if current_health <= 0:
 		die()
