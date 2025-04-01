@@ -34,7 +34,7 @@ albedo_color = Color(1, 0.839216, 0, 1)
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 25
 script = ExtResource("1_b26j0")
-sprint_speed = 25.0
+gas_sprint_speed = 25.0
 bullet_speed = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

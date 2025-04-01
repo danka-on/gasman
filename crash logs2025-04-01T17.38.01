@@ -4,12 +4,12 @@ TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2619718304176
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2305061268288
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2619718304176
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2305061268288
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 Devices:
   #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
@@ -168,15 +168,405 @@ Loading resource: res://qwantani_mid_morning_1k.hdr
 Loading resource: res://.godot/imported/qwantani_mid_morning_1k.hdr-b958049d04b04b2afb62ee69f5830d92.bptc.ctex
 Loading resource: res://textures/aim.png
 Loading resource: res://.godot/imported/aim.png-2f0023fcc7130f4224555649a9904e49.ctex
-ERROR: Node not found: "res://enemy.tscn" (relative to "/root/Main/Player").
-   at: get_node (scene/main/node.cpp:1877)
 GasBar found!
 ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
    at: connect (core/object/object.cpp:1451)
-Shift released - gas sprint disabled
-Shift released - gas sprint disabled
-Gas sprint enabled via double-tap!
-Shift released - gas sprint disabled
+Jumped: Jumps left = 1
+Jumped: Jumps left = 0
+Boosting active: Gas = 99.5
+Sprint sound playing (boost)
+Boosting active: Gas = 99.0
+Sprint sound stopped
+Boosting active: Gas = 98.5
+Sprint sound playing (boost)
+Boosting active: Gas = 98.0
+Sprint sound stopped
+Boosting active: Gas = 97.5
+Sprint sound playing (boost)
+Boosting active: Gas = 97.0
+Sprint sound stopped
+Boosting active: Gas = 96.5
+Sprint sound playing (boost)
+Boosting active: Gas = 96.0
+Sprint sound stopped
+Boosting active: Gas = 95.5
+Sprint sound playing (boost)
+Boosting active: Gas = 95.0
+Sprint sound stopped
+Boosting active: Gas = 94.5
+Sprint sound playing (boost)
+Boosting active: Gas = 94.0
+Sprint sound stopped
+Boosting active: Gas = 93.5
+Sprint sound playing (boost)
+Boosting active: Gas = 93.0
+Sprint sound stopped
+Boosting active: Gas = 92.5
+Sprint sound playing (boost)
+Boosting active: Gas = 92.0
+Sprint sound stopped
+Boosting active: Gas = 91.5
+Sprint sound playing (boost)
+Boosting active: Gas = 91.0
+Sprint sound stopped
+Boosting active: Gas = 90.5
+Sprint sound playing (boost)
+Boosting active: Gas = 90.0
+Sprint sound stopped
+Boosting active: Gas = 89.5
+Sprint sound playing (boost)
+Boosting active: Gas = 89.0
+Sprint sound stopped
+Boosting active: Gas = 88.5
+Sprint sound playing (boost)
+Boosting active: Gas = 88.0
+Sprint sound stopped
+Boosting active: Gas = 87.5
+Sprint sound playing (boost)
+Boosting active: Gas = 87.0
+Sprint sound stopped
+Boosting active: Gas = 86.5
+Sprint sound playing (boost)
+Boosting active: Gas = 86.0
+Sprint sound stopped
+Boosting active: Gas = 85.5
+Sprint sound playing (boost)
+Boosting active: Gas = 85.0
+Sprint sound stopped
+Boosting active: Gas = 84.5
+Sprint sound playing (boost)
+Boosting active: Gas = 84.0
+Sprint sound stopped
+Boosting active: Gas = 83.5
+Sprint sound playing (boost)
+Boosting active: Gas = 83.0
+Sprint sound stopped
+Boosting active: Gas = 82.5
+Sprint sound playing (boost)
+Boosting active: Gas = 82.0
+Sprint sound stopped
+Boosting active: Gas = 81.5
+Sprint sound playing (boost)
+Boosting active: Gas = 81.0
+Sprint sound stopped
+Boosting active: Gas = 80.5
+Sprint sound playing (boost)
+Boosting active: Gas = 80.0
+Sprint sound stopped
+Boosting active: Gas = 79.5
+Sprint sound playing (boost)
+Boosting active: Gas = 79.0
+Sprint sound stopped
+Boosting active: Gas = 78.5
+Sprint sound playing (boost)
+Boosting active: Gas = 78.0
+Sprint sound stopped
+Boosting active: Gas = 77.5
+Sprint sound playing (boost)
+Boosting active: Gas = 77.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Gas sprint deactivated
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Gas sprint activated!
+Sprint sound stopped
+Gas sprint deactivated
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Gas sprint deactivated
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Gas sprint activated!
+Sprint sound stopped
+Gas sprint deactivated
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Gas sprint deactivated
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Gas sprint activated!
+Gas sprint deactivated
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Gas sprint deactivated
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Regular sprint active: Speed = 10.0
+Sprint sound stopped
+Regular sprint active: Speed = 10.0
+Sprint sound playing (regular sprint)
+Sprint sound stopped
 XR: Clearing primary interface
 XR: Removed interface "Native mobile"
 XR: Removed interface "OpenXR"

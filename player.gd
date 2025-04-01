@@ -18,6 +18,12 @@ var is_boosting : bool = false # Track boost state
 var boost_thrust : float = 10.0 # Upward force per second
 var boost_gas_rate : float = 30.0 # Gas drain per second for boost
 
+@export var gas_sprint_speed : float = 15.0  # Faster speed for gas-powered sprint
+var last_shift_press_time : float = 0.0      # Time of the last Shift press
+var double_tap_window : float = 0.3          # Time window for double-tap (in seconds)
+var gas_sprint_enabled : bool = false        # Flag for gas-powered sprint
+var was_shift_released : bool = true
+
 @export var walk_speed : float = 5.0
 @export var sprint_speed : float = 10.0
 @onready var gas_bar = $"../HUD/GasBar"
@@ -104,6 +110,8 @@ func _ready():
         current_magazine = max_magazine
         current_reserve = total_reserve_ammo
 func _input(event):
+    
+    
     if event is InputEventMouseMotion:
         $Head.rotate_y(-event.relative.x * mouse_sensitivity)
         $Head/Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
@@ -115,25 +123,48 @@ func _input(event):
     if event.is_action_pressed("reload") and can_reload:
         reload()
     
+    # Double-tap Shift detection
+    if event is InputEventKey and event.keycode == KEY_SHIFT:
+        if event.pressed:
+            # Only process a new press if Shift was released since the last one
+            if was_shift_released:
+                var current_time = Time.get_ticks_msec() / 1000.0  # Current time in seconds
+                # Check if this press is within the double-tap window of the last press
+                if current_time - last_shift_press_time <= double_tap_window and last_shift_press_time > 0:
+                    gas_sprint_enabled = true
+                    print("Gas sprint enabled via double-tap!")
+                # Update the last press time and mark Shift as pressed
+                last_shift_press_time = current_time
+                was_shift_released = false
+        else:  # Shift was released
+            was_shift_released = true
+            gas_sprint_enabled = false
+            print("Shift released - gas sprint disabled")
 func _physics_process(delta):
-    var sprinting = Input.is_key_pressed(KEY_SHIFT) and (current_gas > 0 || god_mode)
-    var move_speed = sprint_speed if sprinting else walk_speed
+    var sprinting = Input.is_key_pressed(KEY_SHIFT)  # Check if Shift is held
+    var move_speed = walk_speed  # Default to walking speed
     input_dir = Vector3.ZERO
     
     # Boosting: double jump + holding Spacebar
     is_boosting = jumps_left == 0 and Input.is_action_pressed("ui_accept") and (current_gas > 0 || god_mode)
     
-    if sprinting and not god_mode:
-        current_gas -= gas_consumption_rate * delta
-        current_gas = clamp(current_gas, 0, max_gas)
-        if gas_bar:
-            gas_bar.value = current_gas
-        else:
-            print("GasBar missing during sprint!")
-        if not sprint_sound.playing:
-            sprint_sound.play()
-    elif is_boosting:
-        velocity.y += boost_thrust * delta # Always boost when holding Spacebar after double jump
+    # Gas-powered sprint: double-tap Shift + hold
+    if gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode):
+        move_speed = gas_sprint_speed
+        if not god_mode:
+            current_gas -= gas_consumption_rate * delta
+            current_gas = clamp(current_gas, 0, max_gas)
+            if gas_bar:
+                gas_bar.value = current_gas
+            else:
+                print("GasBar missing during gas sprint!")
+    # Regular sprint: single hold Shift
+    elif sprinting:
+        move_speed = sprint_speed  # No gas consumption
+    
+    # Handle boosting
+    if is_boosting:
+        velocity.y += boost_thrust * delta  # Boost when holding Spacebar after double jump
         if not god_mode:
             current_gas -= boost_gas_rate * delta
             current_gas = clamp(current_gas, 0, max_gas)
@@ -141,11 +172,12 @@ func _physics_process(delta):
                 gas_bar.value = current_gas
             else:
                 print("GasBar missing during boost!")
-        if not sprint_sound.playing:
-            sprint_sound.play()
-    else:
-        if sprint_sound.playing:
-            sprint_sound.stop()
+    
+    # Sprint/boost sound logic
+    if (sprinting or is_boosting) and not sprint_sound.playing:
+        sprint_sound.play()
+    elif not (sprinting or is_boosting) and sprint_sound.playing:
+        sprint_sound.stop()
     
     if not is_on_floor():
         velocity.y -= gravity * delta
