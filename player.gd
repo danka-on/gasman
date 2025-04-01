@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # Movement variables
 
-
+@export var god_mode : bool = false # God Mode toggle in Inspector
 
 var gravity = 9.8
 var mouse_sensitivity = 0.002
@@ -13,6 +13,10 @@ var was_in_air = false
 var knockback_velocity : Vector3 = Vector3.ZERO
 var knockback_duration : float = 0.0 # Time left for knockback
 var knockback_timer : float = 0.0
+
+var is_boosting : bool = false # Track boost state
+var boost_thrust : float = 10.0 # Upward force per second
+var boost_gas_rate : float = 30.0 # Gas drain per second for boost
 
 @export var walk_speed : float = 5.0
 @export var sprint_speed : float = 10.0
@@ -81,9 +85,12 @@ func _ready():
     $FootstepPlayer.volume_db = footstep_volume
     health_bar.max_value = max_health
     health_bar.value = current_health
-    gas_bar.max_value = max_gas
-    gas_bar.value = current_gas
-
+    if gas_bar:
+        gas_bar.max_value = max_gas
+        gas_bar.value = current_gas
+        print("GasBar found!")
+    else:
+        print("Error: GasBar not found at /root/Main/HUD/HealthBarContainer/GasBar!")
     update_ammo_display()
     if pickup_area:
         pickup_area.connect("body_entered", _on_pickup_area_body_entered)
@@ -91,7 +98,11 @@ func _ready():
         print("Error: PickupArea missing!")
     if enemy:
         enemy.player = self
-
+    if god_mode:
+        current_health = max_health
+        current_gas = max_gas
+        current_magazine = max_magazine
+        current_reserve = total_reserve_ammo
 func _input(event):
     if event is InputEventMouseMotion:
         $Head.rotate_y(-event.relative.x * mouse_sensitivity)
@@ -105,17 +116,31 @@ func _input(event):
         reload()
     
 func _physics_process(delta):
-    var sprinting = Input.is_key_pressed(KEY_SHIFT) and current_gas > 0
+    var sprinting = Input.is_key_pressed(KEY_SHIFT) and (current_gas > 0 || god_mode)
     var move_speed = sprint_speed if sprinting else walk_speed
     input_dir = Vector3.ZERO
     
-    if sprinting:
+    # Boosting: double jump + holding Spacebar
+    is_boosting = jumps_left == 0 and Input.is_action_pressed("ui_accept") and (current_gas > 0 || god_mode)
+    
+    if sprinting and not god_mode:
         current_gas -= gas_consumption_rate * delta
         current_gas = clamp(current_gas, 0, max_gas)
         if gas_bar:
             gas_bar.value = current_gas
         else:
             print("GasBar missing during sprint!")
+        if not sprint_sound.playing:
+            sprint_sound.play()
+    elif is_boosting:
+        velocity.y += boost_thrust * delta # Always boost when holding Spacebar after double jump
+        if not god_mode:
+            current_gas -= boost_gas_rate * delta
+            current_gas = clamp(current_gas, 0, max_gas)
+            if gas_bar:
+                gas_bar.value = current_gas
+            else:
+                print("GasBar missing during boost!")
         if not sprint_sound.playing:
             sprint_sound.play()
     else:
@@ -141,7 +166,6 @@ func _physics_process(delta):
             $AirJumpPlayer.play()
         jumps_left -= 1
     
-    # Movement input
     if Input.is_key_pressed(KEY_A):
         input_dir.x = -1
     elif Input.is_key_pressed(KEY_D):
@@ -168,10 +192,9 @@ func _physics_process(delta):
         if $FootstepPlayer.playing:
             $FootstepPlayer.stop()
     
-    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot and current_magazine > 0 and not is_reloading:
+    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot and (current_magazine > 0 || god_mode) and not is_reloading:
         shoot()
     
-    # Apply knockback only when grounded
     if knockback_timer > 0 and is_on_floor():
         velocity += knockback_velocity
         knockback_timer -= delta
@@ -221,13 +244,12 @@ func _on_footstep_timer_timeout():
         $FootstepTimer.start()
 func shoot():
     can_shoot = false
-    current_magazine -= 1
+    if not god_mode:
+        current_magazine -= 1
     update_ammo_display()
     var bullet = bullet_scene.instantiate()
     get_parent().add_child(bullet)
-    # Spawn at GunTip's global position
     bullet.global_transform.origin = $Head/Camera3D/Gun/GunTip.global_transform.origin
-    # Set velocity along camera's forward direction
     bullet.velocity = -$Head/Camera3D.global_transform.basis.z * bullet_speed
     
     $Head/Camera3D/Gun/MuzzleFlash.visible = true
@@ -239,11 +261,12 @@ func shoot():
     can_shoot = true
 
 func take_damage(amount: float):
-    current_health -= amount
-    current_health = clamp(current_health, 0, max_health)
-    if amount > 0: # Only play damage sound for harm
+    if not god_mode:
+        current_health -= amount
+        current_health = clamp(current_health, 0, max_health)
+    if amount > 0:
         damage_sound.play()
-    elif amount < 0: # Play heal sound for healing
+    elif amount < 0:
         heal_sound.play()
     if current_health <= 0:
         hide()
