@@ -100,12 +100,28 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_dg77c")
 max_value = 2.0
 show_percentage = false
 
+[node name="EnemyCountLabel" type="Label" parent="HUD/HealthBarContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.028
+anchor_bottom = 0.025
+offset_left = 1040.0
+offset_top = 8.0
+offset_right = 1121.88
+offset_bottom = 30.0
+text = "Enemies: 0"
+
 [node name="HealBorder" type="Control" parent="HUD"]
 modulate = Color(0.0411971, 0.576316, 0.0334921, 1)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.007
+anchor_top = 0.012
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.064
+offset_top = -7.776
+offset_right = -1112.0
+offset_bottom = -608.0
 
 [node name="Top" type="ColorRect" parent="HUD/HealBorder"]
 visible = false
