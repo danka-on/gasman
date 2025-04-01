@@ -1,0 +1,113 @@
+[gd_scene load_steps=17 format=3 uid="uid://bvalrrwlp6wm"]
+
+[ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://player.gd" id="1_b26j0"]
+[ext_resource type="AudioStream" uid="uid://cy4a0k4o6hesa" path="res://sounds/gunshot.wav" id="2_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://bbux40yi0a02r" path="res://sounds/reload sound.wav" id="3_nvl01"]
+[ext_resource type="AudioStream" uid="uid://kw66e0hvx4s5" path="res://sounds/footstep.wav" id="4_ivps1"]
+[ext_resource type="AudioStream" uid="uid://daejnh2e4awqj" path="res://sounds/thud.wav" id="5_urp6f"]
+[ext_resource type="AudioStream" uid="uid://cgfxvy7p8uk2e" path="res://sounds/jumpsound.wav" id="6_bwjto"]
+[ext_resource type="AudioStream" uid="uid://digbnayiysvgy" path="res://sounds/fart.wav" id="7_606se"]
+[ext_resource type="AudioStream" uid="uid://bj5167lim3acj" path="res://sounds/hitsound.wav" id="8_u1c27"]
+[ext_resource type="AudioStream" uid="uid://dv8oetxe80e2" path="res://sounds/hurt.mp3" id="9_op7ga"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lquwl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+metallic = 1.0
+roughness = 0.24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+shading_mode = 0
+albedo_color = Color(1, 0.839216, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1bvp3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4c57u"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 25
+script = ExtResource("1_b26j0")
+bullet_speed = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03617, 0)
+shape = SubResource("CapsuleShape3D_1bvp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0111, 0)
+mesh = SubResource("CapsuleMesh_lquwl")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8174, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+
+[node name="Gun" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.282798, -0.431151, -0.881688)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/Gun"]
+transform = Transform3D(0.115933, 0, 0, 0, 0.111278, 0, 0, 0, 1.10013, 0, 0, 0.0244609)
+mesh = SubResource("BoxMesh_ig7tw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="Head/Camera3D/Gun"]
+transform = Transform3D(0.171228, 0, 0, 0, 0.18339, 0, 0, 0, 0.25, 0, 0, -0.528511)
+visible = false
+material_override = SubResource("StandardMaterial3D_h2yge")
+mesh = SubResource("QuadMesh_1bvp3")
+
+[node name="GunshotPlayer" type="AudioStreamPlayer3D" parent="Head/Camera3D/Gun"]
+transform = Transform3D(5.59287, 0, 0, 0, 5.59287, 0, 0, 0, 5.59287, 0, 0, 0)
+stream = ExtResource("2_n7ghd")
+max_distance = 20.0
+
+[node name="ReloadPlayer" type="AudioStreamPlayer3D" parent="Head/Camera3D/Gun"]
+stream = ExtResource("3_nvl01")
+max_distance = 20.0
+
+[node name="GunTip" type="Node3D" parent="Head/Camera3D/Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.520003)
+
+[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ivps1")
+volume_db = -20.0
+max_distance = 10.0
+
+[node name="ThudPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_urp6f")
+max_distance = 10.0
+
+[node name="GruntPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_bwjto")
+max_distance = 10.0
+
+[node name="AirJumpPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_606se")
+volume_db = -18.739
+max_distance = 10.0
+
+[node name="FootstepTimer" type="Timer" parent="."]
+
+[node name="PickupArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.903961, 0)
+shape = SubResource("SphereShape3D_4c57u")
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_u1c27")
+volume_db = 10.0
+pitch_scale = 0.48
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_op7ga")
+
+[connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

@@ -1,17 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://c3iyygqly2ifv"]
+[gd_scene load_steps=12 format=3 uid="uid://c3iyygqly2ifv"]
 
 [ext_resource type="Texture2D" uid="uid://50r516c1u5lb" path="res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dqqprr0ave5pu" path="res://main.gd" id="1_kek77"]
-[ext_resource type="AudioStream" uid="uid://cy4a0k4o6hesa" path="res://sounds/gunshot.wav" id="3_1bvp3"]
-[ext_resource type="AudioStream" uid="uid://bbux40yi0a02r" path="res://sounds/reload sound.wav" id="4_5vw27"]
-[ext_resource type="AudioStream" uid="uid://kw66e0hvx4s5" path="res://sounds/footstep.wav" id="5_5vw27"]
-[ext_resource type="AudioStream" uid="uid://daejnh2e4awqj" path="res://sounds/thud.wav" id="5_272bh"]
-[ext_resource type="AudioStream" uid="uid://cgfxvy7p8uk2e" path="res://sounds/jumpsound.wav" id="6_5vw27"]
-[ext_resource type="AudioStream" uid="uid://digbnayiysvgy" path="res://sounds/fart.wav" id="7_272bh"]
-[ext_resource type="AudioStream" uid="uid://bj5167lim3acj" path="res://sounds/hitsound.wav" id="10_efxa6"]
+[ext_resource type="PackedScene" uid="uid://bvalrrwlp6wm" path="res://player.tscn" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c01ofxgvfomno" path="res://textures/aim.png" id="11_dg77c"]
-[ext_resource type="AudioStream" uid="uid://dv8oetxe80e2" path="res://sounds/hurt.mp3" id="11_ycdy4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 size = Vector3(0.998535, 0.522106, 1)
@@ -21,24 +13,6 @@ albedo_texture = ExtResource("1_0xm2m")
 uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_lquwl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-metallic = 1.0
-roughness = 0.24
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
-shading_mode = 0
-albedo_color = Color(1, 0.839216, 0, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_1bvp3"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_4c57u"]
 
 [sub_resource type="Theme" id="Theme_272bh"]
 
@@ -66,87 +40,8 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ig7tw")
 mesh = SubResource("PlaneMesh_h2yge")
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0852192, 0)
-collision_mask = 25
-script = ExtResource("1_ig7tw")
-bullet_speed = 100.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03617, 0)
-shape = SubResource("CapsuleShape3D_1bvp3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0111, 0)
-mesh = SubResource("CapsuleMesh_lquwl")
-
-[node name="Head" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8174, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Player/Head"]
-current = true
-
-[node name="Gun" type="Node3D" parent="Player/Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.282798, -0.431151, -0.881688)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Head/Camera3D/Gun"]
-transform = Transform3D(0.115933, 0, 0, 0, 0.111278, 0, 0, 0, 1.10013, 0, 0, 0.0244609)
-mesh = SubResource("BoxMesh_ig7tw")
-surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
-
-[node name="MuzzleFlash" type="MeshInstance3D" parent="Player/Head/Camera3D/Gun"]
-transform = Transform3D(0.171228, 0, 0, 0, 0.18339, 0, 0, 0, 0.25, 0, 0, -0.528511)
-visible = false
-material_override = SubResource("StandardMaterial3D_h2yge")
-mesh = SubResource("QuadMesh_1bvp3")
-
-[node name="GunshotPlayer" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D/Gun"]
-transform = Transform3D(5.59287, 0, 0, 0, 5.59287, 0, 0, 0, 5.59287, 0, 0, 0)
-stream = ExtResource("3_1bvp3")
-max_distance = 20.0
-
-[node name="ReloadPlayer" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D/Gun"]
-stream = ExtResource("4_5vw27")
-max_distance = 20.0
-
-[node name="GunTip" type="Node3D" parent="Player/Head/Camera3D/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.520003)
-
-[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("5_5vw27")
-volume_db = -20.0
-max_distance = 10.0
-
-[node name="ThudPlayer" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("5_272bh")
-max_distance = 10.0
-
-[node name="GruntPlayer" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("6_5vw27")
-max_distance = 10.0
-
-[node name="AirJumpPlayer" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("7_272bh")
-volume_db = -18.739
-max_distance = 10.0
-
-[node name="FootstepTimer" type="Timer" parent="Player"]
-
-[node name="PickupArea" type="Area3D" parent="Player"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/PickupArea"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.903961, 0)
-shape = SubResource("SphereShape3D_4c57u")
-
-[node name="HitSound" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("10_efxa6")
-volume_db = 10.0
-pitch_scale = 0.48
-
-[node name="DamageSound" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("11_ycdy4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.384875, 0.922969, 0, -0.922969, -0.384875, -3.60428, 19.8844, 21.4381)
@@ -205,7 +100,57 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_dg77c")
 max_value = 2.0
 show_percentage = false
 
-[node name="EnemySpawnTimer" type="Timer" parent="."]
+[node name="HealBorder" type="Control" parent="HUD"]
+modulate = Color(0.0411971, 0.576316, 0.0334921, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[connection signal="timeout" from="Player/FootstepTimer" to="Player" method="_on_footstep_timer_timeout"]
-[connection signal="body_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_body_entered"]
+[node name="Top" type="ColorRect" parent="HUD/HealBorder"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="ColorRect" parent="HUD/HealBorder"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 640.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="ColorRect" parent="HUD/HealBorder"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 15.8
+offset_right = -12.0
+offset_bottom = 7.99994
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="ColorRect" parent="HUD/HealBorder"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1144.0
+offset_right = 1112.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]

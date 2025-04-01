@@ -4,12 +4,12 @@ TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2723292488576
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2857219232672
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2723292488576
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2857219232672
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 Devices:
   #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
@@ -121,6 +121,13 @@ Loaded system CA certificates
 Loading resource: res://main.tscn
 Loading resource: res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png
 Loading resource: res://.godot/imported/TCom_Sand_Muddy2_2x2_512_albedo.png-2b5f657709288094e946e6d09642b9aa.s3tc.ctex
+Loading resource: res://player.gd
+Loading resource: res://bullet.tscn
+Loading resource: res://bullet.gd
+Loading resource: res://hit_effect.tscn
+Loading resource: res://hit_effect.gd
+Loading resource: res://GameOver.tscn
+Loading resource: res://game_over.gd
 Loading resource: res://main.gd
 Loading resource: res://Enemy.tscn
 Loading resource: res://enemy.gd
@@ -132,14 +139,6 @@ Loading resource: res://Explosion.tscn
 Loading resource: res://explosion.gd
 Loading resource: res://sounds/explosion2.wav
 Loading resource: res://.godot/imported/explosion2.wav-27a5b8ff2a958050a1b6e4834b53eb4b.sample
-Loading resource: res://player.tscn
-Loading resource: res://player.gd
-Loading resource: res://bullet.tscn
-Loading resource: res://bullet.gd
-Loading resource: res://hit_effect.tscn
-Loading resource: res://hit_effect.gd
-Loading resource: res://GameOver.tscn
-Loading resource: res://game_over.gd
 Loading resource: res://sounds/gunshot.wav
 Loading resource: res://.godot/imported/gunshot.wav-0695b62083eed8c2c8c2e79d47d751d9.sample
 Loading resource: res://sounds/reload sound.wav
@@ -154,94 +153,128 @@ Loading resource: res://sounds/fart.wav
 Loading resource: res://.godot/imported/fart.wav-821f7ceca4dfd2afac027ad4c590aabf.sample
 Loading resource: res://sounds/hitsound.wav
 Loading resource: res://.godot/imported/hitsound.wav-bb4c90e5fac0abe837860e3914ab25b5.sample
-Loading resource: res://sounds/hurt.mp3
-Loading resource: res://.godot/imported/hurt.mp3-d6b3159ec58559cd2cccbb1b52720f4a.mp3str
 Loading resource: res://textures/aim.png
 Loading resource: res://.godot/imported/aim.png-2f0023fcc7130f4224555649a9904e49.ctex
+Loading resource: res://sounds/hurt.mp3
+Loading resource: res://.godot/imported/hurt.mp3-d6b3159ec58559cd2cccbb1b52720f4a.mp3str
 ERROR: Node not found: "/root/Main/Enemy" (absolute path attempted from "/root/Main/Player").
    at: get_node (scene/main/node.cpp:1874)
 ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
    at: connect (core/object/object.cpp:1451)
+PickupArea connected
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-6.285295, 1.431314, -3.181108)
+Hit registered at: (-4.818213, 1.065274, -2.170188)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-5.091488, 1.679729, -1.982486)
-ERROR: Index p_bounce = 1 is out of bounds (motion_results.size() = 1).
-   at: _get_slide_collision (scene/3d/physics/character_body_3d.cpp:704)
+Hit registered at: (-4.555256, 1.027046, -2.392876)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-5.021192, 1.679729, -2.091055)
+Hit registered at: (-4.637632, 1.218439, -2.350637)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-3.599268, 1.616411, -1.223932)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-4.039184, 1.333539, -1.669886)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-3.599578, 1.629238, -1.22412)
+Hit registered at: (-3.668113, 1.320741, -1.328508)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (2.003918, 0.6419, -0.446634)
+Hit registered at: (-6.896158, 1.210672, -1.35472)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (1.592532, 0.743604, 0.213602)
+Hit registered at: (-7.036533, 1.226789, -1.229084)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (0.708723, 1.042206, 0.780731)
+Hit registered at: (-5.940163, 1.244002, 0.031623)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (0.184575, 1.089177, 1.420575)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-0.652575, 1.296627, 2.624212)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-2.589576, 1.164475, 4.041541)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-3.018669, 1.277721, 4.358117)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-3.83445, 1.282752, 4.504952)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-5.529423, 1.315541, 4.930064)
+Hit registered at: (-5.825664, 1.244002, 0.154163)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-7.328639, 1.155055, 5.705653)
+Hit registered at: (-5.408969, 1.244002, 0.674556)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-6.192351, 0.995318, 6.977101)
+Hit registered at: (-3.418146, 1.230105, 4.466368)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-5.741618, 0.985949, 7.462408)
+Hit registered at: (-2.599412, 1.164085, 5.240662)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-5.879291, 0.976583, 7.232969)
+Hit registered at: (-2.274511, 1.079387, 6.045009)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-4.840504, 0.69251, 3.804287)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-6.850083, 1.004692, 9.355091)
+Hit registered at: (-2.02385, 1.098189, 7.043064)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Player hit by blast! Distance: 4.86613988876343
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Hit registered at: (-6.51191, 1.145636, 10.1782)
+Hit registered at: (-1.935706, 1.051205, 7.902701)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-0.353981, 1.117002, 9.638342)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-0.860976, 1.126413, 10.31991)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-1.409508, 1.013672, 11.16029)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-1.859658, 0.957468, 11.1372)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-2.465118, 0.808209, 10.7413)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-4.187963, 0.989772, 11.35808)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-4.390696, 0.882691, 11.43614)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (-3.098505, 0.421641, 10.14201)
+Body entered: AmmoPack Groups: [&"ammo_pack"]
+Picked up ammo: 30
+Body entered: AmmoPack Groups: [&"ammo_pack"]
+Picked up ammo: 30
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (4.751572, -0.250176, 7.559687)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (4.985884, 0.986646, 8.218097)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (5.565032, 1.02414, 9.123667)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (15.02137, 1.139527, 16.97041)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (15.02137, 1.139527, 16.97041)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (15.34328, 1.100647, 16.53131)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (16.68307, 1.147308, 17.52074)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (17.56416, 1.115103, 18.15567)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (17.79899, 1.082908, 18.26538)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Hit registered at: (19.23676, 1.015401, 19.15704)
 XR: Clearing primary interface
 XR: Removed interface "Native mobile"
 XR: Removed interface "OpenXR"

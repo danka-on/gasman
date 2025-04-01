@@ -53,10 +53,12 @@ var kills : int = 0
 @onready var pickup_area = $PickupArea
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
+@onready var heal_border = get_node("/root/Main/HUD/HealBorder")
+
 
 func _ready():
 	collision_layer = 1 # Player
-	collision_mask = 1 | 8 | 16
+	collision_mask = 1 | 8 | 16 # Floor, Explosions, etc.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if not $FootstepTimer:
 		print("Error: FootstepTimer missing!")
@@ -68,12 +70,10 @@ func _ready():
 	update_ammo_display()
 	if pickup_area:
 		pickup_area.connect("body_entered", _on_pickup_area_body_entered)
-		print("PickupArea connected")
 	else:
 		print("Error: PickupArea missing!")
 	if enemy:
 		enemy.player = self
-	
 
 
 func _input(event):
@@ -243,19 +243,31 @@ func die():
 func add_score(points: int):
 	score += points
 	kills += 1 # Increment kills with each score addition
+	
+	
+	
 func _on_pickup_area_body_entered(body):
-	print("Body entered: ", body.name, " Groups: ", body.get_groups())
 	if body.is_in_group("health_pack"):
-		print("Picked up health: ", body.health_amount)
 		take_damage(-body.health_amount)
+		for child in heal_border.get_children():
+			child.visible = true
+			child.color = Color(0, 1, 0, 1)
+		await get_tree().create_timer(0.5).timeout
+		for child in heal_border.get_children():
+			child.visible = false
+			child.color = Color(0, 1, 0, 0)
 		body.queue_free()
 	elif body.is_in_group("ammo_pack"):
-		print("Picked up ammo: ", body.ammo_amount)
 		add_ammo(body.ammo_amount)
 		body.queue_free()
+		
+		
 func play_hit_sound():
 	if hit_sound:
 		hit_sound.play()
+		
+		
+		
 func apply_knockback(direction: Vector3, force: float):
 	if is_on_floor(): # Only apply if grounded
 		knockback_velocity = direction * force
