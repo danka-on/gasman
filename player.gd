@@ -22,7 +22,7 @@ var boost_gas_rate : float = 30.0 # Gas drain per second for boost
 @export var gas_sprint_consumption_rate : float = 20.0  # Gas per second for gas sprint
 @export var gas_jump_consumption_rate : float = 30.0   # Gas per second for gas jump
 
-@export var gas_sprint_speed : float = 15.0  # Faster speed for gas-powered sprint
+@export var gas_sprint_speed : float = 30  # Faster speed for gas-powered sprint
 var last_shift_press_time : float = 0.0      # Time of the last Shift press
 var double_tap_window : float = 0.3          # Time window for double-tap (in seconds)
 var gas_sprint_enabled : bool = false        # Flag for gas-powered sprint
