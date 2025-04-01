@@ -10,6 +10,7 @@ var player = null
 var can_damage = true
 var last_damage_time : float = 0.0
 
+@export var gas_pack_scene : PackedScene = preload("res://gas_pack.tscn")
 @export var health_pack_scene : PackedScene = preload("res://health_pack.tscn")
 @export var ammo_pack_scene : PackedScene = preload("res://ammo_pack.tscn")
 @export var explosion_scene : PackedScene = preload("res://Explosion.tscn")
@@ -88,7 +89,8 @@ func die():
     if player:
         player.add_score(5)
         if randf() < drop_chance:
-            var drop = health_pack_scene if randf() < 0.5 else ammo_pack_scene
+            var drop_options = [health_pack_scene, ammo_pack_scene, gas_pack_scene]
+            var drop = drop_options[randi() % drop_options.size()]
             var instance = drop.instantiate()
             instance.global_transform.origin = global_transform.origin + Vector3(0, 1, 0)
             get_parent().add_child(instance)
@@ -97,19 +99,17 @@ func die():
     explosion.global_transform.origin = global_transform.origin
     get_parent().add_child(explosion)
     
-    # Only check player collision
     if is_instance_valid(player) and global_transform.origin.distance_to(player.global_transform.origin) <= explosion_radius:
         var direction = (player.global_transform.origin - global_transform.origin).normalized()
         player.take_damage(explosion_damage)
         player.apply_knockback(direction, explosion_force)
         print("Player hit by blast! Distance: ", global_transform.origin.distance_to(player.global_transform.origin))
     
-    # Disable immediately
     hitbox.collision_layer = 0
     hitbox.collision_mask = 0
     hide()
     set_physics_process(false)
-    await get_tree().create_timer(0.5).timeout # Shorten delay
+    await get_tree().create_timer(0.5).timeout
     queue_free()
 
 func _on_hitbox_body_entered(body):

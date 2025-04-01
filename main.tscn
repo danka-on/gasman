@@ -181,6 +181,16 @@ offset_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="GasBar" type="ProgressBar" parent="HUD"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.988
+offset_top = 48.0
+offset_right = -640.0
+offset_bottom = -565.224
+max_value = 300.0
+show_percentage = false
+
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 
 [node name="Level" type="Node3D" parent="."]

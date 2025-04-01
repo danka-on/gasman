@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 # Movement variables
-var base_speed = 5.0
-var sprint_speed = 10.0
-var speed = base_speed
+
+
+
 var gravity = 9.8
 var mouse_sensitivity = 0.002
 var jump_velocity = 7.0
@@ -13,6 +13,18 @@ var was_in_air = false
 var knockback_velocity : Vector3 = Vector3.ZERO
 var knockback_duration : float = 0.0 # Time left for knockback
 var knockback_timer : float = 0.0
+
+@export var walk_speed : float = 5.0
+@export var sprint_speed : float = 10.0
+@onready var gas_bar = $"../HUD/GasBar"
+var max_gas : float = 100.0
+var current_gas : float = max_gas
+var gas_consumption_rate : float = 20.0 # Gas per second while sprinting
+var input_dir : Vector3 = Vector3.ZERO # Added declaration
+
+var target_velocity : Vector3 = Vector3.ZERO
+
+
 
 # Shooting variables
 var bullet_scene = preload("res://bullet.tscn")
@@ -51,7 +63,7 @@ var kills : int = 0
 # UI references
 @onready var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
 @onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
-@onready var enemy = get_node("/root/Main/Enemy") # May not be needed with spawner
+@onready var enemy = get_node("res://enemy.tscn") # May not be needed with spawner
 @onready var pickup_area = $PickupArea
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
@@ -59,8 +71,8 @@ var kills : int = 0
 
 
 func _ready():
-    collision_layer = 1 # Player
-    collision_mask = 1 | 8 | 16 # Floor, Explosions, etc.
+    collision_layer = 1
+    collision_mask = 1 | 8 | 16
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     if not $FootstepTimer:
         print("Error: FootstepTimer missing!")
@@ -69,6 +81,9 @@ func _ready():
     $FootstepPlayer.volume_db = footstep_volume
     health_bar.max_value = max_health
     health_bar.value = current_health
+    gas_bar.max_value = max_gas
+    gas_bar.value = current_gas
+
     update_ammo_display()
     if pickup_area:
         pickup_area.connect("body_entered", _on_pickup_area_body_entered)
@@ -76,7 +91,6 @@ func _ready():
         print("Error: PickupArea missing!")
     if enemy:
         enemy.player = self
-
 
 func _input(event):
     if event is InputEventMouseMotion:
@@ -91,6 +105,15 @@ func _input(event):
         reload()
     
 func _physics_process(delta):
+    var sprinting = Input.is_key_pressed(KEY_SHIFT) and current_gas > 0
+    var move_speed = sprint_speed if sprinting else walk_speed
+    input_dir = Vector3.ZERO
+    
+    if sprinting:
+        current_gas -= gas_consumption_rate * delta
+        current_gas = clamp(current_gas, 0, max_gas)
+        gas_bar.value = current_gas
+    
     if not is_on_floor():
         velocity.y -= gravity * delta
         was_in_air = true
@@ -110,14 +133,7 @@ func _physics_process(delta):
             $AirJumpPlayer.play()
         jumps_left -= 1
     
-    if Input.is_key_pressed(KEY_SHIFT):
-        speed = sprint_speed
-        $FootstepPlayer.pitch_scale = sprint_pitch
-    else:
-        speed = base_speed
-        $FootstepPlayer.pitch_scale = base_walk_pitch
-    
-    var input_dir = Vector3.ZERO
+    # Movement input
     if Input.is_key_pressed(KEY_A):
         input_dir.x = -1
     elif Input.is_key_pressed(KEY_D):
@@ -130,25 +146,24 @@ func _physics_process(delta):
     if input_dir:
         input_dir = input_dir.normalized()
         var direction = ($Head.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
-        velocity.x = direction.x * speed
-        velocity.z = direction.z * speed
+        velocity.x = direction.x * move_speed
+        velocity.z = direction.z * move_speed
         
         if is_on_floor() and $FootstepTimer.is_stopped() and not $FootstepPlayer.playing:
             $FootstepPlayer.volume_db = footstep_volume
+            $FootstepPlayer.pitch_scale = sprint_pitch if sprinting else base_walk_pitch
             $FootstepPlayer.play()
             $FootstepTimer.start()
     else:
-        velocity.x = move_toward(velocity.x, 0, speed)
-        velocity.z = move_toward(velocity.z, 0, speed)
-        
+        velocity.x = move_toward(velocity.x, 0, move_speed)
+        velocity.z = move_toward(velocity.z, 0, move_speed)
         if $FootstepPlayer.playing:
             $FootstepPlayer.stop()
     
     if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot and current_magazine > 0 and not is_reloading:
         shoot()
-
     
-# Apply knockback only when grounded
+    # Apply knockback only when grounded
     if knockback_timer > 0 and is_on_floor():
         velocity += knockback_velocity
         knockback_timer -= delta
@@ -156,6 +171,7 @@ func _physics_process(delta):
             knockback_velocity = Vector3.ZERO
     
     move_and_slide()
+    
     if is_reloading:
         reload_progress += delta
         reload_bar.value = reload_progress
@@ -166,7 +182,7 @@ func _physics_process(delta):
             current_reserve -= ammo_to_load
             update_ammo_display()
             is_reloading = false
-            can_reload = true  # Reset can_reload here
+            can_reload = true
             reload_bar.value = 0.0
             reload_bar.hide()
 func reload():
@@ -178,9 +194,13 @@ func reload():
         reload_bar.show()
         $Head/Camera3D/Gun/ReloadPlayer.play()
         
+func add_gas(amount: float):
+    current_gas += amount
+    current_gas = clamp(current_gas, 0, max_gas)
+    gas_bar.value = current_gas    
         
 func _on_footstep_timer_timeout():
-    var input_dir = Vector3.ZERO
+    input_dir = Vector3.ZERO # Reset here
     if Input.is_key_pressed(KEY_A): input_dir.x = -1
     elif Input.is_key_pressed(KEY_D): input_dir.x = 1
     if Input.is_key_pressed(KEY_W): input_dir.z = -1
@@ -188,9 +208,9 @@ func _on_footstep_timer_timeout():
     
     if input_dir and is_on_floor() and not $FootstepPlayer.playing:
         $FootstepPlayer.volume_db = footstep_volume
+        $FootstepPlayer.pitch_scale = sprint_pitch if Input.is_key_pressed(KEY_SHIFT) and current_gas > 0 else base_walk_pitch
         $FootstepPlayer.play()
         $FootstepTimer.start()
-
 func shoot():
     can_shoot = false
     current_magazine -= 1
@@ -266,6 +286,10 @@ func _on_pickup_area_body_entered(body):
     elif body.is_in_group("ammo_pack"):
         add_ammo(body.ammo_amount)
         body.queue_free()
+    elif body.is_in_group("gas_pack"):
+        add_gas(body.gas_amount)
+        body.queue_free()
+ 
         
         
 func play_hit_sound():
