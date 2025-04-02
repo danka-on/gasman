@@ -4,12 +4,12 @@ TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1948513255456
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2075681746496
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1948513255456
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2075681746496
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 Devices:
   #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
@@ -121,18 +121,27 @@ Loaded system CA certificates
 Loading resource: res://main.tscn
 Loading resource: res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png
 Loading resource: res://.godot/imported/TCom_Sand_Muddy2_2x2_512_albedo.png-2b5f657709288094e946e6d09642b9aa.s3tc.ctex
-Loading resource: res://scripts/main_optimized.gd
-Loading resource: res://Enemy.tscn
-Loading resource: res://enemy.gd
-ERROR: Attempt to open script 'res://enemy.gd' resulted in error 'File not found'.
+Loading resource: res://main.gd
+ERROR: Attempt to open script 'res://main.gd' resulted in error 'File not found'.
    at: load_source_code (modules/gdscript/gdscript.cpp:1115)
-Failed loading resource: res://enemy.gd
-ERROR: Failed loading resource: res://enemy.gd. Make sure resources have been imported by opening the project in the editor at least once.
+Failed loading resource: res://main.gd
+ERROR: Failed loading resource: res://main.gd. Make sure resources have been imported by opening the project in the editor at least once.
    at: _load (core/io/resource_loader.cpp:335)
-ERROR: res://Enemy.tscn:16 - Parse Error: [ext_resource] referenced non-existent resource at: res://enemy.gd.
-   at: _printerr (scene/resources/resource_format_text.cpp:39)
 Loading resource: res://player.tscn
-Loading resource: res://scripts/player_controller.gd
+Loading resource: res://player.gd
+Loading resource: res://bullet.tscn
+WARNING: res://bullet.tscn:3 - ext_resource, invalid UID: uid://csk8001dmbuau - using text path instead: res://bullet.gd
+   at: load (scene/resources/resource_format_text.cpp:447)
+Loading resource: res://bullet.gd
+ERROR: Attempt to open script 'res://bullet.gd' resulted in error 'File not found'.
+   at: load_source_code (modules/gdscript/gdscript.cpp:1115)
+Failed loading resource: res://bullet.gd
+ERROR: Failed loading resource: res://bullet.gd. Make sure resources have been imported by opening the project in the editor at least once.
+   at: _load (core/io/resource_loader.cpp:335)
+ERROR: res://bullet.tscn:16 - Parse Error: [ext_resource] referenced non-existent resource at: res://bullet.gd.
+   at: _printerr (scene/resources/resource_format_text.cpp:39)
+Loading resource: res://GameOver.tscn
+Loading resource: res://game_over.gd
 Loading resource: res://sounds/gunshot.wav
 Loading resource: res://.godot/imported/gunshot.wav-0695b62083eed8c2c8c2e79d47d751d9.sample
 Loading resource: res://sounds/reload sound.wav
@@ -155,4 +164,14 @@ Loading resource: res://sounds/ammunitions.wav
 Loading resource: res://.godot/imported/ammunitions.wav-d23cdd2828d3a3e6dd4c75af0b39551f.sample
 Loading resource: res://sounds/speedfart.wav
 Loading resource: res://.godot/imported/speedfart.wav-222b64eb855697d1677e222fee31be3e.sample
-Loading resource: res://scripts/movement_component.gd
+Loading resource: res://qwantani_mid_morning_1k.hdr
+Loading resource: res://.godot/imported/qwantani_mid_morning_1k.hdr-b958049d04b04b2afb62ee69f5830d92.bptc.ctex
+Loading resource: res://textures/aim.png
+Loading resource: res://.godot/imported/aim.png-2f0023fcc7130f4224555649a9904e49.ctex
+ERROR: res://main.tscn:40 - Parse Error: [ext_resource] referenced non-existent resource at: res://main.gd.
+   at: _printerr (scene/resources/resource_format_text.cpp:39)
+ERROR: Node not found: "res://enemy.tscn" (relative to "/root/Main/Player").
+   at: get_node (scene/main/node.cpp:1877)
+GasBar found!
+ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
+   at: connect (core/object/object.cpp:1451)

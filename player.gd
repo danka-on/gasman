@@ -91,12 +91,10 @@ var kills : int = 0
 
 
 func _ready():
-    collision_layer = 1
-    collision_mask = 1 | 8 | 16
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    if not $FootstepTimer:
-        print("Error: FootstepTimer missing!")
-        return
+    var object_pool = get_node("res://scripts/object_pool.gd")
+    if object_pool:
+        print("Successfully accessed ObjectPool singleton!")
+
     $FootstepTimer.wait_time = footstep_delay
     $FootstepPlayer.volume_db = footstep_volume
     health_bar.max_value = max_health

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3iyygqly2ifv"]
+[gd_scene load_steps=17 format=3 uid="uid://c3iyygqly2ifv"]
 
 [ext_resource type="Texture2D" uid="uid://50r516c1u5lb" path="res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://dqqprr0ave5pu" path="res://main.gd" id="1_kek77"]
+[ext_resource type="Script" uid="uid://dhq31jmtga3a7" path="res://scripts/main_optimized.gd" id="1_kek77"]
 [ext_resource type="PackedScene" uid="uid://bvalrrwlp6wm" path="res://player.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://dna0jan1jq0d5" path="res://scripts/player_controller.gd" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bgrkkj0jcpclr" path="res://qwantani_mid_morning_1k.hdr" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c01ofxgvfomno" path="res://textures/aim.png" id="11_dg77c"]
 
@@ -54,7 +55,8 @@ mesh = SubResource("PlaneMesh_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0852192, 0)
-gas_sprint_speed = 30.0
+script = ExtResource("4_7mycd")
+mouse_sensitivity = 0.002
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.384875, 0.922969, 0, -0.922969, -0.384875, -3.60428, 19.8844, 21.4381)

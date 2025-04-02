@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvalrrwlp6wm"]
+[gd_scene load_steps=24 format=3 uid="uid://bvalrrwlp6wm"]
 
-[ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://player.gd" id="1_b26j0"]
+[ext_resource type="Script" uid="uid://dna0jan1jq0d5" path="res://scripts/player_controller.gd" id="1_u1c27"]
 [ext_resource type="AudioStream" uid="uid://cy4a0k4o6hesa" path="res://sounds/gunshot.wav" id="2_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://bbux40yi0a02r" path="res://sounds/reload sound.wav" id="3_nvl01"]
 [ext_resource type="AudioStream" uid="uid://kw66e0hvx4s5" path="res://sounds/footstep.wav" id="4_ivps1"]
@@ -12,6 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://cjfp3lfqbtxh6" path="res://sounds/healthsound.wav" id="10_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://b6cif01bcl82" path="res://sounds/ammunitions.wav" id="11_nvl01"]
 [ext_resource type="AudioStream" uid="uid://um7fpt222thm" path="res://sounds/speedfart.wav" id="12_ivps1"]
+[ext_resource type="Script" uid="uid://yjl5x126iogo" path="res://scripts/movement_component.gd" id="13_op7ga"]
+[ext_resource type="Script" uid="uid://dsde3n8vin3qf" path="res://scripts/weapons_component.gd" id="14_q13i1"]
+[ext_resource type="Script" uid="uid://d4n04eeuitywd" path="res://scripts/health_component.gd" id="15_pylmc"]
+[ext_resource type="Script" uid="uid://bxv5tftqd0jvx" path="res://scripts/pickup_component.gd" id="16_pbfsw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
 
@@ -33,11 +37,7 @@ albedo_color = Color(1, 0.839216, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 25
-script = ExtResource("1_b26j0")
-gas_sprint_consumption_rate = 25.0
-gas_jump_consumption_rate = 50.0
-gas_sprint_speed = 100.0
-bullet_speed = 100.0
+script = ExtResource("1_u1c27")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03617, 0)
@@ -125,6 +125,18 @@ max_distance = 10.0
 
 [node name="SprintSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("12_ivps1")
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("13_op7ga")
+
+[node name="WeaponsComponent" type="Node" parent="."]
+script = ExtResource("14_q13i1")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("15_pylmc")
+
+[node name="PickupComponent" type="Node" parent="."]
+script = ExtResource("16_pbfsw")
 
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
