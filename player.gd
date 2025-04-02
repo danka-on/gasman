@@ -12,7 +12,7 @@ var jumps_left = max_jumps
 var was_in_air = false
 var knockback_velocity : Vector3 = Vector3.ZERO
 var knockback_duration : float = 0.0 # Time left for knockback
-var knockback_timer : float = 0.0
+var knockback_timer : float = 0.0 #
 
 var is_boosting : bool = false # Track boost state
 var boost_thrust : float = 10.0 # Upward force per second
