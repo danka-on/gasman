@@ -127,6 +127,48 @@ func _physics_process(delta):
         if player.get_node_or_null("SprintSound").playing and not (gas_sprint_enabled or is_boosting):
             player.get_node_or_null("SprintSound").stop()
         if player.get_node_or_null("FootstepPlayer").playing and not (sprinting or player.is_on_floor()):
+            player.get_node_or_null("FootstepPlayer").stop()
+    
+    # Apply gravity and handle jumps
+    if not player.is_on_floor():
+        player.velocity.y -= gravity * delta
+        was_in_air = true
+        if player.get_node_or_null("FootstepPlayer").playing:
+            player.get_node_or_null("FootstepPlayer").stop()
+    else:
+        if was_in_air:
+            player.get_node_or_null("ThudPlayer").play()
+            was_in_air = false
+        jumps_left = max_jumps
+    
+    if Input.is_action_just_pressed("ui_accept") and jumps_left > 0:
+        player.velocity.y = jump_velocity
+        if jumps_left == max_jumps:
+            player.get_node_or_null("GruntPlayer").play()
+        else:
+            player.get_node_or_null("AirJumpPlayer").play()
+        jumps_left -= 1
+        last_jump_time = Time.get_ticks_msec() / 1000.0
+    
+    # Handle movement input
+    if Input.is_key_pressed(KEY_A):
+        input_dir.x = -1
+    elif Input.is_key_pressed(KEY_D):
+        input_dir.x = 1
+    if Input.is_key_pressed(KEY_W):
+        input_dir.z = -1
+    elif Input.is_key_pressed(KEY_S):
+        input_dir.z = 1
+    
+    if input_dir:
+        input_dir = input_dir.normalized()
+        var direction = (player.get_node("Head").transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
+        player.velocity.x = direction.x * move_speed
+        player.velocity.z = direction.z * move_speed
+        
+        if player.is_on_floor() and player.get_node_or_null("FootstepTimer").is_stopped() and not player.get_node_or_null("FootstepPlayer").playing:
+            player.get_node_or_null("FootstepPlayer").volume_db = footstep_volume
+            player.get_node_or_null("FootstepPlayer").pitch_scale = regular_sprint_pitch if sprinting and not gas_sprint_enabled else base_walk_pitch
             player.get_node_or_null("FootstepPlayer").play()
             player.get_node_or_null("FootstepTimer").start()
     else:
@@ -171,46 +213,4 @@ func add_gas(amount: float):
 func update_gas_ui():
     var gas_bar = get_node_or_null("/root/Main/HUD/GasBar")
     if gas_bar:
-        gas_bar.value = current_gasstop()
-    
-    # Apply gravity and handle jumps
-    if not player.is_on_floor():
-        player.velocity.y -= gravity * delta
-        was_in_air = true
-        if player.get_node_or_null("FootstepPlayer").playing:
-            player.get_node_or_null("FootstepPlayer").stop()
-    else:
-        if was_in_air:
-            player.get_node_or_null("ThudPlayer").play()
-            was_in_air = false
-        jumps_left = max_jumps
-    
-    if Input.is_action_just_pressed("ui_accept") and jumps_left > 0:
-        player.velocity.y = jump_velocity
-        if jumps_left == max_jumps:
-            player.get_node_or_null("GruntPlayer").play()
-        else:
-            player.get_node_or_null("AirJumpPlayer").play()
-        jumps_left -= 1
-        last_jump_time = Time.get_ticks_msec() / 1000.0
-    
-    # Handle movement input
-    if Input.is_key_pressed(KEY_A):
-        input_dir.x = -1
-    elif Input.is_key_pressed(KEY_D):
-        input_dir.x = 1
-    if Input.is_key_pressed(KEY_W):
-        input_dir.z = -1
-    elif Input.is_key_pressed(KEY_S):
-        input_dir.z = 1
-    
-    if input_dir:
-        input_dir = input_dir.normalized()
-        var direction = (player.get_node("Head").transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
-        player.velocity.x = direction.x * move_speed
-        player.velocity.z = direction.z * move_speed
-        
-        if player.is_on_floor() and player.get_node_or_null("FootstepTimer").is_stopped() and not player.get_node_or_null("FootstepPlayer").playing:
-            player.get_node_or_null("FootstepPlayer").volume_db = footstep_volume
-            player.get_node_or_null("FootstepPlayer").pitch_scale = regular_sprint_pitch if sprinting and not gas_sprint_enabled else base_walk_pitch
-            player.get_node_or_null("FootstepPlayer").
+        gas_bar.value = current_gas

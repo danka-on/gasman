@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var enemy_scene : PackedScene = preload("res://Enemy.tscn")
+@export var enemy_scene : PackedScene = preload("res://scenes/enemy.tscn")
 @export var spawn_radius : float = 10.0
 @onready var player = $Player
 @onready var spawn_timer = $EnemySpawnTimer
@@ -8,12 +8,12 @@ extends Node3D
 var enemy_count = 0
 
 # Scenes to initialize in the object pool
-@export var bullet_scene : String = "res://bullet.tscn"
-@export var hit_effect_scene : String = "res://hit_effect.tscn"
-@export var explosion_scene : String = "res://Explosion.tscn"
-@export var health_pack_scene : String = "res://health_pack.tscn"
-@export var ammo_pack_scene : String = "res://ammo_pack.tscn"
-@export var gas_pack_scene : String = "res://gas_pack.tscn"
+@export var bullet_scene : String = "res://scenes/bullet.tscn"
+@export var hit_effect_scene : String = "res://scenes/hit_effect.tscn"
+@export var explosion_scene : String = "res://scenes/Explosion.tscn"
+@export var health_pack_scene : String = "res://scenes/health_pack.tscn"
+@export var ammo_pack_scene : String = "res://scenes/ammo_pack.tscn"
+@export var gas_pack_scene : String = "res://scenes/gas_pack.tscn"
 
 # Object pool parameters
 @export var bullet_pool_size : int = 30

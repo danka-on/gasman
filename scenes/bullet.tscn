@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://u8b16t3r1mb1"]
+[gd_scene load_steps=5 format=3 uid="uid://c73g2y34706wu"]
 
 [ext_resource type="Script" uid="uid://biyl8dxpsrei7" path="res://scripts/bullet_pooled.gd" id="1_v7oki"]
 

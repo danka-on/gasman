@@ -15,10 +15,10 @@ var last_damage_time : float = 0.0
 var update_tick : int = 0
 var tick_interval : int = 0  # Will be set randomly to stagger AI updates
 
-@export var gas_pack_scene : String = "res://gas_pack.tscn"
-@export var health_pack_scene : String = "res://health_pack.tscn"
-@export var ammo_pack_scene : String = "res://ammo_pack.tscn"
-@export var explosion_scene : String = "res://Explosion.tscn"
+@export var gas_pack_scene : String = "res://scenes/gas_pack.tscn"
+@export var health_pack_scene : String = "res://scenes/health_pack.tscn"
+@export var ammo_pack_scene : String = "res://scenes/ammo_pack.tscn"
+@export var explosion_scene : String = "res://scenes/Explosion.tscn"
 
 @export var explosion_radius : float = 5.0 # Blast radius
 @export var explosion_damage : float = 20.0 # Damage to player

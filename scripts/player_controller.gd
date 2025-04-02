@@ -117,7 +117,7 @@ func die():
     set_physics_process(false)
     
     # Transition to game over
-    var game_over = load("res://GameOver.tscn").instantiate()
+    var game_over = load("res://scenes/GameOver.tscn").instantiate()
     game_over.set_score_and_kills(score, kills)
     get_tree().root.add_child(game_over)
     get_tree().current_scene.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://hbes875c4xau"]
+[gd_scene load_steps=7 format=3 uid="uid://c5albmrna484m"]
 
 [ext_resource type="Script" uid="uid://ddhplxgga1e12" path="res://scripts/explosion_pooled.gd" id="1_li25b"]
 [ext_resource type="AudioStream" uid="uid://dhfb23yehb0vi" path="res://sounds/explosion2.wav" id="2_li25b"]

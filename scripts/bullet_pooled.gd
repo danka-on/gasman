@@ -2,7 +2,7 @@ extends Area3D
 
 @export var speed : float = 20.0
 var velocity : Vector3
-@export var hit_effect_scene : String = "res://hit_effect.tscn"
+@export var hit_effect_scene : String = "res://scenes/hit_effect.tscn"
 
 func _ready():
     collision_layer = 3 # Bullets

@@ -19,7 +19,7 @@ func _ready():
     var autoloads = ProjectSettings.get_setting("autoload/ObjectPool")
     if not autoloads:
         # Set ObjectPool.gd as autoload
-        ProjectSettings.set_setting("autoload/ObjectPool", "*res://object_pool.gd")
+        ProjectSettings.set_setting("autoload/ObjectPool", "*res://scripts/object_pool.gd")
         # Save project settings
         ProjectSettings.save()
         print("ObjectPool autoload registered!")

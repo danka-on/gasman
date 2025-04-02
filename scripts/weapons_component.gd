@@ -2,8 +2,8 @@ extends Node
 
 var player = null  # Will reference the parent player node
 
-# Shooting variables
-@export var bullet_scene_path : String = "res://bullet.tscn"
+# Shooting variables"res://scenes/hit_effect.tscn"
+@export var bullet_scene_path : String = "res://scenes/bullet.tscn"
 var can_shoot = true
 @export var shoot_cooldown : float = 0.2
 @export var muzzle_flash_duration : float = 0.1

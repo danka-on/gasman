@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwgcxr1kty2pa"]
+[gd_scene load_steps=5 format=3 uid="uid://dkf64ho6oay0n"]
 
 [ext_resource type="Script" uid="uid://qmfnxkdfbvbd" path="res://scripts/hit_effect_pooled.gd" id="1_r4b7x"]
 

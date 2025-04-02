@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://mqvemf7sha3r"]
+[gd_scene load_steps=5 format=3 uid="uid://c5156y26dror6"]
 
-[ext_resource type="Script" path="res://scripts/gas_pack.gd" id="1_sekdr"]
+[ext_resource type="Script" path="res://scripts/gas_pack.gd" id="1_d5osa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyvds"]
 albedo_color = Color(0.572549, 1, 0.0156863, 1)
@@ -11,7 +11,7 @@ albedo_color = Color(0.572549, 1, 0.0156863, 1)
 
 [node name="GasPack" type="RigidBody3D" groups=["gas_pack"]]
 collision_layer = 2
-script = ExtResource("1_sekdr")
+script = ExtResource("1_d5osa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
