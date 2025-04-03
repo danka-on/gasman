@@ -1,0 +1,944 @@
+Godot Engine v4.4.stable.official.4c311cbee - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
+	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
+	Objects - 1
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1332005246032
+   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
+ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
+	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
+	Objects - 1
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 1332005246032
+   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
+Devices:
+  #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
+Optional extension VK_EXT_astc_decode_mode not found
+Optional extension VK_EXT_debug_marker not found
+- Vulkan Variable Rate Shading supported:
+  Pipeline fragment shading rate
+  Primitive fragment shading rate
+  Attachment fragment shading rate, min texel size: (16, 16), max texel size: (16, 16), max fragment size: (4, 4)
+- Vulkan multiview supported:
+  max view count: 32
+  max instances: 134217727
+- Vulkan subgroup:
+  size: 32
+  min size: 32
+  max size: 32
+  stages: STAGE_VERTEX, STAGE_TESSELLATION_CONTROL, STAGE_TESSELLATION_EVALUATION, STAGE_GEOMETRY, STAGE_FRAGMENT, STAGE_COMPUTE, STAGE_RAYGEN_KHR, STAGE_ANY_HIT_KHR, STAGE_CLOSEST_HIT_KHR, STAGE_MISS_KHR, STAGE_INTERSECTION_KHR, STAGE_CALLABLE_KHR, STAGE_TASK_NV, STAGE_MESH_NV
+  supported ops: FEATURE_BASIC, FEATURE_VOTE, FEATURE_ARITHMETIC, FEATURE_BALLOT, FEATURE_SHUFFLE, FEATURE_SHUFFLE_RELATIVE, FEATURE_CLUSTERED, FEATURE_QUAD, FEATURE_PARTITIONED_NV
+  quad operations in all stages
+Vulkan 1.3.289 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce RTX 3070
+Startup PSO cache (5.5 MiB)
+Using "winink" pen tablet driver...
+Creating VMA small objects pool for memory type index 1
+Shader 'CanvasSdfShaderRD' (group 0) SHA256: 7ef25f535f17ce3cb6e9cdbb671b389f9905af968c04a97b2e84039c0f1cf6ef
+Shader 'SkeletonShaderRD' (group 0) SHA256: 7f041ff1f519aabb8f51a27745a99f8693e371dd8e97b145a05f1ff4441aaaf1
+Shader 'SortShaderRD' (group 0) SHA256: c91a27cd5ce46bca9459307df1c285cfa22f059cd62bb7ffea9a702a62591a26
+Shader 'ParticlesShaderRD' (group 0) SHA256: 59c6535c3507130df7b501dac97ecf3730b9978b4d50fa5fa4cd331fac07410e
+Shader 'ParticlesCopyShaderRD' (group 0) SHA256: b53676a26a38511b0004ec0f955ed24c43622c0db6c588eeaa4f7babee913ff2
+Shader 'CanvasShaderRD' (group 0) SHA256: 5856edf45d5dfb02534573ce0b8c829bf91f8057581ce7c8816f3319fc8aebd8
+Shader 'CanvasOcclusionShaderRD' (group 0) SHA256: 248c1c5f022b89f8bfc0fca12cc5ea235615b89cba4d4c113cc161e05359cea2
+Shader 'ClusterRenderShaderRD' (group 0) SHA256: c9c681ebb89963979e3618867f22e9fa99c8a0cf3aedb1d5c6bb50440130da08
+Shader 'ClusterStoreShaderRD' (group 0) SHA256: a89e0eef0e47d7babb4016769d27ed56b02f0a40b350816e1065926892602ca1
+Shader 'ClusterDebugShaderRD' (group 0) SHA256: e6def0f8f3ff4e8e19dcf241fadff628e7010ae0ac5078c8a97ea30760ea68ff
+Shader 'SceneForwardClusteredShaderRD' (group 0) SHA256: 72177b5a7410285b53bb275b29a9122386c8c666ecf8ed645c54bc3c0f26973b
+Shader 'SceneForwardClusteredShaderRD' (group 1) SHA256: 3b17f372e3399803855c2787f9f8bd3237e07454eb64dc65c3ccfdd7eee37a38
+Shader 'SceneForwardClusteredShaderRD' (group 2) SHA256: 00015879f79b26079e93867379e610c25d919ef029d0c9b2c9dc26401e3f8ded
+Shader 'SceneForwardClusteredShaderRD' (group 3) SHA256: 12552d69e047cf8e1b12ed19b6ca99855d0f1ac96d62dff62ee215c11a23c41c
+Shader 'BestFitNormalShaderRD' (group 0) SHA256: 08f67ae74881933f8a51a2fa4d78599b3d1dbf022b16e0c042edefd80b71860d
+Shader 'ResolveShaderRD' (group 0) SHA256: b3153e65276b7f2112d23916103c8771dd089aa0792bb7bf04e537fa76e6c1df
+Shader 'TaaResolveShaderRD' (group 0) SHA256: 90a754a3bb0e116359a190d3a5abd7d5ce3887597e55ae1ddbbc099374ccadc6
+Shader 'Fsr2DepthClipPassShaderRD' (group 0) SHA256: 685832d8689abcf0ba659277c592f171fa9fd6d3f2b0b8ea251b84c5d6da480c
+Shader 'Fsr2ReconstructPreviousDepthPassShaderRD' (group 0) SHA256: 1b3cf3b85b05b8231d83e5c582a10c994b9fbb9ac744fe3f332b8dda1550c38c
+Shader 'Fsr2LockPassShaderRD' (group 0) SHA256: 71a4353b3eed590507399282661b11706f2c2a54e19b298aed7d4a22c6b131c3
+Shader 'Fsr2AccumulatePassShaderRD' (group 0) SHA256: aa946a27d6418ebbdaa6b2a681a719b2fa5de17fc9c566f47dd6ac3484db5b76
+Shader 'Fsr2RcasPassShaderRD' (group 0) SHA256: 4cdf81cefa5cb2b9e09721fb3f519fda8c77ac5532f72d7f3bd1a050c577827f
+Shader 'Fsr2ComputeLuminancePyramidPassShaderRD' (group 0) SHA256: 58ec04012bc37b56415856608ed54f53bb425705753d4fbd8ec475cc8993caae
+Shader 'Fsr2AutogenReactivePassShaderRD' (group 0) SHA256: 2506409ad93dfb8d2cad6944c9458a06666727f698ee5eaeba46ef4add459113
+Shader 'Fsr2TcrAutogenPassShaderRD' (group 0) SHA256: 882cd5c7e2be1d3a4d880cef6efcd93f4b55c90683b11a7fd0ae4d10d3bfd80d
+Shader 'SsEffectsDownsampleShaderRD' (group 0) SHA256: 71bb3df6fccf1273a2663f7278df88d28dee9bb18d3a6ae8431a4ea0b22c924b
+Shader 'SsilShaderRD' (group 0) SHA256: 44923ac855af6c9d7751e94c4b3e04bb35729139eb63e707799c54d97d2c4ad1
+Shader 'SsilImportanceMapShaderRD' (group 0) SHA256: 99ec77f1218fd0455f1ad2e3f5351a83999719468da5fc097b585744e59e3ead
+Shader 'SsilBlurShaderRD' (group 0) SHA256: a27eaa403eb4ef4ca825e07f3b00689583db231b908eabb2d50ecaad54bd397c
+Shader 'SsilInterleaveShaderRD' (group 0) SHA256: f76d813b747ffcb4b644bcd1aded62cbc97562836d43fe73f985fc6267e452d8
+Shader 'SsaoShaderRD' (group 0) SHA256: c30b503b3e2f88442b77b872d7028ee5d0fa0a265cb2a00397e7b9ac1353cfbf
+Shader 'SsaoImportanceMapShaderRD' (group 0) SHA256: 827b62f5fbb8d2b19bb5361a53916059b4badf89c663f4568be65d70b3f80f05
+Shader 'SsaoBlurShaderRD' (group 0) SHA256: ca745e5646bac761a37d45def0f1cfc9b43851a0c5d3ad08aa4819bdc155d7a5
+Shader 'SsaoInterleaveShaderRD' (group 0) SHA256: 9f16b4f8170af1d250eaa8895c6637e1c5749c758b6e2bf83312b49c2456b1ca
+Shader 'ScreenSpaceReflectionScaleShaderRD' (group 0) SHA256: 661db9194745559039cd279c6fc50294811ab0d34ad77d529e06402955bbfcf4
+Shader 'ScreenSpaceReflectionShaderRD' (group 0) SHA256: 36047c2c87b4e93649dc7413d5208a3ea25e932c64bf225f2fbcf9f9917e4c7f
+Shader 'ScreenSpaceReflectionFilterShaderRD' (group 0) SHA256: eb0d0c9ef280fb62bacb59a8fb030bed91ade9b860f9a5152fab73299fe842ef
+Shader 'SubsurfaceScatteringShaderRD' (group 0) SHA256: aeb90f8bb511ad2e17aeda2dbb6664563e3c5bcaf694d589059e62819f5dc82d
+Shader 'SkyShaderRD' (group 0) SHA256: 3f02486a5e1b10006907ddda8d8b05d6ef2783212639b9c2f3e0dbcc34fd9657
+Shader 'VoxelGiShaderRD' (group 0) SHA256: 78fa1e25622bec34ad8cecb4bcf0196b61cef703a0a669672b5b37272626f7b1
+Shader 'VoxelGiDebugShaderRD' (group 0) SHA256: 09d0d797e335cdbd802c44fa8da8cf56b3e406ecad61c78ffca2e703eb49783e
+Shader 'SdfgiPreprocessShaderRD' (group 0) SHA256: 9ed6c35c481f96860a3e45f1a25be83566e56f8c7bac629c591979dc55f8f0c1
+Shader 'SdfgiDirectLightShaderRD' (group 0) SHA256: 8f6fe13a55a461d3651d46906d862fef7c9763ce88ba7fd441c171fea9d7e156
+Shader 'SdfgiIntegrateShaderRD' (group 0) SHA256: 5ee1869af894a3a0356dec695caed02a1e9e9da5b7a6b84416cc228cc4370758
+Shader 'GiShaderRD' (group 0) SHA256: 11f2cce02da14332fc95fbfd4bcf20e8c454dc848c543d0f959757714a021603
+Shader 'SdfgiDebugShaderRD' (group 0) SHA256: 7253437e5eccc79f4cbe4000e8f71a23be0298b9fdf323bac134dc5a9fb7b033
+Shader 'SdfgiDebugProbesShaderRD' (group 0) SHA256: 26075605a0f3d96c884bd30ce772693fc3ac7bd06a622a15963aeb3f17eb12b4
+Shader 'VolumetricFogShaderRD' (group 0) SHA256: b3109b2b0e8167a4a29f393d29d0b7045b72c4cf365f384439e1974c8732c354
+Shader 'VolumetricFogProcessShaderRD' (group 0) SHA256: 025f1fd489c9751d08ba6daaf4da1c35f7f2aede0d78c73bad8b4eb0802fd5e5
+Shader 'BokehDofShaderRD' (group 0) SHA256: 7ed0623b942da44af76fd1982c1d48037cc5ca55ae7ee71d56bf0333c042c07c
+Shader 'CopyShaderRD' (group 0) SHA256: e57c398150bd594c258b3d6189a0495b04121194b99d6931e0b42dfeaf5266a8
+Shader 'CopyToFbShaderRD' (group 0) SHA256: b5ca41951030c99316df9c316b366add08fc7ed544db0e1b03c82558d92575ea
+Shader 'CubeToDpShaderRD' (group 0) SHA256: b8c52b4a02591a1a08fc4202b0a50e990d4eadbeb08d52f6fb5792e9762f6607
+Shader 'CubemapDownsamplerShaderRD' (group 0) SHA256: e7e05a4424e8835e0e986bb492297d996aff176293c5724219b70659fd13d5b2
+Shader 'CubemapFilterShaderRD' (group 0) SHA256: 88f44f9a5be925becac3751283cb446652c5c81c50907b38fa15d047d33f200d
+Shader 'CubemapRoughnessShaderRD' (group 0) SHA256: 498a8c875fe31824d241d4466dd82cbef05ce7a48dcbabf8502aebf723844f35
+Shader 'SpecularMergeShaderRD' (group 0) SHA256: 57926a238dd42bb7bf1e8be636125c20d599677aaab304862fc9ab3e472b4213
+Shader 'ShadowFrustumShaderRD' (group 0) SHA256: bad002a30f0cc24aba235c58d53828374538269981a2f2a8c0e92dc1d87a502e
+Shader 'MotionVectorsShaderRD' (group 0) SHA256: abf8dc8086a2c796396251dc113f3f4195d74f8f6da4d478dc06d7327cc3944b
+Shader 'LuminanceReduceShaderRD' (group 0) SHA256: 9f3a91257ad0b34b8a10fe82b1bf274a93d9db933364ee9b00f41b05dc0d59ba
+Shader 'TonemapShaderRD' (group 0) SHA256: e77bf9034735c365ac4971cf9c2ad73ebc8c9dae73070c652716f2c541655424
+Shader 'VrsShaderRD' (group 0) SHA256: 377e6ba240a316837d904e1a8eda314ccc731f371e74cd78f47fd5cca7db01a5
+Shader 'FsrUpscaleShaderRD' (group 0) SHA256: ee5bc1cd4d4621d6dbbe371640985ed2ea9ad421e633fdd1c064552f43384138
+Shader 'BlitShaderRD' (group 0) SHA256: c1a508b343e89110130b9aeb6612f366588f35c09d225b1ebd16a7ade2a7e4f4
+WASAPI: Activated output_device using IAudioClient3 interface
+WASAPI: wFormatTag = 65534
+WASAPI: nChannels = 2
+WASAPI: nSamplesPerSec = 48000
+WASAPI: nAvgBytesPerSec = 384000
+WASAPI: nBlockAlign = 8
+WASAPI: wBitsPerSample = 32
+WASAPI: cbSize = 22
+WASAPI: mix_rate = 48000
+WASAPI: fundamental_period_frames = 480
+WASAPI: min_period_frames = 480
+WASAPI: max_period_frames = 480
+WASAPI: selected a period frame size of 480
+WASAPI: detected 2 channels
+WASAPI: audio buffer frames: 480 calculated latency: 10ms
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 3954330213
+EDITOR API HASH: 1116905369
+Loading resource: res://scripts/object_pool.gd
+Loading resource: res://scripts/logger.gd
+MbedTLS: Some X509 certificates could not be parsed (1 certificates skipped).
+Loaded system CA certificates
+Loading resource: res://scenes/main.tscn
+Loading resource: res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png
+Loading resource: res://.godot/imported/TCom_Sand_Muddy2_2x2_512_albedo.png-2b5f657709288094e946e6d09642b9aa.s3tc.ctex
+Loading resource: res://scripts/main_optimized.gd
+Loading resource: res://scenes/enemy.tscn
+Loading resource: res://scripts/enemy_optimized.gd
+Loading resource: res://scenes/player.tscn
+Loading resource: res://scripts/player_controller.gd
+Loading resource: res://sounds/gunshot.wav
+Loading resource: res://.godot/imported/gunshot.wav-0695b62083eed8c2c8c2e79d47d751d9.sample
+Loading resource: res://sounds/reload sound.wav
+Loading resource: res://.godot/imported/reload sound.wav-9629ec323c8d58e49bad73a133804650.sample
+Loading resource: res://sounds/footstep.wav
+Loading resource: res://.godot/imported/footstep.wav-f25391cd69eebc9aed90a6be7be20bc0.sample
+Loading resource: res://sounds/thud.wav
+Loading resource: res://.godot/imported/thud.wav-5c1440042cf12b8239d55f5de88a1915.sample
+Loading resource: res://sounds/jumpsound.wav
+Loading resource: res://.godot/imported/jumpsound.wav-cd89217de53b0c9d70a5de86a2ff1ea2.sample
+Loading resource: res://sounds/fart.wav
+Loading resource: res://.godot/imported/fart.wav-821f7ceca4dfd2afac027ad4c590aabf.sample
+Loading resource: res://sounds/hitsound.wav
+Loading resource: res://.godot/imported/hitsound.wav-bb4c90e5fac0abe837860e3914ab25b5.sample
+Loading resource: res://sounds/hurt.mp3
+Loading resource: res://.godot/imported/hurt.mp3-d6b3159ec58559cd2cccbb1b52720f4a.mp3str
+Loading resource: res://sounds/healthsound.wav
+Loading resource: res://.godot/imported/healthsound.wav-8942fb0b6f251e6a14694165a9d94d57.sample
+Loading resource: res://sounds/ammunitions.wav
+Loading resource: res://.godot/imported/ammunitions.wav-d23cdd2828d3a3e6dd4c75af0b39551f.sample
+Loading resource: res://sounds/speedfart.wav
+Loading resource: res://.godot/imported/speedfart.wav-222b64eb855697d1677e222fee31be3e.sample
+Loading resource: res://scripts/movement_component.gd
+Loading resource: res://scripts/weapons_component.gd
+Loading resource: res://scripts/health_component.gd
+Loading resource: res://scripts/pickup_component.gd
+Loading resource: res://qwantani_mid_morning_1k.hdr
+Loading resource: res://.godot/imported/qwantani_mid_morning_1k.hdr-b958049d04b04b2afb62ee69f5830d92.bptc.ctex
+Loading resource: res://textures/aim.png
+Loading resource: res://.godot/imported/aim.png-2f0023fcc7130f4224555649a9904e49.ctex
+Logger initialized with level: DEBUG
+Movement Component: Ready called
+Movement Component: Player reference missing or footstep timer already exists
+Movement Component: Found gas bar UI
+Player Controller: Ready called
+Player Controller: Collision layers set to 1 mask: 3
+Loading resource: res://scenes/bullet.tscn
+Loading resource: res://scripts/bullet_pooled.gd
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Added object to pool: bullet
+Loading resource: res://scenes/hit_effect.tscn
+Loading resource: res://scripts/hit_effect_pooled.gd
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Added object to pool: hit_effect
+Loading resource: res://scenes/Explosion.tscn
+Loading resource: res://scripts/explosion_pooled.gd
+Loading resource: res://sounds/explosion2.wav
+Loading resource: res://.godot/imported/explosion2.wav-27a5b8ff2a958050a1b6e4834b53eb4b.sample
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Added object to pool: Explosion
+Loading resource: res://scenes/health_pack.tscn
+Loading resource: res://scripts/healthpack.gd
+Added object to pool: health_pack
+Added object to pool: health_pack
+Added object to pool: health_pack
+Added object to pool: health_pack
+Added object to pool: health_pack
+Loading resource: res://scenes/ammo_pack.tscn
+Loading resource: res://scripts/ammopack.gd
+Added object to pool: ammo_pack
+Added object to pool: ammo_pack
+Added object to pool: ammo_pack
+Added object to pool: ammo_pack
+Added object to pool: ammo_pack
+Loading resource: res://scenes/gas_pack.tscn
+Loading resource: res://scripts/gas_pack.gd
+Added object to pool: gas_pack
+Added object to pool: gas_pack
+Added object to pool: gas_pack
+Added object to pool: gas_pack
+Added object to pool: gas_pack
+Player Controller: health=100.0 position=(0.0, 0.214772, 0.0)
+Movement Component: Player not valid in _physics_process
+Player Controller: Initializing components
+Player Controller: Movement component initialized
+Player Controller: Weapons component initialized
+Player Controller: Health component initialized
+Player Controller: Pickup component initialized
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+Player Controller: health=100.0 position=(0.071911, 0.51057, 0.024655)
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=100.0 position=(0.070954, 0.467674, 0.023457)
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=100.0 position=(0.061682, 0.54823, 0.009213)
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=100.0 position=(0.062896, 0.498668, 0.01017)
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=100.0 position=(0.064093, 0.497151, 0.011206)
+Movement keys: W:false A:false S:false D:false
+Movement Component: Key pressed: 87
+Movement keys: W:true A:false S:false D:false
+Movement Component: Moving, velocity: (0.836055, 0.0, -4.929605)
+Movement Component: Moving, velocity: (0.81633, 0.0, -4.93291)
+Movement Component: Moving, velocity: (0.796592, 0.0, -4.936136)
+Movement Component: Moving, velocity: (0.766961, 0.0, -4.940827)
+Movement Component: Moving, velocity: (0.757078, 0.0, -4.942351)
+Movement Component: Moving, velocity: (0.747191, 0.0, -4.943855)
+Movement Component: Moving, velocity: (0.737302, 0.0, -4.94534)
+Movement Component: Moving, velocity: (0.737302, 0.0, -4.94534)
+Movement Component: Moving, velocity: (0.737302, 0.0, -4.94534)
+Movement Component: Moving, velocity: (0.737302, -0.163333, -4.94534)
+Movement Component: Moving, velocity: (0.737302, -0.326667, -4.94534)
+Movement Component: Moving, velocity: (0.737302, -0.49, -4.94534)
+Enemy: Hitbox collision layers configured
+Movement Component: Moving, velocity: (0.737302, -0.653333, -4.94534)
+Movement Component: Moving, velocity: (0.72741, -0.816667, -4.946805)
+Enemy: Hitbox detected body: Enemy
+Movement Component: Moving, velocity: (0.707617, -0.98, -4.949674)
+Movement Component: Moving, velocity: (0.677907, -1.143333, -4.953831)
+Movement Component: Moving, velocity: (0.658086, -1.306667, -4.956503)
+Movement Component: Moving, velocity: (0.618413, -1.47, -4.961609)
+Movement Component: Moving, velocity: (0.588633, -1.633333, -4.96523)
+Movement Component: Moving, velocity: (0.558831, -1.796667, -4.968673)
+Player Controller: health=100.0 position=(0.303416, 0.206051, -1.629021)
+Movement keys: W:true A:false S:false D:false
+Movement Component: Moving, velocity: (0.519064, -1.96, -4.972984)
+Movement Component: Moving, velocity: (0.479264, -2.123333, -4.976978)
+Movement Component: Moving, velocity: (0.449394, -2.286667, -4.979764)
+Movement Component: Moving, velocity: (0.439433, -2.45, -4.980653)
+Movement Component: Moving, velocity: (0.429471, -2.613333, -4.981522)
+Movement Component: Moving, velocity: (0.419507, -2.776667, -4.98237)
+Movement Component: Moving, velocity: (0.379635, 0.0, -4.985567)
+Movement Component: Moving, velocity: (0.319783, 0.0, -4.989763)
+Movement Component: Moving, velocity: (0.259884, 0.0, -4.993241)
+Movement Component: Moving, velocity: (0.109992, 0.0, -4.99879)
+Movement Component: Key pressed: 87
+Movement Component: Key pressed: 4194325
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-0.21998, 0.0, -9.99758)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-0.759267, 0.0, -9.971134)
+Movement keys: W:true A:false S:false D:false
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.0779, 0.0, -9.941736)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.097781, 0.0, -9.939561)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.058015, 0.0, -9.943872)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.018231, 0.0, -9.948026)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.038125, 0.0, -9.945969)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.0779, 0.0, -9.941736)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.0779, 0.0, -9.941736)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.0779, 0.0, -9.941736)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.117658, 0.0, -9.937346)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.137531, 0.0, -9.935091)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.177262, 0.0, -9.930461)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.216974, 0.0, -9.925673)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.35581, 0.0, -9.907663)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.533919, 0.0, -9.881655)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.632658, 0.0, -9.865821)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.632658, 0.0, -9.865821)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Key pressed: 4194325
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.711532, 0.0, -9.852445)
+Movement Component: Key pressed: 32
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Jumping, velocity.y set to 7.0
+Movement Component: Moving, velocity: (-1.711532, 7.0, -9.852445)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.691824, 6.836667, -9.855848)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.632658, 6.673333, -9.865821)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.533921, 6.51, -9.881655)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.415233, 6.346666, -9.89935)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.296342, 6.183333, -9.915619)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-1.077903, 6.02, -9.941737)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-0.858941, 5.856666, -9.963043)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-0.559708, 5.693333, -9.984324)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-0.139997, 5.529999, -9.99902)
+Enemy: Hitbox collision layers configured
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (0.499791, 5.366666, -9.987503)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (1.35581, 5.203332, -9.907662)
+Enemy: Hitbox detected body: @CharacterBody3D@61
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Key pressed: 65
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-9.264225, 4.876666, -3.764856)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-8.525247, 4.713332, -5.22687)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-7.51806, 4.549999, -6.593843)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-6.200424, 4.386665, -7.845683)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-4.518133, 4.223332, -8.921125)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-2.501129, 4.059999, -9.682167)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (-0.32791, 3.896665, -9.994622)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (2.174519, 3.733332, -9.760711)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (4.43234, 3.569998, -8.96406)
+Movement keys: W:false A:true S:false D:false
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (6.281733, 3.406665, -7.780734)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (7.663906, 3.243331, -6.423749)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (8.729431, 3.079998, -4.878221)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (9.435547, 2.916665, -3.312171)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (9.809326, 2.753331, -1.943484)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (9.963391, 2.589998, -0.854886)
+Movement Component: Key pressed: 83
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (6.931176, 2.426664, -7.208246)
+Movement Component: Using regular sprint speed: 10.0
+Movement Component: Moving, velocity: (7.130263, 2.263331, -7.011373)
+Movement Component: Shift released
+Movement Component: Moving, velocity: (3.565131, 2.099998, -3.505687)
+Movement Component: Moving, velocity: (3.565131, 1.936664, -3.505687)
+Movement Component: Moving, velocity: (3.565131, 1.773331, -3.505687)
+Movement Component: Moving, velocity: (3.565131, 1.609998, -3.505687)
+Movement Component: Moving, velocity: (3.565131, 1.446664, -3.505687)
+Movement Component: Moving, velocity: (3.565131, 1.283331, -3.505687)
+Movement Component: Moving, velocity: (0.042034, 1.119998, -4.999823)
+Movement Component: Moving, velocity: (0.042034, 0.956664, -4.999823)
+Movement Component: Moving, velocity: (0.042034, 0.793331, -4.999823)
+Movement Component: Moving, velocity: (0.042034, 0.629998, -4.999823)
+Movement Component: Moving, velocity: (0.042034, 0.466664, -4.999823)
+Movement Component: Moving, velocity: (0.042034, 0.303331, -4.999823)
+Movement Component: Moving, velocity: (0.042034, 0.139998, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -0.023336, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -0.186669, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -0.350002, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -0.513336, -4.999823)
+Player Controller: health=100.0 position=(0.387134, 2.527383, -12.82561)
+Movement keys: W:false A:false S:true D:false
+Movement Component: Moving, velocity: (0.042034, -0.676669, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -0.840002, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -1.003336, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -1.166669, -4.999823)
+Movement Component: Moving, velocity: (0.042034, -1.330002, -4.999823)
+Movement Component: Moving, velocity: (0.162006, -1.493336, -4.997375)
+Movement Component: Moving, velocity: (0.371691, -1.656669, -4.986165)
+Movement Component: Moving, velocity: (0.570787, -1.820002, -4.967313)
+Movement Component: Moving, velocity: (0.70963, -1.983335, -4.949387)
+Movement Component: Moving, velocity: (0.80847, -2.146669, -4.934205)
+Movement Component: Moving, velocity: (0.906986, -2.310002, -4.91705)
+Movement Component: Moving, velocity: (0.965923, -2.473336, -4.905812)
+Movement keys: W:false A:false S:true D:false
+Movement Component: Moving, velocity: (1.06384, -2.636669, -4.885514)
+Movement Component: Moving, velocity: (1.151602, -2.800003, -4.865574)
+Movement Component: Moving, velocity: (1.219605, -2.963336, -4.848976)
+Movement Component: Moving, velocity: (1.238991, -3.126669, -4.844059)
+Movement Component: Moving, velocity: (1.248677, -3.290003, -4.841571)
+Movement Component: Moving, velocity: (1.248677, -3.453336, -4.841571)
+Movement Component: Moving, velocity: (1.248677, -3.61667, -4.841571)
+Movement Component: Moving, velocity: (1.258358, -3.780003, -4.839064)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.268033, -3.943336, -4.836537)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.268033, -4.10667, -4.836537)
+Movement Component: Moving, velocity: (1.268033, -4.270003, -4.836537)
+Enemy: Hitbox collision layers configured
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.268033, -4.433337, -4.836537)
+Movement Component: Moving, velocity: (1.268033, -4.59667, -4.836537)
+Enemy: Hitbox detected body: @CharacterBody3D@62
+Movement Component: Moving, velocity: (1.287369, -4.760004, -4.831427)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.345252, -4.923337, -4.81563)
+Movement Component: Moving, velocity: (1.393341, -5.08667, -4.801937)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.412537, -5.250004, -4.796326)
+Movement Component: Moving, velocity: (1.422127, -5.413337, -4.793491)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.422127, -5.576671, -4.793491)
+Movement Component: Moving, velocity: (1.431711, -5.740004, -4.790637)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.460429, -5.903337, -4.78196)
+Movement Component: Moving, velocity: (1.498638, -6.066671, -4.770124)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.527231, -6.230004, -4.761047)
+Movement Component: Moving, velocity: (1.53675, -6.393338, -4.757983)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.546263, -6.556671, -4.7549)
+Movement Component: Moving, velocity: (1.546263, -6.720005, -4.7549)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.546263, -6.883338, -4.7549)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.546263, -7.046671, -4.7549)
+Movement Component: Moving, velocity: (1.546263, 0.0, -4.7549)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.55577, 0.0, -4.751798)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Enemy: Took 10.0 damage, health now: 40.0
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.55577, 0.0, -4.751798)
+Movement Component: Moving, velocity: (1.55577, 0.0, -4.751798)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.55577, 0.0, -4.751798)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Player Controller: health=100.0 position=(1.383931, -0.013353, -16.93586)
+Movement keys: W:false A:false S:true D:false
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Enemy: Took 10.0 damage, health now: 30.0
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Player Controller: health=100.0 position=(1.592634, -0.013353, -17.56903)
+Movement keys: W:false A:false S:true D:false
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Moving, velocity: (1.56527, 0.0, -4.748676)
+Movement Component: Key pressed: 83
+Enemy: Took 10.0 damage, health now: 20.0
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+Player Controller: health=100.0 position=(1.775249, -0.013353, -18.12304)
+Movement keys: W:false A:false S:false D:false
+Enemy: Took 10.0 damage, health now: 10.0
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+Enemy: Hitbox collision layers configured
+Enemy: Hitbox detected body: @CharacterBody3D@63
+Enemy: Took 10.0 damage, health now: 0.0
+ERROR: Function blocked during in/out signal. Use set_deferred("monitoring", true/false).
+   at: set_monitoring (scene/3d/physics/area_3d.cpp:379)
+ERROR: Function blocked during in/out signal. Use set_deferred("monitorable", true/false).
+   at: set_monitorable (scene/3d/physics/area_3d.cpp:535)
+Movement Component: Key pressed: 87
+Movement Component: Moving, velocity: (-1.56527, 0.0, 4.748676)
+Movement Component: Moving, velocity: (-1.56527, 0.0, 4.748676)
+Movement Component: Moving, velocity: (-1.56527, 0.0, 4.748676)
+Player Controller: health=100.0 position=(1.696985, -0.013353, -17.88561)
+Movement keys: W:true A:false S:false D:false
+Movement Component: Moving, velocity: (-1.56527, 0.0, 4.748676)
+Movement Component: Moving, velocity: (-1.56527, 0.0, 4.748676)
+Movement keys: W:true A:false S:false D:false
+Movement Component: Moving, velocity: (-1.56527, 0.0, 4.748676)
+Movement Component: Moving, velocity: (-1.55577, 0.0, 4.751798)
+Movement Component: Moving, velocity: (-1.55577, 0.0, 4.751798)
+Movement Component: Moving, velocity: (-1.55577, 0.0, 4.751798)
+Movement Component: Moving, velocity: (-1.55577, 0.0, 4.751798)
+Movement Component: Moving, velocity: (-1.56527, 0.0, 4.748676)
+Movement Component: Moving, velocity: (-1.574764, 0.0, 4.745536)
+Movement Component: Moving, velocity: (-1.603209, 0.0, 4.736003)
+Movement Component: Moving, velocity: (-1.659925, 0.0, 4.716424)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement keys: W:true A:false S:false D:false
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Enemy: Hitbox collision layers configured
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Key pressed: 87
+Enemy: Hitbox detected body: Enemy
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Key pressed: 87
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Key pressed: 87
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Key pressed: 87
+Movement Component: Moving, velocity: (-1.669354, 0.0, 4.713094)
+Movement Component: Key pressed: 68
+Movement Component: Moving, velocity: (-4.517368, 0.0, 2.143219)
+Movement Component: Moving, velocity: (-4.525905, 0.0, 2.125132)
+Movement Component: Moving, velocity: (-4.534369, 0.0, 2.107012)
+Movement Component: Moving, velocity: (-4.546929, 0.0, 2.079768)
+Movement Component: Moving, velocity: (-4.563422, 0.0, 2.043326)
+Movement Component: Moving, velocity: (-4.5756, 0.0, 2.015909)
+Movement Component: Moving, velocity: (-4.5756, 0.0, 2.015909)
+Movement Component: Moving, velocity: (-4.5675, 0.0, 2.034195)
+Movement Component: Moving, velocity: (-4.559326, 0.0, 2.052448)
+Movement Component: Moving, velocity: (-4.55108, 0.0, 2.070669)
+Movement Component: Moving, velocity: (-4.538574, 0.0, 2.097938)
+Movement Component: Moving, velocity: (-1.707006, 0.0, 4.699588)
+Movement Component: Moving, velocity: (-1.678778, 0.0, 4.709745)
+Movement Component: Moving, velocity: (-1.650489, 0.0, 4.719734)
+Movement Component: Moving, velocity: (-1.622141, 0.0, 4.729551)
+Movement Component: Moving, velocity: (-1.60321, 0.0, 4.736002)
+Movement Component: Moving, velocity: (-1.593735, 0.0, 4.739199)
+Movement Component: Moving, velocity: (-1.584253, 0.0, 4.742377)
+Movement Component: Moving, velocity: (-1.574765, 0.0, 4.745536)
+Movement Component: Moving, velocity: (-1.574765, 0.0, 4.745536)
+Movement Component: Moving, velocity: (-1.555771, 0.0, 4.751797)
+Movement Component: Moving, velocity: (-1.536751, 0.0, 4.757982)
+Movement Component: Moving, velocity: (-1.508176, 0.0, 4.767117)
+Movement Component: Moving, velocity: (-1.489095, 0.0, 4.773112)
+Movement Component: Moving, velocity: (-1.479546, 0.0, 4.776081)
+Movement Component: Moving, velocity: (-1.469991, 0.0, 4.77903)
+Movement Component: Moving, velocity: (-1.46043, 0.0, 4.78196)
+Movement Component: Moving, velocity: (-1.46043, 0.0, 4.78196)
+Movement Component: Moving, velocity: (-1.44129, 0.0, 4.787764)
+Movement Component: Moving, velocity: (-1.431712, 0.0, 4.790637)
+Movement Component: Moving, velocity: (-1.431712, 0.0, 4.790637)
+Movement Component: Moving, velocity: (-1.431712, 0.0, 4.790637)
+Movement Component: Moving, velocity: (-1.422128, 0.0, 4.793491)
+Movement Component: Moving, velocity: (-1.422128, 0.0, 4.793491)
+Movement Component: Moving, velocity: (-1.422128, 0.0, 4.793491)
+Movement Component: Moving, velocity: (-1.412538, 0.0, 4.796325)
+Movement Component: Moving, velocity: (-1.412538, 0.0, 4.796325)
+Movement Component: Moving, velocity: (-1.402943, 0.0, 4.799141)
+Movement Component: Moving, velocity: (-1.393342, 0.0, 4.801937)
+Movement Component: Moving, velocity: (-1.374123, 0.0, 4.807472)
+Movement Component: Moving, velocity: (-1.374123, 0.0, 4.807472)
+Movement Component: Moving, velocity: (-1.374123, 0.0, 4.807472)
+Movement Component: Moving, velocity: (-1.364505, -0.163333, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, -0.326667, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, -0.49, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Enemy: Hitbox collision layers configured
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Moving, velocity: (-1.364505, -0.163333, 4.81021)
+Enemy: Hitbox detected body: @CharacterBody3D@64
+Movement Component: Moving, velocity: (-1.364505, 0.0, 4.81021)
+Movement Component: Key pressed: 87
+Movement Component: Moving, velocity: (-1.33562, 0.0, 4.818311)
+Movement Component: Moving, velocity: (-1.32598, 0.0, 4.820972)
+Movement Component: Moving, velocity: (-1.287371, 0.0, 4.831426)
+Movement Component: Moving, velocity: (-1.209906, 0.0, 4.851405)
+Movement Component: Moving, velocity: (-1.063842, 0.0, 4.885513)
+Movement Component: Moving, velocity: (-0.808471, 0.0, 4.934205)
+Movement Component: Moving, velocity: (-0.491243, 0.0, 4.97581)
+Movement Component: Key pressed: 65
+Movement Component: Moving, velocity: (4.783148, 0.0, -1.456534)
+Movement Component: Moving, velocity: (4.629108, 0.0, -1.889804)
+Movement Component: Moving, velocity: (4.458763, 0.0, -2.262616)
+Movement Component: Moving, velocity: (4.330142, 0.0, -2.499974)
+Movement Component: Moving, velocity: (4.284443, 0.0, -2.577508)
+Movement Component: Moving, velocity: (4.253206, 0.0, -2.628734)
+Movement Component: Moving, velocity: (4.221355, 0.0, -2.679582)
+Movement Component: Moving, velocity: (4.177943, 0.0, -2.746778)
+Movement Component: Moving, velocity: (4.161388, 0.0, -2.771795)
+Movement Component: Key pressed: 87
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement keys: W:true A:false S:false D:false
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.662674, 0.0, 4.23204)
+Movement Component: Moving, velocity: (2.577506, 0.0, 4.284444)
+Movement Component: Moving, velocity: (2.473948, 0.0, 4.345065)
+Movement Component: Moving, velocity: (2.368964, 0.0, 4.403182)
+Movement Component: Moving, velocity: (2.307089, 0.0, 4.435915)
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox collision layers configured
+Enemy: Hitbox detected body: @CharacterBody3D@65
+Player Controller: health=100.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox detected body: Player
+Enemy: Hitbox applying damage to player: 10.0
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 90.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 90.0
+Enemy: Successfully applied damage from hitbox
+Enemy: Hitbox collision layers configured
+Enemy: Hitbox detected body: @CharacterBody3D@66
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=90.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=90.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox damage cooldown complete
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 80.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 80.0
+Enemy: Hitbox collision layers configured
+Enemy: Hitbox detected body: @CharacterBody3D@67
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=80.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox detected body: Player
+Enemy: Hitbox applying damage to player: 10.0
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 70.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 70.0
+Enemy: Successfully applied damage from hitbox
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 60.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 60.0
+Enemy: Hitbox collision layers configured
+Enemy: Hitbox detected body: @CharacterBody3D@68
+Player Controller: health=60.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Movement keys: W:false A:false S:false D:false
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=60.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox damage cooldown complete
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 50.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 50.0
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox collision layers configured
+Player Controller: health=50.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox detected body: @CharacterBody3D@68
+Enemy: Hitbox detected body: @CharacterBody3D@69
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 40.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 40.0
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 30.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 30.0
+Player Controller: health=30.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Enemy: Hitbox collision layers configured
+Enemy: Hitbox detected body: @CharacterBody3D@70
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 20.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 20.0
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 10.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 10.0
+Enemy: Hitbox detected body: Enemy
+Enemy: Hitbox collision layers configured
+Enemy: Hitbox detected body: @CharacterBody3D@71
+Movement keys: W:false A:false S:false D:false
+Player Controller: health=10.0 position=(0.701187, -0.013228, -11.68093)
+Movement keys: W:false A:false S:false D:false
+Enemy: Direct collision with player, applying damage
+Player Controller: take_damage called with amount: 10.0
+Player Controller: Health after damage: 0.0
+Player Controller: Emitting player_took_damage signal
+Player Controller: Updated health bar to 0.0
+Player Controller: Health <= 0, calling die()
+Player Controller: Player died!
+Loading resource: res://scenes/GameOver.tscn
+Loading resource: res://scripts/game_over.gd
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
