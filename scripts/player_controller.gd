@@ -29,10 +29,26 @@ var ammo_label = null
 var gas_bar = null
 var heal_border = null
 
+
+# Spawn effect properties
+@export var explosion_scene : String = "res://scenes/Explosion.tscn"
+@export var enable_spawn_effect : bool = true  # Can be toggled in the Inspector
+@export var play_spawn_sounds : bool = false   # Set to false to disable all spawn sounds
+
 # Debug flag
-var debug_player = true
+var debug_player = false
+
+
 
 func _ready():
+    
+    # Add this to the _ready() function
+    # Play spawn effect - with a slight delay to ensure everything is loaded
+    if enable_spawn_effect:
+        get_tree().create_timer(0.1).timeout.connect(func():
+            play_spawn_effect()
+    )
+    
     print("Player Controller: Ready called")
     
     # Connect to UI elements - added null checks
@@ -54,11 +70,38 @@ func _ready():
     
     print("Player Controller: Collision layers set to ", collision_layer, " mask: ", collision_mask)
     
+    # Play spawn effect - with a slight delay to ensure everything is loaded
+    if enable_spawn_effect:
+        get_tree().create_timer(0.1).timeout.connect(func():
+            play_spawn_effect()
+        )
+    
     # Capture mouse
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
     # Join player group for easier reference
     add_to_group("player")
+
+func play_spawn_effect():
+    # Only play this if enabled
+    if not enable_spawn_effect:
+        return
+        
+    # Create a spawn-in explosion effect
+    var object_pool = get_node_or_null("/root/ObjectPool")
+    if object_pool and is_instance_valid(self):
+        var explosion = object_pool.get_object(explosion_scene)
+        if explosion:
+            # Position at player's feet for better effect
+            explosion.global_transform.origin = global_transform.origin - Vector3(0, 0.5, 0)
+            
+            # Mute sounds if needed
+            if not play_spawn_sounds:
+                for child in explosion.get_children():
+                    if child is AudioStreamPlayer or child is AudioStreamPlayer3D:
+                        child.volume_db = -80  # Effectively muted
+            
+            print("Player Controller: Played spawn effect")
 
 func initialize_components():
     print("Player Controller: Initializing components")
@@ -170,16 +213,14 @@ func take_damage(amount: float):
     print("Player Controller: Health after damage: ", current_health)
     
     if amount > 0:
-        print("Player Controller: Emitting player_took_damage signal")
-        emit_signal("player_took_damage", amount)
+               emit_signal("player_took_damage", amount)
     elif amount < 0:
-        print("Player Controller: Emitting player_healed signal")
-        emit_signal("player_healed", -amount)
+                emit_signal("player_healed", -amount)
     
     # Update UI
     if health_bar:
         health_bar.value = current_health
-        print("Player Controller: Updated health bar to ", current_health)
+        
     else:
         print("Player Controller: Health bar not found!")
     

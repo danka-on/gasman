@@ -1,4 +1,3 @@
-# object_pool.gd - Updated version
 extends Node
 
 # Dictionary to store pools of different object types
@@ -19,14 +18,12 @@ func initialize_pool(scene_path: String, initial_size: int = 10):
         var instance = scene.instantiate()
         instance.set_meta("pool_name", pool_name)
         
-        # Make sure object has required methods
-        if not instance.has_method("reset"):
-            printerr("Pooled object ", pool_name, " is missing reset() method!")
-            
+        # IMPORTANT: Set objects to invisible BEFORE adding to scene
+        # This prevents them from auto-playing sounds/effects
         instance.visible = false
+        
         add_child(instance)
         pools[pool_name].append(instance)
-        print("Added object to pool: ", pool_name)
 
 # Get an object from the pool (or create new if needed)
 func get_object(scene_path: String):
@@ -34,35 +31,49 @@ func get_object(scene_path: String):
     
     # Initialize pool if it doesn't exist
     if not pools.has(pool_name):
-        printerr("Pool doesn't exist, initializing: ", pool_name)
         initialize_pool(scene_path)
     
     # Find an inactive object in the pool
     for obj in pools[pool_name]:
         if not obj.visible:
-            # Call reset to properly initialize the object
+            # Don't set visible here, let the reset() function handle it
             if obj.has_method("reset"):
                 obj.reset()
+            else:
+                obj.visible = true
             return obj
     
     # If no inactive objects, create a new one and add it to the pool
-    printerr("Pool for ", pool_name, " exhausted, creating new instance")
     var scene = load(scene_path)
     var instance = scene.instantiate()
     instance.set_meta("pool_name", pool_name)
-    add_child(instance)
-    pools[pool_name].append(instance)
     
-    # Call reset to properly initialize the object
+    # Set invisible first, then add to scene
+    instance.visible = false
+    add_child(instance)
+    
+    # Now make it visible (or call reset if available)
     if instance.has_method("reset"):
         instance.reset()
+    else:
+        instance.visible = true
+        
+    pools[pool_name].append(instance)
     return instance
 
 # Return an object to the pool
 func return_object(object):
-    # Prevent double returns
-    if not object.visible:
+    if not is_instance_valid(object):
         return
         
     object.visible = false
-    # The object's own reset() method will handle specific resets when retrieved again
+    
+    # Stop any sounds if the object has audio players
+    for child in object.get_children():
+        if child is AudioStreamPlayer or child is AudioStreamPlayer3D:
+            child.stop()
+    
+    # Reset any physics properties
+    if object is RigidBody3D:
+        object.linear_velocity = Vector3.ZERO
+        object.angular_velocity = Vector3.ZERO

@@ -3,7 +3,7 @@ extends Node
 var player = null  # Will reference the parent player node
 
 # Debug flag
-var debug_pickup = true
+var debug_pickup = false
 
 func _ready():
     # Wait until the next frame to ensure player is set

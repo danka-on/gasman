@@ -50,7 +50,7 @@ var input_dir : Vector3 = Vector3.ZERO
 var gas_bar = null
 
 # Add debug flag for logging
-var debug_movement = true
+var debug_movement = false
 
 func _ready():
     current_gas = max_gas

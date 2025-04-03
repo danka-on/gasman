@@ -25,6 +25,9 @@ func reset():
     angular_velocity = Vector3.ZERO
     apply_central_impulse(Vector3(0, 5, 0)) # 5 units up
     
+    # DON'T play sounds during reset - will be played by the pickup system
+    # Don't make any nodes emit particles or play sounds here
+    
     if debug_pack:
         print("Ammo Pack: Reset called")
 

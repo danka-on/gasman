@@ -3,7 +3,7 @@ extends RigidBody3D
 @export var health_amount : float = 25.0
 
 # Debug flag
-var debug_pack = true
+var debug_pack = false
 
 func _ready():
     # First-time setup only
@@ -19,12 +19,14 @@ func _ready():
 func reset():
     # Reset the pack's state when pulled from the pool
     visible = true
-    collision_layer = 2    # Ensure correct layer is set
+    collision_layer = 2
     collision_mask = 1
     linear_velocity = Vector3.ZERO
     angular_velocity = Vector3.ZERO
     apply_central_impulse(Vector3(0, 5, 0)) # 5 units up
     
+    # DON'T play sounds during reset - will be played by the pickup system
+    # Don't make any nodes emit particles or play sounds here
     if debug_pack:
         print("Health Pack: Reset called")
 

@@ -1,8 +1,9 @@
-# explosion_pooled.gd - Updated version
 extends Node3D
 
 func _ready():
-    reset()
+    # Don't automatically reset on creation
+    # This avoids unintended explosions when initializing the object pool
+    visible = false
     
 func reset():
     # Called when getting from pool
@@ -11,7 +12,7 @@ func reset():
     $BoomSound.play()
     
     # Return to pool after effect completes
-    get_tree().create_timer(0.7).timeout.connect(func():
+    get_tree().create_timer(4.15).timeout.connect(func():
         if is_instance_valid(self):
             return_to_pool()
     )

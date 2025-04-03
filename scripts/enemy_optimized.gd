@@ -38,7 +38,7 @@ var current_state = State.IDLE
 var distance_to_player : float = 999999.0
 
 # Debug flag
-var debug_enemy = true
+var debug_enemy = false
 
 func _ready():
     current_health = max_health

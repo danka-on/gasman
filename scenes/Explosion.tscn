@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c5albmrna484m"]
 
 [ext_resource type="Script" uid="uid://ddhplxgga1e12" path="res://scripts/explosion_pooled.gd" id="1_li25b"]
-[ext_resource type="AudioStream" uid="uid://dhfb23yehb0vi" path="res://sounds/explosion2.wav" id="2_li25b"]
+[ext_resource type="AudioStream" uid="uid://bdn0ugulve3mx" path="res://sounds/explosion - new.wav" id="2_i4n8h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_li25b"]
 albedo_color = Color(1, 0.411765, 0.0980392, 1)
@@ -42,5 +42,5 @@ process_material = SubResource("ParticleProcessMaterial_6sfjf")
 draw_pass_1 = SubResource("SphereMesh_6sfjf")
 
 [node name="BoomSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_li25b")
+stream = ExtResource("2_i4n8h")
 volume_db = 1.0
