@@ -37,6 +37,9 @@ enum State {IDLE, PURSUE, ATTACK}
 var current_state = State.IDLE
 var distance_to_player : float = 999999.0
 
+# Debug flag
+var debug_enemy = true
+
 func _ready():
     current_health = max_health
     
@@ -45,6 +48,15 @@ func _ready():
     
     # Set a random tick interval to stagger AI updates
     tick_interval = randi() % 5 + 1  # Random interval between 1 and 5
+    
+    # IMPORTANT: Make sure the hitbox is properly set up for collision
+    if hitbox:
+        # Make sure the hitbox can detect the player
+        hitbox.collision_layer = 2  # Enemy hitbox layer
+        hitbox.collision_mask = 1   # Player layer
+        print("Enemy: Hitbox collision layers configured")
+    else:
+        push_error("Enemy: Hitbox not found!")
     
     if enemy_mesh:
         # Create materials once
@@ -85,6 +97,8 @@ func _physics_process(delta):
         # Determine state based on distance
         if distance_to_player <= 1.5:
             current_state = State.ATTACK
+            if debug_enemy:
+                print("Enemy: In ATTACK state, distance: ", distance_to_player)
         elif distance_to_player <= active_pursuit_range:
             current_state = State.PURSUE
         else:
@@ -108,19 +122,46 @@ func _physics_process(delta):
             State.ATTACK:
                 if can_damage:
                     if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
-                        player.take_damage(damage)
+                        if debug_enemy:
+                            print("Enemy: Attempting to damage player with ", damage, " damage")
+                        
+                        # IMPORTANT FIX: Direct call to take_damage to ensure it works
+                        if player.has_method("take_damage"):
+                            player.take_damage(damage)
+                            print("Enemy: Successfully applied damage to player")
+                        else:
+                            push_error("Enemy: Player doesn't have take_damage method!")
+                            
                         last_damage_time = Time.get_ticks_msec() / 1000.0
                         can_damage = false
                         get_tree().create_timer(damage_cooldown).timeout.connect(func():
                             if is_instance_valid(self):
                                 can_damage = true
+                                if debug_enemy:
+                                    print("Enemy: Damage cooldown complete, can damage again")
                         )
     
     move_and_slide()
+    
+    # Check if we're colliding with the player directly
+    for i in range(get_slide_collision_count()):
+        var collision = get_slide_collision(i)
+        if collision.get_collider() == player and can_damage:
+            if debug_enemy:
+                print("Enemy: Direct collision with player, applying damage")
+            player.take_damage(damage)
+            can_damage = false
+            get_tree().create_timer(damage_cooldown).timeout.connect(func():
+                if is_instance_valid(self):
+                    can_damage = true
+            )
 
 func take_damage(amount: float):
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
+    
+    if debug_enemy:
+        print("Enemy: Took ", amount, " damage, health now: ", current_health)
     
     if is_instance_valid(player) and player.has_method("play_hit_sound"):
         player.play_hit_sound()
@@ -184,12 +225,27 @@ func die():
     )
 
 func _on_hitbox_body_entered(body):
-    if body == player and can_damage:
-        player.take_damage(damage)
+    if debug_enemy:
+        print("Enemy: Hitbox detected body: ", body.name)
+    
+    # Make sure this is actually the player    
+    if is_instance_valid(player) and body == player and can_damage:
+        if debug_enemy:
+            print("Enemy: Hitbox applying damage to player: ", damage)
+            
+        # IMPORTANT FIX: Make sure the player exists and has the take_damage method
+        if player.has_method("take_damage"):
+            player.take_damage(damage)
+            print("Enemy: Successfully applied damage from hitbox")
+        else:
+            push_error("Enemy: Player doesn't have take_damage method (from hitbox)!")
+            
         can_damage = false
         get_tree().create_timer(damage_cooldown).timeout.connect(func():
             if is_instance_valid(self):
                 can_damage = true
+                if debug_enemy:
+                    print("Enemy: Hitbox damage cooldown complete")
         )
 
 func update_color():

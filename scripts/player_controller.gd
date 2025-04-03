@@ -47,9 +47,12 @@ func _ready():
     # Defer component initialization to ensure nodes are ready
     call_deferred("initialize_components")
     
-    # Set up collision
-    collision_layer = 1
-    collision_mask = 1 | 8 | 16
+    # IMPORTANT: Set up collision properly
+    # Make sure player can be hit by enemies
+    collision_layer = 1     # Player layer
+    collision_mask = 1 | 2  # Floor/Environment and enemy layers
+    
+    print("Player Controller: Collision layers set to ", collision_layer, " mask: ", collision_mask)
     
     # Capture mouse
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -117,10 +120,6 @@ func _input(event):
     if not is_inside_tree() or not visible:
         return
         
-    # Debug input events
-    if debug_player and event is InputEventKey and event.pressed:
-        print("Player Controller: Key pressed: ", event.keycode)
-        
     # Handle mouse movement for camera
     if event is InputEventMouseMotion:
         var head = get_node_or_null("Head")
@@ -133,6 +132,7 @@ func _input(event):
     
     # Debug key to take damage - only in debug builds
     if OS.is_debug_build() and event is InputEventKey and event.pressed and event.keycode == KEY_H:
+        print("Player Controller: Taking 10 damage from debug key")
         take_damage(10.0)
 
 func _physics_process(delta):
@@ -149,33 +149,49 @@ func _physics_process(delta):
             Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
     # IMPORTANT: Make sure we're actually calling move_and_slide()
-    # This is critical to make the player move based on velocity
     move_and_slide()
     
     if debug_player and Engine.get_frames_drawn() % 60 == 0:  # Log every 60 frames to reduce spam
-        print("Player Controller: velocity=", velocity, " position=", global_transform.origin)
+        print("Player Controller: health=", current_health, " position=", global_transform.origin)
 
 func take_damage(amount: float):
     if not is_instance_valid(self):
         return
+    
+    print("Player Controller: take_damage called with amount: ", amount)
         
     if god_mode and amount > 0:
+        print("Player Controller: God mode active, ignoring damage")
         return
         
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
     
+    print("Player Controller: Health after damage: ", current_health)
+    
     if amount > 0:
+        print("Player Controller: Emitting player_took_damage signal")
         emit_signal("player_took_damage", amount)
     elif amount < 0:
+        print("Player Controller: Emitting player_healed signal")
         emit_signal("player_healed", -amount)
     
     # Update UI
     if health_bar:
         health_bar.value = current_health
+        print("Player Controller: Updated health bar to ", current_health)
+    else:
+        print("Player Controller: Health bar not found!")
+    
+    # Play damage sound directly to ensure it happens
+    if amount > 0:
+        var damage_sound = get_node_or_null("DamageSound")
+        if damage_sound:
+            damage_sound.play()
     
     # Check for death
     if current_health <= 0:
+        print("Player Controller: Health <= 0, calling die()")
         die()
 
 func add_gas(amount: float):
@@ -201,6 +217,8 @@ func add_score(points: int):
 func die():
     if not is_instance_valid(self):
         return
+    
+    print("Player Controller: Player died!")
         
     emit_signal("player_died")
     hide()
