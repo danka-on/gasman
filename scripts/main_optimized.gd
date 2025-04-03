@@ -25,7 +25,15 @@ var active_cells = {}
 var cell_size = 10.0  # Size of each spatial partition cell
 
 func _ready():
-    # Initialize object pool if it exists
+    # Create ObjectPool if it doesn't exist
+    if not has_node("/root/ObjectPool"):
+        push_warning("ObjectPool autoload not found, creating manually...")
+        var object_pool_script = load("res://scripts/object_pool.gd")
+        var object_pool = object_pool_script.new()
+        object_pool.name = "ObjectPool"
+        get_node("/root").add_child(object_pool)
+    
+    # Initialize object pool
     var object_pool = get_node_or_null("/root/ObjectPool")
     if object_pool:
         # Initialize pools for commonly used objects
@@ -35,14 +43,17 @@ func _ready():
         object_pool.initialize_pool(health_pack_scene, pickup_pool_size)
         object_pool.initialize_pool(ammo_pack_scene, pickup_pool_size)
         object_pool.initialize_pool(gas_pack_scene, pickup_pool_size)
+    else:
+        push_error("Failed to get or create ObjectPool!")
     
     # Set up enemy spawning
     spawn_timer.wait_time = 1.0
-    spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+    if not spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
+        spawn_timer.timeout.connect(_on_spawn_timer_timeout)
     spawn_timer.start()
     
     # Connect to player signals
-    if player:
+    if player and player.has_signal("player_died") and not player.player_died.is_connected(_on_player_died):
         player.connect("player_died", _on_player_died)
 
 func _physics_process(_delta):
@@ -57,29 +68,55 @@ func _on_spawn_timer_timeout():
         spawn_enemy()
         
 func update_enemy_count():
-    enemy_count_label.text = "Enemies: " + str(enemy_count)
+    if enemy_count_label:
+        enemy_count_label.text = "Enemies: " + str(enemy_count)
 
 func _on_enemy_died():
     enemy_count -= 1
     update_enemy_count()
 
 func spawn_enemy():
+    if not is_instance_valid(player):
+        return
+        
     var enemy = enemy_scene.instantiate()
+    if not enemy:
+        push_error("Failed to instantiate enemy scene!")
+        return
+        
     add_child(enemy)
     
-    # Use spatial distribution logic
-    var random_angle = randf() * 2 * PI
-    var random_distance = randf_range(spawn_radius * 0.5, spawn_radius)
-    var spawn_x = cos(random_angle) * random_distance
-    var spawn_z = sin(random_angle) * random_distance
+    # Find a valid spawn position that's not too close to the player
+    var valid_position = false
+    var spawn_pos = Vector3.ZERO
+    var min_player_distance = spawn_radius * 0.25  # Don't spawn too close to player
+    var max_attempts = 10
+    var attempts = 0
     
-    enemy.global_transform.origin = Vector3(spawn_x, 1.5, spawn_z)
+    while not valid_position and attempts < max_attempts:
+        var random_angle = randf() * 2 * PI
+        var random_distance = randf_range(spawn_radius * 0.5, spawn_radius)
+        var spawn_x = cos(random_angle) * random_distance
+        var spawn_z = sin(random_angle) * random_distance
+        
+        spawn_pos = Vector3(spawn_x, 1.5, spawn_z)
+        var distance_to_player = spawn_pos.distance_to(player.global_transform.origin)
+        
+        if distance_to_player >= min_player_distance:
+            valid_position = true
+        
+        attempts += 1
+    
+    enemy.global_transform.origin = spawn_pos
     enemy.player = player
     enemy_count += 1
     
-    # Connect to enemy signals
-    enemy.connect("tree_exited", _on_enemy_died)
-    enemy.connect("enemy_died", _on_enemy_died)
+    # Connect to enemy signals with error handling
+    if enemy.has_signal("tree_exited") and not enemy.tree_exited.is_connected(_on_enemy_died):
+        enemy.tree_exited.connect(_on_enemy_died)
+        
+    if enemy.has_signal("enemy_died") and not enemy.enemy_died.is_connected(_on_enemy_died):
+        enemy.enemy_died.connect(_on_enemy_died)
     
     update_enemy_count()
     
@@ -92,7 +129,7 @@ func _on_player_died():
     spawn_timer.stop()
 
 func update_spatial_partitioning():
-    if not player:
+    if not is_instance_valid(player):
         return
         
     # Clear the active cells data structure before the update
@@ -118,7 +155,7 @@ func add_to_cell(cell_coords: Vector3, object):
     active_cells[cell_coords].append(object)
 
 func optimize_enemy_processing():
-    if not player:
+    if not is_instance_valid(player):
         return
         
     var player_cell = get_cell_coordinates(player.global_transform.origin)

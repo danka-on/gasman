@@ -2,7 +2,7 @@ extends Node
 
 var player = null  # Will reference the parent player node
 
-# Shooting variables"res://scenes/hit_effect.tscn"
+# Shooting variables
 @export var bullet_scene_path : String = "res://scenes/bullet.tscn"
 var can_shoot = true
 @export var shoot_cooldown : float = 0.2
@@ -23,27 +23,40 @@ var reload_progress : float = 0.0
 
 # Object pooling reference
 var object_pool = null
+# UI reference
+var ammo_label = null
+var reload_bar = null
 
 func _ready():
     current_magazine = max_magazine
     current_reserve = total_reserve_ammo
     
+    # Get UI references
+    update_ui_references()
     update_ammo_display()
     
     # Get object pool reference
     object_pool = get_node_or_null("/root/ObjectPool")
     if not object_pool:
-        print("WARNING: ObjectPool not found, will instantiate objects directly")
+        push_warning("WARNING: ObjectPool not found, will instantiate objects directly")
+
+func update_ui_references():
+    # Get UI references safely
+    if not ammo_label:
+        ammo_label = get_node_or_null("/root/Main/HUD/HealthBarContainer/AmmoLabel")
+    
+    if not reload_bar:
+        reload_bar = get_node_or_null("/root/Main/HUD/HealthBarContainer/ReloadBar")
 
 func _input(event):
-    if not player:
+    if not player or not is_instance_valid(player):
         return
         
-    if event.is_action_pressed("reload") and can_reload:
+    if event.is_action_pressed("reload") and can_reload and not is_reloading and current_magazine < max_magazine and current_reserve > 0:
         reload()
 
 func _process(delta):
-    if not player:
+    if not player or not is_instance_valid(player):
         return
         
     # Handle shooting
@@ -54,7 +67,6 @@ func _process(delta):
     if is_reloading:
         reload_progress += delta
         
-        var reload_bar = get_node_or_null("/root/Main/HUD/HealthBarContainer/ReloadBar")
         if reload_bar:
             reload_bar.value = reload_progress
             
@@ -72,6 +84,9 @@ func _process(delta):
                 reload_bar.hide()
 
 func shoot():
+    if not is_instance_valid(player):
+        return
+        
     can_shoot = false
     if not player.god_mode:
         current_magazine -= 1
@@ -83,20 +98,44 @@ func shoot():
         bullet = object_pool.get_object(bullet_scene_path)
     else:
         var bullet_scene = load(bullet_scene_path)
-        bullet = bullet_scene.instantiate()
-        player.get_parent().add_child(bullet)
+        if bullet_scene:
+            bullet = bullet_scene.instantiate()
+            player.get_parent().add_child(bullet)
+        else:
+            push_error("Failed to load bullet scene from: " + bullet_scene_path)
+            can_shoot = true
+            return
     
-    bullet.global_transform.origin = player.get_node("Head/Camera3D/Gun/GunTip").global_transform.origin
+    if not bullet:
+        push_error("Failed to get bullet instance")
+        can_shoot = true
+        return
+        
+    var gun_tip = player.get_node_or_null("Head/Camera3D/Gun/GunTip")
+    if not gun_tip:
+        push_error("Gun tip node not found")
+        can_shoot = true
+        return
+        
+    # Set bullet position and velocity
+    bullet.global_transform.origin = gun_tip.global_transform.origin
     bullet.velocity = -player.get_node("Head/Camera3D").global_transform.basis.z * bullet_speed
     
     # Show muzzle flash
-    player.get_node("Head/Camera3D/Gun/MuzzleFlash").visible = true
-    player.get_node("Head/Camera3D/Gun/GunshotPlayer").play()
+    var muzzle_flash = player.get_node_or_null("Head/Camera3D/Gun/MuzzleFlash")
+    if muzzle_flash:
+        muzzle_flash.visible = true
+        
+    var gunshot_player = player.get_node_or_null("Head/Camera3D/Gun/GunshotPlayer")
+    if gunshot_player:
+        gunshot_player.play()
     
     # Hide muzzle flash after duration
-    get_tree().create_timer(muzzle_flash_duration).timeout.connect(func():
-        player.get_node("Head/Camera3D/Gun/MuzzleFlash").visible = false
-    )
+    if muzzle_flash:
+        get_tree().create_timer(muzzle_flash_duration).timeout.connect(func():
+            if is_instance_valid(muzzle_flash):
+                muzzle_flash.visible = false
+        )
     
     # Reset can_shoot after cooldown
     get_tree().create_timer(shoot_cooldown).timeout.connect(func():
@@ -104,35 +143,41 @@ func shoot():
     )
 
 func reload():
-    if current_reserve <= 0 or current_magazine >= max_magazine or is_reloading:
+    if current_reserve <= 0 or current_magazine >= max_magazine or is_reloading or not is_instance_valid(player):
         return
         
     is_reloading = true
     can_reload = false
     reload_progress = 0.0
     
-    var reload_bar = get_node_or_null("/root/Main/HUD/HealthBarContainer/ReloadBar")
     if reload_bar:
         reload_bar.value = 0.0
         reload_bar.show()
     
-    player.get_node("Head/Camera3D/Gun/ReloadPlayer").play()
+    var reload_player = player.get_node_or_null("Head/Camera3D/Gun/ReloadPlayer")
+    if reload_player:
+        reload_player.play()
 
 func _on_ammo_changed(amount, _reserve):
     current_reserve += amount
     current_reserve = clamp(current_reserve, 0, total_reserve_ammo)
     update_ammo_display()
     
-    var ammo_label = get_node_or_null("/root/Main/HUD/HealthBarContainer/AmmoLabel")
     if ammo_label:
         ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Blue
-        player.get_node("AmmoSound").play()
+        
+        var ammo_sound = player.get_node_or_null("AmmoSound")
+        if ammo_sound:
+            ammo_sound.play()
         
         get_tree().create_timer(1.0).timeout.connect(func():
-            ammo_label.remove_theme_color_override("font_color") # Back to default
+            if is_instance_valid(ammo_label):
+                ammo_label.remove_theme_color_override("font_color") # Back to default
         )
 
 func update_ammo_display():
-    var ammo_label = get_node_or_null("/root/Main/HUD/HealthBarContainer/AmmoLabel")
+    if not ammo_label:
+        update_ui_references()
+        
     if ammo_label:
         ammo_label.text = str(current_magazine) + "/" + str(current_reserve)

@@ -1,22 +1,34 @@
+# hit_effect_pooled.gd - Updated version
 extends Node3D
 
-var emitting = false setget set_emitting, get_emitting
+# Property using modern Godot 4 syntax
+var _emitting = false
+var emitting: 
+    get:
+        return _emitting
+    set(value):
+        _emitting = value
+        if value and not $Sparks.emitting:
+            visible = true
+            $Sparks.emitting = true
+            get_tree().create_timer(0.7).timeout.connect(func():
+                return_to_pool()
+            )
 
 func _ready():
     visible = false
 
-func set_emitting(value):
-    if value and not $Sparks.emitting:
-        visible = true
-        $Sparks.emitting = true
-        get_tree().create_timer(0.7).timeout.connect(func():
-            return_to_pool()
-        )
-
-func get_emitting():
-    return $Sparks.emitting
+func reset():
+    visible = true
+    # Don't automatically emit particles - let the setter handle that
 
 func return_to_pool():
-    var object_pool = get_node("/root/ObjectPool")
+    if not visible:
+        return
+        
+    visible = false
+    $Sparks.emitting = false
+    
+    var object_pool = get_node_or_null("/root/ObjectPool")
     if object_pool:
         object_pool.return_object(self)

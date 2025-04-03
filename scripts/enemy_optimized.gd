@@ -29,6 +29,10 @@ var tick_interval : int = 0  # Will be set randomly to stagger AI updates
 @onready var enemy_mesh = $EnemyMesh # Reference to mesh
 @onready var hitbox = $Hitbox # Add reference
 
+# Store a reference to the red and normal materials to avoid constant recreation
+var red_material = null
+var normal_material = null
+
 enum State {IDLE, PURSUE, ATTACK}
 var current_state = State.IDLE
 var distance_to_player : float = 999999.0
@@ -43,17 +47,30 @@ func _ready():
     tick_interval = randi() % 5 + 1  # Random interval between 1 and 5
     
     if enemy_mesh:
+        # Create materials once
+        if not red_material:
+            red_material = StandardMaterial3D.new()
+            red_material.albedo_color = Color(1, 0, 0, 1)
+            red_material.emission_enabled = true
+            red_material.emission = Color(1, 0, 0, 1)
+            red_material.emission_energy_multiplier = 2.0
+            
+        if not normal_material:
+            normal_material = StandardMaterial3D.new()
+            normal_material.albedo_color = Color(0, 0.5, 0.5, 1)
+            normal_material.emission_enabled = false
+        
         # Ensure material override exists
         if not enemy_mesh.material_override:
-            enemy_mesh.material_override = StandardMaterial3D.new()
-        # Clear surface material if present
-        if enemy_mesh.get_surface_override_material(0):
-            enemy_mesh.set_surface_override_material(0, null)
+            enemy_mesh.material_override = normal_material.duplicate()
         update_color()
     else:
         print("Ready - EnemyMesh missing: ", enemy_mesh)
         
 func _physics_process(delta):
+    if not is_instance_valid(self) or not visible:
+        return
+        
     # Only update AI logic on specific ticks to reduce CPU usage
     update_tick = (update_tick + 1) % tick_interval
     
@@ -95,7 +112,8 @@ func _physics_process(delta):
                         last_damage_time = Time.get_ticks_msec() / 1000.0
                         can_damage = false
                         get_tree().create_timer(damage_cooldown).timeout.connect(func():
-                            can_damage = true
+                            if is_instance_valid(self):
+                                can_damage = true
                         )
     
     move_and_slide()
@@ -103,41 +121,57 @@ func _physics_process(delta):
 func take_damage(amount: float):
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
-    if player and player.has_method("play_hit_sound"):
+    
+    if is_instance_valid(player) and player.has_method("play_hit_sound"):
         player.play_hit_sound()
+        
     if enemy_mesh and enemy_mesh.material_override:
         update_color()
     else:
         print("Take damage - EnemyMesh issue: ", enemy_mesh, " Material: ", enemy_mesh.material_override if enemy_mesh else "null")
+        
     if current_health <= 0:
         die()
 
 func die():
+    # Prevent double deaths
+    if not visible or not is_instance_valid(self):
+        return
+        
     emit_signal("enemy_died")
     
-    if player:
+    if is_instance_valid(player):
         player.add_score(5)
         if randf() < drop_chance:
             var drop_options = [health_pack_scene, ammo_pack_scene, gas_pack_scene]
             var drop_scene = drop_options[randi() % drop_options.size()]
             
-            # Get from object pool
-            var object_pool = get_node("/root/ObjectPool")
-            var instance = object_pool.get_object(drop_scene)
-            instance.global_transform.origin = global_transform.origin + Vector3(0, 1, 0)
+            # Get from object pool with error handling
+            var object_pool = get_node_or_null("/root/ObjectPool")
+            if object_pool:
+                var instance = object_pool.get_object(drop_scene)
+                if instance:
+                    instance.global_transform.origin = global_transform.origin + Vector3(0, 1, 0)
     
-    # Get explosion from object pool
-    var object_pool = get_node("/root/ObjectPool")
-    var explosion = object_pool.get_object(explosion_scene)
-    explosion.global_transform.origin = global_transform.origin
+    # Get explosion from object pool with error handling
+    var object_pool = get_node_or_null("/root/ObjectPool")
+    if object_pool:
+        var explosion = object_pool.get_object(explosion_scene)
+        if explosion:
+            explosion.global_transform.origin = global_transform.origin
     
-    if is_instance_valid(player) and distance_to_player <= explosion_radius:
-        var direction = (player.global_transform.origin - global_transform.origin).normalized()
-        player.take_damage(explosion_damage)
-        player.apply_knockback(direction, explosion_force)
+    # Check player distance for explosion damage
+    if is_instance_valid(player):
+        distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
+        if distance_to_player <= explosion_radius:
+            var direction = (player.global_transform.origin - global_transform.origin).normalized()
+            player.take_damage(explosion_damage)
+            player.apply_knockback(direction, explosion_force)
     
-    hitbox.collision_layer = 0
-    hitbox.collision_mask = 0
+    # Disable collision
+    if is_instance_valid(hitbox):
+        hitbox.collision_layer = 0
+        hitbox.collision_mask = 0
     
     # Remove from scene after explosion
     hide()
@@ -145,7 +179,8 @@ func die():
     
     # Completely remove after a delay
     get_tree().create_timer(0.5).timeout.connect(func():
-        queue_free()
+        if is_instance_valid(self):
+            queue_free()
     )
 
 func _on_hitbox_body_entered(body):
@@ -153,17 +188,14 @@ func _on_hitbox_body_entered(body):
         player.take_damage(damage)
         can_damage = false
         get_tree().create_timer(damage_cooldown).timeout.connect(func():
-            can_damage = true
+            if is_instance_valid(self):
+                can_damage = true
         )
 
 func update_color():
-    var new_material = enemy_mesh.material_override.duplicate()
-    if current_health <= 10.0:
-        new_material.albedo_color = Color(1, 0, 0, 1) # Red
-        new_material.emission_enabled = true
-        new_material.emission = Color(1, 0, 0, 1) # Red glow
-        new_material.emission_energy_multiplier = 2.0 # Glow intensity
-    else:
-        new_material.albedo_color = Color(0, 0.5, 0.5, 1) # Teal
-        new_material.emission_enabled = false # No glow
-    enemy_mesh.material_override = new_material
+    # Use the pre-created materials instead of creating new ones each time
+    if enemy_mesh and enemy_mesh.material_override:
+        if current_health <= 10.0:
+            enemy_mesh.material_override = red_material.duplicate()
+        else:
+            enemy_mesh.material_override = normal_material.duplicate()

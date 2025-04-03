@@ -15,6 +15,11 @@ run/main_scene="uid://c3iyygqly2ifv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ObjectPool="*res://scripts/object_pool.gd"
+Logger="*res://scripts/logger.gd"
+
 [debug]
 
 settings/stdout/verbose_stdout=true

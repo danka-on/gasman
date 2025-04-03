@@ -1,3 +1,4 @@
+# explosion_pooled.gd - Updated version
 extends Node3D
 
 func _ready():
@@ -5,20 +6,18 @@ func _ready():
     
 func reset():
     # Called when getting from pool
-    if visible:
-        return
-        
     visible = true
     $Blast.emitting = true
     $BoomSound.play()
     
     # Return to pool after effect completes
     get_tree().create_timer(0.7).timeout.connect(func():
-        return_to_pool()
+        if is_instance_valid(self):
+            return_to_pool()
     )
 
 func return_to_pool():
-    if not visible:
+    if not visible or not is_instance_valid(self):
         return
         
     visible = false

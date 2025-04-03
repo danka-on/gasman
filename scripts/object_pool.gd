@@ -1,3 +1,4 @@
+# object_pool.gd - Updated version
 extends Node
 
 # Dictionary to store pools of different object types
@@ -17,9 +18,15 @@ func initialize_pool(scene_path: String, initial_size: int = 10):
     for i in range(initial_size):
         var instance = scene.instantiate()
         instance.set_meta("pool_name", pool_name)
+        
+        # Make sure object has required methods
+        if not instance.has_method("reset"):
+            printerr("Pooled object ", pool_name, " is missing reset() method!")
+            
         instance.visible = false
         add_child(instance)
         pools[pool_name].append(instance)
+        print("Added object to pool: ", pool_name)
 
 # Get an object from the pool (or create new if needed)
 func get_object(scene_path: String):
@@ -27,26 +34,35 @@ func get_object(scene_path: String):
     
     # Initialize pool if it doesn't exist
     if not pools.has(pool_name):
+        printerr("Pool doesn't exist, initializing: ", pool_name)
         initialize_pool(scene_path)
     
     # Find an inactive object in the pool
     for obj in pools[pool_name]:
         if not obj.visible:
-            obj.visible = true
+            # Call reset to properly initialize the object
+            if obj.has_method("reset"):
+                obj.reset()
             return obj
     
     # If no inactive objects, create a new one and add it to the pool
+    printerr("Pool for ", pool_name, " exhausted, creating new instance")
     var scene = load(scene_path)
     var instance = scene.instantiate()
     instance.set_meta("pool_name", pool_name)
     add_child(instance)
     pools[pool_name].append(instance)
+    
+    # Call reset to properly initialize the object
+    if instance.has_method("reset"):
+        instance.reset()
     return instance
 
 # Return an object to the pool
 func return_object(object):
+    # Prevent double returns
+    if not object.visible:
+        return
+        
     object.visible = false
-    # Reset any necessary properties here
-    if object is RigidBody3D:
-        object.linear_velocity = Vector3.ZERO
-        object.angular_velocity = Vector3.ZERO
+    # The object's own reset() method will handle specific resets when retrieved again

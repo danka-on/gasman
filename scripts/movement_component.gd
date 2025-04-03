@@ -46,8 +46,16 @@ var input_dir : Vector3 = Vector3.ZERO
 @export var footstep_volume : float = 0.0
 @export var regular_sprint_pitch : float = 1.4
 
+# UI reference stored locally and accessed safely
+var gas_bar = null
+
+# Add debug flag for logging
+var debug_movement = true
+
 func _ready():
     current_gas = max_gas
+    
+    print("Movement Component: Ready called")
     
     # Initialize timer
     if player and not player.has_node("FootstepTimer"):
@@ -57,16 +65,52 @@ func _ready():
         timer.one_shot = true
         player.add_child(timer)
         timer.timeout.connect(_on_footstep_timer_timeout)
-    
-    # Update UI
-    var gas_bar = get_node_or_null("/root/Main/HUD/GasBar")
-    if gas_bar:
-        gas_bar.max_value = max_gas
-        gas_bar.value = current_gas
+        print("Movement Component: Created footstep timer")
     else:
-        print("Error: GasBar not found!")
+        print("Movement Component: Player reference missing or footstep timer already exists")
+    
+    # Update UI - safe reference acquisition
+    update_gas_ui_reference()
+    update_gas_ui()
+
+func update_gas_ui_reference():
+    # Only get reference if we don't have it yet
+    if not gas_bar:
+        gas_bar = get_node_or_null("/root/Main/HUD/GasBar")
+        if gas_bar:
+            gas_bar.max_value = max_gas
+            print("Movement Component: Found gas bar UI")
+        else:
+            # Try again later if not found
+            print("Movement Component: Gas bar not found, deferring")
+            call_deferred("update_gas_ui_reference")
+
+func update_gas_ui():
+    # Safe update of UI
+    if not gas_bar:
+        update_gas_ui_reference()
+    
+    if gas_bar:
+        gas_bar.value = current_gas
+
+# Added method to receive signal from player
+func add_gas(amount: float):
+    current_gas += amount
+    current_gas = clamp(current_gas, 0, max_gas)
+    update_gas_ui()
+    print("Movement Component: Added gas: ", amount, " current: ", current_gas)
 
 func _input(event):
+    if not is_instance_valid(player):
+        if debug_movement:
+            print("Movement Component: Player not valid in _input")
+        return
+        
+    # Debug key for movement
+    if event is InputEventKey and event.pressed:
+        if debug_movement:
+            print("Movement Component: Key pressed: ", event.keycode)
+        
     # Double-tap Shift detection
     if event is InputEventKey and event.keycode == KEY_SHIFT:
         if event.pressed:
@@ -76,19 +120,30 @@ func _input(event):
                 # Check if this press is within the double-tap window of the last press
                 if current_time - last_shift_press_time <= double_tap_window and last_shift_press_time > 0:
                     gas_sprint_enabled = true
-                    print("Gas sprint enabled via double-tap!")
+                    print("Movement Component: Gas sprint enabled via double-tap")
                 # Update the last press time and mark Shift as pressed
                 last_shift_press_time = current_time
                 was_shift_released = false
         else:  # Shift was released
             was_shift_released = true
             gas_sprint_enabled = false
-            print("Shift released - gas sprint disabled")
+            if debug_movement:
+                print("Movement Component: Shift released")
 
 func _physics_process(delta):
-    if not player:
+    if not is_instance_valid(player):
+        if debug_movement:
+            print("Movement Component: Player not valid in _physics_process")
         return
         
+    if debug_movement:
+        # Print key states occasionally
+        if Engine.get_frames_drawn() % 30 == 0:  # Log every 30 frames to reduce spam
+            print("Movement keys: W:", Input.is_key_pressed(KEY_W), 
+                  " A:", Input.is_key_pressed(KEY_A),
+                  " S:", Input.is_key_pressed(KEY_S),
+                  " D:", Input.is_key_pressed(KEY_D))
+    
     var sprinting = Input.is_key_pressed(KEY_SHIFT)
     var move_speed = walk_speed  # Default to walking speed
     input_dir = Vector3.ZERO
@@ -100,6 +155,8 @@ func _physics_process(delta):
     # Gas-powered sprint: double-tap Shift + hold
     if gas_sprint_enabled and sprinting and (current_gas > 0 || player.god_mode):
         move_speed = gas_sprint_speed
+        if debug_movement:
+            print("Movement Component: Using gas sprint speed: ", move_speed)
         if not player.god_mode:
             current_gas -= gas_sprint_consumption_rate * delta
             current_gas = clamp(current_gas, 0, max_gas)
@@ -107,6 +164,8 @@ func _physics_process(delta):
     # Regular sprint: single hold Shift
     elif sprinting:
         move_speed = sprint_speed  # No gas consumption
+        if debug_movement:
+            print("Movement Component: Using regular sprint speed: ", move_speed)
     
     # Handle boosting
     if is_boosting:
@@ -117,36 +176,47 @@ func _physics_process(delta):
             update_gas_ui()
     
     # Sound logic
+    var sprint_sound = player.get_node_or_null("SprintSound")
+    var footstep_player = player.get_node_or_null("FootstepPlayer")
+    
     if (gas_sprint_enabled and sprinting and (current_gas > 0 || player.god_mode)) or is_boosting:
-        if not player.get_node_or_null("SprintSound").playing:
-            player.get_node_or_null("SprintSound").play()
-    elif sprinting and not player.get_node_or_null("FootstepPlayer").playing:
-        player.get_node_or_null("FootstepPlayer").pitch_scale = regular_sprint_pitch
-        player.get_node_or_null("FootstepPlayer").play()
+        if sprint_sound and not sprint_sound.playing:
+            sprint_sound.play()
+    elif sprinting and footstep_player and not footstep_player.playing and player.is_on_floor():
+        footstep_player.pitch_scale = regular_sprint_pitch
+        footstep_player.play()
     else:
-        if player.get_node_or_null("SprintSound").playing and not (gas_sprint_enabled or is_boosting):
-            player.get_node_or_null("SprintSound").stop()
-        if player.get_node_or_null("FootstepPlayer").playing and not (sprinting or player.is_on_floor()):
-            player.get_node_or_null("FootstepPlayer").stop()
+        if sprint_sound and sprint_sound.playing and not (gas_sprint_enabled or is_boosting):
+            sprint_sound.stop()
+        if footstep_player and footstep_player.playing and not (sprinting or player.is_on_floor()):
+            footstep_player.stop()
     
     # Apply gravity and handle jumps
     if not player.is_on_floor():
         player.velocity.y -= gravity * delta
         was_in_air = true
-        if player.get_node_or_null("FootstepPlayer").playing:
-            player.get_node_or_null("FootstepPlayer").stop()
+        if footstep_player and footstep_player.playing:
+            footstep_player.stop()
     else:
         if was_in_air:
-            player.get_node_or_null("ThudPlayer").play()
+            var thud_player = player.get_node_or_null("ThudPlayer")
+            if thud_player:
+                thud_player.play()
             was_in_air = false
         jumps_left = max_jumps
     
     if Input.is_action_just_pressed("ui_accept") and jumps_left > 0:
         player.velocity.y = jump_velocity
+        if debug_movement:
+            print("Movement Component: Jumping, velocity.y set to ", jump_velocity)
         if jumps_left == max_jumps:
-            player.get_node_or_null("GruntPlayer").play()
+            var grunt_player = player.get_node_or_null("GruntPlayer")
+            if grunt_player:
+                grunt_player.play()
         else:
-            player.get_node_or_null("AirJumpPlayer").play()
+            var air_jump_player = player.get_node_or_null("AirJumpPlayer")
+            if air_jump_player:
+                air_jump_player.play()
         jumps_left -= 1
         last_jump_time = Time.get_ticks_msec() / 1000.0
     
@@ -155,6 +225,7 @@ func _physics_process(delta):
         input_dir.x = -1
     elif Input.is_key_pressed(KEY_D):
         input_dir.x = 1
+        
     if Input.is_key_pressed(KEY_W):
         input_dir.z = -1
     elif Input.is_key_pressed(KEY_S):
@@ -162,20 +233,26 @@ func _physics_process(delta):
     
     if input_dir:
         input_dir = input_dir.normalized()
-        var direction = (player.get_node("Head").transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
-        player.velocity.x = direction.x * move_speed
-        player.velocity.z = direction.z * move_speed
-        
-        if player.is_on_floor() and player.get_node_or_null("FootstepTimer").is_stopped() and not player.get_node_or_null("FootstepPlayer").playing:
-            player.get_node_or_null("FootstepPlayer").volume_db = footstep_volume
-            player.get_node_or_null("FootstepPlayer").pitch_scale = regular_sprint_pitch if sprinting and not gas_sprint_enabled else base_walk_pitch
-            player.get_node_or_null("FootstepPlayer").play()
-            player.get_node_or_null("FootstepTimer").start()
+        var head = player.get_node_or_null("Head")
+        if head:
+            var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
+            player.velocity.x = direction.x * move_speed
+            player.velocity.z = direction.z * move_speed
+            
+            if debug_movement:
+                print("Movement Component: Moving, velocity: ", player.velocity)
+            
+            var footstep_timer = player.get_node_or_null("FootstepTimer")
+            if player.is_on_floor() and footstep_timer and footstep_timer.is_stopped() and footstep_player and not footstep_player.playing:
+                footstep_player.volume_db = footstep_volume
+                footstep_player.pitch_scale = regular_sprint_pitch if sprinting and not gas_sprint_enabled else base_walk_pitch
+                footstep_player.play()
+                footstep_timer.start()
     else:
         player.velocity.x = move_toward(player.velocity.x, 0, move_speed)
         player.velocity.z = move_toward(player.velocity.z, 0, move_speed)
-        if player.get_node_or_null("FootstepPlayer").playing:
-            player.get_node_or_null("FootstepPlayer").stop()
+        if footstep_player and footstep_player.playing:
+            footstep_player.stop()
     
     # Handle knockback
     if knockback_timer > 0 and player.is_on_floor():
@@ -185,7 +262,7 @@ func _physics_process(delta):
             knockback_velocity = Vector3.ZERO
 
 func _on_footstep_timer_timeout():
-    if not player:
+    if not is_instance_valid(player):
         return
         
     input_dir = Vector3.ZERO # Reset here
@@ -194,23 +271,17 @@ func _on_footstep_timer_timeout():
     if Input.is_key_pressed(KEY_W): input_dir.z = -1
     elif Input.is_key_pressed(KEY_S): input_dir.z = 1
     
-    if input_dir and player.is_on_floor() and not player.get_node_or_null("FootstepPlayer").playing:
-        player.get_node_or_null("FootstepPlayer").volume_db = footstep_volume
-        player.get_node_or_null("FootstepPlayer").pitch_scale = sprint_pitch if Input.is_key_pressed(KEY_SHIFT) and current_gas > 0 else base_walk_pitch
-        player.get_node_or_null("FootstepPlayer").play()
-        player.get_node_or_null("FootstepTimer").start()
+    var footstep_player = player.get_node_or_null("FootstepPlayer")
+    var footstep_timer = player.get_node_or_null("FootstepTimer")
+    
+    if input_dir and player.is_on_floor() and footstep_player and not footstep_player.playing:
+        footstep_player.volume_db = footstep_volume
+        footstep_player.pitch_scale = sprint_pitch if Input.is_key_pressed(KEY_SHIFT) and current_gas > 0 else base_walk_pitch
+        footstep_player.play()
+        if footstep_timer:
+            footstep_timer.start()
 
 func apply_knockback(direction: Vector3, force: float):
-    if player.is_on_floor(): # Only apply if grounded
+    if player and player.is_on_floor(): # Only apply if grounded
         knockback_velocity = direction * force
         knockback_timer = 0.15 # 0.15s duration
-
-func add_gas(amount: float):
-    current_gas += amount
-    current_gas = clamp(current_gas, 0, max_gas)
-    update_gas_ui()
-    
-func update_gas_ui():
-    var gas_bar = get_node_or_null("/root/Main/HUD/GasBar")
-    if gas_bar:
-        gas_bar.value = current_gas
