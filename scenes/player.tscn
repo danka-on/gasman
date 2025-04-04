@@ -40,6 +40,7 @@ gas_sprint_speed = 100.0
 bullet_speed = 100.0
 gas_cloud_spawn_interval_sprint = 0.1
 gas_cloud_spawn_interval_jump = 0.5
+gas_cloud_color = Color(0, 0.8, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03617, 0)

@@ -18,12 +18,23 @@ extends Area3D
 @export var preserve_scene_visuals: bool = true
 @export var debug_logging: bool = false  # Disable by default for performance
 
+# Explosion properties
+@export_group("Explosion")
+@export var can_explode: bool = true
+@export var explosion_damage: float = 30.0
+@export var explosion_radius: float = 5.0
+@export var explosion_chain_reaction: bool = true
+@export var explosion_chain_radius: float = 3.0
+@export var explosion_force: float = 10.0
+@export var explosion_delay: float = 0.05 # Delay for chain reactions
+
 # Internal state tracking
 var enemies_in_cloud: Array = []
 var current_lifetime: float = 0.0
 var is_fading_out: bool = false
 var is_being_freed: bool = false
 var tween: Tween = null
+var has_exploded: bool = false
 
 func _ready():
     # Simple way to avoid errors from double-instantiation
@@ -31,6 +42,9 @@ func _ready():
         queue_free()
         return
         
+    # Add to group for detection and chain reactions
+    add_to_group("gas_cloud")
+    
     if debug_logging:
         print("Gas cloud created! Looking for enemies...")
     
@@ -113,6 +127,129 @@ func scan_for_enemies():
                 if debug_logging:
                     print("Enemy found in gas cloud:", body.name)
                 enemies_in_cloud.append(body)
+
+# Called when a bullet enters the gas cloud
+func bullet_hit(bullet):
+    if not can_explode or has_exploded or is_being_freed:
+        return
+        
+    if debug_logging:
+        print("Bullet hit gas cloud! Exploding...")
+    
+    # Trigger explosion
+    explode()
+
+func explode():
+    # Prevent multiple explosions
+    if has_exploded or is_being_freed:
+        return
+        
+    has_exploded = true
+    print("Gas cloud exploding!")
+    
+    # Make the cloud bright before exploding
+    if $GPUParticles3D and $GPUParticles3D.draw_pass_1 and $GPUParticles3D.draw_pass_1.material:
+        var mesh_material = $GPUParticles3D.draw_pass_1.material
+        mesh_material.emission_energy_multiplier = 5.0  # Bright flash
+        mesh_material.albedo_color = Color(1.0, 0.5, 0.0, 0.8)  # Orange-red color
+    
+    # Apply explosion damage to entities in range
+    var explosion_entities = get_explosion_targets()
+    for entity in explosion_entities:
+        if entity is CharacterBody3D:
+            if entity.has_method("take_damage"):
+                entity.take_damage(explosion_damage)
+                print("Damaged entity: ", entity.name, " for ", explosion_damage, " damage")
+            
+            # Apply knockback if the entity has the method
+            if entity.has_method("apply_knockback"):
+                var direction = (entity.global_transform.origin - global_transform.origin).normalized()
+                entity.apply_knockback(direction, explosion_force)
+    
+    # Chain reaction - find nearby gas clouds
+    if explosion_chain_reaction:
+        var nearby_clouds = get_nearby_clouds()
+        if not nearby_clouds.is_empty():
+            print("Found ", nearby_clouds.size(), " nearby clouds for chain reaction")
+        trigger_chain_reaction()
+    
+    # Create explosion effect
+    spawn_explosion_effect()
+    
+    # Delay removal slightly to allow for visual effect
+    await get_tree().create_timer(0.1).timeout
+    
+    # Remove the cloud
+    safe_free()
+
+# Find targets within explosion radius
+func get_explosion_targets() -> Array:
+    var targets = []
+    
+    # Get all bodies in the scene and check distance
+    var bodies = get_tree().get_nodes_in_group("enemy")
+    bodies.append_array(get_tree().get_nodes_in_group("player"))
+    
+    for body in bodies:
+        if not is_instance_valid(body):
+            continue
+            
+        var distance = global_transform.origin.distance_to(body.global_transform.origin)
+        if distance <= explosion_radius:
+            # Add debug info if needed
+            if debug_logging:
+                print("Entity in explosion radius: ", body.name, " Distance: ", distance)
+            targets.append(body)
+    
+    return targets
+
+# Trigger explosions in nearby gas clouds
+func trigger_chain_reaction():
+    var other_clouds = get_tree().get_nodes_in_group("gas_cloud")
+    
+    for cloud in other_clouds:
+        if not is_instance_valid(cloud) or cloud == self or cloud.has_exploded or cloud.is_being_freed:
+            continue
+            
+        var distance = global_transform.origin.distance_to(cloud.global_transform.origin)
+        if distance <= explosion_chain_radius:
+            # Use a Timer instead of await for more reliable chain reactions
+            var timer = Timer.new()
+            timer.one_shot = true
+            timer.wait_time = explosion_delay
+            get_tree().root.add_child(timer)
+            
+            # Create weak references to track both the timer and cloud
+            var cloud_ref = weakref(cloud)
+            var timer_ref = weakref(timer)
+            
+            # Connect the timer to a callback
+            timer.timeout.connect(func():
+                # Check if the cloud still exists
+                if cloud_ref.get_ref() and is_instance_valid(cloud_ref.get_ref()) and not cloud_ref.get_ref().has_exploded:
+                    cloud_ref.get_ref().explode()
+                
+                # Clean up the timer
+                if timer_ref.get_ref() and is_instance_valid(timer_ref.get_ref()):
+                    timer_ref.get_ref().queue_free()
+            )
+            
+            # Start the timer
+            timer.start()
+
+# Create explosion visual effect
+func spawn_explosion_effect():
+    # Try to get the explosion scene from the enemy script
+    var explosion_scene_path = "res://scenes/Explosion.tscn"
+    var explosion_scene = load(explosion_scene_path)
+    
+    if explosion_scene:
+        var explosion = explosion_scene.instantiate()
+        get_parent().add_child(explosion)
+        explosion.global_transform.origin = global_transform.origin
+        
+        # Scale the explosion based on cloud size
+        explosion.scale = Vector3.ONE * (cloud_size / 2.0)
 
 func start_fade_out():
     # Only start fade if not already fading or being freed
@@ -212,6 +349,10 @@ func _on_body_entered(body):
     if is_being_freed or not is_instance_valid(body):
         return
         
+    # Check if this is a bullet
+    if "bullet" in body.name.to_lower() and body.has_method("hit"):
+        bullet_hit(body)
+        
     if body.is_in_group("enemy"):
         if debug_logging:
             print("Enemy entered gas cloud:", body.name)
@@ -243,3 +384,18 @@ func _on_damage_timer_timeout():
             if debug_logging:
                 print("Damaging enemy:", enemy.name, " Amount:", damage_per_tick)
             enemy.take_damage(damage_per_tick) 
+
+# Get nearby clouds for chain reaction
+func get_nearby_clouds() -> Array:
+    var result = []
+    var other_clouds = get_tree().get_nodes_in_group("gas_cloud")
+    
+    for cloud in other_clouds:
+        if not is_instance_valid(cloud) or cloud == self or cloud.has_exploded or cloud.is_being_freed:
+            continue
+            
+        var distance = global_transform.origin.distance_to(cloud.global_transform.origin)
+        if distance <= explosion_chain_radius:
+            result.append(cloud)
+    
+    return result 

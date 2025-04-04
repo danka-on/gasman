@@ -26,11 +26,12 @@ radius = 1.0
 height = 2.0
 
 [node name="GasCloud" type="Area3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 collision_layer = 8
 script = ExtResource("1_cloud")
 damage_per_tick = 25.0
 lifetime = 2.0
+cloud_size = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_cloud")
