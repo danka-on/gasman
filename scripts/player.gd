@@ -91,7 +91,8 @@ var kills : int = 0
 
 # Gas cloud variables
 @export_group("Gas Cloud")
-@export var gas_cloud_spawn_interval: float = 0.5
+@export var gas_cloud_spawn_interval_sprint: float = 0.5  # Interval for gas sprint clouds
+@export var gas_cloud_spawn_interval_jump: float = 0.3    # Interval for gas jump clouds (faster due to higher velocity)
 @export var gas_cloud_offset: Vector3 = Vector3(0, 0.5, 0)
 @export var gas_cloud_damage: float = 5.0
 @export var gas_cloud_damage_interval: float = 0.5
@@ -193,10 +194,14 @@ func _physics_process(delta):
     # Gas-powered sprint: double-tap Shift + hold
     var is_gas_sprinting = gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode)
     
-    # Gas cloud spawning for both sprint and boost
+    # Gas cloud spawning for both sprint and boost - modified to use different intervals
     if (is_gas_sprinting or is_boosting) and (current_gas > 0 or god_mode):
         gas_cloud_timer += delta
-        if gas_cloud_timer >= gas_cloud_spawn_interval:
+        
+        # Use the appropriate spawn interval based on movement type
+        var spawn_interval = gas_cloud_spawn_interval_sprint if is_gas_sprinting else gas_cloud_spawn_interval_jump
+        
+        if gas_cloud_timer >= spawn_interval:
             spawn_gas_cloud()
             gas_cloud_timer = 0.0
     
