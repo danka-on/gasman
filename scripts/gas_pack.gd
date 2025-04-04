@@ -19,8 +19,7 @@ func _ready():
 func reset():
     # Reset the pack's state when pulled from the pool
     visible = true
-    collision_layer = 2
-    collision_mask = 1
+  
     linear_velocity = Vector3.ZERO
     angular_velocity = Vector3.ZERO
     collision_layer = 2  # Restore original layer (set in .tscn file)

@@ -33,7 +33,7 @@ var tick_interval : int = 0  # Will be set randomly to stagger AI updates
 var red_material = null
 var normal_material = null
 
-enum State {IDLE, PURSUE, ATTACK}
+enum State {IDLE, PURSUE, ATTACK, DEAD}
 var current_state = State.IDLE
 var distance_to_player : float = 999999.0
 
@@ -49,15 +49,13 @@ func _ready():
     # Set a random tick interval to stagger AI updates
     tick_interval = randi() % 5 + 1  # Random interval between 1 and 5
     
-    # IMPORTANT: Make sure the hitbox is properly set up for collision
-    if hitbox:
-        # Make sure the hitbox can detect the player
-        hitbox.collision_layer = 2  # Enemy hitbox layer
-        hitbox.collision_mask = 1   # Player layer
-        print("Enemy: Hitbox collision layers configured")
-    else:
-        push_error("Enemy: Hitbox not found!")
+    # Initialize materials
+    initialize_materials()
     
+    # Set up hitbox collision
+    setup_hitbox()
+    
+func initialize_materials():
     if enemy_mesh:
         # Create materials once
         if not red_material:
@@ -78,9 +76,18 @@ func _ready():
         update_color()
     else:
         print("Ready - EnemyMesh missing: ", enemy_mesh)
-        
+
+func setup_hitbox():
+    if hitbox:
+        # Make sure the hitbox can detect the player
+        hitbox.collision_layer = 2  # Enemy hitbox layer
+        hitbox.collision_mask = 1   # Player layer
+        print("Enemy: Hitbox collision layers configured")
+    else:
+        push_error("Enemy: Hitbox not found!")
+
 func _physics_process(delta):
-    if not is_instance_valid(self) or not visible:
+    if not is_instance_valid(self) or not visible or current_state == State.DEAD:
         return
         
     # Only update AI logic on specific ticks to reduce CPU usage
@@ -92,71 +99,69 @@ func _physics_process(delta):
     
     # Only process complete AI on tick interval
     if update_tick == 0 and is_instance_valid(player):
-        distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
-        
-        # Determine state based on distance
-        if distance_to_player <= 1.5:
-            current_state = State.ATTACK
-            if debug_enemy:
-                print("Enemy: In ATTACK state, distance: ", distance_to_player)
-        elif distance_to_player <= active_pursuit_range:
-            current_state = State.PURSUE
-        else:
-            current_state = State.IDLE
-            
-        # Process behavior based on state
-        match current_state:
-            State.IDLE:
-                velocity.x = move_toward(velocity.x, 0, 0.5)
-                velocity.z = move_toward(velocity.z, 0, 0.5)
-            
-            State.PURSUE:
-                var direction = (player.global_transform.origin - global_transform.origin).normalized()
-                velocity.x = direction.x * speed
-                velocity.z = direction.z * speed
-                
-                # Update color less frequently to reduce overhead
-                if enemy_mesh and enemy_mesh.material_override:
-                    update_color() 
-                    
-            State.ATTACK:
-                if can_damage:
-                    if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
-                        if debug_enemy:
-                            print("Enemy: Attempting to damage player with ", damage, " damage")
-                        
-                        # IMPORTANT FIX: Direct call to take_damage to ensure it works
-                        if player.has_method("take_damage"):
-                            player.take_damage(damage)
-                            print("Enemy: Successfully applied damage to player")
-                        else:
-                            push_error("Enemy: Player doesn't have take_damage method!")
-                            
-                        last_damage_time = Time.get_ticks_msec() / 1000.0
-                        can_damage = false
-                        get_tree().create_timer(damage_cooldown).timeout.connect(func():
-                            if is_instance_valid(self):
-                                can_damage = true
-                                if debug_enemy:
-                                    print("Enemy: Damage cooldown complete, can damage again")
-                        )
+        update_state()
+        process_state(delta)
     
     move_and_slide()
+
+func update_state():
+    if not is_instance_valid(player):
+        current_state = State.IDLE
+        return
+        
+    distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
     
-    # Check if we're colliding with the player directly
-    for i in range(get_slide_collision_count()):
-        var collision = get_slide_collision(i)
-        if collision.get_collider() == player and can_damage:
+    # Determine state based on distance
+    if distance_to_player <= 1.5:
+        current_state = State.ATTACK
+    elif distance_to_player <= active_pursuit_range:
+        current_state = State.PURSUE
+    else:
+        current_state = State.IDLE
+
+func process_state(delta):
+    match current_state:
+        State.IDLE:
+            velocity.x = move_toward(velocity.x, 0, 0.5)
+            velocity.z = move_toward(velocity.z, 0, 0.5)
+        
+        State.PURSUE:
+            var direction = (player.global_transform.origin - global_transform.origin).normalized()
+            velocity.x = direction.x * speed
+            velocity.z = direction.z * speed
+            
+            # Update color less frequently to reduce overhead
+            if enemy_mesh and enemy_mesh.material_override:
+                update_color() 
+                
+        State.ATTACK:
+            if can_damage:
+                if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
+                    apply_damage_to_player()
+
+func apply_damage_to_player():
+    if debug_enemy:
+        print("Enemy: Attempting to damage player with ", damage, " damage")
+    
+    if player.has_method("take_damage"):
+        player.take_damage(damage)
+        print("Enemy: Successfully applied damage to player")
+    else:
+        push_error("Enemy: Player doesn't have take_damage method!")
+        
+    last_damage_time = Time.get_ticks_msec() / 1000.0
+    can_damage = false
+    get_tree().create_timer(damage_cooldown).timeout.connect(func():
+        if is_instance_valid(self):
+            can_damage = true
             if debug_enemy:
-                print("Enemy: Direct collision with player, applying damage")
-            player.take_damage(damage)
-            can_damage = false
-            get_tree().create_timer(damage_cooldown).timeout.connect(func():
-                if is_instance_valid(self):
-                    can_damage = true
-            )
+                print("Enemy: Damage cooldown complete, can damage again")
+    )
 
 func take_damage(amount: float):
+    if current_state == State.DEAD:
+        return
+        
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
     
@@ -176,11 +181,31 @@ func take_damage(amount: float):
 
 func die():
     # Prevent double deaths
-    if not visible or not is_instance_valid(self):
+    if current_state == State.DEAD or not visible or not is_instance_valid(self):
         return
         
+    current_state = State.DEAD
     emit_signal("enemy_died")
     
+    # Handle drops and explosion
+    handle_death_effects()
+    
+    # Disable collision
+    if is_instance_valid(hitbox):
+        hitbox.collision_layer = 0
+        hitbox.collision_mask = 0
+    
+    # Remove from scene after explosion
+    hide()
+    set_physics_process(false)
+    
+    # Completely remove after a delay
+    get_tree().create_timer(0.5).timeout.connect(func():
+        if is_instance_valid(self):
+            queue_free()
+    )
+
+func handle_death_effects():
     if is_instance_valid(player):
         player.add_score(5)
         if randf() < drop_chance:
@@ -208,21 +233,6 @@ func die():
             var direction = (player.global_transform.origin - global_transform.origin).normalized()
             player.take_damage(explosion_damage)
             player.apply_knockback(direction, explosion_force)
-    
-    # Disable collision
-    if is_instance_valid(hitbox):
-        hitbox.collision_layer = 0
-        hitbox.collision_mask = 0
-    
-    # Remove from scene after explosion
-    hide()
-    set_physics_process(false)
-    
-    # Completely remove after a delay
-    get_tree().create_timer(0.5).timeout.connect(func():
-        if is_instance_valid(self):
-            queue_free()
-    )
 
 func _on_hitbox_body_entered(body):
     if debug_enemy:
@@ -230,23 +240,7 @@ func _on_hitbox_body_entered(body):
     
     # Make sure this is actually the player    
     if is_instance_valid(player) and body == player and can_damage:
-        if debug_enemy:
-            print("Enemy: Hitbox applying damage to player: ", damage)
-            
-        # IMPORTANT FIX: Make sure the player exists and has the take_damage method
-        if player.has_method("take_damage"):
-            player.take_damage(damage)
-            print("Enemy: Successfully applied damage from hitbox")
-        else:
-            push_error("Enemy: Player doesn't have take_damage method (from hitbox)!")
-            
-        can_damage = false
-        get_tree().create_timer(damage_cooldown).timeout.connect(func():
-            if is_instance_valid(self):
-                can_damage = true
-                if debug_enemy:
-                    print("Enemy: Hitbox damage cooldown complete")
-        )
+        apply_damage_to_player()
 
 func update_color():
     # Use the pre-created materials instead of creating new ones each time

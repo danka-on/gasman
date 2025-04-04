@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cjfp3lfqbtxh6" path="res://sounds/healthsound.wav" id="10_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://b6cif01bcl82" path="res://sounds/ammunitions.wav" id="11_nvl01"]
 [ext_resource type="AudioStream" uid="uid://um7fpt222thm" path="res://sounds/speedfart.wav" id="12_ivps1"]
-[ext_resource type="Script" path="res://scripts/movement_component.gd" id="13_op7ga"]
+[ext_resource type="Script" uid="uid://yjl5x126iogo" path="res://scripts/movement_component.gd" id="13_op7ga"]
 [ext_resource type="Script" uid="uid://dsde3n8vin3qf" path="res://scripts/weapons_component.gd" id="14_q13i1"]
 [ext_resource type="Script" uid="uid://d4n04eeuitywd" path="res://scripts/health_component.gd" id="15_pylmc"]
 [ext_resource type="Script" uid="uid://bxv5tftqd0jvx" path="res://scripts/pickup_component.gd" id="16_pbfsw"]

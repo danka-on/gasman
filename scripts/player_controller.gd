@@ -29,7 +29,6 @@ var ammo_label = null
 var gas_bar = null
 var heal_border = null
 
-
 # Spawn effect properties
 @export var explosion_scene : String = "res://scenes/Explosion.tscn"
 @export var enable_spawn_effect : bool = true  # Can be toggled in the Inspector
@@ -38,33 +37,16 @@ var heal_border = null
 # Debug flag
 var debug_player = false
 
-
-
 func _ready():
-    
-    # Add this to the _ready() function
-    # Play spawn effect - with a slight delay to ensure everything is loaded
-    if enable_spawn_effect:
-        get_tree().create_timer(0.1).timeout.connect(func():
-            play_spawn_effect()
-    )
-    
     print("Player Controller: Ready called")
-    
-    # Connect to UI elements - added null checks
-    health_bar = get_node_or_null("/root/Main/HUD/HealthBarContainer/HealthBar")
-    ammo_label = get_node_or_null("/root/Main/HUD/HealthBarContainer/AmmoLabel")
-    gas_bar = get_node_or_null("/root/Main/HUD/GasBar")
-    heal_border = get_node_or_null("/root/Main/HUD/HealBorder")
     
     # Set up player state
     current_health = max_health
     
-    # Defer component initialization to ensure nodes are ready
-    call_deferred("initialize_components")
+    # Connect to UI elements - added null checks
+    update_ui_references()
     
-    # IMPORTANT: Set up collision properly
-    # Make sure player can be hit by enemies
+    # Set up collision properly
     collision_layer = 1     # Player layer
     collision_mask = 1 | 2  # Floor/Environment and enemy layers
     
@@ -72,15 +54,16 @@ func _ready():
     
     # Play spawn effect - with a slight delay to ensure everything is loaded
     if enable_spawn_effect:
-        get_tree().create_timer(0.1).timeout.connect(func():
-            play_spawn_effect()
-        )
+        get_tree().create_timer(0.1).timeout.connect(play_spawn_effect)
     
     # Capture mouse
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
     # Join player group for easier reference
     add_to_group("player")
+    
+    # Initialize components after a short delay to ensure everything is ready
+    get_tree().create_timer(0.1).timeout.connect(initialize_components)
 
 func play_spawn_effect():
     # Only play this if enabled
@@ -212,17 +195,18 @@ func take_damage(amount: float):
     
     print("Player Controller: Health after damage: ", current_health)
     
+    # Emit appropriate signal based on damage type
     if amount > 0:
-               emit_signal("player_took_damage", amount)
+        emit_signal("player_took_damage", amount)
     elif amount < 0:
-                emit_signal("player_healed", -amount)
+        emit_signal("player_healed", abs(amount))
     
     # Update UI
     if health_bar:
         health_bar.value = current_health
-        
     else:
         print("Player Controller: Health bar not found!")
+        update_ui_references()  # Try to get UI references again
     
     # Play damage sound directly to ensure it happens
     if amount > 0:
