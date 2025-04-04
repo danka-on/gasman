@@ -77,3 +77,5 @@ func return_object(object):
     if object is RigidBody3D:
         object.linear_velocity = Vector3.ZERO
         object.angular_velocity = Vector3.ZERO
+        object.collision_layer = 0  # Disable collision layer
+        object.collision_mask = 0   # Disable collision mask

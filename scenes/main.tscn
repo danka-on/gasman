@@ -54,6 +54,7 @@ mesh = SubResource("PlaneMesh_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0852192, 0)
+play_spawn_sounds = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.384875, 0.922969, 0, -0.922969, -0.384875, -3.60428, 19.8844, 21.4381)

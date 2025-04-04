@@ -1,6 +1,33 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5156y26dror6"]
 
-[ext_resource type="Script" uid="uid://dn4nnqunt5a3e" path="res://scripts/gas_pack.gd" id="1_d5osa"]
+[sub_resource type="GDScript" id="GDScript_14fks"]
+script/source = "extends RigidBody3D
+
+@export var gas_amount : float = 30.0
+
+func _ready():
+    # First-time setup only
+    add_to_group(\"gas_pack\")
+    
+func reset():
+    # Reset the pack's state when pulled from the pool
+    visible = true
+    linear_velocity = Vector3.ZERO
+    angular_velocity = Vector3.ZERO
+    apply_central_impulse(Vector3(0, 5, 0)) # Toss up
+
+func _on_body_entered(body):
+    if body.is_in_group(\"player\") and not is_queued_for_deletion():
+        if body.has_method(\"add_gas\"):
+            body.add_gas(gas_amount)
+            
+        # Return to pool instead of queue_free
+        var object_pool = get_node_or_null(\"/root/ObjectPool\")
+        if object_pool:
+            object_pool.return_object(self)
+        else:
+            queue_free() # Fallback if pool not available
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyvds"]
 albedo_color = Color(0.572549, 1, 0.0156863, 1)
@@ -11,7 +38,7 @@ albedo_color = Color(0.572549, 1, 0.0156863, 1)
 
 [node name="GasPack" type="RigidBody3D" groups=["gas_pack"]]
 collision_layer = 2
-script = ExtResource("1_d5osa")
+script = SubResource("GDScript_14fks")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
