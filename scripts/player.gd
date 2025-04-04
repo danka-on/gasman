@@ -98,6 +98,7 @@ var kills : int = 0
 @export var gas_cloud_lifetime: float = 3.0
 @export var gas_cloud_size: float = 2.0
 @export var gas_cloud_color: Color = Color(0.0, 0.8, 0.0, 0.3)
+@export var max_gas_clouds: int = 30  # Maximum number of gas clouds allowed at once
 var gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
 var gas_cloud_timer: float = 0.0
 var was_gas_sprinting: bool = false
@@ -386,13 +387,33 @@ func update_ammo_display():
     ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
     
 func die():
+    # Immediately stop spawning gas clouds and physics processing
+    set_physics_process(false)
+    set_process(false)
+    
+    # Create a weak reference to the current scene to prevent direct reference issues
+    var current_scene_ref = weakref(get_tree().current_scene)
+    
     # Pass score and kills to Game Over scene
     var game_over = preload("res://scenes/GameOver.tscn").instantiate()
     game_over.set_score_and_kills(score, kills)
+    
+    # Use call_deferred to change scenes safely
+    call_deferred("_safe_scene_transition", game_over)
+
+# Handle the scene transition safely
+func _safe_scene_transition(game_over):
+    # Add the game over scene to the root
     get_tree().root.add_child(game_over)
-    get_tree().current_scene.queue_free() # Remove Main scene
+    
+    # Set it as the current scene
     get_tree().current_scene = game_over
     
+    # Schedule the old scene for deletion using call_deferred
+    var old_scene = get_tree().current_scene.get_parent().get_child(get_tree().current_scene.get_index() - 1)
+    if is_instance_valid(old_scene) and not old_scene.is_queued_for_deletion():
+        old_scene.call_deferred("queue_free")
+
 func add_score(points: int):
     score += points
     kills += 1 # Increment kills with each score addition
@@ -400,22 +421,54 @@ func add_score(points: int):
     
     
 func _on_pickup_area_body_entered(body):
+    # Immediately check if we're in a valid state
+    if not is_instance_valid(self) or not is_inside_tree():
+        return
+        
     if body.is_in_group("health_pack"):
         take_damage(-body.health_amount)
-        for child in heal_border.get_children():
-            child.visible = true
-            child.color = Color(0, 1, 0, 1)
-        await get_tree().create_timer(0.5).timeout
-        for child in heal_border.get_children():
-            child.visible = false
-            child.color = Color(0, 1, 0, 0)
-        body.queue_free()
+        
+        # Create a safe reference to the heal border
+        var heal_border_ref = weakref(heal_border)
+        
+        # Instead of await, use a Timer node and signal
+        var timer = Timer.new()
+        timer.wait_time = 0.5
+        timer.one_shot = true
+        add_child(timer)
+        
+        # Set border visible
+        if heal_border_ref.get_ref():
+            for child in heal_border_ref.get_ref().get_children():
+                child.visible = true
+                child.color = Color(0, 1, 0, 1)
+        
+        # Connect timer to lambda function that safely resets border
+        timer.timeout.connect(func():
+            # Check if heal border still exists
+            if heal_border_ref.get_ref() and is_instance_valid(self) and not is_queued_for_deletion():
+                for child in heal_border_ref.get_ref().get_children():
+                    child.visible = false
+                    child.color = Color(0, 1, 0, 0)
+            # Cleanup the timer
+            timer.queue_free()
+        )
+        
+        timer.start()
+        
+        # Free the health pack immediately
+        if is_instance_valid(body):
+            body.queue_free()
+            
     elif body.is_in_group("ammo_pack"):
-        add_ammo(body.ammo_amount)
-        body.queue_free()
+        if is_instance_valid(body):
+            add_ammo(body.ammo_amount)
+            body.queue_free()
+            
     elif body.is_in_group("gas_pack"):
-        add_gas(body.gas_amount)
-        body.queue_free()
+        if is_instance_valid(body):
+            add_gas(body.gas_amount)
+            body.queue_free()
  
         
         
@@ -431,13 +484,29 @@ func apply_knockback(direction: Vector3, force: float):
         knockback_timer = 0.15 # 0.15s duration
         
 func spawn_gas_cloud():
+    # Safety checks - don't spawn if we're in an invalid state
+    if not is_inside_tree() or not is_instance_valid(self) or is_queued_for_deletion():
+        return
+        
+    # Limit the number of active gas clouds to prevent system overload
+    var current_clouds = get_tree().get_nodes_in_group("gas_cloud")
+    if current_clouds.size() >= max_gas_clouds:
+        # Skip creating a new cloud if we're at the limit
+        return
+    
+    # Create the gas cloud
     var cloud = gas_cloud_scene.instantiate()
-    # Add the cloud to the level node for better organization
+    
+    # Add cloud to group for tracking
+    cloud.add_to_group("gas_cloud")
+    
+    # Try to add to level node for better organization
     var level_node = get_node_or_null("/root/Main/Level")
-    if level_node:
-        level_node.add_child(cloud)
+    if is_instance_valid(level_node):
+        level_node.call_deferred("add_child", cloud)
     else:
-        get_parent().add_child(cloud)
+        # Fallback to parent
+        get_parent().call_deferred("add_child", cloud)
     
     # Add a small random offset to position
     var random_offset = Vector3(
@@ -446,6 +515,16 @@ func spawn_gas_cloud():
         randf_range(-0.5, 0.5)
     )
     
+    # Set position safely using deferred call
+    call_deferred("_set_cloud_properties", cloud, random_offset)
+
+# Set cloud properties safely in deferred context
+func _set_cloud_properties(cloud, random_offset):
+    # Safety check in case the cloud or player was freed between calls
+    if not is_instance_valid(cloud) or not is_instance_valid(self):
+        return
+    
+    # Set position
     cloud.global_transform.origin = global_transform.origin + gas_cloud_offset + random_offset
     
     # Ensure the cloud has the correct collision settings
@@ -461,7 +540,8 @@ func spawn_gas_cloud():
     # Don't override visual settings from the scene editor
     cloud.preserve_scene_visuals = true
     
-    print("Gas cloud spawned. Damage per tick:", gas_cloud_damage)
+    if OS.is_debug_build():
+        print("Gas cloud spawned. Damage per tick:", gas_cloud_damage)
 
 # Add this helper function to check if player is in the air
 func is_on_air() -> bool:
