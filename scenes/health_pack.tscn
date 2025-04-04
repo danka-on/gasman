@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://62oijgwypkq4"]
 
-[ext_resource type="Script" uid="uid://bb82rnxli84o2" path="res://healthpack.gd" id="1_xab54"]
+[ext_resource type="Script" uid="uid://bb82rnxli84o2" path="res://scripts/healthpack.gd" id="1_xab54"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xab54"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://hbes875c4xau"]
 
-[ext_resource type="Script" uid="uid://c5gbtcintgqta" path="res://explosion.gd" id="1_li25b"]
+[ext_resource type="Script" uid="uid://c5gbtcintgqta" path="res://scripts/explosion.gd" id="1_li25b"]
 [ext_resource type="AudioStream" uid="uid://dhfb23yehb0vi" path="res://sounds/explosion2.wav" id="2_li25b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_li25b"]

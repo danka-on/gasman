@@ -10,10 +10,10 @@ var player = null
 var can_damage = true
 var last_damage_time : float = 0.0
 
-@export var gas_pack_scene : PackedScene = preload("res://gas_pack.tscn")
-@export var health_pack_scene : PackedScene = preload("res://health_pack.tscn")
-@export var ammo_pack_scene : PackedScene = preload("res://ammo_pack.tscn")
-@export var explosion_scene : PackedScene = preload("res://Explosion.tscn")
+@export var gas_pack_scene : PackedScene = preload("res://scenes/gas_pack.tscn")
+@export var health_pack_scene : PackedScene = preload("res://scenes/health_pack.tscn")
+@export var ammo_pack_scene : PackedScene = preload("res://scenes/ammo_pack.tscn")
+@export var explosion_scene : PackedScene = preload("res://scenes/Explosion.tscn")
 
 @export var explosion_radius : float = 5.0 # Blast radius
 @export var explosion_damage : float = 20.0 # Damage to player

@@ -44,7 +44,7 @@ var target_velocity : Vector3 = Vector3.ZERO
 
 
 # Shooting variables
-var bullet_scene = preload("res://bullet.tscn")
+var bullet_scene = preload("res://scenes/bullet.tscn")
 var can_shoot = true
 var shoot_cooldown = 0.2
 var muzzle_flash_duration = 0.1
@@ -83,7 +83,7 @@ var kills : int = 0
 # UI references
 @onready var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
 @onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
-@onready var enemy = get_node("res://enemy.tscn") # May not be needed with spawner
+@onready var enemy = get_node("res://scenes/enemy.tscn") # May not be needed with spawner
 @onready var pickup_area = $PickupArea
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
@@ -344,7 +344,7 @@ func update_ammo_display():
     
 func die():
     # Pass score and kills to Game Over scene
-    var game_over = preload("res://GameOver.tscn").instantiate()
+    var game_over = preload("res://scenes/GameOver.tscn").instantiate()
     game_over.set_score_and_kills(score, kills)
     get_tree().root.add_child(game_over)
     get_tree().current_scene.queue_free() # Remove Main scene

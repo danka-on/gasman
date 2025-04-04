@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var enemy_scene : PackedScene = preload("res://Enemy.tscn")
+@export var enemy_scene : PackedScene = preload("res://scenes/Enemy.tscn")
 @export var spawn_radius : float = 10.0
 @onready var player = $Player
 @onready var spawn_timer = $EnemySpawnTimer

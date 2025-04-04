@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://c3iyygqly2ifv"]
 
 [ext_resource type="Texture2D" uid="uid://50r516c1u5lb" path="res://textures/TCom_Sand_Muddy2_2x2_512_albedo.png" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://dqqprr0ave5pu" path="res://main.gd" id="1_kek77"]
-[ext_resource type="PackedScene" uid="uid://bvalrrwlp6wm" path="res://player.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://dxku5675j1r2y" path="res://scripts/main.gd" id="1_kek77"]
+[ext_resource type="PackedScene" uid="uid://bvalrrwlp6wm" path="res://scenes/player.tscn" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bgrkkj0jcpclr" path="res://qwantani_mid_morning_1k.hdr" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c01ofxgvfomno" path="res://textures/aim.png" id="11_dg77c"]
 
