@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bvalrrwlp6wm"]
 
-[ext_resource type="Script" uid="uid://df5m70cdmfler" path="res://scripts/player.gd" id="1_b26j0"]
+[ext_resource type="Script" uid="uid://cibugs213e3qe" path="res://scripts/player.gd" id="1_b26j0"]
 [ext_resource type="AudioStream" uid="uid://cy4a0k4o6hesa" path="res://sounds/gunshot.wav" id="2_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://bbux40yi0a02r" path="res://sounds/reload sound.wav" id="3_nvl01"]
 [ext_resource type="AudioStream" uid="uid://kw66e0hvx4s5" path="res://sounds/footstep.wav" id="4_ivps1"]

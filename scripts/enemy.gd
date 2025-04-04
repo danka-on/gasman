@@ -25,6 +25,12 @@ var last_damage_time : float = 0.0
 @onready var hitbox = $Hitbox # Add reference
 
 func _ready():
+    # Add to group for gas cloud detection
+    add_to_group("enemy")
+    
+    # Set collision properties
+    collision_layer = 1
+    collision_mask = 1 | 8
     
     current_health = max_health
     if enemy_mesh:

@@ -89,6 +89,19 @@ var kills : int = 0
 @onready var damage_sound = $DamageSound
 @onready var heal_border = get_node("/root/Main/HUD/HealBorder")
 
+# Gas cloud variables
+@export_group("Gas Cloud")
+@export var gas_cloud_spawn_interval: float = 0.5
+@export var gas_cloud_offset: Vector3 = Vector3(0, 0.5, 0)
+@export var gas_cloud_damage: float = 5.0
+@export var gas_cloud_damage_interval: float = 0.5
+@export var gas_cloud_lifetime: float = 3.0
+@export var gas_cloud_size: float = 2.0
+@export var gas_cloud_color: Color = Color(0.0, 0.8, 0.0, 0.3)
+var gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
+var gas_cloud_timer: float = 0.0
+var was_gas_sprinting: bool = false
+var was_gas_boosting: bool = false
 
 func _ready():
     collision_layer = 1
@@ -157,18 +170,49 @@ func _physics_process(delta):
     
     # Boosting: double jump + holding Spacebar with delay
     var current_time = Time.get_ticks_msec() / 1000.0
-    is_boosting = jumps_left == 0 and Input.is_action_pressed("ui_accept") and (current_gas > 0 || god_mode) and (current_time - last_jump_time > gas_jump_delay)
+    var old_boosting = is_boosting
+    var has_gas = current_gas > 0 || god_mode
+    var after_delay = current_time - last_jump_time > gas_jump_delay
+    var holding_space = Input.is_action_pressed("ui_accept")
+    var double_jumped = jumps_left == 0
+    
+    # Log conditions if debug is needed
+    # print("Double jumped: ", double_jumped, " | Holding space: ", holding_space, 
+    #      " | Has gas: ", has_gas, " | After delay: ", after_delay, 
+    #      " | Gas level: ", current_gas)
+        
+    is_boosting = double_jumped and holding_space and has_gas and after_delay and is_on_air()
+    
+    # If boost just started, log it
+    if !old_boosting and is_boosting:
+        print("Boost started! Gas: ", current_gas)
+    elif old_boosting and !is_boosting:
+        print("Boost stopped! Gas: ", current_gas)
     
     # Gas-powered sprint: double-tap Shift + hold
-    if gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode):
+    var is_gas_sprinting = gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode)
+    
+    # Gas cloud spawning for both sprint and boost
+    if (is_gas_sprinting or is_boosting) and (current_gas > 0 or god_mode):
+        gas_cloud_timer += delta
+        if gas_cloud_timer >= gas_cloud_spawn_interval:
+            spawn_gas_cloud()
+            gas_cloud_timer = 0.0
+    
+    # Update tracking variables after checking current state
+    was_gas_sprinting = is_gas_sprinting
+    was_gas_boosting = is_boosting
+    
+    if is_gas_sprinting:
         move_speed = gas_sprint_speed
         if not god_mode:
-            current_gas -= gas_sprint_consumption_rate * delta  # Use new variable
+            current_gas -= gas_sprint_consumption_rate * delta
             current_gas = clamp(current_gas, 0, max_gas)
             if gas_bar:
                 gas_bar.value = current_gas
             else:
                 print("GasBar missing during gas sprint!")
+    
     # Regular sprint: single hold Shift
     elif sprinting:
         move_speed = sprint_speed  # No gas consumption
@@ -177,7 +221,7 @@ func _physics_process(delta):
     if is_boosting:
         velocity.y += boost_thrust * delta  # Boost when holding Spacebar after delay
         if not god_mode:
-            current_gas -= gas_jump_consumption_rate * delta  # Use new variable
+            current_gas -= gas_jump_consumption_rate * delta
             current_gas = clamp(current_gas, 0, max_gas)
             if gas_bar:
                 gas_bar.value = current_gas
@@ -185,16 +229,15 @@ func _physics_process(delta):
                 print("GasBar missing during boost!")
     
     # Sound logic
-    if (gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode)) or is_boosting:
-        if not sprint_sound.playing:
-            sprint_sound.play()
-            print("Playing SprintSound for gas sprint/boost")
+    if (is_gas_sprinting or is_boosting) and not sprint_sound.playing:
+        sprint_sound.play()
+        print("Playing SprintSound for gas sprint/boost")
     elif sprinting and not $FootstepPlayer.playing:
         $FootstepPlayer.pitch_scale = regular_sprint_pitch  # Regular sprint sound
         $FootstepPlayer.play()
         print("Playing FootstepPlayer for regular sprint")
     else:
-        if sprint_sound.playing and not (gas_sprint_enabled or is_boosting):
+        if sprint_sound.playing and not (is_gas_sprinting or is_boosting):
             sprint_sound.stop()
         if $FootstepPlayer.playing and not (sprinting or is_on_floor()):
             $FootstepPlayer.stop()
@@ -236,7 +279,7 @@ func _physics_process(delta):
         
         if is_on_floor() and $FootstepTimer.is_stopped() and not $FootstepPlayer.playing:
             $FootstepPlayer.volume_db = footstep_volume
-            $FootstepPlayer.pitch_scale = regular_sprint_pitch if sprinting and not gas_sprint_enabled else base_walk_pitch
+            $FootstepPlayer.pitch_scale = sprint_pitch if Input.is_key_pressed(KEY_SHIFT) and current_gas > 0 else base_walk_pitch
             $FootstepPlayer.play()
             $FootstepTimer.start()
     else:
@@ -387,3 +430,39 @@ func apply_knockback(direction: Vector3, force: float):
         knockback_velocity = direction * force
         knockback_timer = 0.15 # 0.15s duration
         
+func spawn_gas_cloud():
+    var cloud = gas_cloud_scene.instantiate()
+    # Add the cloud to the level node for better organization
+    var level_node = get_node_or_null("/root/Main/Level")
+    if level_node:
+        level_node.add_child(cloud)
+    else:
+        get_parent().add_child(cloud)
+    
+    # Add a small random offset to position
+    var random_offset = Vector3(
+        randf_range(-0.5, 0.5),
+        randf_range(-0.1, 0.3),
+        randf_range(-0.5, 0.5)
+    )
+    
+    cloud.global_transform.origin = global_transform.origin + gas_cloud_offset + random_offset
+    
+    # Ensure the cloud has the correct collision settings
+    cloud.collision_layer = 8
+    cloud.collision_mask = 1
+    
+    # Apply custom properties for gameplay (but not visuals)
+    cloud.damage_per_tick = gas_cloud_damage
+    cloud.damage_interval = gas_cloud_damage_interval
+    cloud.lifetime = gas_cloud_lifetime * randf_range(0.9, 1.1)
+    cloud.cloud_size = gas_cloud_size
+    
+    # Don't override visual settings from the scene editor
+    cloud.preserve_scene_visuals = true
+    
+    print("Gas cloud spawned. Damage per tick:", gas_cloud_damage)
+
+# Add this helper function to check if player is in the air
+func is_on_air() -> bool:
+    return !is_on_floor()
