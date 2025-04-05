@@ -2,7 +2,7 @@ extends Area3D
 
 # Damage properties
 @export_group("Damage")
-@export var damage_per_tick: float = 4.0
+@export var damage_per_tick: float = 5.0
 @export var damage_interval: float = 0.5
 
 # Cloud properties
@@ -88,7 +88,6 @@ func _ready():
     call_deferred("scan_for_enemies")
 
 func _process(delta):
-    print(damage_per_tick)
     # Guard against processing while being freed
     if is_being_freed or not is_inside_tree():
         return
@@ -108,7 +107,7 @@ func cleanup_invalid_enemies():
     if is_being_freed or enemies_in_cloud.is_empty():
         return
         
-    # Remove any invalid enemies from the tracking arrayF
+    # Remove any invalid enemies from the tracking array
     for i in range(enemies_in_cloud.size() - 1, -1, -1):
         if i >= enemies_in_cloud.size(): 
             continue # Array might have changed size during loop

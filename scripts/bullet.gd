@@ -12,8 +12,11 @@ func _ready():
     t.connect("timeout", queue_free)
     add_child(t)
     t.start()
-    collision_layer = 3 # Bullets
-    collision_mask = 2 | 8 # Hits enemies (2) AND gas clouds (8)
+    collision_layer = 4 # Bullets - layer 3 (value 4)
+    collision_mask = 1 # Hits enemies (layer 2, value 2)
+    
+    # Debug info
+    print("Bullet created with layer: ", collision_layer, " mask: ", collision_mask)
 
 func _physics_process(delta):
     transform.origin += velocity * delta
@@ -29,8 +32,10 @@ func hit():
     queue_free()
 
 func _on_body_entered(body):
+    print("Bullet hit body: ", body.name)
     if body.has_method("take_damage"):
         if body.is_in_group("enemy"):
+            print("Enemy hit! Applying damage.")
             body.take_damage(10)
     hit()
 
