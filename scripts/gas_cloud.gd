@@ -147,11 +147,7 @@ func explode():
     has_exploded = true
     print("Gas cloud exploding!")
     
-    # Make the cloud bright before exploding
-    if $GPUParticles3D and $GPUParticles3D.draw_pass_1 and $GPUParticles3D.draw_pass_1.material:
-        var mesh_material = $GPUParticles3D.draw_pass_1.material
-        mesh_material.emission_energy_multiplier = 5.0  # Bright flash
-        mesh_material.albedo_color = Color(1.0, 0.5, 0.0, 0.8)  # Orange-red color
+   
     
     # Apply explosion damage to entities in range
     var explosion_entities = get_explosion_targets()
