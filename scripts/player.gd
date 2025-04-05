@@ -97,12 +97,12 @@ var kills : int = 0
 @export var gas_cloud_damage: float = 5.0
 @export var gas_cloud_damage_interval: float = 0.5
 @export var gas_cloud_lifetime: float = 3.0
-@export var gas_cloud_size: float = 2.0
-@export var gas_cloud_color: Color = Color(0.0, 0.8, 0.0, 0.3)
+
+
 @export var gas_cloud_particle_amount: int = 50
 @export var gas_cloud_particle_scale_min: float = 2.0
 @export var gas_cloud_particle_scale_max: float = 3.0
-@export var gas_cloud_emission_strength: float = 0.5
+
 @export var max_gas_clouds: int = 30  # Maximum number of gas clouds allowed at once
 var gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
 var gas_cloud_timer: float = 0.0
@@ -510,7 +510,7 @@ func spawn_gas_cloud():
     cloud.preserve_scene_visuals = false
     
     # Pre-set key properties before adding to scene
-    cloud.cloud_size = gas_cloud_size
+    
     cloud.damage_per_tick = gas_cloud_damage
     cloud.damage_interval = gas_cloud_damage_interval
     
@@ -536,7 +536,7 @@ func spawn_gas_cloud():
     call_deferred("_set_cloud_properties", cloud, random_offset)
     
     # Log for debugging
-    print("Spawning gas cloud: size=", gas_cloud_size, " damage=", gas_cloud_damage, " interval=", gas_cloud_damage_interval)
+    print("Spawning gas cloud:", " damage=", gas_cloud_damage, " interval=", gas_cloud_damage_interval)
 
 # Set cloud properties safely in deferred context
 func _set_cloud_properties(cloud, random_offset):
@@ -556,18 +556,18 @@ func _set_cloud_properties(cloud, random_offset):
     cloud.damage_per_tick = gas_cloud_damage
     cloud.damage_interval = gas_cloud_damage_interval
     cloud.lifetime = gas_cloud_lifetime * randf_range(0.9, 1.1)
-    cloud.cloud_size = gas_cloud_size
-    cloud.cloud_color = gas_cloud_color
+    
+
     cloud.particle_amount = gas_cloud_particle_amount
     cloud.particle_scale_min = gas_cloud_particle_scale_min
     cloud.particle_scale_max = gas_cloud_particle_scale_max
-    cloud.emission_strength = gas_cloud_emission_strength
+    
     
     # Allow our settings to override the scene visuals
     cloud.preserve_scene_visuals = false
     
     if OS.is_debug_build():
-        print("Gas cloud spawned. Size:", gas_cloud_size, " Damage per tick:", gas_cloud_damage, " Interval:", gas_cloud_damage_interval)
+        print("Gas cloud spawned. ", " Damage per tick:", gas_cloud_damage, " Interval:", gas_cloud_damage_interval)
 
 # Add this helper function to check if player is in the air
 func is_on_air() -> bool:
