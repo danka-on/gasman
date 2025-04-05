@@ -45,10 +45,10 @@ func _ready():
     # Add to group for detection and chain reactions
     add_to_group("gas_cloud")
     
-    if debug_logging:
-        print("Gas cloud created! Looking for enemies...")
+    # Debug print to verify properties are being passed correctly
+    print("Gas cloud initialized with: size=", cloud_size, " color=", cloud_color, " preserve_visuals=", preserve_scene_visuals)
     
-    # Update cloud size
+    # Update cloud size - ALWAYS apply this regardless of preserve_scene_visuals
     if $CollisionShape3D and $CollisionShape3D.shape:
         $CollisionShape3D.shape.radius = cloud_size
     
@@ -65,11 +65,13 @@ func _ready():
                 mesh.material = mesh_material
                 $GPUParticles3D.draw_pass_1 = mesh
                 
+                # ALWAYS update the particle sphere radius regardless of preserve_scene_visuals
+                particle_material.emission_sphere_radius = cloud_size
+                
                 # Only override visual properties if preserve_scene_visuals is false
                 if not preserve_scene_visuals:
                     # Update particle properties
                     $GPUParticles3D.amount = particle_amount
-                    particle_material.emission_sphere_radius = cloud_size
                     particle_material.scale_min = particle_scale_min
                     particle_material.scale_max = particle_scale_max
                     particle_material.color = cloud_color
@@ -78,6 +80,8 @@ func _ready():
                     mesh_material.albedo_color = cloud_color
                     mesh_material.emission = Color(cloud_color.r, cloud_color.g, cloud_color.b, 1.0)
                     mesh_material.emission_energy_multiplier = emission_strength
+                else:
+                    print("  Using scene visuals instead of passed properties")
     
     # Start the damage timer
     if $DamageTimer:

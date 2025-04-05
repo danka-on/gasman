@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://rqna7ifhpnbp" path="res://scripts/gas_cloud.gd" id="1_cloud"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cloud"]
-radius = 2.0
+radius = 1.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cloud"]
 emission_shape = 1
-emission_sphere_radius = 2.0
+emission_sphere_radius = 1.0
 gravity = Vector3(0, 0.5, 0)
-scale_min = 2.0
-scale_max = 3.0
+scale_max = 1.5
 color = Color(0, 0.8, 0, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cloud"]
@@ -22,21 +21,11 @@ emission_energy_multiplier = 0.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_cloud"]
 material = SubResource("StandardMaterial3D_cloud")
-radius = 1.0
-height = 2.0
 
 [node name="GasCloud" type="Area3D"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 collision_layer = 8
 script = ExtResource("1_cloud")
-damage_per_tick = 1.0
-damage_interval = 1.0
-lifetime = 5.5
-cloud_size = 5.0
-cloud_color = Color(0.0156863, 0.8, 0, 0.00392157)
 preserve_scene_visuals = false
-debug_logging = true
-explosion_chain_radius = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_cloud")
