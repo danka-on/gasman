@@ -4,12 +4,12 @@ TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2031303661152
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2095528182992
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 ERROR: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
 	loader_get_json: Failed to open JSON file C:\Program Files (x86)\Epic Games\Epic Online Services\managedArtifacts\98bc04bc842e4906993fd6d6644ffb8d\EOSOverlayVkLayer-Win64.json
 	Objects - 1
-		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2031303661152
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2095528182992
    at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)
 Devices:
   #0: NVIDIA NVIDIA GeForce RTX 3070 - Supported, Discrete
@@ -175,2351 +175,1537 @@ ERROR: Node not found: "res://scenes/enemy.tscn" (relative to "/root/Main/Player
 GasBar found!
 ERROR: Signal 'body_entered' is already connected to given callable 'CharacterBody3D(player.gd)::_on_pickup_area_body_entered' in that object.
    at: connect (core/object/object.cpp:1451)
-Enemy hitbox collision_layer: 2 collision_mask: 4
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@13
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@13
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@13
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@13
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@13
+Enemy hit! Applying damage.
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@13
+Enemy hit! Applying damage.
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
 Bullet created with layer: 4 mask: 1
 Bullet created with layer: 4 mask: 1
 Bullet hit body: Enemy
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 50.0
-Enemy health after damage: 40.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
 Bullet created with layer: 4 mask: 1
 Bullet hit body: Enemy
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 40.0
-Enemy health after damage: 30.0
 Bullet created with layer: 4 mask: 1
 Bullet hit body: Enemy
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 30.0
-Enemy health after damage: 20.0
-Bullet created with layer: 4 mask: 1
-Bullet hit body: Enemy
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 20.0
-Enemy health after damage: 10.0
 Bullet created with layer: 4 mask: 1
 Bullet created with layer: 4 mask: 1
 Bullet hit body: Enemy
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 10.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Bullet created with layer: 4 mask: 1
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Playing FootstepPlayer for regular sprint
-Bullet created with layer: 4 mask: 1
-Bullet hit body: @CharacterBody3D@22
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 50.0
-Enemy health after damage: 40.0
-ERROR: Index p_bounce = 1 is out of bounds (motion_results.size() = 1).
-   at: _get_slide_collision (scene/3d/physics/character_body_3d.cpp:704)
-Bullet created with layer: 4 mask: 1
-Bullet hit body: @CharacterBody3D@22
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 40.0
-Enemy health after damage: 30.0
-Playing FootstepPlayer for regular sprint
-Bullet created with layer: 4 mask: 1
-Bullet hit body: @CharacterBody3D@22
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 30.0
-Enemy health after damage: 20.0
-Bullet created with layer: 4 mask: 1
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Bullet hit body: @CharacterBody3D@22
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 20.0
-Enemy health after damage: 10.0
-Playing FootstepPlayer for regular sprint
 Bullet created with layer: 4 mask: 1
 Bullet hit body: Enemy
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 50.0
-Enemy health after damage: 40.0
-Bullet hit body: @CharacterBody3D@5
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 50.0
-Enemy health after damage: 40.0
-Shift released - gas sprint disabled
-Bullet created with layer: 4 mask: 1
-Bullet hit body: @CharacterBody3D@22
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 10.0
-Enemy health after damage: 0.0
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Bullet created with layer: 4 mask: 1
-Bullet hit body: @CharacterBody3D@22
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Bullet created with layer: 4 mask: 1
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Bullet created with layer: 4 mask: 1
 Bullet created with layer: 4 mask: 1
 Bullet created with layer: 4 mask: 1
 Bullet hit body: Enemy
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 40.0
-Enemy health after damage: 30.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
 Bullet created with layer: 4 mask: 1
-Bullet hit body: @CharacterBody3D@23
-Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 50.0
-Enemy health after damage: 40.0
 Bullet created with layer: 4 mask: 1
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Bullet hit body: Enemy
+Bullet hit body: @CharacterBody3D@25
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 30.0
-Enemy health after damage: 20.0
 Bullet created with layer: 4 mask: 1
-Bullet hit body: Enemy
+Bullet hit body: @CharacterBody3D@25
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 20.0
-Enemy health after damage: 10.0
 Bullet created with layer: 4 mask: 1
-Bullet hit body: @CharacterBody3D@23
+Bullet hit body: @CharacterBody3D@25
 Enemy hit! Applying damage.
-Enemy taking damage: 10.0 Current health: 40.0
-Enemy health after damage: 30.0
-Shift released - gas sprint disabled
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Gas sprint enabled via double-tap!
-Playing SprintSound for gas sprint/boost
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:Enemy
-Playing FootstepPlayer for regular sprint
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:Enemy
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:Enemy
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@23
-Playing FootstepPlayer for regular sprint
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@41
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@41
-Shift released - gas sprint disabled
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@66
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-ERROR: Index p_bounce = 1 is out of bounds (motion_results.size() = 1).
-   at: _get_slide_collision (scene/3d/physics/character_body_3d.cpp:704)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
+Bullet hit body: Ground
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@46
+Enemy hit! Applying damage.
+Bullet hit body: @CharacterBody3D@25
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@25
+Enemy hit! Applying damage.
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@46
+Enemy hit! Applying damage.
+Bullet hit body: @CharacterBody3D@25
+Enemy hit! Applying damage.
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@68
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:Enemy
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Shift released - gas sprint disabled
-Gas sprint enabled via double-tap!
-Playing SprintSound for gas sprint/boost
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Playing FootstepPlayer for regular sprint
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:Enemy
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:@CharacterBody3D@75
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@66
-Enemy entered gas cloud:@CharacterBody3D@75
-Playing FootstepPlayer for regular sprint
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@66
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@66
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@66
-Playing FootstepPlayer for regular sprint
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@66
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@71
-Enemy entered gas cloud:@CharacterBody3D@31
-Enemy entered gas cloud:@CharacterBody3D@75
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@60
-Enemy entered gas cloud:@CharacterBody3D@23
-Enemy entered gas cloud:@CharacterBody3D@19
-Enemy entered gas cloud:@CharacterBody3D@68
-Enemy entered gas cloud:@CharacterBody3D@41
-Enemy entered gas cloud:@CharacterBody3D@53
-Enemy entered gas cloud:@CharacterBody3D@70
-Enemy entered gas cloud:@CharacterBody3D@5
-Enemy entered gas cloud:@CharacterBody3D@24
-Enemy entered gas cloud:@CharacterBody3D@69
-Enemy entered gas cloud:@CharacterBody3D@66
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Shift released - gas sprint disabled
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@86
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@23 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@5 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@124
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@41 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@31 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@24 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@60 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@19 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@53 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@66 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@68 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@158
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@71 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@75 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@70 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@69 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
 Playing FootstepPlayer for regular sprint
 Shift released - gas sprint disabled
 Gas sprint enabled via double-tap!
 Playing SprintSound for gas sprint/boost
 Gas cloud created! Looking for enemies...
 Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:@CharacterBody3D@169
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@169
-Gas cloud created! Looking for enemies...
-Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@124
-Enemy entered gas cloud:@CharacterBody3D@169
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@46
 Playing FootstepPlayer for regular sprint
 Gas cloud created! Looking for enemies...
 Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@169
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@124
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@14
 Gas cloud created! Looking for enemies...
 Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@169
-Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@124
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@15
 Gas cloud created! Looking for enemies...
 Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@169
+Enemy entered gas cloud:@CharacterBody3D@46
 Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@124
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@59
 Playing FootstepPlayer for regular sprint
 Gas cloud created! Looking for enemies...
 Gas cloud spawned. Damage per tick:2.0
-Enemy entered gas cloud:@CharacterBody3D@86
-Enemy entered gas cloud:@CharacterBody3D@169
 Enemy entered gas cloud:Enemy
-Enemy entered gas cloud:@CharacterBody3D@158
-Enemy entered gas cloud:@CharacterBody3D@124
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@46
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@46
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:Enemy
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@59
+Playing FootstepPlayer for regular sprint
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@84
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@87
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Playing SprintSound for gas sprint/boost
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@14
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@98
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@14
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@14
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@14
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@15
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@46
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@14
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@59
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@37
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@14
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@87
+Playing FootstepPlayer for regular sprint
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@84
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@15
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@98
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:Enemy
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@37
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@98
+Playing FootstepPlayer for regular sprint
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@87
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@98
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Playing SprintSound for gas sprint/boost
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@87
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@84
+Enemy entered gas cloud:@CharacterBody3D@98
+Playing FootstepPlayer for regular sprint
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@46 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@108
+Enemy entered gas cloud:@CharacterBody3D@37
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@59
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Enemy entered gas cloud:Enemy
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@15 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@59 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@37 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@14 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@84 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
 Shift released - gas sprint disabled
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:@CharacterBody3D@176
-Enemy entered gas cloud:@CharacterBody3D@176
-Enemy entered gas cloud:@CharacterBody3D@176
-Enemy entered gas cloud:@CharacterBody3D@176
-Enemy entered gas cloud:@CharacterBody3D@176
-Enemy entered gas cloud:@CharacterBody3D@176
-Enemy entered gas cloud:@CharacterBody3D@176
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:@CharacterBody3D@87 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@98 Amount:2.0
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-ERROR: Index p_bounce = 1 is out of bounds (motion_results.size() = 1).
-   at: _get_slide_collision (scene/3d/physics/character_body_3d.cpp:704)
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@86 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:@CharacterBody3D@181
-Enemy entered gas cloud:@CharacterBody3D@181
-Enemy entered gas cloud:@CharacterBody3D@181
-Enemy entered gas cloud:@CharacterBody3D@181
-Enemy entered gas cloud:@CharacterBody3D@181
-Enemy entered gas cloud:@CharacterBody3D@181
-Enemy entered gas cloud:@CharacterBody3D@181
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 8.0
-Enemy health after damage: 6.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 6.0
-Enemy health after damage: 4.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 44.0
-Enemy health after damage: 42.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 4.0
-Enemy health after damage: 2.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 42.0
-Enemy health after damage: 40.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 2.0
-Enemy health after damage: 0.0
-ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
-   at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 30.0
-Enemy health after damage: 28.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 40.0
-Enemy health after damage: 38.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 38.0
-Enemy health after damage: 36.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy entered gas cloud:@CharacterBody3D@182
-Enemy entered gas cloud:@CharacterBody3D@182
-Enemy entered gas cloud:@CharacterBody3D@182
-Enemy entered gas cloud:@CharacterBody3D@182
-Enemy entered gas cloud:@CharacterBody3D@182
-Enemy entered gas cloud:@CharacterBody3D@182
-Enemy entered gas cloud:@CharacterBody3D@182
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 14.0
-Enemy health after damage: 12.0
-Damaging enemy:@CharacterBody3D@124 Amount:2.0
-Enemy taking damage: 2.0 Current health: 0.0
-Enemy health after damage: 0.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
 ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
    at: get_global_transform (scene/3d/node_3d.cpp:466)
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 20.0
-Enemy health after damage: 18.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 36.0
-Enemy health after damage: 34.0
-Damaging enemy:@CharacterBody3D@182 Amount:2.0
-Enemy taking damage: 2.0 Current health: 50.0
-Enemy health after damage: 48.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:@CharacterBody3D@108 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
 Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 24.0
-Enemy health after damage: 22.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 12.0
-Enemy health after damage: 10.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 18.0
-Enemy health after damage: 16.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 28.0
-Enemy health after damage: 26.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 34.0
-Enemy health after damage: 32.0
-Damaging enemy:@CharacterBody3D@182 Amount:2.0
-Enemy taking damage: 2.0 Current health: 48.0
-Enemy health after damage: 46.0
-Damaging enemy:@CharacterBody3D@169 Amount:2.0
-Enemy taking damage: 2.0 Current health: 16.0
-Enemy health after damage: 14.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
 Damaging enemy:Enemy Amount:2.0
-Enemy taking damage: 2.0 Current health: 22.0
-Enemy health after damage: 20.0
-Damaging enemy:@CharacterBody3D@158 Amount:2.0
-Enemy taking damage: 2.0 Current health: 10.0
-Enemy health after damage: 8.0
-Damaging enemy:@CharacterBody3D@176 Amount:2.0
-Enemy taking damage: 2.0 Current health: 26.0
-Enemy health after damage: 24.0
-Damaging enemy:@CharacterBody3D@181 Amount:2.0
-Enemy taking damage: 2.0 Current health: 32.0
-Enemy health after damage: 30.0
-Damaging enemy:@CharacterBody3D@182 Amount:2.0
-Enemy taking damage: 2.0 Current health: 46.0
-Enemy health after damage: 44.0
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
-Enemy hitbox collision_layer: 2 collision_mask: 4
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@221
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Playing FootstepPlayer for regular sprint
+Shift released - gas sprint disabled
+Gas sprint enabled via double-tap!
+Playing SprintSound for gas sprint/boost
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@151
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@151
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@151
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@151
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@151
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:Enemy
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@151
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:@CharacterBody3D@234
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Playing SprintSound for gas sprint/boost
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:@CharacterBody3D@151
+Playing FootstepPlayer for regular sprint
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@151
+Enemy entered gas cloud:@CharacterBody3D@234
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Enemy entered gas cloud:@CharacterBody3D@234
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:@CharacterBody3D@225
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@151
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:@CharacterBody3D@225
+Playing FootstepPlayer for regular sprint
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@222
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:@CharacterBody3D@225
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:@CharacterBody3D@225
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@151 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@234
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Playing FootstepPlayer for regular sprint
+Enemy entered gas cloud:@CharacterBody3D@225
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@234
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@260
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Enemy entered gas cloud:@CharacterBody3D@234
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@234
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Playing FootstepPlayer for regular sprint
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Playing SprintSound for gas sprint/boost
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@222
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Gas cloud created! Looking for enemies...
+Gas cloud spawned. Damage per tick:2.0
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@234
+Playing FootstepPlayer for regular sprint
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Shift released - gas sprint disabled
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@221
+Enemy entered gas cloud:@CharacterBody3D@223
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@225
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@267
+Enemy entered gas cloud:@CharacterBody3D@267
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@234
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@267
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@221
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:@CharacterBody3D@222 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@221 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Enemy entered gas cloud:@CharacterBody3D@260
+Enemy entered gas cloud:@CharacterBody3D@234
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Enemy entered gas cloud:Enemy
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@223
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@225 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Enemy entered gas cloud:Enemy
+Damaging enemy:@CharacterBody3D@223 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:@CharacterBody3D@234 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@267
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+Damaging enemy:@CharacterBody3D@267 Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Enemy entered gas cloud:@CharacterBody3D@310
+Damaging enemy:@CharacterBody3D@260 Amount:2.0
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Damaging enemy:Enemy Amount:2.0
+Enemy entered gas cloud:Enemy
+Bullet created with layer: 4 mask: 1
+Damaging enemy:Enemy Amount:2.0
+Damaging enemy:Enemy Amount:2.0
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: Enemy
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet hit body: Enemy
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: Enemy
+Enemy hit! Applying damage.
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Bullet created with layer: 4 mask: 1
+Bullet hit body: Enemy
+Enemy hit! Applying damage.
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@267
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@267
+Enemy hit! Applying damage.
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@267
+Enemy hit! Applying damage.
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@267
+Enemy hit! Applying damage.
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@267
+Enemy hit! Applying damage.
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+ERROR: Condition "!is_inside_tree()" is true. Returning: Transform3D()
+   at: get_global_transform (scene/3d/node_3d.cpp:466)
+Bullet created with layer: 4 mask: 1
+Bullet hit body: @CharacterBody3D@316
+Enemy hit! Applying damage.
+Bullet hit body: @CharacterBody3D@316
+Enemy hit! Applying damage.
 XR: Clearing primary interface
 XR: Removed interface "Native mobile"
 XR: Removed interface "OpenXR"

@@ -65,17 +65,21 @@ transform = Transform3D(1, 0, 0, 0, -0.384875, 0.922969, 0, -0.922969, -0.384875
 
 [node name="HealthBarContainer" type="Control" parent="HUD"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HealthBar" type="ProgressBar" parent="HUD/HealthBarContainer"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -27.0
-offset_right = 200.0
+offset_left = 4.0
+offset_top = -633.0
+offset_right = 204.0
+offset_bottom = -606.0
 grow_vertical = 0
 theme = SubResource("Theme_272bh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5vw27")
@@ -93,12 +97,14 @@ text = "30/30"
 [node name="Crosshair" type="TextureRect" parent="HUD/HealthBarContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 28.802
-anchor_bottom = 16.197
-offset_left = 568.0
-offset_top = 328.0
-offset_right = -544.08
-offset_bottom = -279.88
+anchor_left = 0.506
+anchor_top = 0.508
+anchor_right = 0.506
+anchor_bottom = 0.508
+offset_left = -12.912
+offset_top = -12.184
+offset_right = 12.088
+offset_bottom = 12.816
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_dg77c")
