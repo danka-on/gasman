@@ -29,9 +29,13 @@ height = 2.0
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 collision_layer = 8
 script = ExtResource("1_cloud")
-damage_per_tick = 25.0
-lifetime = 2.0
-cloud_size = 10.0
+damage_per_tick = 1.0
+damage_interval = 1.0
+lifetime = 5.5
+cloud_color = Color(0.0156863, 0.8, 0, 0.00392157)
+preserve_scene_visuals = false
+debug_logging = true
+explosion_chain_radius = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_cloud")

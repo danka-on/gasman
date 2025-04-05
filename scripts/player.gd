@@ -166,6 +166,7 @@ func _input(event):
             gas_sprint_enabled = false
             print("Shift released - gas sprint disabled")
 func _physics_process(delta):
+  
     var sprinting = Input.is_key_pressed(KEY_SHIFT)  # Check if Shift is held
     var move_speed = walk_speed  # Default to walking speed
     input_dir = Vector3.ZERO
@@ -537,10 +538,7 @@ func _set_cloud_properties(cloud, random_offset):
     cloud.collision_mask = 1
     
     # Apply custom properties for gameplay (but not visuals)
-    cloud.damage_per_tick = gas_cloud_damage
-    cloud.damage_interval = gas_cloud_damage_interval
-    cloud.lifetime = gas_cloud_lifetime * randf_range(0.9, 1.1)
-    cloud.cloud_size = gas_cloud_size
+    
     
     # Don't override visual settings from the scene editor
     cloud.preserve_scene_visuals = true
