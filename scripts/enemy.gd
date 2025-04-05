@@ -114,6 +114,7 @@ func die():
     hitbox.collision_layer = 0
     hitbox.collision_mask = 0
     hide()
+    remove_from_group("enemy")
     set_physics_process(false)
     await get_tree().create_timer(0.5).timeout
     queue_free()
