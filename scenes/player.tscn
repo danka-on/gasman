@@ -31,7 +31,7 @@ albedo_color = Color(1, 0.839216, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4c57u"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 25
 script = ExtResource("1_b26j0")
 gas_sprint_consumption_rate = 25.0
