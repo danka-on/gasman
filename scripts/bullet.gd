@@ -13,7 +13,7 @@ func _ready():
     add_child(t)
     t.start()
     collision_layer = 4 # Bullets - layer 3 (value 4)
-    collision_mask = 1 # Hits enemies (layer 2, value 2)
+    collision_mask = 1 | 8 # Hits enemy bodies (layer 1, value 1) AND gas clouds (layer 4, value 8)
     
     # Debug info
     print("Bullet created with layer: ", collision_layer, " mask: ", collision_mask)
