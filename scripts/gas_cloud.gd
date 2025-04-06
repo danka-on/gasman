@@ -375,8 +375,8 @@ func _on_damage_timer_timeout():
     cleanup_invalid_enemies()
     
     # Only scan for new enemies occasionally to reduce overhead
-    if randf() < 0.3:  # 30% chance to scan each tick
-        scan_for_enemies()
+    #if randf() < 0.3:  # 30% chance to scan each tick
+     #   scan_for_enemies()
     
     # Apply damage to all enemies in the cloud
     for enemy in enemies_in_cloud:
