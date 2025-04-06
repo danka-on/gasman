@@ -2,8 +2,11 @@
 .godot/
 /android/
 # Crash logs
+crash\ logs
+crash logs
 "crash logs"
 crash logs*
+crash\ logs*
 "crash logs"*
 "crash logs20"*
 
