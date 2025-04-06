@@ -15,11 +15,16 @@ var knockback_duration : float = 0.0 # Time left for knockback
 var knockback_timer : float = 0.0 #
 
 # Momentum system variables
-var acceleration = 70.0        # Base acceleration factor (units/second²)
+var acceleration = 70.0        # Will be calculated based on ramp time
 var friction = 15.0            # Base friction factor when stopping
 var air_control = 0.3          # Multiplier for reduced control while airborne (0-1)
-var sprint_acceleration = 50.0 # Acceleration for regular sprint
-var gas_sprint_acceleration = 120.0 # Acceleration for gas-powered sprint
+var sprint_acceleration = 50.0 # Will be calculated based on ramp time
+var gas_sprint_acceleration = 120.0 # Will be calculated based on ramp time
+
+# Speed ramp-up times (seconds to reach max speed)
+var walk_ramp_time = 0.3
+var sprint_ramp_time = 0.4
+var gas_sprint_ramp_time = 0.2
 
 var is_boosting : bool = false # Track boost state
 var boost_thrust : float = 10.0 # Upward force per second
@@ -122,6 +127,28 @@ var units_to_mph_factor = 2.237  # Conversion factor (assuming 1 unit = 1 m/s)
 
 func _ready():
     print("on ready")
+    
+    # Calculate acceleration values based on desired ramp-up times
+    # Add safety checks to prevent division by zero
+    if walk_ramp_time > 0:
+        acceleration = walk_speed / walk_ramp_time
+    else:
+        acceleration = 70.0 # Fallback value
+        
+    if sprint_ramp_time > 0:
+        sprint_acceleration = sprint_speed / sprint_ramp_time
+    else:
+        sprint_acceleration = 50.0 # Fallback value
+        
+    if gas_sprint_ramp_time > 0:
+        gas_sprint_acceleration = gas_sprint_speed / gas_sprint_ramp_time
+    else:
+        gas_sprint_acceleration = 120.0 # Fallback value
+        
+    print("Calculated acceleration values:")
+    print("- Walk acceleration: ", acceleration)
+    print("- Sprint acceleration: ", sprint_acceleration)
+    print("- Gas sprint acceleration: ", gas_sprint_acceleration)
     
     var main = get_tree().current_scene
     var main_tree = main.get_children()
@@ -244,6 +271,20 @@ func _physics_process(delta):
     if input_dir:
         input_dir = input_dir.normalized()
         direction = ($Head.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
+        
+        # Get current and target movement directions for turn-based acceleration
+        var current_direction = Vector2(velocity.x, velocity.z).normalized()
+        var target_direction = Vector2(direction.x, direction.z).normalized()
+        
+        # Adjust acceleration based on how much we're changing direction
+        if current_direction.length() > 0.1 and target_direction.length() > 0.1:
+            var direction_difference = current_direction.dot(target_direction)
+            
+            # Lower acceleration when changing directions (dot product < 0 means opposite directions)
+            if direction_difference < 0:
+                current_acceleration *= 0.7  # Reduce acceleration when turning more than 90 degrees
+            elif direction_difference < 0.5:
+                current_acceleration *= 0.85  # Slight reduction for turns between 60-90 degrees
         
         # Accelerate towards target velocity
         velocity.x = move_toward(velocity.x, direction.x * move_speed, current_acceleration * delta)
