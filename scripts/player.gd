@@ -110,6 +110,12 @@ var was_gas_sprinting: bool = false
 var was_gas_boosting: bool = false
 
 func _ready():
+    print("on ready")
+    
+    var main = get_tree().current_scene
+    var main_tree = main.get_children()
+    for child in main_tree:
+        print(child.name)
     collision_layer = 1
     collision_mask = 1 | 8 | 16
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -394,34 +400,22 @@ func add_ammo(amount: int):
     
 func update_ammo_display():
     ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
-    
+var count = 0
 func die():
-    # Immediately stop spawning gas clouds and physics processing
-    set_physics_process(false)
-    set_process(false)
-    
-    # Create a weak reference to the current scene to prevent direct reference issues
-    var current_scene_ref = weakref(get_tree().current_scene)
-    
-    # Pass score and kills to Game Over scene
     var game_over = preload("res://scenes/GameOver.tscn").instantiate()
-    game_over.set_score_and_kills(score, kills)
-    
-    # Use call_deferred to change scenes safely
-    call_deferred("_safe_scene_transition", game_over)
-
-# Handle the scene transition safely
-func _safe_scene_transition(game_over):
-    # Add the game over scene to the root
     get_tree().root.add_child(game_over)
+    game_over.set_score_and_kills(score, kills)
+    get_tree().current_scene.queue_free()
     
     # Set it as the current scene
     get_tree().current_scene = game_over
     
-    # Schedule the old scene for deletion using call_deferred
-    var old_scene = get_tree().current_scene.get_parent().get_child(get_tree().current_scene.get_index() - 1)
-    if is_instance_valid(old_scene) and not old_scene.is_queued_for_deletion():
-        old_scene.call_deferred("queue_free")
+        
+        
+    
+    
+
+    
 
 func add_score(points: int):
     score += points

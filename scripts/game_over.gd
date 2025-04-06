@@ -14,6 +14,7 @@ func _input(event):
         pass
 
 func _on_restart_button_pressed():
+    
     get_tree().change_scene_to_file("res://scenes/Main.tscn")
 
 func set_score_and_kills(new_score: int, new_kills: int):
