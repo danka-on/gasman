@@ -15,7 +15,7 @@ var knockback_duration : float = 0.0 # Time left for knockback
 var knockback_timer : float = 0.0 #
 
 # Momentum system variables
-<<<<<<< HEAD
+
 var acceleration = 70.0        # Will be calculated based on ramp time
 var friction = 15.0            # Base friction factor when stopping
 var air_control = 0.3          # Multiplier for reduced control while airborne (0-1)
@@ -23,16 +23,10 @@ var sprint_acceleration = 50.0 # Will be calculated based on ramp time
 var gas_sprint_acceleration = 120.0 # Will be calculated based on ramp time
 
 # Speed ramp-up times (seconds to reach max speed)
-var walk_ramp_time = 0.3
-var sprint_ramp_time = 0.4
+var walk_ramp_time = 0.001
+var sprint_ramp_time = 0.001
 var gas_sprint_ramp_time = 0.2
-=======
-var acceleration = 70.0        # Base acceleration factor (units/second²)
-var friction = 10.0            # Base friction factor when stopping
-var air_control = 0.3          # Multiplier for reduced control while airborne (0-1)
-var sprint_acceleration = 90.0 # Acceleration for regular sprint
-var gas_sprint_acceleration = 120.0 # Acceleration for gas-powered sprint
->>>>>>> parent of 82417c6 (speedometer (for testing))
+
 
 var is_boosting : bool = false # Track boost state
 var boost_thrust : float = 10.0 # Upward force per second
