@@ -16,9 +16,9 @@ var knockback_timer : float = 0.0 #
 
 # Momentum system variables
 var acceleration = 70.0        # Base acceleration factor (units/second²)
-var friction = 10.0            # Base friction factor when stopping
+var friction = 15.0            # Base friction factor when stopping
 var air_control = 0.3          # Multiplier for reduced control while airborne (0-1)
-var sprint_acceleration = 90.0 # Acceleration for regular sprint
+var sprint_acceleration = 50.0 # Acceleration for regular sprint
 var gas_sprint_acceleration = 120.0 # Acceleration for gas-powered sprint
 
 var is_boosting : bool = false # Track boost state
@@ -95,6 +95,7 @@ var kills : int = 0
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
 @onready var heal_border = get_node("/root/Main/HUD/HealBorder")
+@onready var speedometer_label = get_node("/root/Main/HUD/HealthBarContainer/SpeedometerLabel")
 
 # Gas cloud variables
 @export_group("Gas Cloud")
@@ -115,6 +116,9 @@ var gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
 var gas_cloud_timer: float = 0.0
 var was_gas_sprinting: bool = false
 var was_gas_boosting: bool = false
+
+# Speedometer variables
+var units_to_mph_factor = 2.237  # Conversion factor (assuming 1 unit = 1 m/s)
 
 func _ready():
     print("on ready")
@@ -349,6 +353,9 @@ func _physics_process(delta):
     
     # Apply all movement
     move_and_slide()
+    
+    # Update speedometer
+    update_speedometer()
     
     # Update tracking variables after checking current state
     was_gas_sprinting = is_gas_sprinting
@@ -619,3 +626,17 @@ func _set_cloud_properties(cloud, random_offset):
 # Add this helper function to check if player is in the air
 func is_on_air() -> bool:
     return !is_on_floor()
+
+# New function to update the speedometer
+func update_speedometer():
+    if speedometer_label:
+        # Calculate speed based on horizontal velocity (x and z)
+        var current_speed = Vector2(velocity.x, velocity.z).length()
+        
+        # Convert to mph
+        var speed_mph = current_speed * units_to_mph_factor
+        
+        # Update label (format to 1 decimal place)
+        speedometer_label.text = "%.1f mph" % speed_mph
+    else:
+        push_error("Speedometer label not found!")

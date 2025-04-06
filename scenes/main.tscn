@@ -131,6 +131,16 @@ offset_right = 1121.88
 offset_bottom = 30.0
 text = "Enemies: 0"
 
+[node name="SpeedometerLabel" type="Label" parent="HUD/HealthBarContainer"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1040.0
+offset_top = 40.0
+offset_right = 1150.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 16
+text = "0 mph"
+
 [node name="HealBorder" type="Control" parent="HUD"]
 modulate = Color(0.0411971, 0.576316, 0.0334921, 1)
 layout_mode = 3
