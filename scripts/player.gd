@@ -402,6 +402,7 @@ func update_ammo_display():
     ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
 var count = 0
 func die():
+    
     var game_over = preload("res://scenes/GameOver.tscn").instantiate()
     get_tree().root.add_child(game_over)
     game_over.set_score_and_kills(score, kills)
@@ -409,12 +410,6 @@ func die():
     
     # Set it as the current scene
     get_tree().current_scene = game_over
-    
-        
-        
-    
-    
-
     
 
 func add_score(points: int):
