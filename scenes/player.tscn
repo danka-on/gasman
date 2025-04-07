@@ -41,6 +41,7 @@ gas_jump_consumption_rate = 50.0
 gas_sprint_speed = 200.0
 bullet_speed = 100.0
 gas_friction = 0.35
+fall_damage_multiplier = 5.0
 gas_cloud_spawn_interval_sprint = 0.12
 gas_cloud_spawn_interval_w = 0.08
 gas_cloud_spawn_interval_s = 0.4

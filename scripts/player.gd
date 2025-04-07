@@ -96,6 +96,11 @@ var reload_progress : float = 0.0
 @export var max_health : float = 100.0
 var current_health : float = max_health
 
+# Fall damage variables
+@export var fall_damage_threshold : float = 15.0  # Minimum velocity to take fall damage
+@export var fall_damage_multiplier : float = 0.5  # Damage multiplier based on fall velocity
+var last_vertical_velocity : float = 0.0  # Track vertical velocity for fall damage
+
 # Score and kills
 var score : int = 0
 var kills : int = 0
@@ -465,6 +470,27 @@ func _physics_process(delta):
     
     # Handle reloading
     handle_reloading(delta)
+    
+    # Track vertical velocity for fall damage
+    if !is_on_floor():
+        last_vertical_velocity = velocity.y
+    elif last_vertical_velocity < -fall_damage_threshold:
+        # Calculate and apply fall damage
+        var fall_damage = abs(last_vertical_velocity) * fall_damage_multiplier
+        if !god_mode:
+            take_damage(fall_damage)
+            # Play damage sound for fall damage
+            if damage_sound:
+                damage_sound.play()
+            # Show damage indicator
+            if heal_border:
+                heal_border.modulate = Color(1, 0, 0, 0.5)  # Red flash
+                var tween = create_tween()
+                tween.tween_property(heal_border, "modulate", Color(1, 1, 1, 0), 0.3)
+    
+    # Reset vertical velocity tracking
+    if is_on_floor():
+        last_vertical_velocity = 0.0
     
     # Apply final movement
     move_and_slide()
