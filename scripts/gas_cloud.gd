@@ -45,8 +45,7 @@ func _ready():
     # Add to group for detection and chain reactions
     add_to_group("gas_cloud")
     
-    # Debug print to verify properties are being passed correctly
-    print("Gas cloud initialized with: size=", cloud_size, " color=", cloud_color, " preserve_visuals=", preserve_scene_visuals)
+   
     
     # Update cloud size - ALWAYS apply this regardless of preserve_scene_visuals
     if $CollisionShape3D and $CollisionShape3D.shape:

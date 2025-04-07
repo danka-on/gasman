@@ -3,6 +3,7 @@ extends CharacterBody3D
 # Movement variables
 
 @export var god_mode : bool = false # God Mode toggle in Inspector
+@export var gas_sprint_w_multiplier : float = 1.5 # Speed multiplier when holding W during gas sprint
 
 var gravity = 9.8
 var mouse_sensitivity = 0.002
@@ -84,7 +85,7 @@ var reload_progress : float = 0.0
 @export var footstep_delay : float = 0.3
 @export var footstep_volume : float = 0.0
 @export var regular_sprint_pitch : float = 1.4  # Adjustable in Inspector for regular sprint
-
+@export var gas_friction : float = 0.5
 
 @onready var ammo_sound = $AmmoSound
 @onready var heal_sound = $HealSound
@@ -478,6 +479,10 @@ func gather_input():
         input_dir.z = -1
     elif Input.is_key_pressed(KEY_S):
         input_dir.z = 1
+    
+    # Automatically set forward movement when gas sprinting is enabled
+    if gas_sprint_enabled and Input.is_key_pressed(KEY_SHIFT):
+        input_dir.z = -1
 
 # Apply physics based on current state 
 func apply_movement_physics(delta, move_speed, is_gas_sprinting):
@@ -489,6 +494,12 @@ func apply_movement_physics(delta, move_speed, is_gas_sprinting):
     match current_movement_state:
         MovementState.GAS_SPRINTING:
             current_acceleration = gas_sprint_acceleration
+            # Reduce speed by half if holding S during gas sprint
+            if Input.is_key_pressed(KEY_S):
+                move_speed *= gas_friction
+            # Increase speed if holding W during gas sprint
+            elif Input.is_key_pressed(KEY_W):
+                move_speed *= gas_sprint_w_multiplier
         MovementState.SPRINTING:
             current_acceleration = sprint_acceleration
         MovementState.AIR_CONTROL:
@@ -824,15 +835,11 @@ func spawn_gas_cloud():
     
     # Set position safely using deferred call
     call_deferred("_set_cloud_properties", cloud, random_offset)
-    
-    # Log for debugging
-    print("Spawning gas cloud:", " damage=", gas_cloud_damage, " interval=", gas_cloud_damage_interval)
 
 # Set cloud properties safely in deferred context
 func _set_cloud_properties(cloud, random_offset):
     # Safety check in case the cloud or player was freed between calls
     if not is_instance_valid(cloud) or not is_instance_valid(self):
-        print("hey no cloud lol!!")
         return
     
     # Set position
@@ -847,17 +854,14 @@ func _set_cloud_properties(cloud, random_offset):
     cloud.damage_interval = gas_cloud_damage_interval
     cloud.lifetime = gas_cloud_lifetime * randf_range(0.9, 1.1)
     
-
     cloud.particle_amount = gas_cloud_particle_amount
     cloud.particle_scale_min = gas_cloud_particle_scale_min
     cloud.particle_scale_max = gas_cloud_particle_scale_max
     
-    
     # Allow our settings to override the scene visuals
     cloud.preserve_scene_visuals = false
     
-    if OS.is_debug_build():
-        print("Gas cloud spawned. ", " Damage per tick:", gas_cloud_damage, " Interval:", gas_cloud_damage_interval)
+  
 
 # Sound management functions
 func play_movement_sound(is_gas_powered: bool, is_sprinting: bool, speed_ratio: float = 1.0):
