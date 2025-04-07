@@ -510,8 +510,8 @@ func gather_input():
     elif Input.is_key_pressed(KEY_S):
         input_dir.z = 1
     
-    # Automatically set forward movement when gas sprinting is enabled
-    if gas_sprint_enabled and Input.is_key_pressed(KEY_SHIFT):
+    # Only set automatic forward movement if we have gas or are in god mode
+    if gas_sprint_enabled and Input.is_key_pressed(KEY_SHIFT) and (current_gas > 0 || god_mode):
         input_dir.z = -1
 
 # Apply physics based on current state 
