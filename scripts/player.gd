@@ -38,6 +38,8 @@ var boost_gas_rate : float = 30.0 # Gas drain per second for boost
 
 # New export variables for gas consumption
 @export var gas_sprint_consumption_rate : float = 20.0  # Gas per second for gas sprint
+@export var gas_sprint_w_consumption_rate : float = 25.0  # Gas per second for gas sprint with W
+@export var gas_sprint_s_consumption_rate : float = 15.0  # Gas per second for gas sprint with S
 @export var gas_jump_consumption_rate : float = 30.0   # Gas per second for gas jump
 
 @export var gas_sprint_speed : float = 30  # Faster speed for gas-powered sprint
@@ -118,6 +120,8 @@ func update_gas_ui():
 # Gas cloud variables
 @export_group("Gas Cloud")
 @export var gas_cloud_spawn_interval_sprint: float = 0.5  # Interval for gas sprint clouds
+@export var gas_cloud_spawn_interval_w: float = 0.3  # Interval for gas sprint clouds with W
+@export var gas_cloud_spawn_interval_s: float = 0.7  # Interval for gas sprint clouds with S
 @export var gas_cloud_spawn_interval_jump: float = 0.3    # Interval for gas jump clouds (faster due to higher velocity)
 @export var gas_cloud_offset: Vector3 = Vector3(0, 0.5, 0)
 @export var gas_cloud_damage: float = 5.0
@@ -573,21 +577,44 @@ func handle_gas_consumption(delta, is_gas_sprinting, is_boosting):
             update_gas_ui()
     
     if is_gas_sprinting and not god_mode:
-        current_gas -= gas_sprint_consumption_rate * delta
+        var consumption_rate = gas_sprint_consumption_rate
+        if Input.is_key_pressed(KEY_W):
+            consumption_rate = gas_sprint_w_consumption_rate
+        elif Input.is_key_pressed(KEY_S):
+            consumption_rate = gas_sprint_s_consumption_rate
+            
+        current_gas -= consumption_rate * delta
         current_gas = clamp(current_gas, 0, max_gas)
         update_gas_ui()
 
 # Handle gas cloud spawning
 func handle_gas_cloud_spawning(delta, is_gas_sprinting, is_boosting):
-    if (is_gas_sprinting or is_boosting) and (current_gas > 0 or god_mode):
+    # Only process if we have gas or are in god mode
+    if not (current_gas > 0 or god_mode):
+        gas_cloud_timer = 0.0  # Reset timer when out of gas
+        return
+        
+    # Determine the appropriate spawn interval based on current state
+    var spawn_interval = gas_cloud_spawn_interval_sprint  # Default interval
+    
+    if is_boosting:
+        spawn_interval = gas_cloud_spawn_interval_jump
+    elif is_gas_sprinting:
+        if Input.is_key_pressed(KEY_W):
+            spawn_interval = gas_cloud_spawn_interval_w
+        elif Input.is_key_pressed(KEY_S):
+            spawn_interval = gas_cloud_spawn_interval_s
+    
+    # Only increment timer if we're in a valid state
+    if is_gas_sprinting or is_boosting:
         gas_cloud_timer += delta
         
-        # Use the appropriate spawn interval based on movement type
-        var spawn_interval = gas_cloud_spawn_interval_sprint if is_gas_sprinting else gas_cloud_spawn_interval_jump
-        
+        # Spawn cloud if timer exceeds interval
         if gas_cloud_timer >= spawn_interval:
             spawn_gas_cloud()
             gas_cloud_timer = 0.0
+    else:
+        gas_cloud_timer = 0.0  # Reset timer when not in valid state
 
 # Handle jumping logic
 func handle_jumping(delta):
