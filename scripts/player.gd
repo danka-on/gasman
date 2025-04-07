@@ -15,12 +15,15 @@ var knockback_duration : float = 0.0 # Time left for knockback
 var knockback_timer : float = 0.0 #
 
 # Momentum system variables
-
 var acceleration = 70.0        # Will be calculated based on ramp time
 var friction = 15.0            # Base friction factor when stopping
 var air_control = 0.3          # Multiplier for reduced control while airborne (0-1)
 var sprint_acceleration = 50.0 # Will be calculated based on ramp time
 var gas_sprint_acceleration = 120.0 # Will be calculated based on ramp time
+
+# Helper functions for movement
+func is_on_air() -> bool:
+    return !is_on_floor()
 
 # Speed ramp-up times (seconds to reach max speed)
 var walk_ramp_time = 0.001
@@ -102,6 +105,14 @@ var kills : int = 0
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
 @onready var heal_border = get_node("/root/Main/HUD/HealBorder")
+@onready var speedometer_label = get_node("/root/Main/HUD/HealthBarContainer/SpeedometerLabel")
+
+# Function to update gas UI to avoid duplicate code
+func update_gas_ui():
+    if gas_bar:
+        gas_bar.value = current_gas
+    else:
+        print("GasBar component missing during gas consumption!")
 
 # Gas cloud variables
 @export_group("Gas Cloud")
@@ -123,63 +134,236 @@ var gas_cloud_timer: float = 0.0
 var was_gas_sprinting: bool = false
 var was_gas_boosting: bool = false
 
-func _ready():
-    print("on ready")
+# Add these helper functions to simplify the momentum physics code
+
+# Calculate how much the direction is changing (returns a value from -1 to 1)
+func calculate_direction_change(current_dir, target_dir):
+    if current_dir.length() > 0.1 and target_dir.length() > 0.1:
+        return current_dir.dot(target_dir)
+    return 1.0  # Default to no change if either direction is too small
+
+# Calculate acceleration modifier based on direction change
+func get_turn_acceleration_modifier(direction_difference):
+    if direction_difference < 0:
+        return 0.7  # Reduce acceleration when turning more than 90 degrees
+    elif direction_difference < 0.5:
+        return 0.85  # Slight reduction for turns between 60-90 degrees
+    return 1.0  # No reduction for minor direction changes
+
+# Apply momentum-based movement with direction consideration
+func apply_gas_movement(direction, move_speed, current_acceleration, delta, input_dir_z):
+    var current_direction = Vector2(velocity.x, velocity.z).normalized()
+    var target_direction = Vector2(direction.x, direction.z).normalized()
+    var current_speed = Vector2(velocity.x, velocity.z).length()
     
+    # Calculate how much we're changing direction
+    var direction_difference = calculate_direction_change(current_direction, target_direction)
+    
+    # Modify acceleration based on turning
+    current_acceleration *= get_turn_acceleration_modifier(direction_difference)
+    
+    # Handle different input cases with momentum preservation
+    if direction_difference > 0.7 and current_speed > move_speed * 0.8:
+        if input_dir_z < 0:  # W key - maintain momentum instead of slowing down
+            # Only accelerate if we're below top speed
+            if current_speed < move_speed:
+                velocity.x = move_toward(velocity.x, direction.x * move_speed, current_acceleration * delta)
+                velocity.z = move_toward(velocity.z, direction.z * move_speed, current_acceleration * delta)
+        elif input_dir_z > 0:  # S key - apply gentle braking, don't cancel momentum completely
+            # Calculate a braking force that's proportional to speed but doesn't kill momentum
+            var braking_strength = min(current_acceleration * 0.6, current_speed * 0.8) * delta
+            velocity.x = move_toward(velocity.x, 0, braking_strength)
+            velocity.z = move_toward(velocity.z, 0, braking_strength)
+        else:  # Other keys - use normal acceleration with momentum preservation
+            velocity.x = move_toward(velocity.x, direction.x * move_speed, current_acceleration * delta)
+            velocity.z = move_toward(velocity.z, direction.z * move_speed, current_acceleration * delta)
+    else:  # Normal acceleration for other cases
+        velocity.x = move_toward(velocity.x, direction.x * move_speed, current_acceleration * delta)
+        velocity.z = move_toward(velocity.z, direction.z * move_speed, current_acceleration * delta)
+
+# Define movement states as enum for clearer state management
+enum MovementState {
+    IDLE,
+    WALKING,
+    SPRINTING,
+    GAS_SPRINTING,
+    BOOSTING,
+    AIR_CONTROL
+}
+
+var current_movement_state = MovementState.IDLE
+var previous_movement_state = MovementState.IDLE
+
+# Update movement state based on current conditions
+func update_movement_state(is_on_ground: bool, is_gas_sprint: bool, is_boost: bool, is_sprint: bool, has_input: bool):
+    previous_movement_state = current_movement_state
+    
+    if !is_on_ground:
+        current_movement_state = MovementState.AIR_CONTROL
+    elif is_boost:
+        current_movement_state = MovementState.BOOSTING
+    elif is_gas_sprint:
+        current_movement_state = MovementState.GAS_SPRINTING
+    elif is_sprint:
+        current_movement_state = MovementState.SPRINTING
+    elif has_input:
+        current_movement_state = MovementState.WALKING
+    else:
+        current_movement_state = MovementState.IDLE
+    
+    # Log state transitions for debugging
+    if current_movement_state != previous_movement_state:
+        print("Movement state changed: ", 
+            movement_state_to_string(previous_movement_state), " -> ", 
+            movement_state_to_string(current_movement_state))
+        
+        # Handle state transition effects
+        handle_state_transition(previous_movement_state, current_movement_state)
+
+# Convert movement state to string for debugging
+func movement_state_to_string(state):
+    match state:
+        MovementState.IDLE: return "IDLE"
+        MovementState.WALKING: return "WALKING"
+        MovementState.SPRINTING: return "SPRINTING"
+        MovementState.GAS_SPRINTING: return "GAS_SPRINTING"
+        MovementState.BOOSTING: return "BOOSTING"
+        MovementState.AIR_CONTROL: return "AIR_CONTROL"
+        _: return "UNKNOWN"
+
+# Handle effects that should happen on state transitions
+func handle_state_transition(from_state, to_state):
+    # Start appropriate effects based on new state
+    match to_state:
+        MovementState.GAS_SPRINTING:
+            if sprint_sound and !sprint_sound.playing:
+                sprint_sound.play()
+        MovementState.IDLE:
+            stop_movement_sounds()
+        MovementState.AIR_CONTROL:
+            if $FootstepPlayer.playing:
+                $FootstepPlayer.stop()
+
+func _ready():
+    print("Player initialization started")
+    
+    # Initialize physics variables
+    initialize_physics_variables()
+    
+    # Setup collision layers
+    setup_collision_layers()
+    
+    # Initialize UI components
+    initialize_ui_components()
+    
+    # Initialize audio components
+    initialize_audio()
+    
+    # Apply god mode if enabled
+    apply_god_mode_if_enabled()
+    
+    print("Player initialization complete")
+
+# Helper functions for initialization
+
+func initialize_physics_variables():
     # Calculate acceleration values based on desired ramp-up times
     # Add safety checks to prevent division by zero
     if walk_ramp_time > 0:
         acceleration = walk_speed / walk_ramp_time
     else:
-        acceleration = 70.0 # Fallback value
+        acceleration = 16.7 # Fallback value (5.0/0.3)
         
     if sprint_ramp_time > 0:
         sprint_acceleration = sprint_speed / sprint_ramp_time
     else:
-        sprint_acceleration = 50.0 # Fallback value
+        sprint_acceleration = 25.0 # Fallback value (10.0/0.4)
         
     if gas_sprint_ramp_time > 0:
         gas_sprint_acceleration = gas_sprint_speed / gas_sprint_ramp_time
     else:
-        gas_sprint_acceleration = 120.0 # Fallback value
+        gas_sprint_acceleration = 150.0 # Fallback value (30.0/0.2)
         
     print("Calculated acceleration values:")
     print("- Walk acceleration: ", acceleration)
     print("- Sprint acceleration: ", sprint_acceleration)
     print("- Gas sprint acceleration: ", gas_sprint_acceleration)
     
-    var main = get_tree().current_scene
-    var main_tree = main.get_children()
-    for child in main_tree:
-        print(child.name)
+    # Reset state tracking variables
+    was_in_air = false
+    was_gas_sprinting = false
+    was_gas_boosting = false
+    jumps_left = max_jumps
+    
+    # Initialize gameplay state
+    can_shoot = true
+    is_reloading = false
+    reload_progress = 0.0
+    current_health = max_health
+    current_gas = max_gas
+    current_magazine = max_magazine
+    current_reserve = total_reserve_ammo
+    
+    # Initialize input tracking
+    was_shift_released = true
+    gas_sprint_enabled = false
+
+func setup_collision_layers():
     collision_layer = 1
     collision_mask = 1 | 8 | 16
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    if not $FootstepTimer:
-        print("Error: FootstepTimer missing!")
-        return
-    $FootstepTimer.wait_time = footstep_delay
-    $FootstepPlayer.volume_db = footstep_volume
-    health_bar.max_value = max_health
-    health_bar.value = current_health
+
+func initialize_ui_components():
+    # Verify and initialize UI components with error handling
+    if health_bar:
+        health_bar.max_value = max_health
+        health_bar.value = current_health
+    else:
+        push_error("Health bar not found!")
+        
     if gas_bar:
         gas_bar.max_value = max_gas
         gas_bar.value = current_gas
-        print("GasBar found!")
+        print("GasBar initialized!")
     else:
-        print("Error: GasBar not found at /root/Main/HUD/HealthBarContainer/GasBar!")
+        push_error("GasBar not found!")
+        
+    if reload_bar:
+        reload_bar.value = 0.0
+        reload_bar.hide()  # Ensure hidden at start
+    else:
+        push_error("Reload bar not found!")
+    
     update_ammo_display()
-    if pickup_area:
-        pickup_area.connect("body_entered", _on_pickup_area_body_entered)
+
+func initialize_audio():
+    if not $FootstepTimer:
+        push_error("FootstepTimer missing!")
     else:
-        print("Error: PickupArea missing!")
-    if enemy:
-        enemy.player = self
+        $FootstepTimer.wait_time = footstep_delay
+        
+    if $FootstepPlayer:
+        $FootstepPlayer.volume_db = footstep_volume
+    else:
+        push_error("FootstepPlayer missing!")
+        
+    # Initialize other audio players if needed
+
+func apply_god_mode_if_enabled():
     if god_mode:
         current_health = max_health
         current_gas = max_gas
         current_magazine = max_magazine
         current_reserve = total_reserve_ammo
+        print("God mode enabled")
+        
+func initialize_pickups():
+    if pickup_area:
+        if not pickup_area.is_connected("body_entered", _on_pickup_area_body_entered):
+            pickup_area.connect("body_entered", _on_pickup_area_body_entered)
+    else:
+        push_error("PickupArea missing!")
+
 func _input(event):
     
     
@@ -217,10 +401,13 @@ func _input(event):
         
          
 func _physics_process(delta):
-    
-    var sprinting = Input.is_key_pressed(KEY_SHIFT)  # Check if Shift is held
+    # Get input state
+    var sprinting = Input.is_key_pressed(KEY_SHIFT)
     var move_speed = walk_speed  # Default to walking speed
     input_dir = Vector3.ZERO
+    
+    # Gather input
+    gather_input()
     
     # Boosting: double jump + holding Spacebar with delay
     var current_time = Time.get_ticks_msec() / 1000.0
@@ -236,10 +423,53 @@ func _physics_process(delta):
     # Determine current movement speed based on state
     if is_gas_sprinting:
         move_speed = gas_sprint_speed
+        if !was_gas_sprinting:  # Only print when state changes
+            print("Gas sprint active - Speed: ", gas_sprint_speed)
     elif sprinting:
         move_speed = sprint_speed
     
-    # Input gathering
+    # Handle boosting logic
+    is_boosting = double_jumped and holding_space and has_gas and after_delay and is_on_air()
+    
+    # Update movement state using the state machine
+    update_movement_state(
+        is_on_floor(),
+        is_gas_sprinting,
+        is_boosting,
+        sprinting and !is_gas_sprinting,
+        input_dir != Vector3.ZERO
+    )
+    
+    # Apply appropriate physics based on movement state
+    apply_movement_physics(delta, move_speed, is_gas_sprinting)
+    
+    # Handle gas consumption
+    handle_gas_consumption(delta, is_gas_sprinting, is_boosting)
+    
+    # Handle gas cloud spawning
+    handle_gas_cloud_spawning(delta, is_gas_sprinting, is_boosting)
+    
+    # Handle sounds based on current state
+    handle_movement_sounds()
+    
+    # Handle jumping input
+    handle_jumping(delta)
+    
+    # Handle shooting input
+    handle_shooting()
+    
+    # Handle reloading
+    handle_reloading(delta)
+    
+    # Apply final movement
+    move_and_slide()
+    
+    # Update tracking variables after checking current state
+    was_gas_sprinting = is_gas_sprinting
+    was_gas_boosting = is_boosting
+
+# Helper function to gather player input
+func gather_input():
     if Input.is_key_pressed(KEY_A):
         input_dir.x = -1
     elif Input.is_key_pressed(KEY_D):
@@ -248,21 +478,22 @@ func _physics_process(delta):
         input_dir.z = -1
     elif Input.is_key_pressed(KEY_S):
         input_dir.z = 1
-    
-    # Determine current acceleration and friction based on movement state
+
+# Apply physics based on current state 
+func apply_movement_physics(delta, move_speed, is_gas_sprinting):
+    # Determine current acceleration and friction
     var current_acceleration = acceleration
     var current_friction = friction
     
-    # Adjust based on movement type
-    if is_gas_sprinting:
-        current_acceleration = gas_sprint_acceleration
-    elif sprinting:
-        current_acceleration = sprint_acceleration
-    
-    # Reduce control in air
-    if !is_on_floor():
-        current_acceleration *= air_control
-        current_friction *= air_control
+    # Adjust based on movement state
+    match current_movement_state:
+        MovementState.GAS_SPRINTING:
+            current_acceleration = gas_sprint_acceleration
+        MovementState.SPRINTING:
+            current_acceleration = sprint_acceleration
+        MovementState.AIR_CONTROL:
+            current_acceleration *= air_control
+            current_friction *= air_control
     
     # Calculate direction from input
     var direction = Vector3.ZERO
@@ -270,25 +501,16 @@ func _physics_process(delta):
         input_dir = input_dir.normalized()
         direction = ($Head.transform.basis * Vector3(input_dir.x, 0, input_dir.z)).normalized()
         
-        # Get current and target movement directions for turn-based acceleration
-        var current_direction = Vector2(velocity.x, velocity.z).normalized()
-        var target_direction = Vector2(direction.x, direction.z).normalized()
-        
-        # Adjust acceleration based on how much we're changing direction
-        if current_direction.length() > 0.1 and target_direction.length() > 0.1:
-            var direction_difference = current_direction.dot(target_direction)
-            
-            # Lower acceleration when changing directions (dot product < 0 means opposite directions)
-            if direction_difference < 0:
-                current_acceleration *= 0.7  # Reduce acceleration when turning more than 90 degrees
-            elif direction_difference < 0.5:
-                current_acceleration *= 0.85  # Slight reduction for turns between 60-90 degrees
-        
-        # Accelerate towards target velocity
-        velocity.x = move_toward(velocity.x, direction.x * move_speed, current_acceleration * delta)
-        velocity.z = move_toward(velocity.z, direction.z * move_speed, current_acceleration * delta)
+        # Apply appropriate movement physics based on state
+        if is_gas_sprinting:
+            # For gas sprinting, use momentum-based movement
+            apply_gas_movement(direction, move_speed, current_acceleration, delta, input_dir.z)
+        else:
+            # For regular movement, use direct velocity control
+            velocity.x = direction.x * move_speed
+            velocity.z = direction.z * move_speed
     else:
-        # Apply friction when no input
+        # No input - apply friction
         velocity.x = move_toward(velocity.x, 0, current_friction * delta)
         velocity.z = move_toward(velocity.z, 0, current_friction * delta)
     
@@ -296,8 +518,6 @@ func _physics_process(delta):
     if not is_on_floor():
         velocity.y -= gravity * delta
         was_in_air = true
-        if $FootstepPlayer.playing:
-            $FootstepPlayer.stop()
     else:
         if was_in_air:
             $ThudPlayer.play()
@@ -310,38 +530,44 @@ func _physics_process(delta):
         knockback_timer -= delta
         if knockback_timer <= 0:
             knockback_velocity = Vector3.ZERO
+
+# Handle movement sound effects based on state
+func handle_movement_sounds():
+    var current_speed = Vector2(velocity.x, velocity.z).length()
+    var speed_ratio = current_speed / (
+        gas_sprint_speed if current_movement_state == MovementState.GAS_SPRINTING else 
+        sprint_speed if current_movement_state == MovementState.SPRINTING else 
+        walk_speed
+    )
     
-    # Handle boosting, jumping, and gas consumption
-    is_boosting = double_jumped and holding_space and has_gas and after_delay and is_on_air()
-    
-    # If boost just started, log it
-    if !old_boosting and is_boosting:
-        print("Boost started! Gas: ", current_gas)
-    elif old_boosting and !is_boosting:
-        print("Boost stopped! Gas: ", current_gas)
-        
-    # Handle gas consumption and boost physics
+    # Play appropriate movement sounds based on state
+    if is_on_floor() and input_dir != Vector3.ZERO:
+        match current_movement_state:
+            MovementState.GAS_SPRINTING, MovementState.BOOSTING:
+                play_movement_sound(true, false, speed_ratio)
+            MovementState.SPRINTING:
+                play_movement_sound(false, true, speed_ratio)
+            MovementState.WALKING:
+                play_movement_sound(false, false, speed_ratio)
+    else:
+        stop_movement_sounds(current_movement_state != MovementState.GAS_SPRINTING, true)
+
+# Handle gas consumption
+func handle_gas_consumption(delta, is_gas_sprinting, is_boosting):
     if is_boosting:
-        velocity.y += boost_thrust * delta  # Boost when holding Spacebar after delay
+        velocity.y += boost_thrust * delta
         if not god_mode:
             current_gas -= gas_jump_consumption_rate * delta
             current_gas = clamp(current_gas, 0, max_gas)
-            if gas_bar:
-                gas_bar.value = current_gas
-            else:
-                print("GasBar missing during boost!")
+            update_gas_ui()
     
-    # Handle gas sprint consumption
-    if is_gas_sprinting:
-        if not god_mode:
-            current_gas -= gas_sprint_consumption_rate * delta
-            current_gas = clamp(current_gas, 0, max_gas)
-            if gas_bar:
-                gas_bar.value = current_gas
-            else:
-                print("GasBar missing during gas sprint!")
-    
-    # Gas cloud spawning for both sprint and boost
+    if is_gas_sprinting and not god_mode:
+        current_gas -= gas_sprint_consumption_rate * delta
+        current_gas = clamp(current_gas, 0, max_gas)
+        update_gas_ui()
+
+# Handle gas cloud spawning
+func handle_gas_cloud_spawning(delta, is_gas_sprinting, is_boosting):
     if (is_gas_sprinting or is_boosting) and (current_gas > 0 or god_mode):
         gas_cloud_timer += delta
         
@@ -351,36 +577,9 @@ func _physics_process(delta):
         if gas_cloud_timer >= spawn_interval:
             spawn_gas_cloud()
             gas_cloud_timer = 0.0
-    
-    # Sound logic based on actual movement speed
-    if direction != Vector3.ZERO and is_on_floor():
-        # Calculate actual movement speed (velocity magnitude on XZ plane)
-        var current_speed = Vector2(velocity.x, velocity.z).length()
-        var speed_ratio = current_speed / move_speed  # How close to max speed
-        
-        # Play appropriate sounds based on movement state
-        if (is_gas_sprinting or is_boosting) and not sprint_sound.playing:
-            sprint_sound.play()
-        elif sprinting and current_speed > 0.5 and not $FootstepPlayer.playing and $FootstepTimer.is_stopped():
-            $FootstepPlayer.pitch_scale = regular_sprint_pitch
-            $FootstepPlayer.volume_db = footstep_volume
-            $FootstepPlayer.play()
-            # Adjust step frequency based on speed
-            $FootstepTimer.wait_time = footstep_delay / max(0.5, speed_ratio)
-            $FootstepTimer.start()
-        elif current_speed > 0.5 and not sprinting and not $FootstepPlayer.playing and $FootstepTimer.is_stopped():
-            $FootstepPlayer.pitch_scale = base_walk_pitch
-            $FootstepPlayer.volume_db = footstep_volume
-            $FootstepPlayer.play()
-            $FootstepTimer.wait_time = footstep_delay
-            $FootstepTimer.start()
-    else:
-        if sprint_sound.playing and not (is_gas_sprinting or is_boosting):
-            sprint_sound.stop()
-        if $FootstepPlayer.playing and not is_on_floor():
-            $FootstepPlayer.stop()
-    
-    # Handle jumping
+
+# Handle jumping logic
+func handle_jumping(delta):
     if Input.is_action_just_pressed("ui_accept") and jumps_left > 0:
         velocity.y = jump_velocity
         if jumps_left == max_jumps:
@@ -389,19 +588,14 @@ func _physics_process(delta):
             $AirJumpPlayer.play()
         jumps_left -= 1
         last_jump_time = Time.get_ticks_msec() / 1000.0  # Record jump time
-    
-    # Apply all movement
-    move_and_slide()
-    
-    # Update tracking variables after checking current state
-    was_gas_sprinting = is_gas_sprinting
-    was_gas_boosting = is_boosting
-    
-    # Handle shooting
+
+# Handle shooting logic
+func handle_shooting():
     if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot and (current_magazine > 0 || god_mode) and not is_reloading:
         shoot()
-    
-    # Handle reloading
+
+# Handle reloading logic
+func handle_reloading(delta):
     if is_reloading:
         reload_progress += delta
         reload_bar.value = reload_progress
@@ -414,20 +608,25 @@ func _physics_process(delta):
             is_reloading = false
             can_reload = true
             reload_bar.value = 0.0
-            reload_bar.hide()
+            reload_bar.hide()  # Explicitly hide the reload bar
+            print("Reloading complete - Magazine: ", current_magazine, "/", max_magazine)
+
 func reload():
     if current_reserve > 0 and current_magazine < max_magazine and not is_reloading:
         is_reloading = true
         can_reload = false
         reload_progress = 0.0
         reload_bar.value = 0.0
-        reload_bar.show()
+        reload_bar.show()  # Explicitly show the reload bar
         $Head/Camera3D/Gun/ReloadPlayer.play()
         
+        # Log reload start for debugging
+        print("Reloading started - Magazine: ", current_magazine, "/", max_magazine)
+
 func add_gas(amount: float):
     current_gas += amount
     current_gas = clamp(current_gas, 0, max_gas)
-    gas_bar.value = current_gas    
+    update_gas_ui()
         
 func _on_footstep_timer_timeout():
     # Only play footsteps if we're moving on the ground
@@ -455,6 +654,7 @@ func _on_footstep_timer_timeout():
             $FootstepTimer.wait_time = footstep_delay / max(0.5, speed_ratio)
             $FootstepTimer.start()
     # If we stopped moving or left the ground, don't restart the timer
+
 func shoot():
     can_shoot = false
     if not god_mode:
@@ -659,6 +859,29 @@ func _set_cloud_properties(cloud, random_offset):
     if OS.is_debug_build():
         print("Gas cloud spawned. ", " Damage per tick:", gas_cloud_damage, " Interval:", gas_cloud_damage_interval)
 
-# Add this helper function to check if player is in the air
-func is_on_air() -> bool:
-    return !is_on_floor()
+# Sound management functions
+func play_movement_sound(is_gas_powered: bool, is_sprinting: bool, speed_ratio: float = 1.0):
+    if is_gas_powered:
+        if not sprint_sound.playing:
+            sprint_sound.play()
+    elif is_sprinting:
+        if not $FootstepPlayer.playing and $FootstepTimer.is_stopped():
+            $FootstepPlayer.pitch_scale = regular_sprint_pitch
+            $FootstepPlayer.volume_db = footstep_volume
+            $FootstepPlayer.play()
+            # Adjust step frequency based on speed
+            $FootstepTimer.wait_time = footstep_delay / max(0.5, speed_ratio)
+            $FootstepTimer.start()
+    else:  # Regular walking
+        if not $FootstepPlayer.playing and $FootstepTimer.is_stopped():
+            $FootstepPlayer.pitch_scale = base_walk_pitch
+            $FootstepPlayer.volume_db = footstep_volume
+            $FootstepPlayer.play()
+            $FootstepTimer.wait_time = footstep_delay
+            $FootstepTimer.start()
+
+func stop_movement_sounds(stop_gas_sounds: bool = true, stop_footsteps: bool = true):
+    if stop_gas_sounds and sprint_sound.playing:
+        sprint_sound.stop()
+    if stop_footsteps and $FootstepPlayer.playing:
+        $FootstepPlayer.stop()
