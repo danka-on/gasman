@@ -115,6 +115,10 @@ var kills : int = 0
 @onready var heal_border = get_node("/root/Main/HUD/HealBorder")
 @onready var speedometer_label = get_node("/root/Main/HUD/HealthBarContainer/SpeedometerLabel")
 
+# Melee system
+@onready var melee_system = $MeleeSystem
+var melee_key_pressed : bool = false
+
 # Function to update gas UI to avoid duplicate code
 func update_gas_ui():
     if gas_bar:
@@ -272,6 +276,14 @@ func _ready():
     # Apply god mode if enabled
     apply_god_mode_if_enabled()
     
+    # Initialize melee system
+    if not has_node("MeleeSystem"):
+        var melee_node = Node.new()
+        melee_node.name = "MeleeSystem"
+        melee_node.set_script(load("res://scripts/melee_system.gd"))
+        add_child(melee_node)
+        melee_system = melee_node
+    
     print("Player initialization complete")
 
 # Helper functions for initialization
@@ -406,10 +418,11 @@ func _input(event):
             gas_sprint_enabled = false
             print("Shift released - gas sprint disabled")
         
-        
-        
-        
-         
+    if event.is_action_pressed("melee_attack"):
+        melee_key_pressed = true
+    elif event.is_action_released("melee_attack"):
+        melee_key_pressed = false
+
 func _physics_process(delta):
     # Get input state
     var sprinting = Input.is_key_pressed(KEY_SHIFT)
@@ -498,6 +511,10 @@ func _physics_process(delta):
     # Update tracking variables after checking current state
     was_gas_sprinting = is_gas_sprinting
     was_gas_boosting = is_boosting
+
+    if melee_key_pressed and melee_system:
+        print("melee attack !!!!!!!!!!!!!!!!!!!!")
+        melee_system.perform_attack()
 
 # Helper function to gather player input
 func gather_input():
