@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvalrrwlp6wm"]
+[gd_scene load_steps=21 format=3 uid="uid://bvalrrwlp6wm"]
 
 [ext_resource type="Script" uid="uid://cibugs213e3qe" path="res://scripts/player.gd" id="1_b26j0"]
 [ext_resource type="AudioStream" uid="uid://cy4a0k4o6hesa" path="res://sounds/gunshot.wav" id="2_n7ghd"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cjfp3lfqbtxh6" path="res://sounds/healthsound.wav" id="10_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://b6cif01bcl82" path="res://sounds/ammunitions.wav" id="11_nvl01"]
 [ext_resource type="AudioStream" uid="uid://um7fpt222thm" path="res://sounds/speedfart.wav" id="12_ivps1"]
+[ext_resource type="Script" uid="uid://33aealfqax2" path="res://scripts/melee_system.gd" id="13_jej6c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
 
@@ -135,6 +136,10 @@ max_distance = 10.0
 
 [node name="SprintSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("12_ivps1")
+
+[node name="MeleeSystem" type="Node" parent="."]
+script = ExtResource("13_jej6c")
+attack_range = 30.0
 
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
