@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnts6sppnqrby"]
+[gd_scene load_steps=14 format=3 uid="uid://cnts6sppnqrby"]
 
 [ext_resource type="Script" uid="uid://cjnhkclfos8bf" path="res://scripts/sword.gd" id="1_ycbs3"]
 
@@ -27,6 +27,10 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_dwvek")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v4ynp"]
+height = 2.01636
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_ycbs3"]
+length = 50.397
 
 [sub_resource type="Animation" id="Animation_ycbs3"]
 length = 0.001
@@ -72,12 +76,13 @@ _data = {
 [node name="Sword" type="Node3D"]
 script = ExtResource("1_ycbs3")
 Cool_down = 0.5
+damage = 100.0
 
 [node name="Sword Pivot" type="Node3D" parent="."]
 transform = Transform3D(0.05, 0, 0, 0, 1, 0, 0, 0, 0.05, 0, -0.723503, 0)
 
 [node name="bladeMesh" type="MeshInstance3D" parent="Sword Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723503, 0)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 2.07793, 0)
 mesh = SubResource("CylinderMesh_74bdg")
 skeleton = NodePath("../..")
 
@@ -95,7 +100,12 @@ skeleton = NodePath("../handleMesh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723503, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sword Pivot/HitArea"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.34631, 0)
 shape = SubResource("CylinderShape3D_v4ynp")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Sword Pivot/HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.204112)
+shape = SubResource("SeparationRayShape3D_ycbs3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -105,4 +115,5 @@ speed_scale = 0.7
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="Sword Pivot/HitArea" to="." method="_on_hit_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

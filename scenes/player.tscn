@@ -35,6 +35,7 @@ albedo_color = Color(1, 0.839216, 0, 1)
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 25
 script = ExtResource("1_b26j0")
+god_mode = true
 gas_sprint_consumption_rate = 35.0
 gas_sprint_w_consumption_rate = 100.0
 gas_sprint_s_consumption_rate = 1.0
@@ -92,7 +93,10 @@ max_distance = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.520003)
 
 [node name="Sword" parent="Head/Camera3D" instance=ExtResource("14_f1ej7")]
-transform = Transform3D(-0.54024, 0.841511, -8.74228e-08, 0.841511, 0.54024, 0, 4.72293e-08, -7.35672e-08, -1, 0.922468, -0.00590932, -0.458324)
+transform = Transform3D(-0.00349064, 0.999994, 8.74228e-08, 0.999994, 0.00349064, 0, -3.05161e-10, 8.74222e-08, -1, 1.29382, -0.514009, -0.326582)
+
+[node name="thirdpCam" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.89942, 0.437084, 0, -0.437084, 0.89942, 0, 2.28878, 1.49258)
 
 [node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_ivps1")

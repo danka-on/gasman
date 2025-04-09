@@ -6,6 +6,8 @@ extends CharacterBody3D
 @export var gas_sprint_w_multiplier : float = 1.5 # Speed multiplier when holding W during gas sprint
 @export var debug_mode: bool = false
 
+
+
 var gravity = 9.8
 var mouse_sensitivity = 0.002
 var jump_velocity = 7.0
@@ -185,7 +187,7 @@ func _physics_process(delta):
        
     
 
-    
+    $Head/thirdpCam.make_current()
     
     # Get input state
     var sprinting = Input.is_key_pressed(KEY_SHIFT)

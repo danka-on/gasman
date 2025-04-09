@@ -73,7 +73,7 @@ func _physics_process(delta):
     else:
         velocity.x = 0
         velocity.z = 0
-    
+    '''
     # Handle damage to player
     if is_instance_valid(player) and current_health > 0:
         for i in get_slide_collision_count():
@@ -87,7 +87,7 @@ func _physics_process(delta):
                         can_damage = false
                         await get_tree().create_timer(damage_cooldown).timeout
                         can_damage = true
-    
+    '''
     move_and_slide()
 
 func take_damage(amount: float):
