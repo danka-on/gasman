@@ -92,7 +92,7 @@ max_distance = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.520003)
 
 [node name="Sword" parent="Head/Camera3D" instance=ExtResource("14_f1ej7")]
-transform = Transform3D(-0.54024, 0.841511, -8.74228e-08, 0.841511, 0.54024, 0, 4.72293e-08, -7.35672e-08, -1, 0.922468, -0.00590932, -0.458324)
+transform = Transform3D(-0.54024, 0.841511, -1.50996e-07, 0.841511, 0.54024, 2.51725e-14, 8.1574e-08, -1.27065e-07, -1, 0.922468, -0.00590932, -0.458324)
 
 [node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_ivps1")
