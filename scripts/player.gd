@@ -259,6 +259,8 @@ func handle_state_transition(from_state, to_state):
                 $FootstepPlayer.stop()
 
 func _ready():
+   
+    
     print("Player initialization started")
     
     # Initialize physics variables

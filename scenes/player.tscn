@@ -144,7 +144,9 @@ stream = ExtResource("12_ivps1")
 
 [node name="MeleeSystem" type="Node" parent="."]
 script = ExtResource("13_jej6c")
-attack_range = 30.0
+attack_range = 20.0
+attack_damage = 5.0
+knockback_force = 100.0
 
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

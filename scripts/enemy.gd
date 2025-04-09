@@ -10,6 +10,11 @@ var player = null
 var can_damage = true
 var last_damage_time : float = 0.0
 
+# Knockback variables
+var knockback_velocity : Vector3 = Vector3.ZERO
+var knockback_resistance : float = 0.9  # How quickly knockback wears off (0-1)
+var knockback_recovery : float = 5.0    # How fast to recover from knockback
+
 @export var gas_pack_scene : PackedScene = preload("res://scenes/gas_pack.tscn")
 @export var health_pack_scene : PackedScene = preload("res://scenes/health_pack.tscn")
 @export var ammo_pack_scene : PackedScene = preload("res://scenes/ammo_pack.tscn")
@@ -51,34 +56,23 @@ func _physics_process(delta):
     if not is_on_floor():
         velocity.y -= gravity * delta
     
-    if player:
+    # Apply knockback recovery
+    if knockback_velocity.length() > 0:
+        velocity = knockback_velocity
+        knockback_velocity = knockback_velocity.lerp(Vector3.ZERO, knockback_resistance * delta)
+        if knockback_velocity.length() < 0.1:
+            knockback_velocity = Vector3.ZERO
+    # Only move towards player if not being knocked back
+    elif player:
         var direction = (player.global_transform.origin - global_transform.origin).normalized()
         velocity.x = direction.x * speed
         velocity.z = direction.z * speed
     else:
         velocity.x = 0
         velocity.z = 0
-    if is_instance_valid(player) and current_health > 0:
-        var direction = (player.global_transform.origin - global_transform.origin).normalized()
-        velocity.x = direction.x * speed
-        velocity.z = direction.z * speed
-        for i in get_slide_collision_count():
-            var collision = get_slide_collision(i)
-            if is_instance_valid(collision):
-                var collider = collision.get_collider()
-                if is_instance_valid(collider) and collider == player and can_damage:
-                    if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
-                        player.take_damage(damage)
-                        last_damage_time = Time.get_ticks_msec() / 1000.0
-                        can_damage = false
-                        await get_tree().create_timer(damage_cooldown).timeout
-                        can_damage = true
-    else:
-        velocity.x = 0
-        velocity.z = 0
+    
     move_and_slide()
 
- 
 func take_damage(amount: float):
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
@@ -138,3 +132,17 @@ func update_color():
         new_material.albedo_color = Color(0, 0.5, 0.5, 1) # Teal
         new_material.emission_enabled = false # No glow
     enemy_mesh.material_override = new_material
+
+func apply_knockback(direction_or_force, force = null):
+    var knockback_force: Vector3
+    if force != null:
+        # If we received direction and force separately
+        knockback_force = direction_or_force * force
+    else:
+        # If we received the force vector directly
+        knockback_force = direction_or_force
+    
+    print("Enemy received knockback force: ", knockback_force)
+    knockback_velocity = knockback_force
+    # Add a slight upward force to make it look more dramatic
+    knockback_velocity.y += 2.0
