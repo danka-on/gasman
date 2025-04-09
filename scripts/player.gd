@@ -113,11 +113,13 @@ var kills : int = 0
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
 @onready var heal_border = get_node("/root/Main/HUD/HealBorder")
-@onready var speedometer_label = get_node("/root/Main/HUD/HealthBarContainer/SpeedometerLabel")
+
 
 # Melee system
 @onready var melee_system = $MeleeSystem
 var melee_key_pressed : bool = false
+
+var melee_timer : float = 0.0
 
 # Function to update gas UI to avoid duplicate code
 func update_gas_ui():
@@ -427,8 +429,16 @@ func _input(event):
 
 func _physics_process(delta):
     var sword = $Head/Camera3D/Sword
-    if melee_key_pressed:
+    if melee_key_pressed and melee_system:
+        print("melee attack !!!!!!!!!!!!!!!!!!!!")
+        melee_system.perform_attack()
         sword.sword_swing()
+       
+       
+    
+
+    
+    
     # Get input state
     var sprinting = Input.is_key_pressed(KEY_SHIFT)
     var move_speed = walk_speed  # Default to walking speed

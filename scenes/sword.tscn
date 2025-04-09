@@ -28,6 +28,21 @@ material = SubResource("StandardMaterial3D_dwvek")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v4ynp"]
 
+[sub_resource type="Animation" id="Animation_ycbs3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ej6i0"]
 resource_name = "swing"
 length = 0.5
@@ -44,21 +59,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(3.04036, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ycbs3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sword Pivot:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_n355p"]
 resource_name = "swing2"
 
@@ -71,6 +71,7 @@ _data = {
 
 [node name="Sword" type="Node3D"]
 script = ExtResource("1_ycbs3")
+Cool_down = 5.0
 
 [node name="Sword Pivot" type="Node3D" parent="."]
 transform = Transform3D(0.05, 0, 0, 0, 1, 0, 0, 0, 0.05, 0, -0.723503, 0)
@@ -101,3 +102,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_n355p")
 }
 speed_scale = 0.7
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
