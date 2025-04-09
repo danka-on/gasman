@@ -2,7 +2,7 @@ extends Node3D
 
 
 
-@onready var enemy = get_node("/root/Main/enemy")
+
 
 
 
@@ -19,15 +19,11 @@ var player : Node3D
 
 func _ready():
     
-    hitArea.monitoring = false
-    if enemy:
-        print("enemy is lols")
     timer.set_wait_time(Cool_down)
      
 
 func _physics_process(delta: float) -> void:
-    if enemy:
-        print("enemy is lols FIZEEEEEEEEEK")
+    pass
         
         
         
@@ -43,7 +39,7 @@ func sword_swing():
         hitArea.monitoring = true
         $AnimationPlayer.play("swing")
         
-        can_attack = false
+        #can_attack = false
         timer.start()
     else:
         return
@@ -57,6 +53,6 @@ func _on_timer_timeout() -> void:
 
 func _on_hit_area_body_entered(body: Node3D) -> void:
     
-    if body.is_in_group('enemy'): #and body.has_method("take_damage"):
+    if body.is_in_group('enemy') and body.has_method("take_damage"):
         body.take_damage(damage)
        
