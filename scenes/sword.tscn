@@ -71,7 +71,7 @@ _data = {
 
 [node name="Sword" type="Node3D"]
 script = ExtResource("1_ycbs3")
-Cool_down = 5.0
+Cool_down = 0.5
 
 [node name="Sword Pivot" type="Node3D" parent="."]
 transform = Transform3D(0.05, 0, 0, 0, 1, 0, 0, 0, 0.05, 0, -0.723503, 0)

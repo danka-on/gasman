@@ -50,6 +50,9 @@ func _ready():
         print("Ready - EnemyMesh missing: ", enemy_mesh)
         
 func _physics_process(delta):
+    
+           
+    
     if enemy_mesh and enemy_mesh.material_override: # Safe check
         update_color() # Initial update here
         
@@ -90,6 +93,7 @@ func _physics_process(delta):
 func take_damage(amount: float):
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
+    print("enemy TOOK ", amount, " damage")
     if player and player.has_method("play_hit_sound"):
         player.play_hit_sound()
     if enemy_mesh and enemy_mesh.material_override:

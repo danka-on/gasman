@@ -4,6 +4,7 @@ extends CharacterBody3D
 
 @export var god_mode : bool = false # God Mode toggle in Inspector
 @export var gas_sprint_w_multiplier : float = 1.5 # Speed multiplier when holding W during gas sprint
+@export var debug_mode: bool = false
 
 var gravity = 9.8
 var mouse_sensitivity = 0.002
@@ -22,9 +23,7 @@ var air_control = 0.3          # Multiplier for reduced control while airborne (
 var sprint_acceleration = 50.0 # Will be calculated based on ramp time
 var gas_sprint_acceleration = 120.0 # Will be calculated based on ramp time
 
-# Helper functions for movement
-func is_on_air() -> bool:
-    return !is_on_floor()
+
 
 # Speed ramp-up times (seconds to reach max speed)
 var walk_ramp_time = 0.001
@@ -108,25 +107,15 @@ var kills : int = 0
 # UI references
 @onready var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
 @onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
-@onready var enemy = get_node("res://scenes/enemy.tscn") # May not be needed with spawner
+
 @onready var pickup_area = $PickupArea
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
 @onready var heal_border = get_node("/root/Main/HUD/HealBorder")
 
 
-# Melee system
-@onready var melee_system = $MeleeSystem
-var melee_key_pressed : bool = false
 
-var melee_timer : float = 0.0
 
-# Function to update gas UI to avoid duplicate code
-func update_gas_ui():
-    if gas_bar:
-        gas_bar.value = current_gas
-    else:
-        print("GasBar component missing during gas consumption!")
 
 # Gas cloud variables
 @export_group("Gas Cloud")
@@ -138,17 +127,162 @@ func update_gas_ui():
 @export var gas_cloud_damage: float = 5.0
 @export var gas_cloud_damage_interval: float = 0.5
 @export var gas_cloud_lifetime: float = 3.0
-
+@export var max_gas_clouds: int = 30  # Maximum number of gas clouds allowed at once
+var gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
+var gas_cloud_timer: float = 0.0
 
 @export var gas_cloud_particle_amount: int = 50
 @export var gas_cloud_particle_scale_min: float = 2.0
 @export var gas_cloud_particle_scale_max: float = 3.0
 
-@export var max_gas_clouds: int = 30  # Maximum number of gas clouds allowed at once
-var gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
-var gas_cloud_timer: float = 0.0
+#gasboost variables
+
 var was_gas_sprinting: bool = false
 var was_gas_boosting: bool = false
+
+#movement statemachine variables
+
+var current_movement_state = MovementState.IDLE
+var previous_movement_state = MovementState.IDLE
+
+#sword style variables
+
+@onready var sword = $Head/Camera3D/Sword
+
+
+        
+
+
+
+func _ready():
+   
+    
+    print("Player initialization started")
+    
+    # Initialize physics variables
+    initialize_physics_variables()
+    
+    # Setup collision layers
+    setup_collision_layers()
+    
+    # Initialize UI components
+    initialize_ui_components()
+    
+    # Initialize audio components
+    initialize_audio()
+    
+    # Apply god mode if enabled
+    apply_god_mode_if_enabled()
+    
+
+    
+    print("Player initialization complete")
+
+
+func _physics_process(delta):
+    
+       
+       
+    
+
+    
+    
+    # Get input state
+    var sprinting = Input.is_key_pressed(KEY_SHIFT)
+    var move_speed = walk_speed  # Default to walking speed
+    input_dir = Vector3.ZERO
+    
+    # Gather input
+    gather_input()
+    
+    # Boosting: double jump + holding Spacebar with delay
+    var current_time = Time.get_ticks_msec() / 1000.0
+    var old_boosting = is_boosting
+    var has_gas = current_gas > 0 || god_mode
+    var after_delay = current_time - last_jump_time > gas_jump_delay
+    var holding_space = Input.is_action_pressed("ui_accept")
+    var double_jumped = jumps_left == 0
+    
+    # Gas-powered sprint: double-tap Shift + hold
+    var is_gas_sprinting = gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode)
+    
+    # Determine current movement speed based on state
+    if is_gas_sprinting:
+        move_speed = gas_sprint_speed
+        if !was_gas_sprinting:  # Only print when state changes
+            print("Gas sprint active - Speed: ", gas_sprint_speed)
+    elif sprinting:
+        move_speed = sprint_speed
+    
+    # Handle boosting logic
+    is_boosting = double_jumped and holding_space and has_gas and after_delay and is_on_air()
+    
+    # Update movement state using the state machine
+    update_movement_state(
+        is_on_floor(),
+        is_gas_sprinting,
+        is_boosting,
+        sprinting and !is_gas_sprinting,
+        input_dir != Vector3.ZERO
+    )
+    
+    # Apply appropriate physics based on movement state
+    apply_movement_physics(delta, move_speed, is_gas_sprinting)
+    
+    # Handle gas consumption
+    handle_gas_consumption(delta, is_gas_sprinting, is_boosting)
+    
+    # Handle gas cloud spawning
+    handle_gas_cloud_spawning(delta, is_gas_sprinting, is_boosting)
+    
+    # Handle sounds based on current state
+    handle_movement_sounds()
+    
+    # Handle jumping input
+    handle_jumping(delta)
+    
+    # Handle shooting input
+    handle_shooting()
+    
+    # Handle reloading
+    handle_reloading(delta)
+    
+    # Track vertical velocity for fall damage
+    if !is_on_floor():
+        last_vertical_velocity = velocity.y
+    elif last_vertical_velocity < -fall_damage_threshold:
+        # Calculate and apply fall damage
+        var fall_damage = abs(last_vertical_velocity) * fall_damage_multiplier
+        if !god_mode:
+            take_damage(fall_damage)
+            # Play damage sound for fall damage
+            if damage_sound:
+                damage_sound.play()
+            # Show damage indicator
+            if heal_border:
+                heal_border.modulate = Color(1, 0, 0, 0.5)  # Red flash
+                var tween = create_tween()
+                tween.tween_property(heal_border, "modulate", Color(1, 1, 1, 0), 0.3)
+    
+    # Reset vertical velocity tracking
+    if is_on_floor():
+        last_vertical_velocity = 0.0
+    
+    # Apply final movement
+    move_and_slide()
+    
+    # Update tracking variables after checking current state
+    was_gas_sprinting = is_gas_sprinting
+    was_gas_boosting = is_boosting
+
+    #sword attacks
+    
+    if Input.is_action_pressed('right_click'):
+        sword.sword_swing()
+
+
+
+
 
 # Add these helper functions to simplify the momentum physics code
 
@@ -197,6 +331,11 @@ func apply_gas_movement(direction, move_speed, current_acceleration, delta, inpu
         velocity.x = move_toward(velocity.x, direction.x * move_speed, current_acceleration * delta)
         velocity.z = move_toward(velocity.z, direction.z * move_speed, current_acceleration * delta)
 
+# Helper functions for movement
+func is_on_air() -> bool:
+    return !is_on_floor()
+
+
 # Define movement states as enum for clearer state management
 enum MovementState {
     IDLE,
@@ -207,8 +346,7 @@ enum MovementState {
     AIR_CONTROL
 }
 
-var current_movement_state = MovementState.IDLE
-var previous_movement_state = MovementState.IDLE
+
 
 # Update movement state based on current conditions
 func update_movement_state(is_on_ground: bool, is_gas_sprint: bool, is_boost: bool, is_sprint: bool, has_input: bool):
@@ -229,12 +367,15 @@ func update_movement_state(is_on_ground: bool, is_gas_sprint: bool, is_boost: bo
     
     # Log state transitions for debugging
     if current_movement_state != previous_movement_state:
-        print("Movement state changed: ", 
+         # Handle state transition effects
+        handle_state_transition(previous_movement_state, current_movement_state)
+        
+        if debug_mode:
+            print("Movement state changed: ", 
             movement_state_to_string(previous_movement_state), " -> ", 
             movement_state_to_string(current_movement_state))
         
-        # Handle state transition effects
-        handle_state_transition(previous_movement_state, current_movement_state)
+        
 
 # Convert movement state to string for debugging
 func movement_state_to_string(state):
@@ -260,37 +401,7 @@ func handle_state_transition(from_state, to_state):
             if $FootstepPlayer.playing:
                 $FootstepPlayer.stop()
 
-func _ready():
-   
-    
-    print("Player initialization started")
-    
-    # Initialize physics variables
-    initialize_physics_variables()
-    
-    # Setup collision layers
-    setup_collision_layers()
-    
-    # Initialize UI components
-    initialize_ui_components()
-    
-    # Initialize audio components
-    initialize_audio()
-    
-    # Apply god mode if enabled
-    apply_god_mode_if_enabled()
-    
-    # Initialize melee system
-    if not has_node("MeleeSystem"):
-        var melee_node = Node.new()
-        melee_node.name = "MeleeSystem"
-        melee_node.set_script(load("res://scripts/melee_system.gd"))
-        add_child(melee_node)
-        melee_system = melee_node
-    
-    print("Player initialization complete")
 
-# Helper functions for initialization
 
 func initialize_physics_variables():
     # Calculate acceleration values based on desired ramp-up times
@@ -422,114 +533,7 @@ func _input(event):
             gas_sprint_enabled = false
             print("Shift released - gas sprint disabled")
         
-    if event.is_action_pressed("melee_attack"):
-        melee_key_pressed = true
-    elif event.is_action_released("melee_attack"):
-        melee_key_pressed = false
-
-func _physics_process(delta):
-    var sword = $Head/Camera3D/Sword
-    if melee_key_pressed and melee_system:
-        print("melee attack !!!!!!!!!!!!!!!!!!!!")
-        melee_system.perform_attack()
-        sword.sword_swing()
-       
-       
     
-
-    
-    
-    # Get input state
-    var sprinting = Input.is_key_pressed(KEY_SHIFT)
-    var move_speed = walk_speed  # Default to walking speed
-    input_dir = Vector3.ZERO
-    
-    # Gather input
-    gather_input()
-    
-    # Boosting: double jump + holding Spacebar with delay
-    var current_time = Time.get_ticks_msec() / 1000.0
-    var old_boosting = is_boosting
-    var has_gas = current_gas > 0 || god_mode
-    var after_delay = current_time - last_jump_time > gas_jump_delay
-    var holding_space = Input.is_action_pressed("ui_accept")
-    var double_jumped = jumps_left == 0
-    
-    # Gas-powered sprint: double-tap Shift + hold
-    var is_gas_sprinting = gas_sprint_enabled and sprinting and (current_gas > 0 || god_mode)
-    
-    # Determine current movement speed based on state
-    if is_gas_sprinting:
-        move_speed = gas_sprint_speed
-        if !was_gas_sprinting:  # Only print when state changes
-            print("Gas sprint active - Speed: ", gas_sprint_speed)
-    elif sprinting:
-        move_speed = sprint_speed
-    
-    # Handle boosting logic
-    is_boosting = double_jumped and holding_space and has_gas and after_delay and is_on_air()
-    
-    # Update movement state using the state machine
-    update_movement_state(
-        is_on_floor(),
-        is_gas_sprinting,
-        is_boosting,
-        sprinting and !is_gas_sprinting,
-        input_dir != Vector3.ZERO
-    )
-    
-    # Apply appropriate physics based on movement state
-    apply_movement_physics(delta, move_speed, is_gas_sprinting)
-    
-    # Handle gas consumption
-    handle_gas_consumption(delta, is_gas_sprinting, is_boosting)
-    
-    # Handle gas cloud spawning
-    handle_gas_cloud_spawning(delta, is_gas_sprinting, is_boosting)
-    
-    # Handle sounds based on current state
-    handle_movement_sounds()
-    
-    # Handle jumping input
-    handle_jumping(delta)
-    
-    # Handle shooting input
-    handle_shooting()
-    
-    # Handle reloading
-    handle_reloading(delta)
-    
-    # Track vertical velocity for fall damage
-    if !is_on_floor():
-        last_vertical_velocity = velocity.y
-    elif last_vertical_velocity < -fall_damage_threshold:
-        # Calculate and apply fall damage
-        var fall_damage = abs(last_vertical_velocity) * fall_damage_multiplier
-        if !god_mode:
-            take_damage(fall_damage)
-            # Play damage sound for fall damage
-            if damage_sound:
-                damage_sound.play()
-            # Show damage indicator
-            if heal_border:
-                heal_border.modulate = Color(1, 0, 0, 0.5)  # Red flash
-                var tween = create_tween()
-                tween.tween_property(heal_border, "modulate", Color(1, 1, 1, 0), 0.3)
-    
-    # Reset vertical velocity tracking
-    if is_on_floor():
-        last_vertical_velocity = 0.0
-    
-    # Apply final movement
-    move_and_slide()
-    
-    # Update tracking variables after checking current state
-    was_gas_sprinting = is_gas_sprinting
-    was_gas_boosting = is_boosting
-
-    if melee_key_pressed and melee_system:
-        print("melee attack !!!!!!!!!!!!!!!!!!!!")
-        melee_system.perform_attack()
 
 # Helper function to gather player input
 func gather_input():
@@ -624,6 +628,13 @@ func handle_movement_sounds():
                 play_movement_sound(false, false, speed_ratio)
     else:
         stop_movement_sounds(current_movement_state != MovementState.GAS_SPRINTING, true)
+
+# Function to update gas UI to avoid duplicate code
+func update_gas_ui():
+    if gas_bar:
+        gas_bar.value = current_gas
+    else:
+        print("GasBar component missing during gas consumption!")
 
 # Handle gas consumption
 func handle_gas_consumption(delta, is_gas_sprinting, is_boosting):
@@ -797,7 +808,7 @@ func add_ammo(amount: int):
     
 func update_ammo_display():
     ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
-var count = 0
+
 func die():
     
     var game_over = preload("res://scenes/GameOver.tscn").instantiate()

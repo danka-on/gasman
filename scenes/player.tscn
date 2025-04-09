@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cjfp3lfqbtxh6" path="res://sounds/healthsound.wav" id="10_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://b6cif01bcl82" path="res://sounds/ammunitions.wav" id="11_nvl01"]
 [ext_resource type="AudioStream" uid="uid://um7fpt222thm" path="res://sounds/speedfart.wav" id="12_ivps1"]
-[ext_resource type="Script" uid="uid://33aealfqax2" path="res://scripts/melee_system.gd" id="13_jej6c"]
+[ext_resource type="Script" uid="uid://b6dfxrwwssv5v" path="res://scripts/melee_system.gd" id="13_jej6c"]
 [ext_resource type="PackedScene" uid="uid://cnts6sppnqrby" path="res://scenes/sword.tscn" id="14_f1ej7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
