@@ -13,6 +13,7 @@ size = Vector3(1, 3, 1)
 size = Vector3(0.32251, 0.974121, 0.356934)
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_mask = 129
 script = ExtResource("1_7k104")
 
 [node name="EnemyMesh" type="MeshInstance3D" parent="."]
