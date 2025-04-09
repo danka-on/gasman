@@ -424,6 +424,9 @@ func _input(event):
         melee_key_pressed = false
 
 func _physics_process(delta):
+    var sword = $Head/Camera3D/Sword
+    if melee_key_pressed:
+        sword.sword_swing()
     # Get input state
     var sprinting = Input.is_key_pressed(KEY_SHIFT)
     var move_speed = walk_speed  # Default to walking speed

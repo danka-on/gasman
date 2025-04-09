@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnts6sppnqrby"]
+
+[ext_resource type="Script" uid="uid://cjnhkclfos8bf" path="res://scripts/sword.gd" id="1_ycbs3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8xsq"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 0.26
+roughness = 0.0
+emission = Color(1, 0.690196, 0, 1)
+emission_energy_multiplier = 6.08
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_74bdg"]
+material = SubResource("StandardMaterial3D_o8xsq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4ynd"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r76a6"]
+material = SubResource("StandardMaterial3D_e4ynd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwvek"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rx5id"]
+material = SubResource("StandardMaterial3D_dwvek")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v4ynp"]
+
+[sub_resource type="Animation" id="Animation_ej6i0"]
+resource_name = "swing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword Pivot:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(-5, -5, -5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.04036, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ycbs3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n355p"]
+resource_name = "swing2"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n355p"]
+_data = {
+&"RESET": SubResource("Animation_ycbs3"),
+&"swing": SubResource("Animation_ej6i0"),
+&"swing2": SubResource("Animation_n355p")
+}
+
+[node name="Sword" type="Node3D"]
+script = ExtResource("1_ycbs3")
+
+[node name="Sword Pivot" type="Node3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 1, 0, 0, 0, 0.05, 0, -0.723503, 0)
+
+[node name="bladeMesh" type="MeshInstance3D" parent="Sword Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723503, 0)
+mesh = SubResource("CylinderMesh_74bdg")
+skeleton = NodePath("../..")
+
+[node name="handleMesh" type="MeshInstance3D" parent="Sword Pivot"]
+transform = Transform3D(1.1, 0, 0, 0, 0.35, 0, 0, 0, 1.1, 0, -0.102486, 0)
+mesh = SubResource("BoxMesh_r76a6")
+skeleton = NodePath("../bladeMesh")
+
+[node name="handleTopMesh" type="MeshInstance3D" parent="Sword Pivot"]
+transform = Transform3D(1.1, 0, 0, 0, 0.05, 0, 0, 0, 3, 0, 0.0463346, 0)
+mesh = SubResource("BoxMesh_rx5id")
+skeleton = NodePath("../handleMesh")
+
+[node name="HitArea" type="Area3D" parent="Sword Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723503, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sword Pivot/HitArea"]
+shape = SubResource("CylinderShape3D_v4ynp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n355p")
+}
