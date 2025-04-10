@@ -8,18 +8,15 @@ var velocity : Vector3
 func _ready():
     collision_layer = 4 # Bullets - layer 3 (value 4)
     collision_mask = 1 | 8 # Hits enemy bodies (layer 1, value 1) AND gas clouds (layer 4, value 8)
-    await get_tree().create_timer(5).timeout 
-    'var t = Timer.new()
-    t.set_wait_time(5)
-    t.set_one_shot(true)
-    t.connect("timeout", queue_free)
-    add_child(t)
-    t.start()
-    '
+
     
     # Debug info
     print("Bullet created with layer: ", collision_layer, " mask: ", collision_mask)
-
+    
+    #bullet despawn after 5 seconds
+    await get_tree().create_timer(5).timeout 
+    queue_free()
+    
 func _physics_process(delta):
     transform.origin += velocity * delta
 
@@ -52,3 +49,6 @@ func _on_area_entered(area):
 
 func _on_lifetime_timeout():
     queue_free()
+    
+    
+    
