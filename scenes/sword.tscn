@@ -113,7 +113,4 @@ libraries = {
 }
 speed_scale = 0.7
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="body_entered" from="Sword Pivot/HitArea" to="." method="_on_hit_area_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

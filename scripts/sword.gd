@@ -7,9 +7,9 @@ extends Node3D
 
 
 
-@onready var can_attack = true
-@onready var timer = $Timer
-@export var Cool_down = 10.0
+
+
+@export var Cool_down = 10.0 #set in player scene
 @export var damage: float = 25.0
 @onready var hitArea = $"Sword Pivot/HitArea"
 var player : Node3D
@@ -20,7 +20,6 @@ var player : Node3D
 
 func _ready():
     hitArea.monitoring = false
-    #timer.set_wait_time(Cool_down)
      
 
 func _physics_process(delta: float) -> void:
