@@ -6,14 +6,16 @@ var velocity : Vector3
 @export var can_ignite_gas: bool = true
 
 func _ready():
-    var t = Timer.new()
+    collision_layer = 4 # Bullets - layer 3 (value 4)
+    collision_mask = 1 | 8 # Hits enemy bodies (layer 1, value 1) AND gas clouds (layer 4, value 8)
+    await get_tree().create_timer(5).timeout 
+    'var t = Timer.new()
     t.set_wait_time(5)
     t.set_one_shot(true)
     t.connect("timeout", queue_free)
     add_child(t)
     t.start()
-    collision_layer = 4 # Bullets - layer 3 (value 4)
-    collision_mask = 1 | 8 # Hits enemy bodies (layer 1, value 1) AND gas clouds (layer 4, value 8)
+    '
     
     # Debug info
     print("Bullet created with layer: ", collision_layer, " mask: ", collision_mask)

@@ -9,17 +9,17 @@ extends Node3D
 
 @onready var can_attack = true
 @onready var timer = $Timer
-@export var Cool_down = 1.0
+@export var Cool_down = 10.0
 @export var damage: float = 25.0
 @onready var hitArea = $"Sword Pivot/HitArea"
 var player : Node3D
-
+@onready var can_swing = true
 
 
 
 func _ready():
-    
-    timer.set_wait_time(Cool_down)
+     pass
+    #timer.set_wait_time(Cool_down)
      
 
 func _physics_process(delta: float) -> void:
@@ -30,25 +30,21 @@ func _physics_process(delta: float) -> void:
 
         
         
-        
+ 
 func sword_swing():
     
-    
-    
-    if can_attack:
+        
+    if can_swing:
+        can_swing = false
         hitArea.monitoring = true
         $AnimationPlayer.play("swing")
-        
-        #can_attack = false
-        timer.start()
+        await $AnimationPlayer.animation_finished
+        hitArea.monitoring = false
+        await get_tree().create_timer(Cool_down).timeout
+        can_swing = true
     else:
         return
-
-
-func _on_timer_timeout() -> void:
-    can_attack = true
     
-
 
 
 func _on_hit_area_body_entered(body: Node3D) -> void:

@@ -56,9 +56,6 @@ mesh = SubResource("PlaneMesh_h2yge")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0852192, 0)
 gas_sprint_speed = 30.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.384875, 0.922969, 0, -0.922969, -0.384875, -3.60428, 19.8844, 21.4381)
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="HealthBarContainer" type="Control" parent="HUD"]
@@ -204,5 +201,10 @@ show_percentage = false
 
 [node name="Level" type="Node3D" parent="."]
 
-[node name="WorldEnv" type="WorldEnvironment" parent="."]
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -0.384875, 0.922969, 0, -0.922969, -0.384875, -3.60428, 19.8844, 21.4381)
