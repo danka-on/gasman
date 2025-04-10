@@ -97,6 +97,7 @@ transform = Transform3D(-0.00349064, 0.999994, 8.74228e-08, 0.999994, 0.00349064
 
 [node name="thirdpCam" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 0.89942, 0.437084, 0, -0.437084, 0.89942, 0, 2.28878, 1.49258)
+visible = false
 
 [node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_ivps1")

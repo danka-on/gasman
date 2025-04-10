@@ -17,8 +17,9 @@ var player : Node3D
 
 
 
+
 func _ready():
-     pass
+    hitArea.monitoring = false
     #timer.set_wait_time(Cool_down)
      
 
