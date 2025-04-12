@@ -5,7 +5,8 @@ extends CharacterBody3D
 @export var god_mode : bool = false # God Mode toggle in Inspector
 @export var gas_sprint_w_multiplier : float = 1.5 # Speed multiplier when holding W during gas sprint
 @export var debug_mode: bool = false
-
+@export var sword_immune_timer = 0.5
+var immunity = false
 
 
 var gravity = 9.8
@@ -183,11 +184,15 @@ func _ready():
 
 func _physics_process(delta):
     
-       
+    if sword.can_swing:
+        immunity = false
+    elif !sword.can_swing:
+        immunity = true
+    
        
     
 
-    $Head/thirdpCam.make_current()
+
     
     # Get input state
     var sprinting = Input.is_key_pressed(KEY_SHIFT)
@@ -278,12 +283,14 @@ func _physics_process(delta):
     was_gas_boosting = is_boosting
 
     #sword attacks
-    
+  
+  
     if Input.is_action_pressed('right_click'):
         sword.sword_swing()
+        
 
 
-
+    
 
 
 # Add these helper functions to simplify the momentum physics code

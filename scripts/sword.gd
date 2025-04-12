@@ -3,12 +3,6 @@ extends Node3D
 
 
 
-
-
-
-
-
-
 @export var Cool_down = 10.0 #set in player scene
 @export var damage: float = 25.0
 @onready var hitArea = $"Sword Pivot/HitArea"
@@ -26,10 +20,7 @@ func _physics_process(delta: float) -> void:
     pass
         
         
-        
-
-        
-        
+    
  
 func sword_swing():
     

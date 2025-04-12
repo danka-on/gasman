@@ -5,6 +5,7 @@ extends CharacterBody3D
 var current_health : float = max_health
 var gravity : float = 9.8
 var player = null
+
 @export var damage : float = 10.0
 @export var damage_cooldown : float = 1.0
 var can_damage = true
@@ -30,6 +31,7 @@ var knockback_recovery : float = 5.0    # How fast to recover from knockback
 @onready var hitbox = $Hitbox # Add reference
 
 func _ready():
+    
     # Add to group for gas cloud detection
     add_to_group("enemy")
     
@@ -73,7 +75,7 @@ func _physics_process(delta):
     else:
         velocity.x = 0
         velocity.z = 0
-    '''
+    
     # Handle damage to player
     if is_instance_valid(player) and current_health > 0:
         for i in get_slide_collision_count():
@@ -87,7 +89,7 @@ func _physics_process(delta):
                         can_damage = false
                         await get_tree().create_timer(damage_cooldown).timeout
                         can_damage = true
-    '''
+
     move_and_slide()
 
 func take_damage(amount: float):
@@ -119,10 +121,13 @@ func die():
     
     if is_instance_valid(player) and global_transform.origin.distance_to(player.global_transform.origin) <= explosion_radius:
         var direction = (player.global_transform.origin - global_transform.origin).normalized()
-        player.take_damage(explosion_damage)
-        player.apply_knockback(direction, explosion_force)
-        print("Player hit by blast! Distance: ", global_transform.origin.distance_to(player.global_transform.origin))
-    
+        if !player.immunity:
+            player.take_damage(explosion_damage)
+            player.apply_knockback(direction, explosion_force)
+            print("Player hit by blast! Distance: ", global_transform.origin.distance_to(player.global_transform.origin))
+        elif player.immunity:
+            print("player immune to explosion")
+            player.apply_knockback(direction, explosion_force)
     hitbox.collision_layer = 0
     hitbox.collision_mask = 0
     hide()
