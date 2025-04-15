@@ -739,11 +739,43 @@ func reload():
         # Log reload start for debugging
         print("Reloading started - Magazine: ", current_magazine, "/", max_magazine)
 
+func add_ammo(amount: int):
+    current_reserve += amount
+    current_reserve = clamp(current_reserve, 0, total_reserve_ammo)
+    update_ammo_display()
+    
+    # Show pickup notification
+    var pickup_notification = preload("res://scenes/hud_damage_number.tscn").instantiate()
+    pickup_notification.damage_text = "+" + str(amount)
+    pickup_notification.color = Color(0, 0, 1)  # Blue for ammo
+    pickup_notification.text_size = 20  # Slightly smaller than damage numbers
+    
+    # Position next to ammo label
+    var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
+    pickup_notification.position = ammo_label.position + Vector2(ammo_label.size.x + 10, 0)
+    get_node("/root/Main/HUD").add_child(pickup_notification)
+    
+    ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Blue
+    ammo_sound.play()
+    await get_tree().create_timer(1.0).timeout
+    ammo_label.remove_theme_color_override("font_color") # Back to default
+
 func add_gas(amount: float):
     current_gas += amount
     current_gas = clamp(current_gas, 0, max_gas)
     update_gas_ui()
-        
+    
+    # Show pickup notification
+    var pickup_notification = preload("res://scenes/hud_damage_number.tscn").instantiate()
+    pickup_notification.damage_text = "+" + str(int(amount))
+    pickup_notification.color = Color(0, 1, 0)  # Green for gas
+    pickup_notification.text_size = 20  # Slightly smaller than damage numbers
+    
+    # Position next to gas bar
+    var gas_bar = get_node("/root/Main/HUD/GasBar")
+    pickup_notification.position = gas_bar.position + Vector2(gas_bar.size.x + 10, 0)
+    get_node("/root/Main/HUD").add_child(pickup_notification)
+
 func _on_footstep_timer_timeout():
     # Only play footsteps if we're moving on the ground
     if is_on_floor():
@@ -794,17 +826,30 @@ func take_damage(amount: float):
         current_health -= amount
         current_health = clamp(current_health, 0, max_health)
         
-        # Spawn damage number
+        # Spawn 3D damage number
         var damage_number = preload("res://scenes/damage_number.tscn").instantiate()
         damage_number.text = str(int(amount))
-        damage_number.spawn_height_offset = 3.0  # Set the spawn height offset
+        damage_number.spawn_height_offset = 3.0
         damage_number.position = global_transform.origin + Vector3(0, damage_number.spawn_height_offset, 0)
         get_parent().add_child(damage_number)
         
-    if amount > 0:
-        damage_sound.play()
-    elif amount < 0:
-        heal_sound.play()
+        # Spawn HUD damage number
+        var hud_damage = preload("res://scenes/hud_damage_number.tscn").instantiate()
+        hud_damage.damage_text = str(int(amount))
+        
+        # Set color based on whether it's damage or healing
+        if amount > 0:
+            hud_damage.color = Color(1, 0, 0)  # Red for damage
+            damage_sound.play()
+        else:
+            hud_damage.color = Color(0, 1, 0)  # Green for healing
+            heal_sound.play()
+            
+        # Position next to health bar
+        var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
+        hud_damage.position = health_bar.position + Vector2(health_bar.size.x + 10, 0)
+        get_node("/root/Main/HUD").add_child(hud_damage)
+        
     if current_health <= 0:
         hide()
         set_physics_process(false)
@@ -813,16 +858,6 @@ func take_damage(amount: float):
         die()
 
 
-func add_ammo(amount: int):
-    current_reserve += amount
-    current_reserve = clamp(current_reserve, 0, total_reserve_ammo)
-    update_ammo_display()
-    ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Blue
-    ammo_sound.play()
-    await get_tree().create_timer(1.0).timeout
-    ammo_label.remove_theme_color_override("font_color") # Back to default
-    
-    
 func update_ammo_display():
     ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
 
