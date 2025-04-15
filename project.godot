@@ -21,6 +21,10 @@ settings/stdout/print_fps=true
 settings/stdout/verbose_stdout=true
 file_logging/enable_file_logging.pc=false
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/csg_terrain/plugin.cfg")
+
 [input]
 
 reload={

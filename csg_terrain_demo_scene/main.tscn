@@ -1,0 +1,316 @@
+[gd_scene load_steps=40 format=3 uid="uid://ccwse00sf1jqo"]
+
+[ext_resource type="Script" path="res://addons/csg_terrain/csg_terrain.gd" id="1_s7ily"]
+[ext_resource type="Script" path="res://addons/csg_terrain/csg_terrain_path.gd" id="2_27p1k"]
+
+[sub_resource type="Gradient" id="Gradient_mh5g4"]
+offsets = PackedFloat32Array(0.209459, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rmpfn"]
+seed = 7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_un4dl"]
+seamless = true
+color_ramp = SubResource("Gradient_mh5g4")
+noise = SubResource("FastNoiseLite_rmpfn")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sg3mp"]
+sky_top_color = Color(0.2911, 0.465642, 0.71, 1)
+sky_cover = SubResource("NoiseTexture2D_un4dl")
+sky_cover_modulate = Color(0.72, 0.72, 0.72, 1)
+ground_bottom_color = Color(0.1705, 0.2356, 0.31, 1)
+sun_angle_max = 15.0
+energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_h35h7"]
+sky_material = SubResource("ProceduralSkyMaterial_sg3mp")
+
+[sub_resource type="Environment" id="Environment_nt7ko"]
+background_mode = 2
+sky = SubResource("Sky_h35h7")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_myyvq"]
+
+[sub_resource type="Curve3D" id="Curve3D_syd0c"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -15, 0, 27, 15, 0, -27, 79, 5, -129, -6, 0, 15, 6, 0, -15, 121, 10, -193, 0, 0, 0, 0, 0, 0, 133, 10, -237, 0, 0, 0, 0, 0, 0, 133, 10, -343, 15, 0, 12, -15, 0, -12, 113, 10, -380, 17, 0, 25, -17, 0, -25, 60, 5, -427, 0, 0, 0, 0, 0, 0, 19, 0, -512),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_uf332"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector3Array(6.67796, 0, 7.61834, 0, 0, 0, 0, 50, 0, -20, 0, 0, 20, 0, 0, 108, 85, 0, 0, 0, 0, 0, 0, 0, 166, 64, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_s13e4"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector3Array(-7.95137, 0.158497, 0, 8, 0, 0, 0, 64, 0, -14.267, 0, 0, 14.267, 0, 0, 64.951, 45.679, 0, -8, 0, 0, 8.33813, -4.95911e-05, 0.161713, 167.937, 62.675, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_yew1r"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector3Array(-5.39262, -1.66612, 0, 5, 2, 0, 0, 62, 0, -20, 4, 0, 20, -4, 0, 42, 70, 0, -8, 5, 0, 8.06898, -5.46688, 0, 116.265, 25.735, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_c3oom"]
+offsets = PackedFloat32Array(0.871508, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jrt3v"]
+noise_type = 2
+fractal_type = 0
+cellular_jitter = 0.0
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e63pu"]
+width = 500
+seamless = true
+color_ramp = SubResource("Gradient_c3oom")
+noise = SubResource("FastNoiseLite_jrt3v")
+
+[sub_resource type="Gradient" id="Gradient_uwoku"]
+offsets = PackedFloat32Array(0, 0.0782123, 0.24581, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.0138376, 0.0207563, 0.0276751, 0.0988397, 0.0759789, 0.113968, 0.151958, 0.748767, 0.1, 0.15, 0.2, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wgqf0"]
+noise_type = 5
+frequency = 0.4118
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4y0lg"]
+seamless = true
+color_ramp = SubResource("Gradient_uwoku")
+noise = SubResource("FastNoiseLite_wgqf0")
+
+[sub_resource type="Gradient" id="Gradient_ct10o"]
+colors = PackedColorArray(0.98, 0.98, 0.98, 1, 0.1, 0.15, 0.2, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bubxc"]
+seamless = true
+as_normal_map = true
+bump_strength = 2.0
+color_ramp = SubResource("Gradient_ct10o")
+noise = SubResource("FastNoiseLite_wgqf0")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qnilt"]
+width = 500
+seamless = true
+as_normal_map = true
+bump_strength = 16.0
+color_ramp = SubResource("Gradient_c3oom")
+noise = SubResource("FastNoiseLite_jrt3v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewlwn"]
+albedo_texture = SubResource("NoiseTexture2D_e63pu")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_qnilt")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_e63pu")
+detail_blend_mode = 3
+detail_albedo = SubResource("NoiseTexture2D_4y0lg")
+detail_normal = SubResource("NoiseTexture2D_bubxc")
+uv1_scale = Vector3(0.123, 0.123, 0.123)
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="Gradient" id="Gradient_ko11b"]
+offsets = PackedFloat32Array(0.871508, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h8y0e"]
+noise_type = 2
+fractal_type = 0
+cellular_jitter = 0.0
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gtocw"]
+width = 500
+seamless = true
+color_ramp = SubResource("Gradient_ko11b")
+noise = SubResource("FastNoiseLite_h8y0e")
+
+[sub_resource type="Gradient" id="Gradient_i5h0q"]
+offsets = PackedFloat32Array(0, 0.0782123, 0.24581, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.0138376, 0.0207563, 0.0276751, 0.0988397, 0.0759789, 0.113968, 0.151958, 0.748767, 0.1, 0.15, 0.2, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yf1x0"]
+noise_type = 5
+frequency = 0.4118
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yel7q"]
+seamless = true
+color_ramp = SubResource("Gradient_i5h0q")
+noise = SubResource("FastNoiseLite_yf1x0")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yxwou"]
+seamless = true
+as_normal_map = true
+bump_strength = 2.0
+color_ramp = SubResource("Gradient_i5h0q")
+noise = SubResource("FastNoiseLite_yf1x0")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qh5jk"]
+width = 500
+seamless = true
+as_normal_map = true
+bump_strength = 16.0
+color_ramp = SubResource("Gradient_ko11b")
+noise = SubResource("FastNoiseLite_h8y0e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6eny"]
+albedo_texture = SubResource("NoiseTexture2D_gtocw")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_qh5jk")
+detail_enabled = true
+detail_mask = SubResource("NoiseTexture2D_gtocw")
+detail_blend_mode = 3
+detail_albedo = SubResource("NoiseTexture2D_yel7q")
+detail_normal = SubResource("NoiseTexture2D_yxwou")
+uv1_scale = Vector3(0.123, 0.123, 0.123)
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="Gradient" id="Gradient_jghap"]
+offsets = PackedFloat32Array(0, 0.0113636, 0.596591, 0.914773, 1)
+colors = PackedColorArray(0.25, 0.246875, 0.2375, 1, 0.21, 0.20755, 0.1995, 1, 0.352985, 0.348726, 0.335006, 1, 0.502772, 0.496864, 0.476824, 1, 0.678431, 0.670588, 0.643137, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d4by0"]
+frequency = 0.0359
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t5jya"]
+width = 1024
+height = 1024
+color_ramp = SubResource("Gradient_jghap")
+noise = SubResource("FastNoiseLite_d4by0")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e10b2"]
+width = 1024
+height = 1024
+as_normal_map = true
+bump_strength = 16.0
+color_ramp = SubResource("Gradient_jghap")
+noise = SubResource("FastNoiseLite_d4by0")
+
+[sub_resource type="Gradient" id="Gradient_xu3wf"]
+offsets = PackedFloat32Array(0.52514, 1)
+colors = PackedColorArray(1, 0.9875, 0.95, 1, 0, 0, 0, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hmp31"]
+width = 1024
+height = 1024
+color_ramp = SubResource("Gradient_xu3wf")
+noise = SubResource("FastNoiseLite_d4by0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iri7v"]
+albedo_texture = SubResource("NoiseTexture2D_t5jya")
+roughness_texture = SubResource("NoiseTexture2D_hmp31")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_e10b2")
+uv1_scale = Vector3(8, 8, 8)
+texture_filter = 5
+
+[node name="Node" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nt7ko")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.984808, 0.0593911, -0.163176, 0, 0.939693, 0.34202, 0.173648, 0.336824, -0.925417, -96, 18, -490)
+
+[node name="CSGTerrain" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
+mesh = SubResource("ArrayMesh_myyvq")
+script = ExtResource("1_s7ily")
+
+[node name="RoadPath" type="Path3D" parent="CSGTerrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 256)
+curve = SubResource("Curve3D_syd0c")
+script = ExtResource("2_27p1k")
+width = 2
+
+[node name="Hill1" type="Path3D" parent="CSGTerrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -230, 0, -25)
+curve = SubResource("Curve3D_uf332")
+script = ExtResource("2_27p1k")
+width = 7
+paint_width = 4
+
+[node name="Hill2" type="Path3D" parent="CSGTerrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -25)
+curve = SubResource("Curve3D_s13e4")
+script = ExtResource("2_27p1k")
+width = 3
+paint_width = 4
+
+[node name="Hill3" type="Path3D" parent="CSGTerrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, -25)
+curve = SubResource("Curve3D_yew1r")
+script = ExtResource("2_27p1k")
+width = 5
+paint_width = 4
+
+[node name="TunnelHole" type="CSGCylinder3D" parent="CSGTerrain"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 13, 11, -25)
+operation = 2
+radius = 6.0
+height = 70.0
+sides = 16
+material = SubResource("StandardMaterial3D_ewlwn")
+
+[node name="BottomCut" type="CSGBox3D" parent="CSGTerrain/TunnelHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+operation = 2
+size = Vector3(12, 75, 7)
+material = SubResource("StandardMaterial3D_ewlwn")
+
+[node name="Tunnel" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 13, 11, -280)
+use_collision = true
+radius = 6.0
+height = 70.0
+sides = 16
+material = SubResource("StandardMaterial3D_j6eny")
+
+[node name="TunnelCut" type="CSGCylinder3D" parent="Tunnel"]
+operation = 2
+radius = 5.0
+height = 71.0
+sides = 16
+material = SubResource("StandardMaterial3D_j6eny")
+
+[node name="BottomCut" type="CSGBox3D" parent="Tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+operation = 2
+size = Vector3(12, 71, 7)
+material = SubResource("StandardMaterial3D_j6eny")
+
+[node name="RoadPolygon" type="CSGPolygon3D" parent="."]
+use_collision = true
+polygon = PackedVector2Array(-5, -1, -5, 1, 5, 1, 5, -1)
+mode = 2
+path_node = NodePath("../CSGTerrain/RoadPath")
+path_interval_type = 0
+path_interval = 5.0
+path_simplify_angle = 1.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 70.0
+path_joined = false
+material = SubResource("StandardMaterial3D_iri7v")
