@@ -814,7 +814,7 @@ func shoot():
         current_magazine -= 1
     update_ammo_display()
     var bullet = bullet_scene.instantiate()
-    bullet.connect("enemy_hit", Callable(self, "play_hit_sound"))  # Connect the signal
+    bullet.connect("enemy_hit", func(is_headshot): play_hit_sound(is_headshot))  # Handle headshot info
     get_parent().add_child(bullet)
     bullet.global_transform.origin = $Head/Camera3D/Gun/GunTip.global_transform.origin
     bullet.velocity = -$Head/Camera3D.global_transform.basis.z * bullet_speed
@@ -936,11 +936,11 @@ func _on_pickup_area_body_entered(body):
  
         
         
-func play_hit_sound():
+func play_hit_sound(is_headshot: bool = false):
     if hit_sound:
         hit_sound.play()
     if crosshair:
-        crosshair.on_hit()  # Trigger crosshair hit feedback
+        crosshair.on_hit(is_headshot)  # Pass headshot info
         
         
         

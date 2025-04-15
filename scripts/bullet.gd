@@ -1,6 +1,6 @@
 extends Area3D
 
-signal enemy_hit  # Signal for when an enemy is hit
+signal enemy_hit(is_headshot: bool)  # Modified signal to include headshot info
 
 @export var speed : float = 20.0
 var velocity : Vector3
@@ -8,9 +8,9 @@ var velocity : Vector3
 @export var can_ignite_gas: bool = true
 
 func _ready():
-    collision_layer = 4 # Bullets - layer 3 (value 4)
-    collision_mask = 1 | 8 # Hits enemy bodies (layer 1, value 1) AND gas clouds (layer 4, value 8)
-
+    add_to_group("bullet")  # Add bullet to group for detection
+    collision_layer = 4  # Bullets - layer 3 (value 4)
+    collision_mask = 2 | 8  # Detect hitboxes (layer 2) AND gas clouds (layer 4, value 8)
     
     # Debug info
     print("Bullet created with layer: ", collision_layer, " mask: ", collision_mask)
@@ -38,16 +38,24 @@ func _on_body_entered(body):
         if body.is_in_group("enemy"):
             print("Enemy hit! Applying damage.")
             body.take_damage(10, false)  # Specify this is not gas damage
-            emit_signal("enemy_hit")  # Emit the signal when an enemy is hit
+            emit_signal("enemy_hit", false)  # Signal normal hit
     hit()
 
 func _on_area_entered(area):
+    print("Bullet entered area: ", area.name)
+    # Check if this is a hitbox
+    if area.get_parent().is_in_group("enemy"):
+        if area.name == "HeadHitbox":
+            area.get_parent().take_damage(10, false, true)  # Headshot
+            emit_signal("enemy_hit", true)  # Signal headshot
+        elif area.name == "Hitbox":
+            area.get_parent().take_damage(10, false, false)  # Body shot
+            emit_signal("enemy_hit", false)  # Signal normal hit
+    
     # Check if this is a gas cloud
-    if can_ignite_gas and area.is_in_group("gas_cloud") and area.has_method("bullet_hit"):
-        # Trigger the gas cloud explosion
+    elif can_ignite_gas and area.is_in_group("gas_cloud") and area.has_method("bullet_hit"):
         area.bullet_hit(self)
     
-    # Always call hit regardless
     hit()
 
 func _on_lifetime_timeout():

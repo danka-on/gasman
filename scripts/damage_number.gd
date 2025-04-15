@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var text: String = "0"
-@export var color: Color = Color(1, 0, 0)  # Default red color
+@export var color: Color = Color(1, 1, 1)  # Default white color
 @export var duration: float = 1.0
 @export var float_height: float = 2.0
 @export var scale_start: float = 0.5
@@ -15,7 +15,8 @@ extends Node3D
 func _ready():
     # Set initial properties
     label.text = text
-    label.modulate = color
+    label.modulate = color  # Set the color on the Label3D
+    label.outline_modulate = Color(0, 0, 0, 1)  # Black outline
     label.scale = Vector3(scale_start, scale_start, scale_start)
     label.font_size = text_size  # Apply the text size
     

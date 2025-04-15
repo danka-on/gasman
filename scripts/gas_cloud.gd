@@ -154,7 +154,10 @@ func explode():
     for entity in explosion_entities:
         if entity is CharacterBody3D:
             if entity.has_method("take_damage"):
-                entity.take_damage(explosion_damage, true)  # Specify this is gas damage
+                if entity.is_in_group("enemy"):
+                    entity.take_damage(explosion_damage, true)  # Specify this is gas damage for enemies
+                else:
+                    entity.take_damage(explosion_damage)  # For player, only pass damage a  mount
                 print("Damaged entity: ", entity.name, " for ", explosion_damage, " damage")
             
             # Apply knockback if the entity has the method

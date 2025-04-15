@@ -89,7 +89,7 @@ stream = ExtResource("3_nvl01")
 max_distance = 20.0
 
 [node name="GunTip" type="Node3D" parent="Head/Camera3D/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.520003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133293, 0.410594, -0.520003)
 
 [node name="Sword" parent="Head/Camera3D" instance=ExtResource("14_f1ej7")]
 transform = Transform3D(-0.00349064, 0.999994, 8.74228e-08, 0.999994, 0.00349064, 0, -3.05161e-10, 8.74222e-08, -1, 1.29382, -0.514009, -0.326582)

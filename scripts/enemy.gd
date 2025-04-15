@@ -16,6 +16,9 @@ var knockback_velocity : Vector3 = Vector3.ZERO
 var knockback_resistance : float = 0.9  # How quickly knockback wears off (0-1)
 var knockback_recovery : float = 5.0    # How fast to recover from knockback
 
+# Headshot variables
+@export var headshot_multiplier : float = 2.0  # 200% damage for headshots
+
 @export var gas_pack_scene : PackedScene = preload("res://scenes/gas_pack.tscn")
 @export var health_pack_scene : PackedScene = preload("res://scenes/health_pack.tscn")
 @export var ammo_pack_scene : PackedScene = preload("res://scenes/ammo_pack.tscn")
@@ -92,14 +95,31 @@ func _physics_process(delta):
 
     move_and_slide()
 
-func take_damage(amount: float, is_gas_damage: bool = false):
-    current_health -= amount
-    current_health = clamp(current_health, 0, max_health)
-    print("enemy TOOK ", amount, " damage")
+func take_damage(amount: float, is_gas_damage: bool = false, is_headshot: bool = false):
+    var final_damage = amount
+    if is_headshot:
+        final_damage *= headshot_multiplier
+        print("HEADSHOT! Damage multiplied by ", headshot_multiplier)
     
-    # Spawn damage number
+    current_health -= final_damage
+    current_health = clamp(current_health, 0, max_health)
+    print("enemy TOOK ", final_damage, " damage")
+    
+    # Spawn damage number with appropriate color
     var damage_number = preload("res://scenes/damage_number.tscn").instantiate()
-    damage_number.text = str(int(amount))
+    damage_number.text = str(int(final_damage))
+    
+    # Set color based on damage type
+    if is_headshot:
+        damage_number.color = Color(1, 0, 0)  # Red for headshots
+    elif is_gas_damage:
+        if amount >= 20:  # Assuming explosion damage is higher than tick damage
+            damage_number.color = Color(1, 0, 0)  # Red for gas explosions
+        else:
+            damage_number.color = Color(0, 1, 0)  # Green for gas tick damage
+    else:
+        damage_number.color = Color(1, 1, 1)  # White for normal bullet hits
+    
     damage_number.spawn_height_offset = 2.5  # Set the spawn height offset
     damage_number.position = global_transform.origin + Vector3(0, damage_number.spawn_height_offset, 0)
     get_parent().add_child(damage_number)

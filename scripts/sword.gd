@@ -43,7 +43,7 @@ func sword_swing():
 func _on_hit_area_body_entered(body: Node3D) -> void:
     
     if body.is_in_group('enemy') and body.has_method("take_damage"):
-        body.take_damage(damage, false)  # Specify this is not gas damage
+        body.take_damage(damage, false, false)  # Not gas damage, not headshot, but will be red due to amount
         if player and player.has_method("play_hit_sound"):
             player.play_hit_sound()  # Trigger hit feedback when sword hits enemy
        
