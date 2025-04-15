@@ -92,7 +92,7 @@ func _physics_process(delta):
 
     move_and_slide()
 
-func take_damage(amount: float):
+func take_damage(amount: float, is_gas_damage: bool = false):
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
     print("enemy TOOK ", amount, " damage")
@@ -104,8 +104,10 @@ func take_damage(amount: float):
     damage_number.position = global_transform.origin + Vector3(0, damage_number.spawn_height_offset, 0)
     get_parent().add_child(damage_number)
     
-    if player and player.has_method("play_hit_sound"):
-        player.play_hit_sound()
+    # Only trigger hit feedback for non-gas damage
+    if !is_gas_damage:
+        if player and player.has_method("play_hit_sound"):
+            player.play_hit_sound()
     if enemy_mesh and enemy_mesh.material_override:
         update_color()
     else:

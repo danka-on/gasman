@@ -1,5 +1,7 @@
 extends Area3D
 
+signal enemy_hit  # Signal for when an enemy is hit
+
 @export var speed : float = 20.0
 var velocity : Vector3
 @export var hit_effect_scene : PackedScene = preload("res://scenes/hit_effect.tscn")
@@ -35,7 +37,8 @@ func _on_body_entered(body):
     if body.has_method("take_damage"):
         if body.is_in_group("enemy"):
             print("Enemy hit! Applying damage.")
-            body.take_damage(10)
+            body.take_damage(10, false)  # Specify this is not gas damage
+            emit_signal("enemy_hit")  # Emit the signal when an enemy is hit
     hit()
 
 func _on_area_entered(area):

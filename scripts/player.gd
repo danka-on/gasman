@@ -110,6 +110,7 @@ var kills : int = 0
 # UI references
 @onready var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
 @onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
+@onready var crosshair = get_node("/root/Main/HUD/Crosshair")  # Add crosshair reference
 
 @onready var pickup_area = $PickupArea
 @onready var hit_sound = $HitSound
@@ -177,7 +178,11 @@ func _ready():
     # Apply god mode if enabled
     apply_god_mode_if_enabled()
     
-
+    # Initialize crosshair
+    if not crosshair:
+        var crosshair_scene = preload("res://scenes/crosshair.tscn")
+        crosshair = crosshair_scene.instantiate()
+        get_node("/root/Main/HUD").add_child(crosshair)
     
     print("Player initialization complete")
 
@@ -809,6 +814,7 @@ func shoot():
         current_magazine -= 1
     update_ammo_display()
     var bullet = bullet_scene.instantiate()
+    bullet.connect("enemy_hit", Callable(self, "play_hit_sound"))  # Connect the signal
     get_parent().add_child(bullet)
     bullet.global_transform.origin = $Head/Camera3D/Gun/GunTip.global_transform.origin
     bullet.velocity = -$Head/Camera3D.global_transform.basis.z * bullet_speed
@@ -933,6 +939,8 @@ func _on_pickup_area_body_entered(body):
 func play_hit_sound():
     if hit_sound:
         hit_sound.play()
+    if crosshair:
+        crosshair.on_hit()  # Trigger crosshair hit feedback
         
         
         

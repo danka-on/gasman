@@ -14,6 +14,8 @@ var player : Node3D
 
 func _ready():
     hitArea.monitoring = false
+    # Get reference to player (parent of parent)
+    player = get_parent().get_parent()
      
 
 func _physics_process(delta: float) -> void:
@@ -41,5 +43,7 @@ func sword_swing():
 func _on_hit_area_body_entered(body: Node3D) -> void:
     
     if body.is_in_group('enemy') and body.has_method("take_damage"):
-        body.take_damage(damage)
+        body.take_damage(damage, false)  # Specify this is not gas damage
+        if player and player.has_method("play_hit_sound"):
+            player.play_hit_sound()  # Trigger hit feedback when sword hits enemy
        

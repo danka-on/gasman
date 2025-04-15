@@ -45,7 +45,7 @@ func _ready():
     # Add to group for detection and chain reactions
     add_to_group("gas_cloud")
     
-   
+  
     
     # Update cloud size - ALWAYS apply this regardless of preserve_scene_visuals
     if $CollisionShape3D and $CollisionShape3D.shape:
@@ -148,16 +148,13 @@ func explode():
         return
         
     has_exploded = true
-    print("Gas cloud exploding!")
-    
-   
     
     # Apply explosion damage to entities in range
     var explosion_entities = get_explosion_targets()
     for entity in explosion_entities:
         if entity is CharacterBody3D:
             if entity.has_method("take_damage"):
-                entity.take_damage(explosion_damage)
+                entity.take_damage(explosion_damage, true)  # Specify this is gas damage
                 print("Damaged entity: ", entity.name, " for ", explosion_damage, " damage")
             
             # Apply knockback if the entity has the method
@@ -373,16 +370,12 @@ func _on_damage_timer_timeout():
     # Cleanup invalid enemies first
     cleanup_invalid_enemies()
     
-    # Only scan for new enemies occasionally to reduce overhead
-    #if randf() < 0.3:  # 30% chance to scan each tick
-     #   scan_for_enemies()
-    
     # Apply damage to all enemies in the cloud
     for enemy in enemies_in_cloud:
         if is_instance_valid(enemy):
             if debug_logging:
                 print("Damaging enemy:", enemy.name, " Amount:", damage_per_tick)
-            enemy.take_damage(damage_per_tick) 
+            enemy.take_damage(damage_per_tick, true)  # Specify this is gas damage
 
 # Get nearby clouds for chain reaction
 func get_nearby_clouds() -> Array:

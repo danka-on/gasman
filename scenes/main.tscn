@@ -297,6 +297,7 @@ theme_override_font_sizes/font_size = 40
 text = "30/30"
 
 [node name="Crosshair" type="TextureRect" parent="HUD/HealthBarContainer"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.497
