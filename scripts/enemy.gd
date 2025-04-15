@@ -96,6 +96,14 @@ func take_damage(amount: float):
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
     print("enemy TOOK ", amount, " damage")
+    
+    # Spawn damage number
+    var damage_number = preload("res://scenes/damage_number.tscn").instantiate()
+    damage_number.text = str(int(amount))
+    damage_number.spawn_height_offset = 2.5  # Set the spawn height offset
+    damage_number.position = global_transform.origin + Vector3(0, damage_number.spawn_height_offset, 0)
+    get_parent().add_child(damage_number)
+    
     if player and player.has_method("play_hit_sound"):
         player.play_hit_sound()
     if enemy_mesh and enemy_mesh.material_override:

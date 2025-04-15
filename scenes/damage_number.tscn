@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl0o1j2gmu07c"]
+
+[ext_resource type="Script" uid="uid://xu8xf02nbcu4" path="res://scripts/damage_number.gd" id="1_damage"]
+
+[node name="DamageNumber" type="Node3D"]
+script = ExtResource("1_damage")
+text_size = 100
+
+[node name="Label3D" type="Label3D" parent="."]
+outline_size = 4
