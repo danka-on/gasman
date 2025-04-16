@@ -1,12 +1,16 @@
 extends Control
 
-var score : int = 0
-var kills : int = 0
+var score = 0
+var kills = 0
 
 func _ready():
+    # Make sure the game is unpaused when showing game over
+    get_tree().paused = false
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
     if $VBoxContainer/RestartButton:
         $VBoxContainer/RestartButton.connect("pressed", _on_restart_button_pressed)
+    if $VBoxContainer/MenuButton:
+        $VBoxContainer/MenuButton.connect("pressed", _on_menu_button_pressed)
     update_display()
 
 func _input(event):
@@ -14,11 +18,16 @@ func _input(event):
         pass
 
 func _on_restart_button_pressed():
-    get_tree().change_scene_to_file("res://scenes/Main.tscn")
+    # Reload the current scene
+    get_tree().reload_current_scene()
 
-func set_score_and_kills(new_score: int, new_kills: int):
-    score = new_score
-    kills = new_kills
+func _on_menu_button_pressed():
+    # Change to the start screen scene
+    get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+
+func set_score_and_kills(player_score: int, player_kills: int):
+    score = player_score
+    kills = player_kills
     if is_node_ready(): # If _ready() has run
         update_display()
 
