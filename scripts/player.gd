@@ -154,6 +154,8 @@ var previous_movement_state = MovementState.IDLE
 
 @onready var sword = $Head/Camera3D/Sword
 
+@onready var pause_menu = preload("res://scenes/pause_menu.tscn").instantiate()
+
 
         
 
@@ -181,12 +183,14 @@ func _ready():
     
     # Initialize crosshair
     if not crosshair:
-        var crosshair_scene = preload("res://scenes/crosshair.tscn")
-        crosshair = crosshair_scene.instantiate()
+        var crosshair_scene = preload("res://scenes/crosshair.tscn").instantiate()
         if $HUD:
             $HUD.add_child(crosshair)
         else:
             push_error("HUD node not found for crosshair initialization!")
+    
+    # Add pause menu
+    add_child(pause_menu)
     
     print("Player initialization complete")
 
