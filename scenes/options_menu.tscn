@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6x8g0v8j5o1y"]
+
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_2k4m3"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2k4m3")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.8)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+
+[node name="VideoSettings" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="VBoxContainer/VideoSettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Fullscreen"
+
+[node name="ResolutionLabel" type="Label" parent="VBoxContainer/VideoSettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Resolution:"
+
+[node name="ResolutionDropdown" type="OptionButton" parent="VBoxContainer/VideoSettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="MessageLabel" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Settings saved! These changes will take effect when you run the game outside the editor."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="BackButton" type="Button" parent="VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(190, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+size_flags_vertical = 4
+
+[node name="ConfirmButton" type="Button" parent="VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(190, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Confirm"
+size_flags_vertical = 4
+
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/VideoSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="item_selected" from="VBoxContainer/VideoSettings/ResolutionDropdown" to="." method="_on_resolution_dropdown_item_selected"] 

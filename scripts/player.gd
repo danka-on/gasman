@@ -55,7 +55,7 @@ var gas_jump_delay : float = 0.2
 
 @export var walk_speed : float = 5.0
 @export var sprint_speed : float = 10.0
-@onready var gas_bar = $"../HUD/GasBar"
+@onready var gas_bar = $HUD/HealthBarContainer/GasBar
 var max_gas : float = 300.0
 var current_gas : float = max_gas
 var gas_consumption_rate : float = 20.0 # Gas per second while sprinting
@@ -77,7 +77,7 @@ var current_magazine : int = max_magazine
 var current_reserve : int = total_reserve_ammo
 var can_reload = true
 @export var reload_time : float = 2.0
-@onready var reload_bar = $"../HUD/HealthBarContainer/ReloadBar"
+@onready var reload_bar = $HUD/HealthBarContainer/ReloadBar
 var is_reloading : bool = false
 var reload_progress : float = 0.0
 
@@ -108,14 +108,15 @@ var score : int = 0
 var kills : int = 0
 
 # UI references
-@onready var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
-@onready var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
-@onready var crosshair = get_node("/root/Main/HUD/Crosshair")  # Add crosshair reference
+@onready var health_bar = $HUD/HealthBarContainer/HealthBar
+@onready var ammo_label = $HUD/HealthBarContainer/AmmoLabel
+@onready var crosshair = $HUD/Crosshair
+@onready var heal_border = $HUD/HealBorder
+
 
 @onready var pickup_area = $PickupArea
 @onready var hit_sound = $HitSound
 @onready var damage_sound = $DamageSound
-@onready var heal_border = get_node("/root/Main/HUD/HealBorder")
 
 
 
@@ -182,7 +183,10 @@ func _ready():
     if not crosshair:
         var crosshair_scene = preload("res://scenes/crosshair.tscn")
         crosshair = crosshair_scene.instantiate()
-        get_node("/root/Main/HUD").add_child(crosshair)
+        if $HUD:
+            $HUD.add_child(crosshair)
+        else:
+            push_error("HUD node not found for crosshair initialization!")
     
     print("Player initialization complete")
 
@@ -475,7 +479,7 @@ func initialize_ui_components():
     if gas_bar:
         gas_bar.max_value = max_gas
         gas_bar.value = current_gas
-        print("GasBar initialized!")
+        print("GasBar initialized with max value: ", max_gas, " and current value: ", current_gas)
     else:
         push_error("GasBar not found!")
         
@@ -647,6 +651,7 @@ func handle_movement_sounds():
 func update_gas_ui():
     if gas_bar:
         gas_bar.value = current_gas
+        print("GasBar updated to: ", current_gas)
     else:
         print("GasBar component missing during gas consumption!")
 
@@ -756,14 +761,17 @@ func add_ammo(amount: int):
     pickup_notification.text_size = 20  # Slightly smaller than damage numbers
     
     # Position next to ammo label
-    var ammo_label = get_node("/root/Main/HUD/HealthBarContainer/AmmoLabel")
-    pickup_notification.position = ammo_label.position + Vector2(ammo_label.size.x + 10, 0)
-    get_node("/root/Main/HUD").add_child(pickup_notification)
-    
-    ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Blue
-    ammo_sound.play()
-    await get_tree().create_timer(1.0).timeout
-    ammo_label.remove_theme_color_override("font_color") # Back to default
+    if $HUD:
+        var ammo_label = $HUD/HealthBarContainer/AmmoLabel
+        pickup_notification.position = ammo_label.position + Vector2(ammo_label.size.x + 10, 0)
+        $HUD.add_child(pickup_notification)
+        
+        ammo_label.add_theme_color_override("font_color", Color(0, 0, 1)) # Blue
+        ammo_sound.play()
+        await get_tree().create_timer(1.0).timeout
+        ammo_label.remove_theme_color_override("font_color") # Back to default
+    else:
+        push_error("HUD node not found for ammo pickup notification!")
 
 func add_gas(amount: float):
     current_gas += amount
@@ -777,9 +785,11 @@ func add_gas(amount: float):
     pickup_notification.text_size = 20  # Slightly smaller than damage numbers
     
     # Position next to gas bar
-    var gas_bar = get_node("/root/Main/HUD/GasBar")
-    pickup_notification.position = gas_bar.position + Vector2(gas_bar.size.x + 10, 0)
-    get_node("/root/Main/HUD").add_child(pickup_notification)
+    if $HUD:
+        pickup_notification.position = gas_bar.position + Vector2(gas_bar.size.x + 10, 0)
+        $HUD.add_child(pickup_notification)
+    else:
+        push_error("HUD node not found for gas pickup notification!")
 
 func _on_footstep_timer_timeout():
     # Only play footsteps if we're moving on the ground
@@ -852,9 +862,11 @@ func take_damage(amount: float):
             heal_sound.play()
             
         # Position next to health bar
-        var health_bar = get_node("/root/Main/HUD/HealthBarContainer/HealthBar")
-        hud_damage.position = health_bar.position + Vector2(health_bar.size.x + 10, 0)
-        get_node("/root/Main/HUD").add_child(hud_damage)
+        if $HUD:
+            hud_damage.position = health_bar.position + Vector2(health_bar.size.x + 10, 0)
+            $HUD.add_child(hud_damage)
+        else:
+            push_error("HUD node not found for damage number!")
         
     if current_health <= 0:
         hide()

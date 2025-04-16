@@ -4,7 +4,6 @@ extends Node3D
 @export var spawn_radius : float = 10.0
 @onready var player = $Player
 @onready var spawn_timer = $EnemySpawnTimer
-@onready var enemy_count_label = $HUD/HealthBarContainer/EnemyCountLabel
 var enemy_count = 0
 
 func _ready():
@@ -17,7 +16,8 @@ func _on_spawn_timer_timeout():
         spawn_enemy()
         
 func update_enemy_count():
-    enemy_count_label.text = "Enemies: " + str(enemy_count)
+    if player and player.get_node("HUD/HealthBarContainer/EnemyCountLabel"):
+        player.get_node("HUD/HealthBarContainer/EnemyCountLabel").text = "Enemies: " + str(enemy_count)
 
 func _on_enemy_died():
     enemy_count -= 1
