@@ -31,21 +31,17 @@ func load_settings():
 func apply_settings(fullscreen: bool, resolution: Vector2i):
 	print("SettingsManager: Applying settings - Fullscreen: ", fullscreen, " Resolution: ", resolution)
 	
-	# First, ensure we're in windowed mode before changing size
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
-	# Set the window size
-	DisplayServer.window_set_size(resolution)
-	print("SettingsManager: Window size set to: ", DisplayServer.window_get_size())
-	
 	if fullscreen:
 		print("SettingsManager: Entering fullscreen mode")
-		# Set fullscreen mode
+		# Set fullscreen mode first
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		# Ensure the resolution is maintained
-		DisplayServer.window_set_size(resolution)
+		# Let the display server handle the resolution in fullscreen mode
 	else:
 		print("SettingsManager: Setting windowed mode")
+		# First, ensure we're in windowed mode
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		# Set the window size
+		DisplayServer.window_set_size(resolution)
 		# Center the window
 		var screen_size = DisplayServer.screen_get_size()
 		var window_position = (screen_size - resolution) / 2

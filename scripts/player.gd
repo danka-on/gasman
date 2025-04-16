@@ -182,12 +182,9 @@ func _ready():
     apply_god_mode_if_enabled()
     
     # Initialize crosshair
-    if not crosshair:
-        var crosshair_scene = preload("res://scenes/crosshair.tscn").instantiate()
-        if $HUD:
-            $HUD.add_child(crosshair)
-        else:
-            push_error("HUD node not found for crosshair initialization!")
+    var crosshair_scene = preload("res://scenes/crosshair.tscn")
+    crosshair = crosshair_scene.instantiate()
+    $HUD.add_child(crosshair)
     
     # Add pause menu
     add_child(pause_menu)
