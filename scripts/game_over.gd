@@ -18,8 +18,8 @@ func _input(event):
         pass
 
 func _on_restart_button_pressed():
-    # Reload the current scene
-    get_tree().reload_current_scene()
+    # Change to the main game scene
+    get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _on_menu_button_pressed():
     # Change to the start screen scene

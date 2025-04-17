@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5ngvkajtnbwl"]
 
 [ext_resource type="Script" uid="uid://b6ds11xy3ujeo" path="res://scripts/start_screen.gd" id="1_2k4m3"]
-[ext_resource type="Texture2D" uid="uid://yv2rfpom67f3" path="res://gasman image.png" id="2_o7i0r"]
+[ext_resource type="Texture2D" uid="uid://cpt4xfiobwf8v" path="res://gasman arena.png" id="2_o7i0r"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
