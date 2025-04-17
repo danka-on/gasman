@@ -98,6 +98,10 @@ var reload_progress : float = 0.0
 @export var max_health : float = 100.0
 var current_health : float = max_health
 
+# Timer variables
+var game_time: float = 0.0
+var is_game_active: bool = true
+
 # Fall damage variables
 @export var fall_damage_threshold : float = 15.0  # Minimum velocity to take fall damage
 @export var fall_damage_multiplier : float = 0.5  # Damage multiplier based on fall velocity
@@ -193,6 +197,10 @@ func _ready():
 
 
 func _physics_process(delta):
+    # Update game timer if game is active
+    if is_game_active:
+        game_time += delta
+        update_timer_display()
     
     if sword.can_swing:
         immunity = false
@@ -881,7 +889,7 @@ func update_ammo_display():
     ammo_label.text = str(current_magazine) + "/" + str(current_reserve)
 
 func die():
-    
+    is_game_active = false
     var game_over = preload("res://scenes/GameOver.tscn").instantiate()
     get_tree().root.add_child(game_over)
     game_over.set_score_and_kills(score, kills)
@@ -1058,3 +1066,8 @@ func stop_movement_sounds(stop_gas_sounds: bool = true, stop_footsteps: bool = t
         sprint_sound.stop()
     if stop_footsteps and $FootstepPlayer.playing:
         $FootstepPlayer.stop()
+
+func update_timer_display():
+    var minutes = int(game_time) / 60
+    var seconds = int(game_time) % 60
+    $HUD/TimerLabel.text = "%02d:%02d" % [minutes, seconds]
