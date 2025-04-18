@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SettingsManager="*res://scripts/settings_manager.gd"
+PoolSystem="*res://scripts/autoloads/pool_system.gd"
 
 [debug]
 

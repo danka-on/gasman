@@ -832,9 +832,19 @@ func shoot():
     if not god_mode:
         current_magazine -= 1
     update_ammo_display()
-    var bullet = bullet_scene.instantiate()
-    bullet.connect("enemy_hit", func(is_headshot): play_hit_sound(is_headshot))  # Handle headshot info
-    get_parent().add_child(bullet)
+    
+    # Get a bullet from the pool instead of instantiating a new one
+    var bullet = PoolSystem.get_object(PoolSystem.PoolType.BULLET)
+    if not bullet:
+        # If we couldn't get a bullet from the pool, log a warning
+        push_warning("Could not get bullet from pool")
+        return
+    
+    # Connect to the enemy_hit signal
+    if bullet.has_signal("enemy_hit") and not bullet.enemy_hit.is_connected(play_hit_sound):
+        bullet.connect("enemy_hit", play_hit_sound)
+    
+    # Set the bullet's position and velocity
     bullet.global_transform.origin = $Head/Camera3D/Gun/GunTip.global_transform.origin
     bullet.velocity = -$Head/Camera3D.global_transform.basis.z * bullet_speed
     
