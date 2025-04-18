@@ -840,13 +840,27 @@ func shoot():
         push_warning("Could not get bullet from pool")
         return
     
+    print("Shooting bullet: ", bullet.get_instance_id())
+    
     # Connect to the enemy_hit signal
-    if bullet.has_signal("enemy_hit") and not bullet.enemy_hit.is_connected(play_hit_sound):
-        bullet.connect("enemy_hit", play_hit_sound)
+    if bullet.has_signal("enemy_hit"):
+        # First disconnect any previous connections to avoid duplicates
+        var connections = bullet.get_signal_connection_list("enemy_hit")
+        for connection in connections:
+            if connection.callable.get_object() == self:
+                bullet.enemy_hit.disconnect(connection.callable)
+        
+        # Now connect our handler
+        bullet.enemy_hit.connect(play_hit_sound)
+        print("Connected bullet signal: ", bullet.get_instance_id())
     
     # Set the bullet's position and velocity
     bullet.global_transform.origin = $Head/Camera3D/Gun/GunTip.global_transform.origin
-    bullet.velocity = -$Head/Camera3D.global_transform.basis.z * bullet_speed
+    
+    # Calculate and set velocity vector
+    var velocity_vector = -$Head/Camera3D.global_transform.basis.z * bullet_speed
+    bullet.velocity = velocity_vector
+    print("Set bullet velocity: ", velocity_vector, " speed: ", bullet_speed)
     
     $Head/Camera3D/Gun/MuzzleFlash.visible = true
     $Head/Camera3D/Gun/GunshotPlayer.play()

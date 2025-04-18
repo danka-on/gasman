@@ -39,8 +39,15 @@ func _create_instance() -> Node:
         
     var instance = pooled_scene.instantiate()
     add_child(instance)
+    
+    # Ensure the object is fully deactivated
     instance.process_mode = Node.PROCESS_MODE_DISABLED
     instance.visible = false
+    
+    # If we're processing, pause it until needed
+    if instance.has_method("set_physics_process"):
+        instance.set_physics_process(false)
+    
     return instance
 
 ## Gets an object from the pool
@@ -67,9 +74,14 @@ func get_object() -> Node:
         return null
     
     if obj:
+        # Re-activate the object
         _active_objects.append(obj)
         obj.process_mode = Node.PROCESS_MODE_INHERIT
         obj.visible = true
+        
+        # Re-enable physics processing explicitly
+        if obj.has_method("set_physics_process"):
+            obj.set_physics_process(true)
     
     return obj
 
@@ -92,8 +104,14 @@ func _return_to_pool(obj: Node) -> void:
         push_warning("ObjectPool: Attempting to return invalid object to pool")
         return
         
+    # Make sure the object is completely deactivated
     obj.process_mode = Node.PROCESS_MODE_DISABLED
     obj.visible = false
+    
+    # If the object has a specific method to prepare it for pooling, call it
+    if obj.has_method("prepare_for_pool"):
+        obj.prepare_for_pool()
+    
     _available_objects.append(obj)
 
 ## Returns all active objects to the pool

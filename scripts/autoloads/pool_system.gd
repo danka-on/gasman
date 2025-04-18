@@ -125,4 +125,33 @@ func get_pool_manager() -> PoolManager:
 ## Clean up invalid objects in all pools
 func cleanup_pools() -> void:
     if _pool_manager:
-        _pool_manager.cleanup_all_pools() 
+        _pool_manager.cleanup_all_pools()
+
+## Print debug information about all pools
+func debug_pools() -> void:
+    if _pool_manager:
+        var stats = get_stats()
+        print("\n=== POOL SYSTEM DEBUG INFO ===")
+        
+        for pool_name in stats:
+            var pool_stat = stats[pool_name]
+            print("%s: %d active, %d available, %d total" % [
+                pool_name, 
+                pool_stat.active, 
+                pool_stat.available, 
+                pool_stat.total
+            ])
+            
+            # Get actual objects in the pool
+            var pool = _pool_manager.get_pool(pool_name)
+            if pool:
+                print("  Active objects:")
+                for obj in pool._active_objects:
+                    if is_instance_valid(obj):
+                        print("    - ID: %d, Type: %s" % [obj.get_instance_id(), obj.get_class()])
+                    else:
+                        print("    - INVALID OBJECT")
+                        
+                print("  Available objects: %d" % pool._available_objects.size())
+        
+        print("==============================\n") 

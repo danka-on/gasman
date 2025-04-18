@@ -20,8 +20,10 @@ func _ready():
     # We'll connect signals in setup_signal_connections to avoid duplicate connections
     setup_signal_connections()
     
-    # Start the timer for bullet lifetime
-    _start_lifetime_timer()
+    # Don't start the timer in _ready
+    # The timer will be started in reset() which is called when the bullet is activated from the pool
+    
+    print("Bullet initialized: ", get_instance_id())
 
 func setup_signal_connections():
     if not _signal_connections_setup:
@@ -39,15 +41,20 @@ func cleanup_signal_connections():
         _signal_connections_setup = false
 
 func _physics_process(delta):
-    transform.origin += velocity * delta
+    if velocity.length_squared() > 0:
+        transform.origin += velocity * delta
+    else:
+        print("WARNING: Bullet has zero velocity in _physics_process: ", get_instance_id())
 
 ## Reset the bullet for reuse from the pool
 func reset():
+    print("Bullet reset: ", get_instance_id())
+    
     # Reset position and velocity
     transform = Transform3D.IDENTITY
-    velocity = Vector3.ZERO
+    velocity = Vector3.ZERO  # We zero the velocity here, but it will be set by the player's shoot function
     
-    # Reset visibility and physics
+    # Reset visibility and physics - ensure physics processing is enabled
     set_physics_process(true)
     visible = true
     
@@ -60,16 +67,26 @@ func reset():
     cleanup_signal_connections()
     setup_signal_connections()
     
+    # Disconnect any external connections to our signals
+    # This is critical to avoid memory leaks when the player connects to us
+    if has_signal("enemy_hit"):
+        get_signal_connection_list("enemy_hit").map(func(conn): enemy_hit.disconnect(conn.callable))
+    
     # Start a new lifetime timer
     _start_lifetime_timer()
 
 ## Start the lifetime timer for this bullet
 func _start_lifetime_timer():
-    _lifetime_timer = get_tree().create_timer(5)
-    _lifetime_timer.timeout.connect(_on_lifetime_timeout)
+    # Only start timer if the bullet is actually visible/active
+    if visible and process_mode == Node.PROCESS_MODE_INHERIT:
+        _lifetime_timer = get_tree().create_timer(5)
+        _lifetime_timer.timeout.connect(_on_lifetime_timeout)
+        print("Started lifetime timer for bullet: ", get_instance_id())
 
 ## Called when this bullet hits something
 func hit():
+    print("Bullet hit: ", get_instance_id())
+    
     # Prevent multiple calls
     set_physics_process(false)
     
@@ -136,8 +153,27 @@ func _on_area_entered(area):
     hit()
 
 func _on_lifetime_timeout():
+    print("Bullet lifetime expired: ", get_instance_id())
+    
     # Return to pool instead of queue_free
     if PoolManager.instance != null:
         PoolManager.instance.release_object(self)
     else:
-        queue_free() 
+        queue_free()
+
+## Called when the bullet is returned to the pool
+## This ensures all timers and ongoing processes are stopped
+func prepare_for_pool():
+    print("Bullet prepared for pool: ", get_instance_id())
+    
+    # Cancel the lifetime timer if it's still running
+    if _lifetime_timer != null and _lifetime_timer.time_left > 0:
+        if _lifetime_timer.timeout.is_connected(_on_lifetime_timeout):
+            _lifetime_timer.timeout.disconnect(_on_lifetime_timeout)
+            
+    # Don't completely disable physics processing - just pause it
+    # This is to avoid issues when the bullet is activated again
+    # set_physics_process(false)
+    
+    # Reset velocity to prevent any movement while pooled
+    velocity = Vector3.ZERO 
