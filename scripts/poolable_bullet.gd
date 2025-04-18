@@ -134,7 +134,7 @@ func _on_body_entered(body):
         if body.is_in_group("enemy"):
             body.take_damage(10, false)  # Specify this is not gas damage
             enemy_hit.emit(false)  # Signal normal hit
-    hit()
+    call_deferred("hit")
 
 func _on_area_entered(area):
     # Check if this is a hitbox
@@ -150,7 +150,7 @@ func _on_area_entered(area):
     elif can_ignite_gas and area.is_in_group("gas_cloud") and area.has_method("bullet_hit"):
         area.bullet_hit(self)
     
-    hit()
+    call_deferred("hit")
 
 func _on_lifetime_timeout():
     print("Bullet lifetime expired: ", get_instance_id())
