@@ -10,7 +10,8 @@ enum PoolType {
     BULLET,
     EXPLOSION,
     HIT_EFFECT,
-    DAMAGE_NUMBER
+    DAMAGE_NUMBER,
+    ENEMY
     # Add more as needed
 }
 
@@ -19,7 +20,8 @@ var _pool_names: Dictionary = {
     PoolType.BULLET: "bullets",
     PoolType.EXPLOSION: "explosions",
     PoolType.HIT_EFFECT: "hit_effects",
-    PoolType.DAMAGE_NUMBER: "damage_numbers"
+    PoolType.DAMAGE_NUMBER: "damage_numbers",
+    PoolType.ENEMY: "enemies"
     # Add more as needed
 }
 
@@ -29,6 +31,7 @@ const EXPLOSION_SCENE = "res://scenes/PoolableExplosion.tscn"
 const EXPLOSION_FALLBACK_SCENE = "res://scenes/Explosion.tscn"
 const HIT_EFFECT_SCENE = "res://scenes/hit_effect.tscn"
 const DAMAGE_NUMBER_SCENE = "res://scenes/damage_number.tscn"
+const ENEMY_SCENE = "res://scenes/PoolableEnemy.tscn"
 
 func _ready() -> void:
     # Create the pool manager
@@ -39,13 +42,43 @@ func _ready() -> void:
     # Initialize common pools
     _initialize_common_pools()
     
-    # Enable explosion debugging if DebugSettings exists
+    # Enable debugging if DebugSettings exists
     if has_node("/root/DebugSettings"):
         # By default enable pool and explosion debugging
         DebugSettings.toggle_debug("pools", true)
         DebugSettings.toggle_debug("explosions", true)
+        DebugSettings.toggle_debug("enemies", true)
+    
+    # Update the main scene enemy scene reference (after a short delay)
+    call_deferred("_update_main_scene_enemy_reference")
     
     print("Pool System initialized!")
+
+# Replace the regular enemy scene with our poolable enemy in the main scene
+func _update_main_scene_enemy_reference() -> void:
+    # Wait for main scene to be ready
+    await get_tree().process_frame
+    
+    # Find the main scene
+    var main_scene = get_tree().current_scene
+    if main_scene and main_scene.has_method("spawn_enemy"):
+        # Check if its using the old enemy scene
+        if main_scene.enemy_scene.resource_path == "res://scenes/Enemy.tscn":
+            # Load our poolable scene
+            var poolable_scene = load(ENEMY_SCENE)
+            if poolable_scene:
+                print("[POOL_DEBUG] Replacing main scene enemy reference with poolable version")
+                main_scene.enemy_scene = poolable_scene
+                
+                # Log to DebugSettings if available
+                if has_node("/root/DebugSettings"):
+                    DebugSettings.debug_print("pools", "Updated main scene to use poolable enemies")
+            else:
+                push_warning("[POOL_DEBUG] Failed to load poolable enemy scene!")
+        else:
+            print("[POOL_DEBUG] Main scene already using custom enemy scene: " + main_scene.enemy_scene.resource_path)
+    else:
+        print("[POOL_DEBUG] Main scene not ready or doesn't have spawn_enemy method")
 
 ## Initialize commonly used object pools
 func _initialize_common_pools() -> void:
@@ -78,6 +111,7 @@ func _initialize_common_pools() -> void:
     
     var hit_effect_scene: PackedScene = load(HIT_EFFECT_SCENE)
     var damage_number_scene: PackedScene = load(DAMAGE_NUMBER_SCENE)
+    var enemy_scene: PackedScene = load(ENEMY_SCENE)
     
     # Create pools with appropriate initial sizes
     if bullet_scene:
@@ -103,6 +137,13 @@ func _initialize_common_pools() -> void:
         print("PoolSystem: Created damage number pool with initial size of 20")
     else:
         push_warning("PoolSystem: Failed to load damage number scene at " + DAMAGE_NUMBER_SCENE)
+    
+    # Create enemy pool with initial size of 15
+    if enemy_scene:
+        _pool_manager.create_pool(_pool_names[PoolType.ENEMY], enemy_scene, 15)
+        print("PoolSystem: Created enemy pool with initial size of 15")
+    else:
+        push_warning("PoolSystem: Failed to load enemy scene at " + ENEMY_SCENE)
     
     print("PoolSystem: Pool initialization complete")
 
