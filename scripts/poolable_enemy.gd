@@ -305,7 +305,10 @@ func die():
                 var knockback_dir = (player.global_transform.origin - global_transform.origin).normalized()
                 knockback_dir.y = -knockback_dir.y  # Reverse y to create upward force
                 debug_print("Applied knockback in direction: %s with force: %.2f" % [str(knockback_dir), explosion_force])
-                player.apply_knockback(knockback_dir * explosion_force)
+                
+                # Pass direction and force as separate parameters
+                if player.has_method("apply_knockback"):
+                    player.apply_knockback(knockback_dir, explosion_force)
     
     # Disable physics and collision to prevent further interactions
     debug_print("Disabling physics and hitbox")
