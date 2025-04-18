@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SettingsManager="*res://scripts/settings_manager.gd"
 PoolSystem="*res://scripts/autoloads/pool_system.gd"
+DebugSettings="*res://scripts/autoloads/debug_settings.gd"
 
 [debug]
 

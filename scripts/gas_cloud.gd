@@ -238,17 +238,86 @@ func trigger_chain_reaction():
 
 # Create explosion visual effect
 func spawn_explosion_effect():
-    # Try to get the explosion scene from the enemy script
-    var explosion_scene_path = "res://scenes/Explosion.tscn"
-    var explosion_scene = load(explosion_scene_path)
+    print("[GAS_CLOUD_DEBUG] ID:%d - Spawning explosion effect at position: %s" % [get_instance_id(), str(global_transform.origin)])
     
-    if explosion_scene:
-        var explosion = explosion_scene.instantiate()
+    var explosion = null
+    var explosion_id = -1
+    var from_pool = false
+    
+    # Try to get an explosion from the pool first
+    if PoolSystem.has_pool("explosions"):
+        print("[GAS_CLOUD_DEBUG] ID:%d - Explosions pool exists, attempting to get object" % get_instance_id())
+        explosion = PoolSystem.get_object(PoolSystem.PoolType.EXPLOSION)
+        if explosion:
+            explosion_id = explosion.get_instance_id()
+            from_pool = true
+            print("[GAS_CLOUD_DEBUG] ID:%d - Got explosion ID:%d from pool" % [get_instance_id(), explosion_id])
+            
+            # Log to DebugSettings if available
+            if has_node("/root/DebugSettings"):
+                DebugSettings.debug_print("pools", "Gas cloud ID:%d successfully got explosion ID:%d from pool" % 
+                    [get_instance_id(), explosion_id])
+        else:
+            print("[GAS_CLOUD_DEBUG] ID:%d - Failed to get explosion from pool (returned null)" % get_instance_id())
+            
+            # Log to DebugSettings if available
+            if has_node("/root/DebugSettings"):
+                DebugSettings.debug_print("pools", "Gas cloud ID:%d failed to get explosion from pool" % 
+                    get_instance_id(), DebugSettings.LogLevel.WARNING)
+    else:
+        print("[GAS_CLOUD_DEBUG] ID:%d - Explosions pool does not exist!" % get_instance_id())
+        
+        # Log to DebugSettings if available
+        if has_node("/root/DebugSettings"):
+            DebugSettings.debug_print("pools", "Gas cloud ID:%d found no explosion pool" % 
+                get_instance_id(), DebugSettings.LogLevel.ERROR)
+    
+    # If no pooled explosion is available, instantiate one
+    if explosion == null:
+        print("[GAS_CLOUD_DEBUG] ID:%d - No pooled explosion available, instantiating new one" % get_instance_id())
+        var explosion_scene_path = "res://scenes/Explosion.tscn"
+        var explosion_scene = load(explosion_scene_path)
+        if explosion_scene:
+            explosion = explosion_scene.instantiate()
+            explosion_id = explosion.get_instance_id()
+            print("[GAS_CLOUD_DEBUG] ID:%d - Created new explosion ID:%d (not from pool)" % [get_instance_id(), explosion_id])
+            
+            # Log to DebugSettings if available
+            if has_node("/root/DebugSettings"):
+                DebugSettings.debug_print("pools", "Gas cloud ID:%d CREATED NEW explosion ID:%d (pool bypassed)" % 
+                    [get_instance_id(), explosion_id], DebugSettings.LogLevel.WARNING)
+        else:
+            print("[GAS_CLOUD_DEBUG] ID:%d - ERROR: Failed to load explosion scene!" % get_instance_id())
+            
+            # Log to DebugSettings if available
+            if has_node("/root/DebugSettings"):
+                DebugSettings.debug_print("pools", "Gas cloud ID:%d failed to load explosion scene" % 
+                    get_instance_id(), DebugSettings.LogLevel.ERROR)
+    
+    if explosion:
+        var parent_id = get_parent().get_instance_id()
+        print("[GAS_CLOUD_DEBUG] ID:%d - Adding explosion ID:%d to parent ID:%d" % 
+              [get_instance_id(), explosion_id, parent_id])
+        
         get_parent().add_child(explosion)
         explosion.global_transform.origin = global_transform.origin
         
         # Scale the explosion based on cloud size
         explosion.scale = Vector3.ONE * (cloud_size / 2.0)
+        print("[GAS_CLOUD_DEBUG] ID:%d - Set explosion ID:%d scale to: %s" % 
+              [get_instance_id(), explosion_id, str(explosion.scale)])
+              
+        # Record pool usage statistics if not from pool
+        if not from_pool and has_node("/root/DebugSettings"):
+            DebugSettings.debug_print("performance", "Non-pooled explosion ID:%d created by gas cloud ID:%d" % 
+                [explosion_id, get_instance_id()], DebugSettings.LogLevel.WARNING)
+    else:
+        print("[GAS_CLOUD_DEBUG] ID:%d - ERROR: Failed to create explosion!" % get_instance_id())
+        
+        # Log to DebugSettings if available
+        if has_node("/root/DebugSettings"):
+            DebugSettings.debug_print("explosions", "Gas cloud ID:%d completely failed to create explosion" % 
+                get_instance_id(), DebugSettings.LogLevel.ERROR)
 
 func start_fade_out():
     # Only start fade if not already fading or being freed
