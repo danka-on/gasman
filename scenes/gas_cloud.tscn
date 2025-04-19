@@ -27,6 +27,7 @@ height = 2.0
 
 [node name="GasCloud" type="Area3D"]
 collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_cloud")
 cloud_color = Color(0, 0.8, 0, 0.0470588)
 preserve_scene_visuals = false

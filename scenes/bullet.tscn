@@ -12,7 +12,7 @@ albedo_color = Color(1, 1, 0, 1)
 
 [node name="Bullet" type="Area3D"]
 collision_layer = 4
-collision_mask = 9
+collision_mask = 16
 script = ExtResource("1_v7oki")
 speed = 40.0
 

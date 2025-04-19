@@ -17,6 +17,7 @@ size = Vector3(0.32251, 0.974121, 0.356934)
 [sub_resource type="CylinderMesh" id="CylinderMesh_md0e3"]
 
 [node name="PoolableEnemy" type="CharacterBody3D"]
+collision_layer = 16
 script = ExtResource("1_pbv5l")
 
 [node name="EnemyMesh" type="MeshInstance3D" parent="."]
