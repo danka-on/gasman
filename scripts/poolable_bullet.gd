@@ -97,7 +97,7 @@ func hit():
     # Ensure we have a valid parent
     if not is_instance_valid(parent_node):
         push_warning("Bullet hit: Parent node is not valid, cannot add hit effect")
-        # Still return the bullet to the pool
+        # Still return the bullet to the poold
         if PoolManager.instance != null:
             PoolManager.instance.release_object(self)
         else:

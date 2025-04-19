@@ -10,8 +10,9 @@ enum PoolType {
     BULLET,
     EXPLOSION,
     HIT_EFFECT,
+    POOLABLE_ENEMY,
     DAMAGE_NUMBER,
-    ENEMY
+    HUD_DAMAGE_NUMBER
     # Add more as needed
 }
 
@@ -20,8 +21,9 @@ var _pool_names: Dictionary = {
     PoolType.BULLET: "bullets",
     PoolType.EXPLOSION: "explosions",
     PoolType.HIT_EFFECT: "hit_effects",
+    PoolType.POOLABLE_ENEMY: "enemies",
     PoolType.DAMAGE_NUMBER: "damage_numbers",
-    PoolType.ENEMY: "enemies"
+    PoolType.HUD_DAMAGE_NUMBER: "hud_damage_numbers"
     # Add more as needed
 }
 
@@ -31,7 +33,8 @@ const EXPLOSION_SCENE = "res://scenes/PoolableExplosion.tscn"
 const EXPLOSION_FALLBACK_SCENE = "res://scenes/Explosion.tscn"
 const HIT_EFFECT_SCENE = "res://scenes/hit_effect.tscn"
 const DAMAGE_NUMBER_SCENE = "res://scenes/damage_number.tscn"
-const ENEMY_SCENE = "res://scenes/PoolableEnemy.tscn"
+const HUD_DAMAGE_NUMBER_SCENE = "res://scenes/hud_damage_number.tscn"
+const POOLABLE_ENEMY_SCENE = "res://scenes/PoolableEnemy.tscn"
 
 func _ready() -> void:
     # Create the pool manager
@@ -65,7 +68,7 @@ func _update_main_scene_enemy_reference() -> void:
         # Check if its using the old enemy scene
         if main_scene.enemy_scene.resource_path == "res://scenes/Enemy.tscn":
             # Load our poolable scene
-            var poolable_scene = load(ENEMY_SCENE)
+            var poolable_scene = load(POOLABLE_ENEMY_SCENE)
             if poolable_scene:
                 print("[POOL_DEBUG] Replacing main scene enemy reference with poolable version")
                 main_scene.enemy_scene = poolable_scene
@@ -110,8 +113,9 @@ func _initialize_common_pools() -> void:
         temp_instance.queue_free()
     
     var hit_effect_scene: PackedScene = load(HIT_EFFECT_SCENE)
+    var poolable_enemy_scene: PackedScene = load(POOLABLE_ENEMY_SCENE)
     var damage_number_scene: PackedScene = load(DAMAGE_NUMBER_SCENE)
-    var enemy_scene: PackedScene = load(ENEMY_SCENE)
+    var hud_damage_number_scene: PackedScene = load(HUD_DAMAGE_NUMBER_SCENE)
     
     # Create pools with appropriate initial sizes
     if bullet_scene:
@@ -138,12 +142,19 @@ func _initialize_common_pools() -> void:
     else:
         push_warning("PoolSystem: Failed to load damage number scene at " + DAMAGE_NUMBER_SCENE)
     
-    # Create enemy pool with initial size of 15
-    if enemy_scene:
-        _pool_manager.create_pool(_pool_names[PoolType.ENEMY], enemy_scene, 15)
-        print("PoolSystem: Created enemy pool with initial size of 15")
+    # Create HUD damage number pool
+    if hud_damage_number_scene:
+        _pool_manager.create_pool(_pool_names[PoolType.HUD_DAMAGE_NUMBER], hud_damage_number_scene, 20)
+        print("PoolSystem: Created HUD damage number pool with initial size of 20")
     else:
-        push_warning("PoolSystem: Failed to load enemy scene at " + ENEMY_SCENE)
+        push_warning("PoolSystem: Failed to load HUD damage number scene at " + HUD_DAMAGE_NUMBER_SCENE)
+    
+    # Create poolable enemy pool with initial size of 15
+    if poolable_enemy_scene:
+        _pool_manager.create_pool(_pool_names[PoolType.POOLABLE_ENEMY], poolable_enemy_scene, 15)
+        print("PoolSystem: Created poolable enemy pool with initial size of 15")
+    else:
+        push_warning("PoolSystem: Failed to load poolable enemy scene at " + POOLABLE_ENEMY_SCENE)
     
     print("PoolSystem: Pool initialization complete")
 
@@ -172,11 +183,17 @@ func release_object(obj: Node) -> void:
         print("[POOL_DEBUG] Releasing object ID:%d back to pool" % obj_id)
         
         # Try to find which pool this object belongs to
+        var found_pool = false
         for pool_name in _pool_names.values():
             var pool = _pool_manager.get_pool(pool_name)
             if pool and pool._active_objects.has(obj):
                 print("[POOL_DEBUG] Object ID:%d belongs to pool: %s" % [obj_id, pool_name])
+                found_pool = true
                 break
+        
+        # Special detection for DamageNumber objects
+        if not found_pool and obj is DamageNumber:
+            print("[POOL_DEBUG] DamageNumber ID:%d attempting return to damage_numbers pool" % obj_id)
         
         _pool_manager.release_object(obj)
     else:

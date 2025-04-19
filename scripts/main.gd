@@ -74,7 +74,7 @@ func spawn_enemy():
         print("[MAIN_DEBUG] Using poolable enemy system")
         print("[MAIN_DEBUG] Enemies pool exists, attempting to get object")
         
-        # Log more details about the pool
+        # Debug print pool info
         var pool = PoolSystem.get_pool("enemies")
         if pool:
             print("[MAIN_DEBUG] Enemy pool stats - Available: %d, Active: %d, Total: %d" % [
@@ -83,7 +83,7 @@ func spawn_enemy():
                 pool._available_objects.size() + pool._active_objects.size()
             ])
         
-        enemy = PoolSystem.get_object(PoolSystem.PoolType.ENEMY)
+        enemy = PoolSystem.get_object(PoolSystem.PoolType.POOLABLE_ENEMY)
         if enemy:
             enemy_id = enemy.get_instance_id()
             from_pool = true

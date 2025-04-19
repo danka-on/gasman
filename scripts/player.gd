@@ -875,15 +875,36 @@ func take_damage(amount: float):
         current_health -= amount
         current_health = clamp(current_health, 0, max_health)
         
-        # Spawn 3D damage number
-        var damage_number = preload("res://scenes/damage_number.tscn").instantiate()
+        # Spawn 3D damage number using pool if available
+        var damage_number = null
+        if PoolSystem.has_pool("damage_numbers"):
+            damage_number = PoolSystem.get_object(PoolSystem.PoolType.DAMAGE_NUMBER)
+            if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+                DebugSettings.log_debug("pools", "Player got damage number from pool")
+        
+        if not damage_number:
+            damage_number = preload("res://scenes/damage_number.tscn").instantiate()
+            if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+                DebugSettings.log_warning("pools", "Player created new damage number (not from pool)")
+                
         damage_number.text = str(int(amount))
         damage_number.spawn_height_offset = 3.0
         damage_number.position = global_transform.origin + Vector3(0, damage_number.spawn_height_offset, 0)
         get_parent().add_child(damage_number)
+        damage_number.display()  # Call the display method to start the animation
         
-        # Spawn HUD damage number
-        var hud_damage = preload("res://scenes/hud_damage_number.tscn").instantiate()
+        # Spawn HUD damage number using pool if available
+        var hud_damage = null
+        if PoolSystem.has_pool("hud_damage_numbers"):
+            hud_damage = PoolSystem.get_object(PoolSystem.PoolType.HUD_DAMAGE_NUMBER)
+            if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+                DebugSettings.log_debug("pools", "Player got HUD damage number from pool")
+        
+        if not hud_damage:
+            hud_damage = preload("res://scenes/hud_damage_number.tscn").instantiate()
+            if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+                DebugSettings.log_warning("pools", "Player created new HUD damage number (not from pool)")
+        
         hud_damage.damage_text = str(int(amount))
         
         # Set color based on whether it's damage or healing
@@ -898,6 +919,7 @@ func take_damage(amount: float):
         if $HUD:
             hud_damage.position = health_bar.position + Vector2(health_bar.size.x + 10, 0)
             $HUD.add_child(hud_damage)
+            hud_damage.display()  # Call display to start animation
         else:
             push_error("HUD node not found for damage number!")
         

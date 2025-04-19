@@ -212,6 +212,7 @@ func take_damage(amount: float, is_gas_damage: bool = false, is_headshot: bool =
     damage_number.spawn_height_offset = 2.5  # Set the spawn height offset
     damage_number.position = global_transform.origin + Vector3(0, damage_number.spawn_height_offset, 0)
     get_parent().add_child(damage_number)
+    damage_number.display()  # Call the display method to start the animation
     
     # Only trigger hit feedback for non-gas damage
     if !is_gas_damage:
@@ -243,11 +244,40 @@ func die():
         player.add_score(5)
         if randf() < drop_chance:
             debug_print("Dropping item (chance: %.2f)" % drop_chance)
-            var drop_options = [health_pack_scene, ammo_pack_scene, gas_pack_scene]
-            var drop = drop_options[randi() % drop_options.size()]
-            var instance = drop.instantiate()
-            instance.global_transform.origin = global_transform.origin + Vector3(0, 1, 0)
-            get_parent().add_child(instance)
+            
+            # Define pack types and their group names
+            var pack_types = [
+                {"scene": health_pack_scene, "group": "health_pack"},
+                {"scene": ammo_pack_scene, "group": "ammo_pack"},
+                {"scene": gas_pack_scene, "group": "gas_pack"}
+            ]
+            
+            # Maximum number of each pack type allowed
+            var MAX_PACKS_PER_TYPE = 25
+            
+            # Filter out pack types that have reached the maximum limit
+            var available_packs = []
+            for pack_type in pack_types:
+                var existing_packs = get_tree().get_nodes_in_group(pack_type.group)
+                if existing_packs.size() < MAX_PACKS_PER_TYPE:
+                    # This pack type hasn't reached the limit, so it's available
+                    available_packs.append(pack_type)
+            
+            if available_packs.size() > 0:
+                # Choose a random pack from available options
+                var chosen_pack = available_packs[randi() % available_packs.size()]
+                var existing_count = get_tree().get_nodes_in_group(chosen_pack.group).size()
+                debug_print("Spawning pack type: " + chosen_pack.group + " (current count: " + str(existing_count) + ")")
+                
+                var instance = chosen_pack.scene.instantiate()
+                # Make sure the instance is added to the appropriate group
+                if not instance.is_in_group(chosen_pack.group):
+                    instance.add_to_group(chosen_pack.group)
+                
+                instance.global_transform.origin = global_transform.origin + Vector3(0, 1, 0)
+                get_parent().add_child(instance)
+            else:
+                debug_print("All pack types have reached the maximum limit of " + str(MAX_PACKS_PER_TYPE))
     
     # Create explosion via pool
     var explosion = null

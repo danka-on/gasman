@@ -106,7 +106,18 @@ func take_damage(amount: float, is_gas_damage: bool = false, is_headshot: bool =
     print("enemy TOOK ", final_damage, " damage")
     
     # Spawn damage number with appropriate color
-    var damage_number = preload("res://scenes/damage_number.tscn").instantiate()
+    var damage_number = null
+    if PoolSystem.has_pool("damage_numbers"):
+        damage_number = PoolSystem.get_object(PoolSystem.PoolType.DAMAGE_NUMBER)
+    
+    if not damage_number:
+        damage_number = preload("res://scenes/damage_number.tscn").instantiate()
+        if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+            DebugSettings.log_warning("pools", "Enemy created new damage number (not from pool)")
+    else:
+        if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+            DebugSettings.log_debug("pools", "Enemy got damage number from pool")
+        
     damage_number.text = str(int(final_damage))
     
     # Set color based on damage type
@@ -123,6 +134,7 @@ func take_damage(amount: float, is_gas_damage: bool = false, is_headshot: bool =
     damage_number.spawn_height_offset = 2.5  # Set the spawn height offset
     damage_number.position = global_transform.origin + Vector3(0, damage_number.spawn_height_offset, 0)
     get_parent().add_child(damage_number)
+    damage_number.display()  # Call the display method to start the animation
     
     # Only trigger hit feedback for non-gas damage
     if !is_gas_damage:
