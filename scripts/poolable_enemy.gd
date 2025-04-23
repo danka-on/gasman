@@ -14,6 +14,7 @@ var player = null
 @export var damage_cooldown : float = 1.0
 var can_damage = true
 var last_damage_time : float = 0.0
+var last_body_damage_time: float = 0.0
 
 # Knockback variables
 var knockback_velocity : Vector3 = Vector3.ZERO
@@ -80,6 +81,7 @@ func reset():
     current_health = max_health
     can_damage = true
     last_damage_time = 0.0
+    last_body_damage_time = 0.0
     knockback_velocity = Vector3.ZERO
     _is_dying = false
     
@@ -93,15 +95,25 @@ func reset():
     
     if hitbox:
         hitbox.collision_layer = 2
-        hitbox.collision_mask = 4
+        hitbox.collision_mask = 1   # Only detect bodies on layer 1 (the player)
+        hitbox.monitoring = true    # Enable continuous overlap detection
     
     if head_hitbox:
         head_hitbox.collision_layer = 2
-        head_hitbox.collision_mask = 4
+        head_hitbox.collision_mask = 1   # Only detect bodies on layer 1 (the player)
+        head_hitbox.monitoring = true   # Enable continuous overlap detection
     
     # Setup basic requirements
     setup_requirements()
     
+    # Ensure each enemy has its own material instance for color tweaks
+    if enemy_mesh:
+        var mat = enemy_mesh.material_override
+        if mat:
+            enemy_mesh.material_override = mat.duplicate()
+        else:
+            enemy_mesh.material_override = StandardMaterial3D.new()
+
     # Update material color based on health
     update_color()
     
@@ -116,28 +128,15 @@ func setup_requirements():
     setup_signal_connections()
 
 func setup_signal_connections():
-    if not _signal_connections_setup:
-        if hitbox and not hitbox.body_entered.is_connected(_on_hitbox_body_entered):
-            hitbox.body_entered.connect(_on_hitbox_body_entered)
-        
-        _signal_connections_setup = true
-        debug_print("Signal connections established", DebugSettings.LogLevel.VERBOSE)
+    _signal_connections_setup = true
 
 func cleanup_signal_connections():
-    if _signal_connections_setup:
-        if hitbox and hitbox.body_entered.is_connected(_on_hitbox_body_entered):
-            hitbox.body_entered.disconnect(_on_hitbox_body_entered)
-        
-        _signal_connections_setup = false
-        debug_print("Signal connections cleaned up", DebugSettings.LogLevel.VERBOSE)
+    _signal_connections_setup = false
 
 func _physics_process(delta):
     if _is_dying:
         return
-        
-    if enemy_mesh and enemy_mesh.material_override: # Safe check
-        update_color() # Initial update here
-        
+    
     if not is_on_floor():
         velocity.y -= gravity * delta
     
@@ -156,21 +155,13 @@ func _physics_process(delta):
         velocity.x = 0
         velocity.z = 0
     
-    # Handle damage to player
-    if is_instance_valid(player) and current_health > 0:
-        for i in get_slide_collision_count():
-            var collision = get_slide_collision(i)
-            if is_instance_valid(collision):
-                var collider = collision.get_collider()
-                if is_instance_valid(collider) and collider == player and can_damage:
-                    if Time.get_ticks_msec() / 1000.0 - last_damage_time >= damage_cooldown:
-                        player.take_damage(damage)
-                        last_damage_time = Time.get_ticks_msec() / 1000.0
-                        can_damage = false
-                        await get_tree().create_timer(damage_cooldown).timeout
-                        can_damage = true
-
     move_and_slide()
+
+    # Continuous damage via body hitbox overlap with cooldown
+    var now = Time.get_ticks_msec() / 1000.0
+    if hitbox and hitbox.get_overlapping_bodies().has(player) and now - last_body_damage_time >= damage_cooldown:
+        player.take_damage(damage)
+        last_body_damage_time = now
 
 func take_damage(amount: float, is_gas_damage: bool = false, is_headshot: bool = false):
     debug_print("Taking damage: %.2f (Gas: %s, Headshot: %s)" % [amount, str(is_gas_damage), str(is_headshot)])
@@ -366,25 +357,16 @@ func die():
     # Return to pool if we're in one, otherwise queue_free
     prepare_for_pool()
 
-func _on_hitbox_body_entered(body):
-    if body == player and can_damage and not _is_dying:
-        player.take_damage(damage)
-        can_damage = false
-        if is_inside_tree():
-            await get_tree().create_timer(damage_cooldown).timeout
-        can_damage = true
-
 func update_color():
-    var new_material = enemy_mesh.material_override.duplicate()
+    var mat = enemy_mesh.material_override
     if current_health <= 10.0:
-        new_material.albedo_color = Color(1, 0, 0, 1) # Red
-        new_material.emission_enabled = true
-        new_material.emission = Color(1, 0, 0, 1) # Red glow
-        new_material.emission_energy = 2.0 # Glow intensity
+        mat.albedo_color = Color(1, 0, 0, 1)
+        mat.emission_enabled = true
+        mat.emission = Color(1, 0, 0, 1)
+        mat.emission_energy = 2.0
     else:
-        new_material.albedo_color = Color(0, 0.5, 0.5, 1) # Teal
-        new_material.emission_enabled = false # No glow
-    enemy_mesh.material_override = new_material
+        mat.albedo_color = Color(0, 0.5, 0.5, 1)
+        mat.emission_enabled = false
 
 func apply_knockback(direction_or_force, force = null):
     var knockback_force: Vector3
