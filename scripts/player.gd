@@ -137,12 +137,13 @@ var kills : int = 0
 @export var gas_cloud_damage_interval: float = 0.5
 @export var gas_cloud_lifetime: float = 3.0
 @export var max_gas_clouds: int = 30  # Maximum number of gas clouds allowed at once
-var gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
 var gas_cloud_timer: float = 0.0
 
 @export var gas_cloud_particle_amount: int = 50
 @export var gas_cloud_particle_scale_min: float = 2.0
 @export var gas_cloud_particle_scale_max: float = 3.0
+@export var gas_cloud_color: Color = Color(0.0, 0.8, 0.0, 0.3)
+@export var gas_cloud_emission_strength: float = 0.5
 
 #gasboost variables
 
@@ -161,9 +162,10 @@ var previous_movement_state = MovementState.IDLE
 @onready var pause_menu = preload("res://scenes/pause_menu.tscn").instantiate()
 
 
-        
 
-
+# Initialize gas cloud scene with poolable version
+var gas_cloud_scene = preload("res://scenes/PoolableGasCloud.tscn")
+var _gas_cloud_initialized = false
 
 func _ready():
    
@@ -192,6 +194,18 @@ func _ready():
     
     # Add pause menu
     add_child(pause_menu)
+    
+    # Initialize gas cloud scene with fallback only if necessary
+    if !_gas_cloud_initialized:
+        if Engine.has_singleton("PoolSystem") and PoolSystem.has_pool("gas_clouds"):
+            print("[PLAYER] Using gas clouds from PoolSystem")
+            _gas_cloud_initialized = true
+        else:
+            var file = FileAccess.file_exists("res://scenes/PoolableGasCloud.tscn")
+            if !file:
+                print("[PLAYER_DEBUG] Poolable gas cloud scene not found, falling back to regular gas cloud")
+                gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
+            _gas_cloud_initialized = true
     
     print("Player initialization complete")
 
@@ -1027,19 +1041,59 @@ func spawn_gas_cloud():
         # Skip creating a new cloud if we're at the limit
         return
     
-    # Create the gas cloud
-    var cloud = gas_cloud_scene.instantiate()
+    # Try to get a gas cloud from the pool first
+    var cloud = null
+    var from_pool = false
+    var cloud_id = -1
     
-    # Immediately set preserve_scene_visuals to false
-    cloud.preserve_scene_visuals = false
+    if Engine.has_singleton("PoolSystem") and PoolSystem.has_pool("gas_clouds"):
+        if DebugSettings and DebugSettings.is_debug_enabled("gas"):
+            DebugSettings.log_debug("gas", "Gas cloud pool exists, attempting to get object")
+        
+        cloud = PoolSystem.get_object(PoolSystem.PoolType.GAS_CLOUD)
+        if cloud:
+            cloud_id = cloud.get_instance_id()
+            from_pool = true
+            
+            # Log to DebugSettings if available
+            if DebugSettings and DebugSettings.is_debug_enabled("gas"):
+                DebugSettings.log_debug("gas", "Got gas cloud ID:%d from pool" % cloud_id)
+                
+            if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+                DebugSettings.log_debug("pools", "Player successfully got gas cloud ID:%d from pool" % cloud_id)
+    else:
+        if DebugSettings and DebugSettings.is_debug_enabled("gas"):
+            DebugSettings.log_warning("gas", "Gas cloud pool does not exist or PoolSystem not available")
+    
+    # If no pooled gas cloud is available, instantiate one
+    if cloud == null:
+        if DebugSettings and DebugSettings.is_debug_enabled("gas"):
+            DebugSettings.log_warning("gas", "No pooled gas cloud available, instantiating new one")
+            
+        # Ensure we've initialized the gas cloud scene
+        _initialize_gas_cloud()
+        
+        cloud = gas_cloud_scene.instantiate()
+        cloud_id = cloud.get_instance_id()
+        
+        # Log to DebugSettings if available
+        if DebugSettings and DebugSettings.is_debug_enabled("pools"):
+            DebugSettings.log_warning("pools", "Player CREATED NEW gas cloud ID:%d (pool bypassed)" % cloud_id)
+        
+        if DebugSettings and DebugSettings.is_debug_enabled("gas"):
+            DebugSettings.log_warning("gas", "Created new gas cloud ID:%d (not from pool)" % cloud_id)
+    
+    # Immediately set preserve_scene_visuals to false if the property exists
+    if cloud.get("preserve_scene_visuals") != null:
+        cloud.preserve_scene_visuals = false
     
     # Pre-set key properties before adding to scene
-    
     cloud.damage_per_tick = gas_cloud_damage
     cloud.damage_interval = gas_cloud_damage_interval
     
-    # Add cloud to group for tracking
-    cloud.add_to_group("gas_cloud")
+    # Add cloud to group for tracking (poolable version does this in _ready)
+    if not from_pool:
+        cloud.add_to_group("gas_cloud")
     
     # Try to add to level node for better organization
     var level_node = get_node_or_null("/root/Main/Level")
@@ -1063,6 +1117,8 @@ func spawn_gas_cloud():
 func _set_cloud_properties(cloud, random_offset):
     # Safety check in case the cloud or player was freed between calls
     if not is_instance_valid(cloud) or not is_instance_valid(self):
+        if DebugSettings and DebugSettings.is_debug_enabled("gas"):
+            DebugSettings.log_error("gas", "Cloud or player no longer valid during property setting")
         return
     
     # Set position
@@ -1077,14 +1133,31 @@ func _set_cloud_properties(cloud, random_offset):
     cloud.damage_interval = gas_cloud_damage_interval
     cloud.lifetime = gas_cloud_lifetime * randf_range(0.9, 1.1)
     
-    cloud.particle_amount = gas_cloud_particle_amount
-    cloud.particle_scale_min = gas_cloud_particle_scale_min
-    cloud.particle_scale_max = gas_cloud_particle_scale_max
-    
     # Allow our settings to override the scene visuals
-    cloud.preserve_scene_visuals = false
+    if cloud.get("preserve_scene_visuals") != null:
+        cloud.preserve_scene_visuals = false
     
-  
+    # Apply visual properties - prefer the new method if available
+    if cloud.has_method("set_particle_properties"):
+        # Set color properties before calling the method
+        cloud.cloud_color = gas_cloud_color
+        cloud.particle_amount = gas_cloud_particle_amount
+        cloud.particle_scale_min = gas_cloud_particle_scale_min
+        cloud.particle_scale_max = gas_cloud_particle_scale_max
+        cloud.emission_strength = gas_cloud_emission_strength if self.has_method("get_gas_cloud_emission_strength") else 0.5
+        
+        # Use the new centralized method to update appearance
+        cloud.set_particle_properties()
+    elif cloud.get("particle_amount") != null:
+        # Fallback for older versions
+        cloud.particle_amount = gas_cloud_particle_amount
+        cloud.particle_scale_min = gas_cloud_particle_scale_min
+        cloud.particle_scale_max = gas_cloud_particle_scale_max
+        cloud.cloud_color = gas_cloud_color
+    
+    if DebugSettings and DebugSettings.is_debug_enabled("gas"):
+        DebugSettings.log_debug("gas", "Gas cloud ID:%d properties set, pos:%s, lifetime:%.1f" % 
+            [cloud.get_instance_id(), str(cloud.global_transform.origin), cloud.lifetime])
 
 # Sound management functions
 func play_movement_sound(is_gas_powered: bool, is_sprinting: bool, speed_ratio: float = 1.0):
@@ -1117,3 +1190,23 @@ func update_timer_display():
     var minutes = int(game_time) / 60
     var seconds = int(game_time) % 60
     $HUD/TimerLabel.text = "%02d:%02d" % [minutes, seconds]
+
+func _initialize_gas_cloud():
+    if _gas_cloud_initialized: return
+    
+    # First try to use the pool system
+    if Engine.has_singleton("PoolSystem") and PoolSystem.has_pool("gas_clouds"):
+        print("[GAS] Using gas clouds from PoolSystem")
+        _gas_cloud_initialized = true
+        return
+        
+    # Fall back to direct scene loading
+    var file = FileAccess.file_exists("res://scenes/PoolableGasCloud.tscn")
+    if !file:
+        print("[GAS] Poolable gas cloud scene not found, falling back to regular gas cloud")
+        gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
+    
+    _gas_cloud_initialized = true
+    
+    if DebugSettings != null and DebugSettings.has_method("is_debug_enabled") and DebugSettings.is_debug_enabled("gas"):
+        print("[GAS] Gas cloud scene initialized")

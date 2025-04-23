@@ -12,7 +12,8 @@ enum PoolType {
     HIT_EFFECT,
     POOLABLE_ENEMY,
     DAMAGE_NUMBER,
-    HUD_DAMAGE_NUMBER
+    HUD_DAMAGE_NUMBER,
+    GAS_CLOUD  # Added gas cloud pool type
     # Add more as needed
 }
 
@@ -23,7 +24,8 @@ var _pool_names: Dictionary = {
     PoolType.HIT_EFFECT: "hit_effects",
     PoolType.POOLABLE_ENEMY: "enemies",
     PoolType.DAMAGE_NUMBER: "damage_numbers",
-    PoolType.HUD_DAMAGE_NUMBER: "hud_damage_numbers"
+    PoolType.HUD_DAMAGE_NUMBER: "hud_damage_numbers",
+    PoolType.GAS_CLOUD: "gas_clouds"  # Added gas cloud pool name
     # Add more as needed
 }
 
@@ -35,6 +37,8 @@ const HIT_EFFECT_SCENE = "res://scenes/hit_effect.tscn"
 const DAMAGE_NUMBER_SCENE = "res://scenes/damage_number.tscn"
 const HUD_DAMAGE_NUMBER_SCENE = "res://scenes/hud_damage_number.tscn"
 const POOLABLE_ENEMY_SCENE = "res://scenes/PoolableEnemy.tscn"
+const GAS_CLOUD_SCENE = "res://scenes/PoolableGasCloud.tscn"  # Added gas cloud scene path
+const GAS_CLOUD_FALLBACK_SCENE = "res://scenes/GasCloud.tscn"  # Added fallback path
 
 func _ready() -> void:
     # Create the pool manager
@@ -45,17 +49,29 @@ func _ready() -> void:
     # Initialize common pools
     _initialize_common_pools()
     
+    # Print debug info about available pools
+    print("\n=== POOL SYSTEM INITIALIZATION COMPLETE ===")
+    print("Available pools:")
+    for pool_name in _pool_manager.get_pool_names():
+        var pool = _pool_manager.get_pool(pool_name)
+        if pool:
+            print("- %s: %d objects pre-allocated" % [pool_name, pool._available_objects.size()])
+        else:
+            print("- %s: ERROR - Pool is null!" % pool_name)
+    print("=========================================\n")
+    
     # Enable debugging if DebugSettings exists
     if has_node("/root/DebugSettings"):
         # By default enable pool and explosion debugging
         DebugSettings.toggle_debug("pools", true)
         DebugSettings.toggle_debug("explosions", true)
         DebugSettings.toggle_debug("enemies", true)
+        DebugSettings.toggle_debug("gas_clouds", true)  # Enable gas cloud debugging
     
     # Update the main scene enemy scene reference (after a short delay)
     call_deferred("_update_main_scene_enemy_reference")
     
-    print("Pool System initialized!")
+    print("Pool System initialization complete!")
 
 # Replace the regular enemy scene with our poolable enemy in the main scene
 func _update_main_scene_enemy_reference() -> void:
@@ -104,10 +120,10 @@ func _initialize_common_pools() -> void:
         if temp_instance and temp_instance.get_script():
             print("PoolSystem: Explosion scene uses script: " + temp_instance.get_script().resource_path)
             # Check if this is actually a PoolableExplosion
-            if temp_instance is PoolableExplosion:
-                print("PoolSystem: Confirmed scene is a PoolableExplosion instance")
+            if temp_instance.get_script().get_path().find("poolable_explosion.gd") != -1:
+                print("PoolSystem: Confirmed scene has poolable_explosion.gd script")
             else:
-                print("PoolSystem: WARNING - Scene is NOT a PoolableExplosion instance!")
+                print("PoolSystem: WARNING - Scene does not use poolable_explosion.gd script!")
         else:
             print("PoolSystem: WARNING - Explosion scene has no script attached!")
         temp_instance.queue_free()
@@ -125,8 +141,11 @@ func _initialize_common_pools() -> void:
         push_warning("PoolSystem: Failed to load bullet scene at " + BULLET_SCENE)
     
     if explosion_scene:
-        _pool_manager.create_pool(_pool_names[PoolType.EXPLOSION], explosion_scene, 10)
-        print("PoolSystem: Created explosion pool with initial size of 10")
+        var explosion_pool = _pool_manager.create_pool(_pool_names[PoolType.EXPLOSION], explosion_scene, 10)
+        if explosion_pool:
+            print("PoolSystem: Created explosion pool with initial size of 10")
+        else:
+            push_error("PoolSystem: Failed to create explosion pool - check for errors")
     else:
         push_warning("PoolSystem: Failed to load explosion scene at " + EXPLOSION_SCENE)
     
@@ -155,6 +174,37 @@ func _initialize_common_pools() -> void:
         print("PoolSystem: Created poolable enemy pool with initial size of 15")
     else:
         push_warning("PoolSystem: Failed to load poolable enemy scene at " + POOLABLE_ENEMY_SCENE)
+    
+    # Create gas cloud pool with initial size of 8
+    var gas_cloud_scene: PackedScene = load(GAS_CLOUD_SCENE)
+    if gas_cloud_scene == null:
+        print("PoolSystem: Poolable gas cloud scene not found, falling back to regular gas cloud")
+        gas_cloud_scene = load(GAS_CLOUD_FALLBACK_SCENE)
+        if gas_cloud_scene:
+            print("PoolSystem: Using regular gas cloud as fallback")
+    else:
+        print("PoolSystem: Successfully loaded poolable gas cloud scene: " + GAS_CLOUD_SCENE)
+        # Debug check for the scene's script
+        var temp_instance = gas_cloud_scene.instantiate()
+        if temp_instance and temp_instance.get_script():
+            print("PoolSystem: Gas cloud scene uses script: " + temp_instance.get_script().resource_path)
+            # Check if this is actually a PoolableGasCloud
+            if temp_instance.get_script().get_path().find("poolable_gas_cloud.gd") != -1:
+                print("PoolSystem: Confirmed scene has poolable_gas_cloud.gd script")
+            else:
+                print("PoolSystem: WARNING - Scene does not use poolable_gas_cloud.gd script!")
+        else:
+            print("PoolSystem: WARNING - Gas cloud scene has no script attached!")
+        temp_instance.queue_free()
+    
+    if gas_cloud_scene:
+        var gas_cloud_pool = _pool_manager.create_pool(_pool_names[PoolType.GAS_CLOUD], gas_cloud_scene, 8)
+        if gas_cloud_pool:
+            print("PoolSystem: Created gas cloud pool with initial size of 8")
+        else:
+            push_error("PoolSystem: Failed to create gas cloud pool - check for errors")
+    else:
+        push_warning("PoolSystem: Failed to load gas cloud scene")
     
     print("PoolSystem: Pool initialization complete")
 
@@ -327,3 +377,66 @@ func reset_all_pools() -> void:
                 DebugSettings.LogLevel.INFO)
     else:
         print("PoolSystem: No pool manager initialized") 
+
+## Ensure that a specific pool exists (used for explosions and other critical pools)
+func ensure_pool_exists(pool_type: PoolType) -> bool:
+    var pool_name = _pool_names[pool_type]
+    
+    # Check if the pool already exists
+    if _pool_manager.has_pool(pool_name):
+        print("[POOL_SYSTEM] Pool '%s' already exists" % pool_name)
+        return true
+    
+    # Pool doesn't exist, we need to create it
+    print("[POOL_SYSTEM] Pool '%s' doesn't exist! Creating it now..." % pool_name)
+    
+    # Load the appropriate scene based on pool type
+    var scene_path = ""
+    var fallback_path = ""
+    var initial_size = 10
+    
+    match pool_type:
+        PoolType.EXPLOSION:
+            scene_path = EXPLOSION_SCENE
+            fallback_path = EXPLOSION_FALLBACK_SCENE
+            initial_size = 10
+        PoolType.GAS_CLOUD:
+            scene_path = GAS_CLOUD_SCENE
+            fallback_path = GAS_CLOUD_FALLBACK_SCENE
+            initial_size = 8
+        _:
+            push_error("[POOL_SYSTEM] Cannot ensure pool of unknown type: %d" % pool_type)
+            return false
+    
+    # Try to load the scene
+    var scene = load(scene_path)
+    if scene == null and fallback_path:
+        print("[POOL_SYSTEM] Failed to load primary scene, trying fallback: %s" % fallback_path)
+        scene = load(fallback_path)
+    
+    if scene:
+        # Create the pool
+        var pool = _pool_manager.create_pool(pool_name, scene, initial_size)
+        if pool:
+            print("[POOL_SYSTEM] Successfully created '%s' pool with %d objects" % [pool_name, initial_size])
+            # Log to DebugSettings if available
+            if has_node("/root/DebugSettings"):
+                DebugSettings.debug_print("pools", "Created missing '%s' pool on demand" % pool_name, 
+                    DebugSettings.LogLevel.WARNING)
+            return true
+        else:
+            push_error("[POOL_SYSTEM] Failed to create pool: %s" % pool_name)
+            return false
+    else:
+        push_error("[POOL_SYSTEM] Failed to load scene for pool: %s" % pool_name)
+        return false
+
+## Get an object from a pool using the PoolType enum, ensuring the pool exists first
+func get_object_safe(pool_type: PoolType) -> Node:
+    # First ensure the pool exists
+    if not ensure_pool_exists(pool_type):
+        push_error("[POOL_SYSTEM] Cannot get object from non-existent pool: %d" % pool_type)
+        return null
+    
+    # Now try to get an object from the pool
+    return get_object(pool_type) 

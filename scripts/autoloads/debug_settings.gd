@@ -238,4 +238,38 @@ func log_warning(category: String, message: String) -> void:
     
 ## Log an error level message
 func log_error(category: String, message: String) -> void:
-    debug_print(category, message, LogLevel.ERROR) 
+    debug_print(category, message, LogLevel.ERROR)
+
+# Helper methods for common debug tasks
+
+## Enable gas cloud debugging
+func enable_gas_cloud_debugging(enable_pool_debugging: bool = true) -> void:
+    debug_enabled = true
+    toggle_debug("gas_clouds", true)
+    if enable_pool_debugging:
+        toggle_debug("pools", true)
+    
+    log_info("gas_clouds", "Gas cloud debugging enabled")
+    
+    if enable_pool_debugging:
+        log_info("pools", "Pool debugging enabled for gas clouds")
+        
+    # Write to console
+    print("\n[DEBUG] Gas cloud debugging enabled")
+    print("[DEBUG] Use PoolSystem.print_all_pool_stats() to view pool metrics\n")
+
+## Enable explosion debugging
+func enable_explosion_debugging(enable_pool_debugging: bool = true) -> void:
+    debug_enabled = true
+    toggle_debug("explosions", true)
+    if enable_pool_debugging:
+        toggle_debug("pools", true)
+    
+    log_info("explosions", "Explosion debugging enabled")
+    
+    if enable_pool_debugging:
+        log_info("pools", "Pool debugging enabled for explosions")
+        
+    # Write to console
+    print("\n[DEBUG] Explosion debugging enabled")
+    print("[DEBUG] Use PoolSystem.print_all_pool_stats() to view pool metrics\n") 

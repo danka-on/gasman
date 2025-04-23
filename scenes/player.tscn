@@ -50,6 +50,7 @@ gas_cloud_spawn_interval_s = 0.4
 gas_cloud_spawn_interval_jump = 0.5
 gas_cloud_damage_interval = 1.0
 gas_cloud_lifetime = 10.0
+gas_cloud_color = Color(0, 0.8, 0, 0.0509804)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03617, 0)
