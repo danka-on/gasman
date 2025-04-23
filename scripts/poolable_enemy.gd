@@ -15,6 +15,7 @@ var player = null
 var can_damage = true
 var last_damage_time : float = 0.0
 var last_body_damage_time: float = 0.0
+var last_head_damage_time: float = 0.0
 
 # Knockback variables
 var knockback_velocity : Vector3 = Vector3.ZERO
@@ -82,6 +83,7 @@ func reset():
     can_damage = true
     last_damage_time = 0.0
     last_body_damage_time = 0.0
+    last_head_damage_time = 0.0
     knockback_velocity = Vector3.ZERO
     _is_dying = false
     
@@ -157,9 +159,14 @@ func _physics_process(delta):
     
     move_and_slide()
 
-    # Continuous damage via body hitbox overlap with cooldown
+    # Continuous damage via area overlap with cooldown
     var now = Time.get_ticks_msec() / 1000.0
-    if hitbox and hitbox.get_overlapping_bodies().has(player) and now - last_body_damage_time >= damage_cooldown:
+    # Headshot first if overlapping head hitbox
+    if head_hitbox and head_hitbox.get_overlapping_bodies().has(player) and now - last_head_damage_time >= damage_cooldown:
+        player.take_damage(damage * headshot_multiplier)
+        last_head_damage_time = now
+    # Otherwise body damage
+    elif hitbox and hitbox.get_overlapping_bodies().has(player) and now - last_body_damage_time >= damage_cooldown:
         player.take_damage(damage)
         last_body_damage_time = now
 

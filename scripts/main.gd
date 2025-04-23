@@ -13,7 +13,7 @@ func _ready():
         DebugSettings.toggle_debug("enemies", true)
         DebugSettings.debug_print("enemies", "Main scene initialized enemy spawning")
     
-    spawn_timer.wait_time = 1.0
+    spawn_timer.wait_time = 0.10
     spawn_timer.connect("timeout", _on_spawn_timer_timeout)
     spawn_timer.start()
     
@@ -31,7 +31,7 @@ func _ready():
     print("[MAIN_DEBUG] Spawn radius: ", spawn_radius)
 
 func _on_spawn_timer_timeout():
-    if enemy_count < 50:
+    if enemy_count < 250:
         spawn_enemy()
         
 func update_enemy_count():
