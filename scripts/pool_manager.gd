@@ -116,4 +116,4 @@ func cleanup_all_pools() -> void:
         var pool: ObjectPool = _pools[pool_name]
         pool.cleanup()
         
-    print("Pool Manager: Cleaned up all pools") 
+    DebugSettings.debug_print("pool_manager", "Cleaned up all pools") 

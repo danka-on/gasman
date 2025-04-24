@@ -170,7 +170,7 @@ var _gas_cloud_initialized = false
 func _ready():
    
     
-    print("Player initialization started")
+    DebugSettings.debug_print("player", "Player initialization started")
     
     # Initialize physics variables
     initialize_physics_variables()
@@ -198,16 +198,16 @@ func _ready():
     # Initialize gas cloud scene with fallback only if necessary
     if !_gas_cloud_initialized:
         if Engine.has_singleton("PoolSystem") and PoolSystem.has_pool("gas_clouds"):
-            print("[PLAYER] Using gas clouds from PoolSystem")
+            DebugSettings.debug_print("player", "Using gas clouds from PoolSystem")
             _gas_cloud_initialized = true
         else:
             var file = FileAccess.file_exists("res://scenes/PoolableGasCloud.tscn")
             if !file:
-                print("[PLAYER_DEBUG] Poolable gas cloud scene not found, falling back to regular gas cloud")
+                DebugSettings.debug_print("player", "Poolable gas cloud scene not found, falling back to regular gas cloud", DebugSettings.LogLevel.WARNING)
                 gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
             _gas_cloud_initialized = true
     
-    print("Player initialization complete")
+    DebugSettings.debug_print("player", "Player initialization complete")
 
 
 func _physics_process(delta):
@@ -249,7 +249,7 @@ func _physics_process(delta):
     if is_gas_sprinting:
         move_speed = gas_sprint_speed
         if !was_gas_sprinting:  # Only print when state changes
-            print("Gas sprint active - Speed: ", gas_sprint_speed)
+            DebugSettings.debug_print("player", "Gas sprint active - Speed: %s" % str(gas_sprint_speed))
     elif sprinting:
         move_speed = sprint_speed
     
@@ -412,9 +412,7 @@ func update_movement_state(is_on_ground: bool, is_gas_sprint: bool, is_boost: bo
         handle_state_transition(previous_movement_state, current_movement_state)
         
         if debug_mode:
-            print("Movement state changed: ", 
-            movement_state_to_string(previous_movement_state), " -> ", 
-            movement_state_to_string(current_movement_state))
+            DebugSettings.debug_print("player", "Movement state changed")
         
         
 
@@ -462,10 +460,10 @@ func initialize_physics_variables():
     else:
         gas_sprint_acceleration = 150.0 # Fallback value (30.0/0.2)
         
-    print("Calculated acceleration values:")
-    print("- Walk acceleration: ", acceleration)
-    print("- Sprint acceleration: ", sprint_acceleration)
-    print("- Gas sprint acceleration: ", gas_sprint_acceleration)
+    DebugSettings.debug_print("player", "Calculated acceleration values:")
+    DebugSettings.debug_print("player", "- Walk acceleration: %s" % str(acceleration))
+    DebugSettings.debug_print("player", "- Sprint acceleration: %s" % str(sprint_acceleration))
+    DebugSettings.debug_print("player", "- Gas sprint acceleration: %s" % str(gas_sprint_acceleration))
     
     # Reset state tracking variables
     was_in_air = false
@@ -502,7 +500,7 @@ func initialize_ui_components():
     if gas_bar:
         gas_bar.max_value = max_gas
         gas_bar.value = current_gas
-        print("GasBar initialized with max value: ", max_gas, " and current value: ", current_gas)
+        DebugSettings.debug_print("player", "GasBar initialized with max value: %s and current value: %s" % [str(max_gas), str(current_gas)])
     else:
         push_error("GasBar not found!")
         
@@ -533,7 +531,7 @@ func apply_god_mode_if_enabled():
         current_gas = max_gas
         current_magazine = max_magazine
         current_reserve = total_reserve_ammo
-        print("God mode enabled")
+        DebugSettings.debug_print("player", "God mode enabled")
         
 func initialize_pickups():
     if pickup_area:
@@ -565,14 +563,14 @@ func _input(event):
                 # Check if this press is within the double-tap window of the last press
                 if current_time - last_shift_press_time <= double_tap_window and last_shift_press_time > 0:
                     gas_sprint_enabled = true
-                    print("Gas sprint enabled via double-tap!")
+                    DebugSettings.debug_print("player", "Gas sprint enabled via double-tap!")
                 # Update the last press time and mark Shift as pressed
                 last_shift_press_time = current_time
                 was_shift_released = false
         else:  # Shift was released
             was_shift_released = true
             gas_sprint_enabled = false
-            print("Shift released - gas sprint disabled")
+            DebugSettings.debug_print("player", "Shift released - gas sprint disabled")
         
     
 
@@ -674,9 +672,9 @@ func handle_movement_sounds():
 func update_gas_ui():
     if gas_bar:
         gas_bar.value = current_gas
-        print("GasBar updated to: ", current_gas)
+        DebugSettings.debug_print("player", "GasBar updated to: %s" % str(current_gas))
     else:
-        print("GasBar component missing during gas consumption!")
+        DebugSettings.debug_print("player", "GasBar component missing during gas consumption!", DebugSettings.LogLevel.WARNING)
 
 # Handle gas consumption
 func handle_gas_consumption(delta, is_gas_sprinting, is_boosting):
@@ -758,7 +756,7 @@ func handle_reloading(delta):
             can_reload = true
             reload_bar.value = 0.0
             reload_bar.hide()  # Explicitly hide the reload bar
-            print("Reloading complete - Magazine: ", current_magazine, "/", max_magazine)
+            DebugSettings.debug_print("player", "Reloading complete - Magazine: %d/%d" % [current_magazine, max_magazine])
 
 func reload():
     if current_reserve > 0 and current_magazine < max_magazine and not is_reloading:
@@ -770,7 +768,7 @@ func reload():
         $Head/Camera3D/Gun/ReloadPlayer.play()
         
         # Log reload start for debugging
-        print("Reloading started - Magazine: ", current_magazine, "/", max_magazine)
+        DebugSettings.debug_print("player", "Reloading started - Magazine: %d/%d" % [current_magazine, max_magazine])
 
 func add_ammo(amount: int):
     current_reserve += amount
@@ -854,7 +852,7 @@ func shoot():
         push_warning("Could not get bullet from pool")
         return
     
-    print("Shooting bullet: ", bullet.get_instance_id())
+    DebugSettings.debug_print("player", "Shooting bullet: %d" % bullet.get_instance_id())
     
     # Connect to the enemy_hit signal
     if bullet.has_signal("enemy_hit"):
@@ -866,7 +864,7 @@ func shoot():
         
         # Now connect our handler
         bullet.enemy_hit.connect(play_hit_sound)
-        print("Connected bullet signal: ", bullet.get_instance_id())
+        DebugSettings.debug_print("player", "Connected bullet signal: %d" % bullet.get_instance_id())
     
     # Set the bullet's position and velocity
     bullet.global_transform.origin = $Head/Camera3D/Gun/GunTip.global_transform.origin
@@ -874,7 +872,7 @@ func shoot():
     # Calculate and set velocity vector
     var velocity_vector = -$Head/Camera3D.global_transform.basis.z * bullet_speed
     bullet.velocity = velocity_vector
-    print("Set bullet velocity: ", velocity_vector, " speed: ", bullet_speed)
+    DebugSettings.debug_print("player", "Set bullet velocity: %s speed: %s" % [str(velocity_vector), str(bullet_speed)])
     
     $Head/Camera3D/Gun/MuzzleFlash.visible = true
     $Head/Camera3D/Gun/GunshotPlayer.play()
@@ -1196,17 +1194,17 @@ func _initialize_gas_cloud():
     
     # First try to use the pool system
     if Engine.has_singleton("PoolSystem") and PoolSystem.has_pool("gas_clouds"):
-        print("[GAS] Using gas clouds from PoolSystem")
+        DebugSettings.debug_print("player", "Using gas clouds from PoolSystem")
         _gas_cloud_initialized = true
         return
         
     # Fall back to direct scene loading
     var file = FileAccess.file_exists("res://scenes/PoolableGasCloud.tscn")
     if !file:
-        print("[GAS] Poolable gas cloud scene not found, falling back to regular gas cloud")
+        DebugSettings.debug_print("player", "Poolable gas cloud scene not found, falling back to regular gas cloud", DebugSettings.LogLevel.WARNING)
         gas_cloud_scene = preload("res://scenes/gas_cloud.tscn")
     
     _gas_cloud_initialized = true
     
     if DebugSettings != null and DebugSettings.has_method("is_debug_enabled") and DebugSettings.is_debug_enabled("gas"):
-        print("[GAS] Gas cloud scene initialized")
+        DebugSettings.debug_print("player", "Gas cloud scene initialized")

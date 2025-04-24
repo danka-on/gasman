@@ -12,7 +12,7 @@ var tween = null
 var active = false
 
 func _ready():
-    print("[HUD_DAMAGE] Initialized: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Initialized: ID " + str(get_instance_id()))
     reset()
     # Don't start animation in _ready, wait for display call
 
@@ -31,7 +31,7 @@ func display():
     add_theme_color_override("font_color", color)
     add_theme_font_size_override("font_size", text_size)
     
-    print("[HUD_DAMAGE] Displaying: ID " + str(get_instance_id()) + ", Value: " + damage_text)
+    DebugSettings.debug_print("ui", "Displaying: ID " + str(get_instance_id()) + ", Value: " + damage_text)
     
     # Create the animation
     tween = create_tween()
@@ -45,7 +45,7 @@ func display():
     
     # Wait for animation to complete and then free the node
     await tween.finished
-    print("[HUD_DAMAGE] Animation finished: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Animation finished: ID " + str(get_instance_id()))
     prepare_for_pool()
 
 # Reset the damage number for reuse
@@ -59,36 +59,36 @@ func reset():
     self.text = "0"
     modulate = Color(1, 1, 1, 1)
     
-    print("[HUD_DAMAGE] Reset: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Reset: ID " + str(get_instance_id()))
 
 # Called when returning to the pool
 func prepare_for_pool():
-    print("[HUD_DAMAGE] Preparing for pool: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Preparing for pool: ID " + str(get_instance_id()))
     
     active = false
     visible = false
     
     if tween and tween.is_valid():
         tween.kill()
-        print("[HUD_DAMAGE] Cancelled active tween")
+        DebugSettings.debug_print("ui", "Cancelled active tween")
     
     # First remove from parent if we have one
     if get_parent():
-        print("[HUD_DAMAGE] Removing from parent")
+        DebugSettings.debug_print("ui", "Removing from parent: ID " + str(get_instance_id()))
         get_parent().remove_child(self)
     
     # Get PoolSystem directly from singleton reference
     # Then try to return to pool using direct reference to singleton
     if Engine.has_singleton("PoolSystem") or is_instance_valid(PoolSystem):
         if PoolSystem.has_pool("hud_damage_numbers"):
-            print("[HUD_DAMAGE] Releasing to PoolSystem: ID " + str(get_instance_id()))
+            DebugSettings.debug_print("ui", "Releasing to PoolSystem: ID " + str(get_instance_id()))
             # Ensure we're properly removed from our parent first
             if get_parent():
                 get_parent().remove_child(self)
             PoolSystem.release_object(self)
         else:
-            print("[HUD_DAMAGE] No pool for HUD damage - queue_free: ID " + str(get_instance_id()))
+            DebugSettings.debug_print("ui", "No pool for HUD damage - queue_free: ID " + str(get_instance_id()))
             queue_free()
     else:
-        print("[HUD_DAMAGE] PoolSystem not found or invalid - queue_free: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "PoolSystem not found or invalid - queue_free: ID " + str(get_instance_id()))
         queue_free() 

@@ -4,7 +4,7 @@ extends Node
 ## Add this to Project > Project Settings > Autoload to make it accessible globally
 
 # Master debug flag - when false, all debugging is disabled regardless of individual settings
-var debug_enabled: bool = true
+var debug_enabled: bool = false
 
 # System-specific debug flags
 var debug_pools: bool = false       # Object pooling system
@@ -28,7 +28,8 @@ var _debug_categories = {
     "gas_clouds": false, # Gas cloud debugging
     "enemies": false,  # Enemy debugging
     "particles": false, # Particle system debugging
-    "performance": false # Performance monitoring
+    "performance": false, # Performance monitoring
+    "main_debug": false  # Main scene debugging
 }
 
 func _ready() -> void:
@@ -61,6 +62,7 @@ func debug_print(system: String, message: String, level: LogLevel = LogLevel.INF
         "gas": system_enabled = debug_gas
         "ui": system_enabled = debug_ui
         "performance": system_enabled = debug_performance
+        "main_debug": system_enabled = _debug_categories["main_debug"]
         _: system_enabled = true # Default to enabled for unknown systems
     
     if system_enabled:
@@ -90,6 +92,7 @@ func toggle_debug(system: String, enabled: bool = true) -> void:
         "gas": debug_gas = enabled
         "ui": debug_ui = enabled
         "performance": debug_performance = enabled
+        "main_debug": _debug_categories["main_debug"] = enabled
     
     save_settings()
     print("Debug for %s set to: %s" % [system, str(enabled)])

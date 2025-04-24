@@ -75,7 +75,7 @@ func _create_instance() -> Node:
 
 ## Gets an object from the pool
 func get_object() -> Node:
-    print("[POOL_INTERNAL] Getting object from pool: " + name)
+    DebugSettings.debug_print("pool_internal", "Getting object from pool: %s" % name)
     stats_total_accessed += 1
     
     var obj: Node = null
@@ -86,7 +86,7 @@ func get_object() -> Node:
         # Check if the object is still valid
         if is_instance_valid(candidate):
             obj = candidate
-            print("[POOL_INTERNAL] Found valid object ID: " + str(obj.get_instance_id()))
+            DebugSettings.debug_print("pool_internal", "Found valid object ID: %d" % obj.get_instance_id())
             break
         else:
             # Object was freed, skip it
@@ -96,7 +96,7 @@ func get_object() -> Node:
     
     # If no valid object was found, create a new one if we can
     if obj == null and (max_pool_size == -1 or (_active_objects.size() + _available_objects.size()) < max_pool_size):
-        print("[POOL_INTERNAL] Creating new instance for pool: " + name)
+        DebugSettings.debug_print("pool_internal", "Creating new instance for pool: %s" % name)
         obj = _create_instance()
         
         # Log to DebugSettings if available
@@ -130,7 +130,7 @@ func get_object() -> Node:
         # Reset the object if it has a reset method
         # This is critical for poolable objects to initialize properly
         if obj.has_method("reset"):
-            print("[POOL_INTERNAL] Resetting object ID: " + str(obj.get_instance_id()))
+            DebugSettings.debug_print("pool_internal", "Resetting object ID: %d" % obj.get_instance_id())
             obj.reset()
     
     return obj

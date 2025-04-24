@@ -25,7 +25,7 @@ func _ready():
         player = get_node_or_null("/root/Main/Player")
     # Initialize but don't start animation yet
     reset()
-    print("[DAMAGE_NUMBER] Initialized: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Initialized: ID " + str(get_instance_id()))
 
 # Function called to display the damage number
 func display():
@@ -46,7 +46,7 @@ func display():
     label.modulate.a = 1.0 # Reset alpha
     
     # Log the display
-    print("[DAMAGE_NUMBER] Displaying: ID " + str(get_instance_id()) + ", Value: " + text)
+    DebugSettings.debug_print("ui", "Displaying: ID " + str(get_instance_id()) + ", Value: " + text)
     
     # Create the animation
     tween = create_tween()
@@ -63,7 +63,7 @@ func display():
     
     # Wait for animation to complete and then return to pool
     await tween.finished
-    print("[DAMAGE_NUMBER] Animation finished: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Animation finished: ID " + str(get_instance_id()))
     prepare_for_pool()
 
 func _process(_delta):
@@ -83,7 +83,7 @@ func reset():
         # Just reset our flags and return
         being_reset_by_pool = false
         returning_to_pool = false
-        print("[DAMAGE_NUMBER] Reset during pool return: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "Reset during pool return: ID " + str(get_instance_id()))
         return
     
     # Reset all states
@@ -104,32 +104,32 @@ func reset():
     returning_to_pool = false
     pool_return_initiated = false
     
-    print("[DAMAGE_NUMBER] Reset: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Reset: ID " + str(get_instance_id()))
 
 # Called when returning to the pool
 func prepare_for_pool():
     # If we already went through this process once and are being called by the pool system
     if pool_return_initiated:
-        print("[DAMAGE_NUMBER] Pool system calling prepare_for_pool, already handled: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "Pool system calling prepare_for_pool, already handled: ID " + str(get_instance_id()))
         return
     
     # If we're already in the returning_to_pool state, prevent recursion
     if returning_to_pool:
-        print("[DAMAGE_NUMBER] Already returning to pool, skipping duplicate call: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "Already returning to pool, skipping duplicate call: ID " + str(get_instance_id()))
         return
     
     # Set flags to track that we initiated the pool return process
     returning_to_pool = true
     pool_return_initiated = true
     
-    print("[DAMAGE_NUMBER] Preparing for pool: ID " + str(get_instance_id()))
+    DebugSettings.debug_print("ui", "Preparing for pool: ID " + str(get_instance_id()))
     
     active = false
     visible = false
     
     if tween and tween.is_valid():
         tween.kill()
-        print("[DAMAGE_NUMBER] Cancelled active tween")
+        DebugSettings.debug_print("ui", "Cancelled active tween")
     
     # Log to debug system if available
     if Engine.has_singleton("DebugSettings"):
@@ -140,27 +140,27 @@ func prepare_for_pool():
     
     # First remove from parent if we have one
     if get_parent():
-        print("[DAMAGE_NUMBER] Removing from parent: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "Removing from parent: ID " + str(get_instance_id()))
         get_parent().remove_child(self)
     
     # Access PoolSystem either as singleton or as direct reference
     var pool_system = null
     if Engine.has_singleton("PoolSystem"):
         pool_system = Engine.get_singleton("PoolSystem")
-        print("[DAMAGE_NUMBER] Found PoolSystem via singleton: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "Found PoolSystem via singleton: ID " + str(get_instance_id()))
     elif is_instance_valid(PoolSystem):
         pool_system = PoolSystem
-        print("[DAMAGE_NUMBER] Found PoolSystem via global: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "Found PoolSystem via global: ID " + str(get_instance_id()))
     
     if pool_system:
         if pool_system.has_pool("damage_numbers"):
-            print("[DAMAGE_NUMBER] Releasing to damage_numbers pool: ID " + str(get_instance_id()))
+            DebugSettings.debug_print("ui", "Releasing to damage_numbers pool: ID " + str(get_instance_id()))
             # Set flag to indicate pool system is about to reset us
             being_reset_by_pool = true
             pool_system.release_object(self)
         else:
-            print("[DAMAGE_NUMBER] No damage_numbers pool found, queue_freeing: ID " + str(get_instance_id()))
+            DebugSettings.debug_print("ui", "No damage_numbers pool found, queue_freeing: ID " + str(get_instance_id()))
             queue_free()
     else:
-        print("[DAMAGE_NUMBER] PoolSystem not available by any method, queue_freeing: ID " + str(get_instance_id()))
+        DebugSettings.debug_print("ui", "PoolSystem not available by any method, queue_freeing: ID " + str(get_instance_id()))
         queue_free()

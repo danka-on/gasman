@@ -40,6 +40,8 @@ const POOLABLE_ENEMY_SCENE = "res://scenes/PoolableEnemy.tscn"
 const GAS_CLOUD_SCENE = "res://scenes/PoolableGasCloud.tscn"  # Added gas cloud scene path
 const GAS_CLOUD_FALLBACK_SCENE = "res://scenes/GasCloud.tscn"  # Added fallback path
 
+@onready var player = get_node("/root/Player")  # Adjust the path as necessary
+
 func _ready() -> void:
     # Create the pool manager
     _pool_manager = PoolManager.new()
@@ -60,13 +62,15 @@ func _ready() -> void:
             print("- %s: ERROR - Pool is null!" % pool_name)
     print("=========================================\n")
     
-    # Enable debugging if DebugSettings exists
-    if has_node("/root/DebugSettings"):
-        # By default enable pool and explosion debugging
-        DebugSettings.toggle_debug("pools", true)
-        DebugSettings.toggle_debug("explosions", true)
-        DebugSettings.toggle_debug("enemies", true)
-        DebugSettings.toggle_debug("gas_clouds", true)  # Enable gas cloud debugging
+    # Toggle global debugging based on player's debug mode
+    if has_node("/root/DebugSettings") and player:
+        DebugSettings.toggle_debug("all", player.debug_mode)
+        # Enable specific system debug flags only if player debugging is on
+        if player.debug_mode:
+            DebugSettings.toggle_debug("pools", true)
+            DebugSettings.toggle_debug("explosions", true)
+            DebugSettings.toggle_debug("enemies", true)
+            DebugSettings.toggle_debug("gas_clouds", true)
     
     # Update the main scene enemy scene reference (after a short delay)
     call_deferred("_update_main_scene_enemy_reference")
@@ -86,7 +90,7 @@ func _update_main_scene_enemy_reference() -> void:
             # Load our poolable scene
             var poolable_scene = load(POOLABLE_ENEMY_SCENE)
             if poolable_scene:
-                print("[POOL_DEBUG] Replacing main scene enemy reference with poolable version")
+                DebugSettings.debug_print("pool_debug", "Replacing main scene enemy reference with poolable version")
                 main_scene.enemy_scene = poolable_scene
                 
                 # Log to DebugSettings if available
@@ -95,9 +99,9 @@ func _update_main_scene_enemy_reference() -> void:
             else:
                 push_warning("[POOL_DEBUG] Failed to load poolable enemy scene!")
         else:
-            print("[POOL_DEBUG] Main scene already using custom enemy scene: " + main_scene.enemy_scene.resource_path)
+            DebugSettings.debug_print("pool_debug", "Main scene already using custom enemy scene: %s" % main_scene.enemy_scene.resource_path)
     else:
-        print("[POOL_DEBUG] Main scene not ready or doesn't have spawn_enemy method")
+        DebugSettings.debug_print("pool_debug", "Main scene not ready or doesn't have spawn_enemy method")
 
 ## Initialize commonly used object pools
 func _initialize_common_pools() -> void:
@@ -215,14 +219,14 @@ func get_object(pool_type: PoolType) -> Node:
         return null
     
     var pool_name = _pool_names[pool_type]
-    print("[POOL_DEBUG] Requesting object from pool: %s (type: %d)" % [pool_name, pool_type])
+    DebugSettings.debug_print("pool_debug", "Requesting object from pool: %s (type: %d)" % [pool_name, pool_type])
     
     var obj = _pool_manager.get_object(pool_name)
     
     if obj:
-        print("[POOL_DEBUG] Got object ID:%d from pool: %s" % [obj.get_instance_id(), pool_name])
+        DebugSettings.debug_print("pool_debug", "Got object ID:%d from pool: %s" % [obj.get_instance_id(), pool_name])
     else:
-        print("[POOL_DEBUG] Failed to get object from pool: %s (returned null)" % pool_name)
+        DebugSettings.debug_print("pool_debug", "Failed to get object from pool: %s (returned null)" % pool_name)
     
     return obj
 
@@ -230,24 +234,24 @@ func get_object(pool_type: PoolType) -> Node:
 func release_object(obj: Node) -> void:
     if obj:
         var obj_id = obj.get_instance_id()
-        print("[POOL_DEBUG] Releasing object ID:%d back to pool" % obj_id)
+        DebugSettings.debug_print("pool_debug", "Releasing object ID:%d back to pool" % obj_id)
         
         # Try to find which pool this object belongs to
         var found_pool = false
         for pool_name in _pool_names.values():
             var pool = _pool_manager.get_pool(pool_name)
             if pool and pool._active_objects.has(obj):
-                print("[POOL_DEBUG] Object ID:%d belongs to pool: %s" % [obj_id, pool_name])
+                DebugSettings.debug_print("pool_debug", "Object ID:%d belongs to pool: %s" % [obj_id, pool_name])
                 found_pool = true
                 break
         
         # Special detection for DamageNumber objects
         if not found_pool and obj is DamageNumber:
-            print("[POOL_DEBUG] DamageNumber ID:%d attempting return to damage_numbers pool" % obj_id)
+            DebugSettings.debug_print("pool_debug", "DamageNumber ID:%d attempting return to damage_numbers pool" % obj_id)
         
         _pool_manager.release_object(obj)
     else:
-        print("[POOL_DEBUG] ERROR: Attempted to release null object to pool")
+        DebugSettings.debug_print("pool_debug", "ERROR: Attempted to release null object to pool")
 
 ## Create a custom pool with a specific scene
 func create_custom_pool(pool_name: String, scene_path: String, initial_size: int = 10, max_size: int = -1) -> ObjectPool:

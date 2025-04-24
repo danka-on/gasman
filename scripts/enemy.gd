@@ -149,13 +149,13 @@ func take_damage(amount: float, is_gas_damage: bool = false, is_headshot: bool =
 
 func die():
     var enemy_id = get_instance_id()
-    print("[ENEMY_DEBUG] ID:%d - Enemy dying at position: %s" % [enemy_id, str(global_transform.origin)])
+    DebugSettings.debug_print("enemy_debug", "ID:%d - Enemy dying at position: %s" % [enemy_id, str(global_transform.origin)])
     
     if player:
-        print("[ENEMY_DEBUG] ID:%d - Awarding score to player" % enemy_id)
+        DebugSettings.debug_print("enemy_debug", "ID:%d - Awarding score to player" % enemy_id)
         player.add_score(5)
         if randf() < drop_chance:
-            print("[ENEMY_DEBUG] ID:%d - Dropping item (chance: %.2f)" % [enemy_id, drop_chance])
+            DebugSettings.debug_print("enemy_debug", "ID:%d - Dropping item (chance: %.2f)" % [enemy_id, drop_chance])
             var drop_options = [health_pack_scene, ammo_pack_scene, gas_pack_scene]
             var drop = drop_options[randi() % drop_options.size()]
             var instance = drop.instantiate()
@@ -168,26 +168,26 @@ func die():
     
     # Try to get an explosion from the pool first
     if PoolSystem.has_pool("explosions"):
-        print("[ENEMY_DEBUG] ID:%d - Explosions pool exists, attempting to get object" % enemy_id)
+        DebugSettings.debug_print("enemy_debug", "ID:%d - Explosions pool exists, attempting to get object" % enemy_id)
         explosion = PoolSystem.get_object(PoolSystem.PoolType.EXPLOSION)
         if explosion:
             explosion_id = explosion.get_instance_id()
             from_pool = true
-            print("[ENEMY_DEBUG] ID:%d - Got explosion ID:%d from pool for enemy death" % [enemy_id, explosion_id])
+            DebugSettings.debug_print("enemy_debug", "ID:%d - Got explosion ID:%d from pool for enemy death" % [enemy_id, explosion_id])
             
             # Log to DebugSettings if available
             if has_node("/root/DebugSettings"):
                 DebugSettings.debug_print("pools", "Enemy ID:%d successfully got explosion ID:%d from pool" % 
                     [enemy_id, explosion_id])
         else:
-            print("[ENEMY_DEBUG] ID:%d - Failed to get explosion from pool (returned null)" % enemy_id)
+            DebugSettings.debug_print("enemy_debug", "ID:%d - Failed to get explosion from pool (returned null)" % enemy_id)
             
             # Log to DebugSettings if available
             if has_node("/root/DebugSettings"):
                 DebugSettings.debug_print("pools", "Enemy ID:%d failed to get explosion from pool" % 
                     enemy_id, DebugSettings.LogLevel.WARNING)
     else:
-        print("[ENEMY_DEBUG] ID:%d - Explosions pool does not exist!" % enemy_id)
+        DebugSettings.debug_print("enemy_debug", "ID:%d - Explosions pool does not exist!" % enemy_id)
         
         # Log to DebugSettings if available
         if has_node("/root/DebugSettings"):
@@ -196,10 +196,10 @@ func die():
     
     # If no pooled explosion is available, instantiate one
     if explosion == null:
-        print("[ENEMY_DEBUG] ID:%d - No pooled explosion available, instantiating new one" % enemy_id)
+        DebugSettings.debug_print("enemy_debug", "ID:%d - No pooled explosion available, instantiating new one" % enemy_id)
         explosion = explosion_scene.instantiate()
         explosion_id = explosion.get_instance_id()
-        print("[ENEMY_DEBUG] ID:%d - Created new explosion ID:%d for enemy death (not from pool)" % [enemy_id, explosion_id])
+        DebugSettings.debug_print("enemy_debug", "ID:%d - Created new explosion ID:%d for enemy death (not from pool)" % [enemy_id, explosion_id])
         
         # Log to DebugSettings if available
         if has_node("/root/DebugSettings"):
@@ -208,7 +208,7 @@ func die():
     
     explosion.global_transform.origin = global_transform.origin
     var parent_id = get_parent().get_instance_id()
-    print("[ENEMY_DEBUG] ID:%d - Adding explosion ID:%d to parent ID:%d" % [enemy_id, explosion_id, parent_id])
+    DebugSettings.debug_print("enemy_debug", "ID:%d - Adding explosion ID:%d to parent ID:%d" % [enemy_id, explosion_id, parent_id])
     get_parent().add_child(explosion)
     
     # Record pool usage statistics if not from pool
@@ -218,32 +218,32 @@ func die():
     
     if is_instance_valid(player):
         var distance = global_transform.origin.distance_to(player.global_transform.origin)
-        print("[ENEMY_DEBUG] ID:%d - Player distance from explosion: %.2f (radius: %.2f)" % [enemy_id, distance, explosion_radius])
+        DebugSettings.debug_print("enemy_debug", "ID:%d - Player distance from explosion: %.2f (radius: %.2f)" % [enemy_id, distance, explosion_radius])
         
         if distance <= explosion_radius:
             var direction = (player.global_transform.origin - global_transform.origin).normalized()
-            print("[ENEMY_DEBUG] ID:%d - Player in explosion radius, applying effects" % enemy_id)
+            DebugSettings.debug_print("enemy_debug", "ID:%d - Player in explosion radius, applying effects" % enemy_id)
             
             if !player.immunity:
-                print("[ENEMY_DEBUG] ID:%d - Player not immune, applying %.2f damage" % [enemy_id, explosion_damage])
+                DebugSettings.debug_print("enemy_debug", "ID:%d - Player not immune, applying %.2f damage" % [enemy_id, explosion_damage])
                 player.take_damage(explosion_damage)
                 player.apply_knockback(direction, explosion_force)
-                print("[ENEMY_DEBUG] ID:%d - Applied knockback in direction: %s with force: %.2f" % 
+                DebugSettings.debug_print("enemy_debug", "ID:%d - Applied knockback in direction: %s with force: %.2f" % 
                       [enemy_id, str(direction), explosion_force])
             elif player.immunity:
-                print("[ENEMY_DEBUG] ID:%d - Player immune to explosion damage, only applying knockback" % enemy_id)
+                DebugSettings.debug_print("enemy_debug", "ID:%d - Player immune to explosion damage, only applying knockback" % enemy_id)
                 player.apply_knockback(direction, explosion_force)
     
-    print("[ENEMY_DEBUG] ID:%d - Disabling physics and hitbox" % enemy_id)
+    DebugSettings.debug_print("enemy_debug", "ID:%d - Disabling physics and hitbox" % enemy_id)
     hitbox.collision_layer = 0
     hitbox.collision_mask = 0
     hide()
     remove_from_group("enemy")
     set_physics_process(false)
     
-    print("[ENEMY_DEBUG] ID:%d - Starting queue_free delay timer (0.5 seconds)" % enemy_id)
+    DebugSettings.debug_print("enemy_debug", "ID:%d - Starting queue_free delay timer (0.5 seconds)" % enemy_id)
     await get_tree().create_timer(0.5).timeout
-    print("[ENEMY_DEBUG] ID:%d - Delay complete, calling queue_free()" % enemy_id)
+    DebugSettings.debug_print("enemy_debug", "ID:%d - Delay complete, calling queue_free()" % enemy_id)
     queue_free()
 
 func _on_hitbox_body_entered(body):

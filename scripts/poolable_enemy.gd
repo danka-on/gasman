@@ -409,9 +409,6 @@ func debug_print(message: String, level: int = DebugSettings.LogLevel.INFO) -> v
     # Format the message with the object ID
     var formatted_message = "ID:%d - %s" % [_id, message]
     
-    # Print to console with prefix
-    print("[ENEMY_DEBUG] %s" % formatted_message)
-    
     # Send to central debug system if available
     if has_node("/root/DebugSettings"):
         DebugSettings.debug_print("enemies", formatted_message, level)
