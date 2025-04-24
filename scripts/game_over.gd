@@ -18,6 +18,29 @@ func _input(event):
         pass
 
 func _on_restart_button_pressed():
+    # Get the current scene
+    var current_scene = get_tree().current_scene
+    
+    # Clean up all objects in pools
+    if Engine.has_singleton("PoolSystem"):
+        var pool_system = Engine.get_singleton("PoolSystem")
+        pool_system.reset_all_pools()
+        DebugSettings.debug_print("game_over", "All object pools have been reset")
+    
+    # Clean up all remaining scene nodes
+    if current_scene:
+        # Remove all children from the current scene
+        for child in current_scene.get_children():
+            if child != self:  # Don't remove the game over screen itself
+                child.queue_free()
+        
+        # Clean up any remaining nodes in groups
+        for group in ["enemy", "health_pack", "ammo_pack", "gas_pack", "bullet"]:
+            var nodes = get_tree().get_nodes_in_group(group)
+            for node in nodes:
+                if is_instance_valid(node):
+                    node.queue_free()
+    
     # Change to the main game scene
     get_tree().change_scene_to_file("res://scenes/main.tscn")
 
