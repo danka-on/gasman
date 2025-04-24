@@ -45,6 +45,8 @@ var tween: Tween = null
 var has_exploded: bool = false
 var particle_materials_initialized: bool = false
 
+const EXPLOSION_SCENE = preload("res://scenes/PoolableExplosion.tscn")
+
 func _ready():
     _id = get_instance_id()
     _creation_time = Time.get_ticks_msec() / 1000.0
@@ -188,7 +190,6 @@ func set_particle_properties():
 func _verify_particles_emitting():
     # Skip the check if we're no longer visible or active
     if not visible or process_mode == Node.PROCESS_MODE_DISABLED:
-        debug_print("DEFERRED CHECK: Skipped (object inactive)", DebugSettings.LogLevel.VERBOSE)
         return
     
     if $GPUParticles3D:

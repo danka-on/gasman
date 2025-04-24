@@ -107,7 +107,38 @@ func _update_main_scene_enemy_reference() -> void:
 func _initialize_common_pools() -> void:
     print("PoolSystem: Initializing common object pools...")
     
-    # Load common scenes
+    # Create gas cloud pool first to prevent initialization issues
+    var gas_cloud_scene: PackedScene = load(GAS_CLOUD_SCENE)
+    if gas_cloud_scene == null:
+        print("PoolSystem: Poolable gas cloud scene not found, falling back to regular gas cloud")
+        gas_cloud_scene = load(GAS_CLOUD_FALLBACK_SCENE)
+        if gas_cloud_scene:
+            print("PoolSystem: Using regular gas cloud as fallback")
+    else:
+        print("PoolSystem: Successfully loaded poolable gas cloud scene: " + GAS_CLOUD_SCENE)
+        # Debug check for the scene's script
+        var temp_instance = gas_cloud_scene.instantiate()
+        if temp_instance and temp_instance.get_script():
+            print("PoolSystem: Gas cloud scene uses script: " + temp_instance.get_script().resource_path)
+            # Check if this is actually a PoolableGasCloud
+            if temp_instance.get_script().get_path().find("poolable_gas_cloud.gd") != -1:
+                print("PoolSystem: Confirmed scene has poolable_gas_cloud.gd script")
+            else:
+                print("PoolSystem: WARNING - Scene does not use poolable_gas_cloud.gd script!")
+        else:
+            print("PoolSystem: WARNING - Gas cloud scene has no script attached!")
+        temp_instance.queue_free()
+    
+    if gas_cloud_scene:
+        var gas_cloud_pool = _pool_manager.create_pool(_pool_names[PoolType.GAS_CLOUD], gas_cloud_scene, 8)
+        if gas_cloud_pool:
+            print("PoolSystem: Created gas cloud pool with initial size of 8")
+        else:
+            push_error("PoolSystem: Failed to create gas cloud pool - check for errors")
+    else:
+        push_warning("PoolSystem: Failed to load gas cloud scene")
+    
+    # Load other common scenes
     var bullet_scene: PackedScene = load(BULLET_SCENE)
     
     # Try to load the poolable explosion scene first, fall back to regular if needed
@@ -137,7 +168,7 @@ func _initialize_common_pools() -> void:
     var damage_number_scene: PackedScene = load(DAMAGE_NUMBER_SCENE)
     var hud_damage_number_scene: PackedScene = load(HUD_DAMAGE_NUMBER_SCENE)
     
-    # Create pools with appropriate initial sizes
+    # Create other pools
     if bullet_scene:
         _pool_manager.create_pool(_pool_names[PoolType.BULLET], bullet_scene, 20)
         print("PoolSystem: Created bullet pool with initial size of 20")
@@ -178,37 +209,6 @@ func _initialize_common_pools() -> void:
         print("PoolSystem: Created poolable enemy pool with initial size of 15")
     else:
         push_warning("PoolSystem: Failed to load poolable enemy scene at " + POOLABLE_ENEMY_SCENE)
-    
-    # Create gas cloud pool with initial size of 8
-    var gas_cloud_scene: PackedScene = load(GAS_CLOUD_SCENE)
-    if gas_cloud_scene == null:
-        print("PoolSystem: Poolable gas cloud scene not found, falling back to regular gas cloud")
-        gas_cloud_scene = load(GAS_CLOUD_FALLBACK_SCENE)
-        if gas_cloud_scene:
-            print("PoolSystem: Using regular gas cloud as fallback")
-    else:
-        print("PoolSystem: Successfully loaded poolable gas cloud scene: " + GAS_CLOUD_SCENE)
-        # Debug check for the scene's script
-        var temp_instance = gas_cloud_scene.instantiate()
-        if temp_instance and temp_instance.get_script():
-            print("PoolSystem: Gas cloud scene uses script: " + temp_instance.get_script().resource_path)
-            # Check if this is actually a PoolableGasCloud
-            if temp_instance.get_script().get_path().find("poolable_gas_cloud.gd") != -1:
-                print("PoolSystem: Confirmed scene has poolable_gas_cloud.gd script")
-            else:
-                print("PoolSystem: WARNING - Scene does not use poolable_gas_cloud.gd script!")
-        else:
-            print("PoolSystem: WARNING - Gas cloud scene has no script attached!")
-        temp_instance.queue_free()
-    
-    if gas_cloud_scene:
-        var gas_cloud_pool = _pool_manager.create_pool(_pool_names[PoolType.GAS_CLOUD], gas_cloud_scene, 8)
-        if gas_cloud_pool:
-            print("PoolSystem: Created gas cloud pool with initial size of 8")
-        else:
-            push_error("PoolSystem: Failed to create gas cloud pool - check for errors")
-    else:
-        push_warning("PoolSystem: Failed to load gas cloud scene")
     
     print("PoolSystem: Pool initialization complete")
 
