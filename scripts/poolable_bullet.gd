@@ -23,7 +23,8 @@ func _ready():
     # Don't start the timer in _ready
     # The timer will be started in reset() which is called when the bullet is activated from the pool
     
-    print("Bullet initialized: ", get_instance_id())
+    if DebugSettings.is_debug_enabled("bullets"):
+        DebugSettings.debug_print("bullets", "Bullet initialized: %d" % get_instance_id())
 
 func setup_signal_connections():
     if not _signal_connections_setup:
@@ -48,7 +49,8 @@ func _physics_process(delta):
 
 ## Reset the bullet for reuse from the pool
 func reset():
-    print("Bullet reset: ", get_instance_id())
+    if DebugSettings.is_debug_enabled("bullets"):
+        DebugSettings.debug_print("bullets", "Bullet reset: %d" % get_instance_id())
     
     # Reset position and velocity
     transform = Transform3D.IDENTITY
@@ -81,11 +83,13 @@ func _start_lifetime_timer():
     if visible and process_mode == Node.PROCESS_MODE_INHERIT:
         _lifetime_timer = get_tree().create_timer(5)
         _lifetime_timer.timeout.connect(_on_lifetime_timeout)
-        print("Started lifetime timer for bullet: ", get_instance_id())
+        if DebugSettings.is_debug_enabled("bullets"):
+            DebugSettings.debug_print("bullets", "Started lifetime timer for bullet: %d" % get_instance_id())
 
 ## Called when this bullet hits something
 func hit():
-    print("Bullet hit: ", get_instance_id())
+    if DebugSettings.is_debug_enabled("bullets"):
+        DebugSettings.debug_print("bullets", "Bullet hit: %d" % get_instance_id())
     
     # Prevent multiple calls
     set_physics_process(false)
@@ -114,9 +118,11 @@ func hit():
         if hit_effect == null:
             push_warning("Bullet hit: Failed to instantiate hit effect")
         else:
-            print("Created new hit effect (not from pool)")
+            if DebugSettings.is_debug_enabled("bullets"):
+                DebugSettings.debug_print("bullets", "Created new hit effect (not from pool)")
     else:
-        print("Got hit effect from pool")
+        if DebugSettings.is_debug_enabled("bullets"):
+            DebugSettings.debug_print("bullets", "Got hit effect from pool")
     
     # Add the hit effect to the scene and position it
     if hit_effect != null:
@@ -153,7 +159,8 @@ func _on_area_entered(area):
     call_deferred("hit")
 
 func _on_lifetime_timeout():
-    print("Bullet lifetime expired: ", get_instance_id())
+    if DebugSettings.is_debug_enabled("bullets"):
+        DebugSettings.debug_print("bullets", "Bullet lifetime expired: %d" % get_instance_id())
     
     # Return to pool instead of queue_free
     if PoolManager.instance != null:
@@ -164,7 +171,8 @@ func _on_lifetime_timeout():
 ## Called when the bullet is returned to the pool
 ## This ensures all timers and ongoing processes are stopped
 func prepare_for_pool():
-    print("Bullet prepared for pool: ", get_instance_id())
+    if DebugSettings.is_debug_enabled("bullets"):
+        DebugSettings.debug_print("bullets", "Bullet prepared for pool: %d" % get_instance_id())
     
     # Cancel the lifetime timer if it's still running
     if _lifetime_timer != null and _lifetime_timer.time_left > 0:

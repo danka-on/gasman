@@ -51,7 +51,8 @@ func _ready():
     _id = get_instance_id()
     _creation_time = Time.get_ticks_msec() / 1000.0
     
-    debug_print("Created at time: %.2f" % _creation_time)
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Created at time: %.2f" % _creation_time)
     add_to_group("gas_cloud")
     
     # Initialize but ensure reset() is called by the pool
@@ -65,11 +66,13 @@ func reset():
         _being_reset_by_pool = false
         _returning_to_pool = false
         _pool_return_initiated = false
-        debug_print("Reset during pool return")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Reset during pool return")
         return
     
     var reset_time = Time.get_ticks_msec() / 1000.0
-    debug_print("Reset at time: %.2f (alive for %.2f seconds)" % [reset_time, reset_time - _creation_time])
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Reset at time: %.2f (alive for %.2f seconds)" % [reset_time, reset_time - _creation_time])
     
     # Reset transform
     transform = Transform3D.IDENTITY
@@ -100,14 +103,16 @@ func reset():
     
     # Reset emission state of particles
     if $GPUParticles3D:
-        debug_print("Starting particle emission")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Starting particle emission")
         $GPUParticles3D.emitting = true
         
         # Debug verification
-        if $GPUParticles3D.emitting:
-            debug_print("Particle emission confirmed ON", DebugSettings.LogLevel.VERBOSE)
-        else:
-            debug_print("Particles failed to start!", DebugSettings.LogLevel.ERROR)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            if $GPUParticles3D.emitting:
+                debug_print("Particle emission confirmed ON", DebugSettings.LogLevel.VERBOSE)
+            else:
+                debug_print("Particles failed to start!", DebugSettings.LogLevel.ERROR)
         
         # Schedule a deferred check to ensure particles are emitting
         call_deferred("_verify_particles_emitting")
@@ -127,7 +132,8 @@ func reset():
 # Initialize particle materials to prevent the respawning issue
 func initialize_particle_materials():
     if $GPUParticles3D and $GPUParticles3D.process_material:
-        debug_print("Initializing particle materials")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Initializing particle materials")
         
         # Create a unique material for this instance to prevent shared properties
         var particle_material = $GPUParticles3D.process_material.duplicate()
@@ -156,15 +162,17 @@ func initialize_particle_materials():
                     mesh_material.albedo_color = cloud_color
                     mesh_material.emission = Color(cloud_color.r, cloud_color.g, cloud_color.b, 1.0)
                     mesh_material.emission_energy_multiplier = emission_strength
-                else:
+                elif DebugSettings.is_debug_enabled("gas_clouds"):
                     debug_print("Using scene visuals instead of passed properties", DebugSettings.LogLevel.VERBOSE)
         
-        debug_print("Particle materials initialized successfully", DebugSettings.LogLevel.VERBOSE)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Particle materials initialized successfully", DebugSettings.LogLevel.VERBOSE)
 
 # Set particle properties without re-initializing materials
 func set_particle_properties():
     if $GPUParticles3D and $GPUParticles3D.process_material:
-        debug_print("Updating particle properties")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Updating particle properties")
         
         var particle_material = $GPUParticles3D.process_material
         
@@ -184,7 +192,8 @@ func set_particle_properties():
             mesh_material.emission = Color(cloud_color.r, cloud_color.g, cloud_color.b, 1.0)
             mesh_material.emission_energy_multiplier = emission_strength
             
-        debug_print("Particle properties updated", DebugSettings.LogLevel.VERBOSE)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Particle properties updated", DebugSettings.LogLevel.VERBOSE)
 
 # Debug verification function (similar to poolable_explosion.gd)
 func _verify_particles_emitting():
@@ -194,19 +203,22 @@ func _verify_particles_emitting():
     
     if $GPUParticles3D:
         var particles = $GPUParticles3D
-        debug_print("DEFERRED CHECK: Particles emitting: %s" % str(particles.emitting), 
-            DebugSettings.LogLevel.VERBOSE)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("DEFERRED CHECK: Particles emitting: %s" % str(particles.emitting), 
+                DebugSettings.LogLevel.VERBOSE)
         
         # Try to force emission if it's not emitting
         if not particles.emitting:
-            debug_print("ATTEMPTING FORCE RESTART OF PARTICLES", DebugSettings.LogLevel.WARNING)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("ATTEMPTING FORCE RESTART OF PARTICLES", DebugSettings.LogLevel.WARNING)
             particles.restart()
             particles.emitting = true
             
             # Create new particles if restart fails
             if not particles.emitting:
-                debug_print("CRITICAL: Particles won't emit! Trying alternative approach", 
-                    DebugSettings.LogLevel.ERROR)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("CRITICAL: Particles won't emit! Trying alternative approach", 
+                        DebugSettings.LogLevel.ERROR)
                 
                 # Try applying a different solution to prevent the bug
                 var current_material = particles.process_material
@@ -215,8 +227,9 @@ func _verify_particles_emitting():
                     particles.process_material = material_copy
                     particles.restart()
                     particles.emitting = true
-                    debug_print("Applied material copy fix", DebugSettings.LogLevel.WARNING)
-    else:
+                    if DebugSettings.is_debug_enabled("gas_clouds"):
+                        debug_print("Applied material copy fix", DebugSettings.LogLevel.WARNING)
+    elif DebugSettings.is_debug_enabled("gas_clouds"):
         debug_print("DEFERRED CHECK: Particles node not found!", DebugSettings.LogLevel.ERROR)
 
 func _process(delta):
@@ -256,7 +269,8 @@ func scan_for_enemies():
     for body in overlapping_bodies:
         if is_instance_valid(body) and body.is_in_group("enemy"):
             if not enemies_in_cloud.has(body):
-                debug_print("Enemy found in gas cloud: %s" % body.name, DebugSettings.LogLevel.VERBOSE)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("Enemy found in gas cloud: %s" % body.name, DebugSettings.LogLevel.VERBOSE)
                 enemies_in_cloud.append(body)
 
 # Called when a bullet enters the gas cloud
@@ -264,7 +278,8 @@ func bullet_hit(bullet):
     if not can_explode or has_exploded or is_being_freed or _returning_to_pool:
         return
         
-    debug_print("Bullet hit gas cloud! Exploding...")
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Bullet hit gas cloud! Exploding...")
     
     # Trigger explosion
     explode()
@@ -285,8 +300,9 @@ func explode():
                     entity.take_damage(explosion_damage, true)  # Specify this is gas damage for enemies
                 else:
                     entity.take_damage(explosion_damage)  # For player, only pass damage amount
-                debug_print("Damaged entity: %s for %.1f damage" % [entity.name, explosion_damage], 
-                    DebugSettings.LogLevel.VERBOSE)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("Damaged entity: %s for %.1f damage" % [entity.name, explosion_damage], 
+                        DebugSettings.LogLevel.VERBOSE)
             
             # Apply knockback if the entity has the method
             if entity.has_method("apply_knockback"):
@@ -297,7 +313,8 @@ func explode():
     if explosion_chain_reaction:
         var nearby_clouds = get_nearby_clouds()
         if not nearby_clouds.is_empty():
-            debug_print("Found %d nearby clouds for chain reaction" % nearby_clouds.size())
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Found %d nearby clouds for chain reaction" % nearby_clouds.size())
         trigger_chain_reaction()
     
     # Create explosion effect
@@ -323,22 +340,26 @@ func get_explosion_targets() -> Array:
             
         var distance = global_transform.origin.distance_to(body.global_transform.origin)
         if distance <= explosion_radius:
-            debug_print("Entity in explosion radius: %s, Distance: %.2f" % [body.name, distance], 
-                DebugSettings.LogLevel.VERBOSE)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Entity in explosion radius: %s, Distance: %.2f" % [body.name, distance], 
+                    DebugSettings.LogLevel.VERBOSE)
             targets.append(body)
     
     return targets
 
 # Trigger explosions in nearby gas clouds
 func trigger_chain_reaction():
-    debug_print("Attempting to trigger chain reaction")
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Attempting to trigger chain reaction")
     var nearby_clouds = get_nearby_clouds()
     
     if nearby_clouds.is_empty():
-        debug_print("No valid gas clouds found in range for chain reaction", DebugSettings.LogLevel.WARNING)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("No valid gas clouds found in range for chain reaction", DebugSettings.LogLevel.WARNING)
         return
         
-    debug_print("Triggering chain reaction on %d nearby gas clouds" % nearby_clouds.size())
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Triggering chain reaction on %d nearby gas clouds" % nearby_clouds.size())
     
     for cloud in nearby_clouds:
         if not is_instance_valid(cloud) or cloud == self or cloud.has_exploded or cloud.is_being_freed:
@@ -346,8 +367,9 @@ func trigger_chain_reaction():
             
         var distance = global_transform.origin.distance_to(cloud.global_transform.origin)
         if distance <= explosion_chain_radius:
-            debug_print("Scheduling explosion for gas cloud ID:%d at distance %.2f with delay %.2f seconds" % 
-                [cloud.get_instance_id(), distance, explosion_delay])
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Scheduling explosion for gas cloud ID:%d at distance %.2f with delay %.2f seconds" % 
+                    [cloud.get_instance_id(), distance, explosion_delay])
             
             # Use a Timer instead of await for more reliable chain reactions
             var timer = Timer.new()
@@ -362,13 +384,16 @@ func trigger_chain_reaction():
             
             # Connect the timer to a callback
             timer.timeout.connect(func():
-                debug_print("Chain reaction timer fired for cloud ID:%d" % cloud.get_instance_id() if cloud_ref.get_ref() else -1)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("Chain reaction timer fired for cloud ID:%d" % cloud.get_instance_id() if cloud_ref.get_ref() else -1)
                 # Check if the cloud still exists
                 if cloud_ref.get_ref() and is_instance_valid(cloud_ref.get_ref()) and not cloud_ref.get_ref().has_exploded:
-                    debug_print("Triggering chain explosion on gas cloud ID:%d" % cloud_ref.get_ref().get_instance_id())
+                    if DebugSettings.is_debug_enabled("gas_clouds"):
+                        debug_print("Triggering chain explosion on gas cloud ID:%d" % cloud_ref.get_ref().get_instance_id())
                     cloud_ref.get_ref().explode()
                 else:
-                    debug_print("Target gas cloud no longer valid for chain reaction", DebugSettings.LogLevel.WARNING)
+                    if DebugSettings.is_debug_enabled("gas_clouds"):
+                        debug_print("Target gas cloud no longer valid for chain reaction", DebugSettings.LogLevel.WARNING)
                 
                 # Clean up the timer
                 if timer_ref.get_ref() and is_instance_valid(timer_ref.get_ref()):
@@ -377,11 +402,13 @@ func trigger_chain_reaction():
             
             # Start the timer
             timer.start()
-            debug_print("Chain reaction timer started for gas cloud ID:%d" % cloud.get_instance_id())
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Chain reaction timer started for gas cloud ID:%d" % cloud.get_instance_id())
 
 # Create explosion visual effect
 func spawn_explosion_effect():
-    debug_print("Spawning explosion effect at position: %s" % str(global_transform.origin))
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Spawning explosion effect at position: %s" % str(global_transform.origin))
     
     var explosion = null
     var explosion_id = -1
@@ -391,53 +418,71 @@ func spawn_explosion_effect():
     var pool_system = null
     if Engine.has_singleton("PoolSystem"):
         pool_system = Engine.get_singleton("PoolSystem")
-        debug_print("PoolSystem singleton found via Engine.has_singleton")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("PoolSystem singleton found via Engine.has_singleton")
     elif is_instance_valid(PoolSystem):
         pool_system = PoolSystem
-        debug_print("PoolSystem found via global reference")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("PoolSystem found via global reference")
     
     if pool_system:
-        debug_print("PoolSystem accessed, checking for explosions pool")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("PoolSystem accessed, checking for explosions pool")
         
         # Use the safe method to ensure the pool exists
         if pool_system.has_method("get_object_safe"):
-            debug_print("Using get_object_safe method to retrieve explosion")
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Using get_object_safe method to retrieve explosion")
             explosion = pool_system.get_object_safe(pool_system.PoolType.EXPLOSION)
             if explosion:
                 explosion_id = explosion.get_instance_id()
                 from_pool = true
-                debug_print("Got explosion ID:%d from pool" % explosion_id)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("Got explosion ID:%d from pool" % explosion_id)
                 
                 # Log to DebugSettings
-                DebugSettings.log_info("pools", "Gas cloud ID:%d successfully got explosion ID:%d from pool" % 
-                    [_id, explosion_id])
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    DebugSettings.log_info("pools", "Gas cloud ID:%d successfully got explosion ID:%d from pool" % 
+                        [_id, explosion_id])
             else:
-                debug_print("Failed to get explosion from pool (returned null)", DebugSettings.LogLevel.WARNING)
-                DebugSettings.log_warning("pools", "Gas cloud ID:%d failed to get explosion from pool" % _id)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("Failed to get explosion from pool (returned null)", DebugSettings.LogLevel.WARNING)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    DebugSettings.log_warning("pools", "Gas cloud ID:%d failed to get explosion from pool" % _id)
         elif pool_system.has_pool("explosions"):
-            debug_print("Explosions pool exists, attempting to get object with standard method")
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Explosions pool exists, attempting to get object with standard method")
             explosion = pool_system.get_object(pool_system.PoolType.EXPLOSION)
             if explosion:
                 explosion_id = explosion.get_instance_id()
                 from_pool = true
-                debug_print("Got explosion ID:%d from pool" % explosion_id)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("Got explosion ID:%d from pool" % explosion_id)
                 
                 # Log to DebugSettings
-                DebugSettings.log_info("pools", "Gas cloud ID:%d successfully got explosion ID:%d from pool" % 
-                    [_id, explosion_id])
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    DebugSettings.log_info("pools", "Gas cloud ID:%d successfully got explosion ID:%d from pool" % 
+                        [_id, explosion_id])
             else:
-                debug_print("Failed to get explosion from pool (returned null)", DebugSettings.LogLevel.WARNING)
-                DebugSettings.log_warning("pools", "Gas cloud ID:%d failed to get explosion from pool" % _id)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    debug_print("Failed to get explosion from pool (returned null)", DebugSettings.LogLevel.WARNING)
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    DebugSettings.log_warning("pools", "Gas cloud ID:%d failed to get explosion from pool" % _id)
         else:
-            debug_print("Explosions pool does not exist!", DebugSettings.LogLevel.ERROR)
-            DebugSettings.log_error("pools", "Gas cloud ID:%d found no explosion pool" % _id)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Explosions pool does not exist!", DebugSettings.LogLevel.ERROR)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                DebugSettings.log_error("pools", "Gas cloud ID:%d found no explosion pool" % _id)
     else:
-        debug_print("PoolSystem not available by any method", DebugSettings.LogLevel.ERROR)
-        DebugSettings.log_error("pools", "Gas cloud ID:%d could not access PoolSystem singleton" % _id)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("PoolSystem not available by any method", DebugSettings.LogLevel.ERROR)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            DebugSettings.log_error("pools", "Gas cloud ID:%d could not access PoolSystem singleton" % _id)
     
     # If no pooled explosion is available, instantiate one
     if explosion == null:
-        debug_print("No pooled explosion available, instantiating new one", DebugSettings.LogLevel.WARNING)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("No pooled explosion available, instantiating new one", DebugSettings.LogLevel.WARNING)
         var explosion_scene_path = "res://scenes/PoolableExplosion.tscn"
         var explosion_scene = load(explosion_scene_path)
         if not explosion_scene:
@@ -447,36 +492,46 @@ func spawn_explosion_effect():
         if explosion_scene:
             explosion = explosion_scene.instantiate()
             explosion_id = explosion.get_instance_id()
-            debug_print("Created new explosion ID:%d (not from pool)" % explosion_id, DebugSettings.LogLevel.WARNING)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Created new explosion ID:%d (not from pool)" % explosion_id, DebugSettings.LogLevel.WARNING)
             
             # Log to DebugSettings
-            DebugSettings.log_warning("pools", "Gas cloud ID:%d CREATED NEW explosion ID:%d (pool bypassed)" % 
-                [_id, explosion_id])
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                DebugSettings.log_warning("pools", "Gas cloud ID:%d CREATED NEW explosion ID:%d (pool bypassed)" % 
+                    [_id, explosion_id])
         else:
-            debug_print("ERROR: Failed to load explosion scene!", DebugSettings.LogLevel.ERROR)
-            DebugSettings.log_error("pools", "Gas cloud ID:%d failed to load explosion scene" % _id)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("ERROR: Failed to load explosion scene!", DebugSettings.LogLevel.ERROR)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                DebugSettings.log_error("pools", "Gas cloud ID:%d failed to load explosion scene" % _id)
     
     if explosion:
         if get_parent():
             var parent_id = get_parent().get_instance_id()
-            debug_print("Adding explosion ID:%d to parent ID:%d" % [explosion_id, parent_id])
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Adding explosion ID:%d to parent ID:%d" % [explosion_id, parent_id])
             
             get_parent().add_child(explosion)
             explosion.global_transform.origin = global_transform.origin
             
             # Scale the explosion based on cloud size
             explosion.scale = Vector3.ONE * (cloud_size / 2.0)
-            debug_print("Set explosion ID:%d scale to: %s" % [explosion_id, str(explosion.scale)])
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Set explosion ID:%d scale to: %s" % [explosion_id, str(explosion.scale)])
             
             # Record pool usage statistics if not from pool
             if not from_pool:
-                DebugSettings.log_warning("performance", "Non-pooled explosion ID:%d created by gas cloud ID:%d" % 
-                    [explosion_id, _id])
+                if DebugSettings.is_debug_enabled("gas_clouds"):
+                    DebugSettings.log_warning("performance", "Non-pooled explosion ID:%d created by gas cloud ID:%d" % 
+                        [explosion_id, _id])
         else:
-            debug_print("ERROR: Gas cloud has no parent to add explosion to!", DebugSettings.LogLevel.ERROR)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("ERROR: Gas cloud has no parent to add explosion to!", DebugSettings.LogLevel.ERROR)
     else:
-        debug_print("ERROR: Failed to create explosion!", DebugSettings.LogLevel.ERROR)
-        DebugSettings.log_error("gas_clouds", "Gas cloud ID:%d completely failed to create explosion" % _id)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("ERROR: Failed to create explosion!", DebugSettings.LogLevel.ERROR)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            DebugSettings.log_error("gas_clouds", "Gas cloud ID:%d completely failed to create explosion" % _id)
 
 func start_fade_out():
     # Only start fade if not already fading or being freed
@@ -484,11 +539,13 @@ func start_fade_out():
         return
         
     is_fading_out = true
-    debug_print("Starting fade out")
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Starting fade out")
     
     # Safety check if we're still in the tree and have valid nodes
     if not is_inside_tree() or not $GPUParticles3D or not $GPUParticles3D.draw_pass_1:
-        debug_print("Invalid state for fade out, preparing for pool", DebugSettings.LogLevel.WARNING)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Invalid state for fade out, preparing for pool", DebugSettings.LogLevel.WARNING)
         prepare_for_pool()
         return
     
@@ -499,7 +556,8 @@ func start_fade_out():
     # Get this cloud's unique material
     var mesh_material = $GPUParticles3D.draw_pass_1.material
     if not mesh_material:
-        debug_print("No material found for fade out, preparing for pool", DebugSettings.LogLevel.WARNING)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("No material found for fade out, preparing for pool", DebugSettings.LogLevel.WARNING)
         prepare_for_pool()
         return
     
@@ -521,7 +579,8 @@ func start_fade_out():
             
         # Use weakref to check if object still exists
         if self_ref.get_ref() and is_instance_valid(self_ref.get_ref()):
-            debug_print("Fade out complete, preparing for pool")
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Fade out complete, preparing for pool")
             prepare_for_pool()
     )
 
@@ -529,12 +588,14 @@ func start_fade_out():
 func prepare_for_pool():
     # If we already went through this process once and are being called by the pool system
     if _pool_return_initiated:
-        debug_print("Pool system calling prepare_for_pool, already handled")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Pool system calling prepare_for_pool, already handled")
         return
     
     # If we're already in the returning_to_pool state, prevent recursion
     if _returning_to_pool:
-        debug_print("Already returning to pool, skipping duplicate call")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Already returning to pool, skipping duplicate call")
         return
     
     # Set flags to track that we initiated the pool return process
@@ -542,8 +603,9 @@ func prepare_for_pool():
     _pool_return_initiated = true
     
     var prepare_time = Time.get_ticks_msec() / 1000.0
-    debug_print("Prepared for pool at time: %.2f (used for %.2f seconds)" % 
-        [prepare_time, prepare_time - _creation_time])
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Prepared for pool at time: %.2f (used for %.2f seconds)" % 
+            [prepare_time, prepare_time - _creation_time])
     
     # Mark as being freed to avoid any new operations
     is_being_freed = true
@@ -568,29 +630,35 @@ func prepare_for_pool():
     
     # First remove from parent if we have one
     if get_parent():
-        debug_print("Removing from parent")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Removing from parent")
         get_parent().remove_child(self)
     
     # Access PoolSystem to return to pool
     var pool_system = null
     if Engine.has_singleton("PoolSystem"):
         pool_system = Engine.get_singleton("PoolSystem")
-        debug_print("Found PoolSystem via singleton")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Found PoolSystem via singleton")
     elif is_instance_valid(PoolSystem):
         pool_system = PoolSystem
-        debug_print("Found PoolSystem via global")
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Found PoolSystem via global")
     
     if pool_system:
         if pool_system.has_pool("gas_clouds"):
-            debug_print("Releasing to gas_clouds pool")
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Releasing to gas_clouds pool")
             # Set flag to indicate pool system is about to reset us
             _being_reset_by_pool = true
             pool_system.release_object(self)
         else:
-            debug_print("No gas_clouds pool found, queue_freeing", DebugSettings.LogLevel.WARNING)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("No gas_clouds pool found, queue_freeing", DebugSettings.LogLevel.WARNING)
             queue_free()
     else:
-        debug_print("PoolSystem not available by any method, queue_freeing", DebugSettings.LogLevel.WARNING)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("PoolSystem not available by any method, queue_freeing", DebugSettings.LogLevel.WARNING)
         queue_free()
 
 # Manually disconnect all signals to avoid callbacks after being freed
@@ -619,7 +687,8 @@ func _on_body_entered(body):
         bullet_hit(body)
         
     if body.is_in_group("enemy"):
-        debug_print("Enemy entered gas cloud: %s" % body.name, DebugSettings.LogLevel.VERBOSE)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Enemy entered gas cloud: %s" % body.name, DebugSettings.LogLevel.VERBOSE)
         if not enemies_in_cloud.has(body):
             enemies_in_cloud.append(body)
 
@@ -641,8 +710,9 @@ func _on_damage_timer_timeout():
     # Apply damage to all enemies in the cloud
     for enemy in enemies_in_cloud:
         if is_instance_valid(enemy):
-            debug_print("Damaging enemy: %s Amount: %.1f" % [enemy.name, damage_per_tick], 
-                DebugSettings.LogLevel.VERBOSE)
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Damaging enemy: %s Amount: %.1f" % [enemy.name, damage_per_tick], 
+                    DebugSettings.LogLevel.VERBOSE)
             enemy.take_damage(damage_per_tick, true)  # Specify this is gas damage
 
 # Get all gas clouds within explosion chain radius
@@ -650,9 +720,11 @@ func get_nearby_clouds() -> Array:
     var nearby_clouds = []
     var all_clouds = get_tree().get_nodes_in_group("gas_cloud")
     
-    debug_print("Found %d total gas clouds in scene" % all_clouds.size())
+    if DebugSettings.is_debug_enabled("gas_clouds"):
+        debug_print("Found %d total gas clouds in scene" % all_clouds.size())
     if all_clouds.size() <= 1:
-        debug_print("Only this gas cloud exists, no chain reaction possible", DebugSettings.LogLevel.WARNING)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Only this gas cloud exists, no chain reaction possible", DebugSettings.LogLevel.WARNING)
         return nearby_clouds
     
     for cloud in all_clouds:
@@ -660,13 +732,15 @@ func get_nearby_clouds() -> Array:
             continue
             
         var distance = global_transform.origin.distance_to(cloud.global_transform.origin)
-        debug_print("Gas cloud ID:%d is at distance %.2f (max chain radius: %.2f)" % 
-            [cloud.get_instance_id(), distance, explosion_chain_radius])
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            debug_print("Gas cloud ID:%d is at distance %.2f (max chain radius: %.2f)" % 
+                [cloud.get_instance_id(), distance, explosion_chain_radius])
             
         if distance <= explosion_chain_radius:
             nearby_clouds.append(cloud)
-            debug_print("Added gas cloud ID:%d to chain reaction at distance %.2f" % 
-                [cloud.get_instance_id(), distance])
+            if DebugSettings.is_debug_enabled("gas_clouds"):
+                debug_print("Added gas cloud ID:%d to chain reaction at distance %.2f" % 
+                    [cloud.get_instance_id(), distance])
     
     return nearby_clouds
 
@@ -677,7 +751,8 @@ func debug_print(message: String, level: int = DebugSettings.LogLevel.INFO) -> v
     
     # Send to central debug system if available
     if Engine.has_singleton("DebugSettings"):
-        DebugSettings.debug_print("gas_clouds", formatted_message, level)
+        if DebugSettings.is_debug_enabled("gas_clouds"):
+            DebugSettings.debug_print("gas_clouds", formatted_message, level)
     else:
         # Fallback to direct print if debug system isn't available
         print("[GAS_CLOUD] " + formatted_message) 

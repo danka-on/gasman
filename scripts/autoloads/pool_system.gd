@@ -388,11 +388,13 @@ func ensure_pool_exists(pool_type: PoolType) -> bool:
     
     # Check if the pool already exists
     if _pool_manager.has_pool(pool_name):
-        print("[POOL_SYSTEM] Pool '%s' already exists" % pool_name)
+        if DebugSettings.is_debug_enabled("pools"):
+            DebugSettings.debug_print("pools", "Pool '%s' already exists" % pool_name)
         return true
     
     # Pool doesn't exist, we need to create it
-    print("[POOL_SYSTEM] Pool '%s' doesn't exist! Creating it now..." % pool_name)
+    if DebugSettings.is_debug_enabled("pools"):
+        DebugSettings.debug_print("pools", "Pool '%s' doesn't exist! Creating it now..." % pool_name)
     
     # Load the appropriate scene based on pool type
     var scene_path = ""
@@ -415,18 +417,16 @@ func ensure_pool_exists(pool_type: PoolType) -> bool:
     # Try to load the scene
     var scene = load(scene_path)
     if scene == null and fallback_path:
-        print("[POOL_SYSTEM] Failed to load primary scene, trying fallback: %s" % fallback_path)
+        if DebugSettings.is_debug_enabled("pools"):
+            DebugSettings.debug_print("pools", "Failed to load primary scene, trying fallback: %s" % fallback_path)
         scene = load(fallback_path)
     
     if scene:
         # Create the pool
         var pool = _pool_manager.create_pool(pool_name, scene, initial_size)
         if pool:
-            print("[POOL_SYSTEM] Successfully created '%s' pool with %d objects" % [pool_name, initial_size])
-            # Log to DebugSettings if available
-            if has_node("/root/DebugSettings"):
-                DebugSettings.debug_print("pools", "Created missing '%s' pool on demand" % pool_name, 
-                    DebugSettings.LogLevel.WARNING)
+            if DebugSettings.is_debug_enabled("pools"):
+                DebugSettings.debug_print("pools", "Successfully created '%s' pool with %d objects" % [pool_name, initial_size])
             return true
         else:
             push_error("[POOL_SYSTEM] Failed to create pool: %s" % pool_name)
